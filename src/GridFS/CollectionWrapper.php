@@ -150,9 +150,6 @@ class CollectionWrapper
      */
     public function findFileByFilenameAndRevision(string $filename, int $revision): ?object
     {
-        $filename = $filename;
-        $revision = $revision;
-
         if ($revision < 0) {
             $skip = abs($revision) - 1;
             $sortOrder = -1;
@@ -266,7 +263,7 @@ class CollectionWrapper
     /**
      * Updates the filename field in the file document for all the files with a given filename.
      */
-    public function updateFilenameForFilename(string $filename, string $newFilename): ?int
+    public function updateFilenameForFilename(string $filename, string $newFilename): int
     {
         return $this->filesCollection->updateMany(
             ['filename' => $filename],
