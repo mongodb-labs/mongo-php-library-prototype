@@ -758,6 +758,24 @@ class BucketFunctionalTest extends FunctionalTestCase
         $this->bucket->rename('nonexistent-id', 'b');
     }
 
+    public function testRenameByName(): void
+    {
+        $this->bucket->uploadFromStream('filename', self::createStream('foo'));
+        $this->bucket->uploadFromStream('filename', self::createStream('foo'));
+        $this->bucket->uploadFromStream('filename', self::createStream('foo'));
+
+        $this->bucket->renameByName('filename', 'newname');
+
+        $this->assertNull($this->bucket->findOne(['filename' => 'filename']), 'No file has the old name');
+        $this->assertStreamContents('foo', $this->bucket->openDownloadStreamByName('newname'));
+    }
+
+    public function testRenameByNameShouldRequireFileToExist(): void
+    {
+        $this->expectException(FileNotFoundException::class);
+        $this->bucket->renameByName('nonexistent-name', 'b');
+    }
+
     public function testUploadFromStream(): void
     {
         $options = [

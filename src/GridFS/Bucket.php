@@ -662,6 +662,24 @@ class Bucket
     }
 
     /**
+     * Renames all the revisions of a file name in the GridFS bucket.
+     *
+     * @param string $filename    Filename
+     * @param string $newFilename New filename
+     *
+     * @throws FileNotFoundException if no file could be selected
+     * @throws DriverRuntimeException for other driver errors (e.g. connection errors)
+     */
+    public function renameByName(string $filename, string $newFilename): void
+    {
+        $matchedCount = $this->collectionWrapper->updateFilenameForFilename($filename, $newFilename);
+
+        if (! $matchedCount) {
+            throw FileNotFoundException::byFilename($filename);
+        }
+    }
+
+    /**
      * Writes the contents of a readable stream to a GridFS file.
      *
      * Supported options:
