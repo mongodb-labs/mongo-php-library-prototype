@@ -160,6 +160,41 @@ class BucketFunctionalTest extends FunctionalTestCase
         $this->assertCollectionCount($this->chunksCollection, 0);
     }
 
+    public function testDeleteByName(): void
+    {
+        $this->bucket->uploadFromStream('filename', self::createStream('foobar1'));
+        $this->bucket->uploadFromStream('filename', self::createStream('foobar2'));
+        $this->bucket->uploadFromStream('filename', self::createStream('foobar3'));
+
+        $this->bucket->uploadFromStream('other', self::createStream('foobar'));
+
+        $this->assertCollectionCount($this->filesCollection, 4);
+        $this->assertCollectionCount($this->chunksCollection, 4);
+
+        $this->bucket->deleteByName('filename');
+
+        $this->assertCollectionCount($this->filesCollection, 1);
+        $this->assertCollectionCount($this->chunksCollection, 1);
+
+        $this->bucket->deleteByName('other');
+
+        $this->assertCollectionCount($this->filesCollection, 0);
+        $this->assertCollectionCount($this->chunksCollection, 0);
+    }
+
+    public function testDeleteByNameShouldIgnoreNonexistentFiles(): void
+    {
+        $this->bucket->uploadFromStream('filename', self::createStream('foobar'));
+
+        $this->assertCollectionCount($this->filesCollection, 1);
+        $this->assertCollectionCount($this->chunksCollection, 1);
+
+        $this->bucket->deleteByName('nonexistent-filename');
+
+        $this->assertCollectionCount($this->filesCollection, 1);
+        $this->assertCollectionCount($this->chunksCollection, 1);
+    }
+
     public function testDownloadingFileWithMissingChunk(): void
     {
         $id = $this->bucket->uploadFromStream('filename', self::createStream('foobar'));

@@ -243,6 +243,19 @@ class Bucket
     }
 
     /**
+     * Delete all the revisions of a file name from the GridFS bucket.
+     *
+     * @param string $filename Filename
+     *
+     * @throws FileNotFoundException if no file could be selected
+     * @throws DriverRuntimeException for other driver errors (e.g. connection errors)
+     */
+    public function deleteByName(string $filename): void
+    {
+        $this->collectionWrapper->deleteFileAndChunksByFilename($filename);
+    }
+
+    /**
      * Writes the contents of a GridFS file to a writable stream.
      *
      * @param mixed    $id          File ID
