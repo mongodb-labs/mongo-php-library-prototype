@@ -182,17 +182,10 @@ class BucketFunctionalTest extends FunctionalTestCase
         $this->assertCollectionCount($this->chunksCollection, 0);
     }
 
-    public function testDeleteByNameShouldIgnoreNonexistentFiles(): void
+    public function testDeleteByNameShouldRequireFileToExist(): void
     {
-        $this->bucket->uploadFromStream('filename', self::createStream('foobar'));
-
-        $this->assertCollectionCount($this->filesCollection, 1);
-        $this->assertCollectionCount($this->chunksCollection, 1);
-
-        $this->bucket->deleteByName('nonexistent-filename');
-
-        $this->assertCollectionCount($this->filesCollection, 1);
-        $this->assertCollectionCount($this->chunksCollection, 1);
+        $this->expectException(FileNotFoundException::class);
+        $this->bucket->deleteByName('nonexistent-name');
     }
 
     public function testDownloadingFileWithMissingChunk(): void

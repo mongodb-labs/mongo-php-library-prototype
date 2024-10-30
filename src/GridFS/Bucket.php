@@ -252,7 +252,11 @@ class Bucket
      */
     public function deleteByName(string $filename): void
     {
-        $this->collectionWrapper->deleteFileAndChunksByFilename($filename);
+        $count = $this->collectionWrapper->deleteFileAndChunksByFilename($filename);
+
+        if ($count === 0) {
+            throw FileNotFoundException::byFilename($filename);
+        }
     }
 
     /**
@@ -672,9 +676,9 @@ class Bucket
      */
     public function renameByName(string $filename, string $newFilename): void
     {
-        $matchedCount = $this->collectionWrapper->updateFilenameForFilename($filename, $newFilename);
+        $count = $this->collectionWrapper->updateFilenameForFilename($filename, $newFilename);
 
-        if (! $matchedCount) {
+        if ($count === 0) {
             throw FileNotFoundException::byFilename($filename);
         }
     }

@@ -74,7 +74,7 @@ class CollectionWrapper
     /**
      * Delete all GridFS files and chunks for a given filename.
      */
-    public function deleteFileAndChunksByFilename(string $filename): ?int
+    public function deleteFileAndChunksByFilename(string $filename): int
     {
         /** @var iterable<array{_id: mixed}> $files */
         $files = $this->findFiles(['filename' => $filename], [
