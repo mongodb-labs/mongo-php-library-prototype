@@ -769,10 +769,6 @@ final class Operation
     private function executeForBucket(Bucket $bucket)
     {
         $args = $this->prepareArguments();
-
-        // "md5" field is removed from the spec, option "disableMD5" is ignored
-        unset($args['disableMD5']);
-
         Util::assertArgumentsBySchema(Bucket::class, $this->name, $args);
 
         switch ($this->name) {
