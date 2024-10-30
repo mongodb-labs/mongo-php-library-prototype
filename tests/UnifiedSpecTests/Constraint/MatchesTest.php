@@ -171,6 +171,37 @@ class MatchesTest extends FunctionalTestCase
         $this->assertResult(false, $c, ['x' => 1], 'session LSID does not match (embedded)');
     }
 
+    public function testOperatorMatchAsDocument(): void
+    {
+        $c = new Matches(['json' => ['$$matchAsDocument' => ['x' => 1]]]);
+        $this->assertResult(true, $c, ['json' => '{"x": 1}'], 'JSON document matches');
+        $this->assertResult(false, $c, ['json' => '{"x": 2}'], 'JSON document does not match');
+        $this->assertResult(false, $c, ['json' => '{"x": 1, "y": 2}'], 'JSON document cannot contain extra fields');
+
+        $c = new Matches(['json' => ['$$matchAsDocument' => ['x' => 1.0]]]);
+        $this->assertResult(true, $c, ['json' => '{"x": 1}'], 'JSON document matches (flexible numeric comparison)');
+
+        $c = new Matches(['json' => ['$$matchAsDocument' => ['x' => ['$$exists' => true]]]]);
+        $this->assertResult(true, $c, ['json' => '{"x": 1}'], 'JSON document matches (special operators)');
+        $this->assertResult(false, $c, ['json' => '{"y": 1}'], 'JSON document does not match (special operators)');
+
+        $c = new Matches(['json' => ['$$matchAsDocument' => ['x' => ['$$type' => 'objectId']]]]);
+        $this->assertResult(true, $c, ['json' => '{"x": {"$oid": "57e193d7a9cc81b4027498b5"}}'], 'JSON document matches (extended JSON)');
+        $this->assertResult(false, $c, ['json' => '{"x": {"$numberDecimal": "1234.5"}}'], 'JSON document does not match (extended JSON)');
+    }
+
+    public function testOperatorMatchAsRoot(): void
+    {
+        $c = new Matches(['x' => ['$$matchAsRoot' => ['y' => 2]]]);
+        $this->assertResult(true, $c, ['x' => ['y' => 2, 'z' => 3]], 'Nested document matches (allow extra fields)');
+        $this->assertResult(true, $c, ['x' => ['y' => 2.0, 'z' => 3.0]], 'Nested document matches (flexible numeric comparison)');
+        $this->assertResult(false, $c, ['x' => ['y' => 3, 'z' => 3]], 'Nested document does not match');
+
+        $c = new Matches(['x' => ['$$matchAsRoot' => ['y' => ['$$exists' => true]]]]);
+        $this->assertResult(true, $c, ['x' => ['y' => 2, 'z' => 3]], 'Nested document matches (special operators)');
+        $this->assertResult(false, $c, ['x' => ['z' => 3]], 'Nested document matches (special operators)');
+    }
+
     #[DataProvider('errorMessageProvider')]
     public function testErrorMessages($expectedMessageRegex, Matches $constraint, $actualValue): void
     {
@@ -301,6 +332,10 @@ class MatchesTest extends FunctionalTestCase
             '$$sessionLsid type' => [
                 '$$sessionLsid requires string',
                 new Matches(['x' => ['$$sessionLsid' => 1]], new EntityMap()),
+            ],
+            '$$matchAsDocument type' => [
+                '$$matchAsDocument requires a BSON document',
+                new Matches(['x' => ['$$matchAsDocument' => 'foo']]),
             ],
         ];
     }
