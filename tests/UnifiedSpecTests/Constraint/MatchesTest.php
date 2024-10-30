@@ -30,6 +30,12 @@ class MatchesTest extends FunctionalTestCase
         $this->assertResult(true, $c, ['x' => 1.0, 'y' => 1.0], 'Float instead of expected int matches');
         $this->assertResult(true, $c, ['x' => 1, 'y' => 1], 'Int instead of expected float matches');
         $this->assertResult(false, $c, ['x' => 'foo', 'y' => 1.0], 'Different type does not match');
+
+        /* Matches uses PHPUnit's comparators, which follow PHP behavior. This
+         * is more liberal than the comparison logic called for by the unified
+         * test format. This test can be removed when PHPLIB-1577 is addressed.
+         */
+        $this->assertResult(true, $c, ['x' => '1.0', 'y' => '1'], 'Numeric strings may match ints and floats');
     }
 
     public function testDoNotAllowExtraRootKeys(): void
