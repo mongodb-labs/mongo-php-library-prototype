@@ -132,9 +132,11 @@ final class Util
         ],
         Bucket::class => [
             'delete' => ['id'],
+            'deleteByName' => ['filename'],
             'downloadByName' => ['filename', 'revision'],
             'download' => ['id'],
             'rename' => ['id', 'newFilename'],
+            'renameByName' => ['filename', 'newFilename'],
             'uploadWithId' => ['id', 'filename', 'source', 'chunkSizeBytes', 'disableMD5', 'contentType', 'metadata'],
             'upload' => ['filename', 'source', 'chunkSizeBytes', 'disableMD5', 'contentType', 'metadata'],
         ],

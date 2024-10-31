@@ -243,6 +243,23 @@ class Bucket
     }
 
     /**
+     * Delete all the revisions of a file name from the GridFS bucket.
+     *
+     * @param string $filename Filename
+     *
+     * @throws FileNotFoundException if no file could be selected
+     * @throws DriverRuntimeException for other driver errors (e.g. connection errors)
+     */
+    public function deleteByName(string $filename): void
+    {
+        $count = $this->collectionWrapper->deleteFileAndChunksByFilename($filename);
+
+        if ($count === 0) {
+            throw FileNotFoundException::byFilename($filename);
+        }
+    }
+
+    /**
      * Writes the contents of a GridFS file to a writable stream.
      *
      * @param mixed    $id          File ID
@@ -645,6 +662,24 @@ class Bucket
 
         if (! $found) {
             throw FileNotFoundException::byId($id, $this->getFilesNamespace());
+        }
+    }
+
+    /**
+     * Renames all the revisions of a file name in the GridFS bucket.
+     *
+     * @param string $filename    Filename
+     * @param string $newFilename New filename
+     *
+     * @throws FileNotFoundException if no file could be selected
+     * @throws DriverRuntimeException for other driver errors (e.g. connection errors)
+     */
+    public function renameByName(string $filename, string $newFilename): void
+    {
+        $count = $this->collectionWrapper->updateFilenameForFilename($filename, $newFilename);
+
+        if ($count === 0) {
+            throw FileNotFoundException::byFilename($filename);
         }
     }
 
