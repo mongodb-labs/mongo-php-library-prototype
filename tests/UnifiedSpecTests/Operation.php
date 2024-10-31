@@ -803,6 +803,15 @@ final class Operation
 
                 return stream_get_contents($bucket->openDownloadStream($args['id']));
 
+            case 'rename':
+                assertArrayHasKey('id', $args);
+                assertArrayHasKey('newFilename', $args);
+                assertIsString($args['newFilename']);
+
+                $bucket->rename($args['id'], $args['newFilename']);
+
+                return null;
+
             case 'uploadWithId':
                 assertArrayHasKey('id', $args);
                 $args['_id'] = $args['id'];
