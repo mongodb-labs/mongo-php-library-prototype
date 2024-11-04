@@ -168,7 +168,7 @@ class Client
      */
     public function __get(string $databaseName): Database
     {
-        return $this->selectDatabase($databaseName);
+        return $this->getDatabase($databaseName);
     }
 
     /**
@@ -228,6 +228,37 @@ class Client
         $operation = new DropDatabase($databaseName, $options);
 
         $operation->execute($server);
+    }
+
+    /**
+     * Returns a collection instance.
+     *
+     * If the collection does not exist in the database, it is not created when
+     * invoking this method.
+     *
+     * @see Collection::__construct() for supported options
+     * @throws InvalidArgumentException for parameter/option parsing errors
+     */
+    public function getCollection(string $databaseName, string $collectionName, array $options = []): Collection
+    {
+        $options += ['typeMap' => $this->typeMap, 'builderEncoder' => $this->builderEncoder];
+
+        return new Collection($this->manager, $databaseName, $collectionName, $options);
+    }
+
+    /**
+     * Returns a database instance.
+     *
+     * If the database does not exist on the server, it is not created when
+     * invoking this method.
+     *
+     * @see Database::__construct() for supported options
+     */
+    public function getDatabase(string $databaseName, array $options = []): Database
+    {
+        $options += ['typeMap' => $this->typeMap, 'builderEncoder' => $this->builderEncoder];
+
+        return new Database($this->manager, $databaseName, $options);
     }
 
     /**
@@ -329,9 +360,7 @@ class Client
      */
     public function selectCollection(string $databaseName, string $collectionName, array $options = []): Collection
     {
-        $options += ['typeMap' => $this->typeMap, 'builderEncoder' => $this->builderEncoder];
-
-        return new Collection($this->manager, $databaseName, $collectionName, $options);
+        return $this->getCollection($databaseName, $collectionName, $options);
     }
 
     /**
@@ -344,9 +373,7 @@ class Client
      */
     public function selectDatabase(string $databaseName, array $options = []): Database
     {
-        $options += ['typeMap' => $this->typeMap, 'builderEncoder' => $this->builderEncoder];
-
-        return new Database($this->manager, $databaseName, $options);
+        return $this->getDatabase($databaseName, $options);
     }
 
     /**
