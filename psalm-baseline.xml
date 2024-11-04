@@ -275,20 +275,9 @@
     </MixedArgumentTypeCoercion>
   </file>
   <file src="src/GridFS/CollectionWrapper.php">
-    <InvalidNullableReturnType>
-      <code><![CDATA[int]]></code>
-      <code><![CDATA[int]]></code>
-    </InvalidNullableReturnType>
     <MixedAssignment>
       <code><![CDATA[$ids[]]]></code>
     </MixedAssignment>
-    <NullableReturnStatement>
-      <code><![CDATA[$count]]></code>
-      <code><![CDATA[$this->filesCollection->updateMany(
-            ['filename' => $filename],
-            ['$set' => ['filename' => $newFilename]],
-        )->getMatchedCount()]]></code>
-    </NullableReturnStatement>
   </file>
   <file src="src/GridFS/ReadableStream.php">
     <MixedArgument>
