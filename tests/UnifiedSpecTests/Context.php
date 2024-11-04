@@ -463,7 +463,7 @@ final class Context
 
     private function createBucket(string $id, stdClass $o): void
     {
-        Util::assertHasOnlyKeys($o, ['id', 'database', 'bucketOptions', 'disableMD5']);
+        Util::assertHasOnlyKeys($o, ['id', 'database', 'bucketOptions']);
 
         $databaseId = $o->database ?? null;
         assertIsString($databaseId);

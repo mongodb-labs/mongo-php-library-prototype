@@ -134,6 +134,7 @@ final class Util
             'delete' => ['id'],
             'downloadByName' => ['filename', 'revision'],
             'download' => ['id'],
+            // "disableMD5" is ignored but allowed for backward compatibility
             'uploadWithId' => ['id', 'filename', 'source', 'chunkSizeBytes', 'disableMD5', 'metadata'],
             'upload' => ['filename', 'source', 'chunkSizeBytes', 'disableMD5', 'metadata'],
         ],
