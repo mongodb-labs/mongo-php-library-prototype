@@ -158,6 +158,34 @@ class BucketFunctionalTest extends FunctionalTestCase
         $this->assertCollectionCount($this->chunksCollection, 0);
     }
 
+    public function testDeleteByName(): void
+    {
+        $this->bucket->uploadFromStream('filename', self::createStream('foobar1'));
+        $this->bucket->uploadFromStream('filename', self::createStream('foobar2'));
+        $this->bucket->uploadFromStream('filename', self::createStream('foobar3'));
+
+        $this->bucket->uploadFromStream('other', self::createStream('foobar'));
+
+        $this->assertCollectionCount($this->filesCollection, 4);
+        $this->assertCollectionCount($this->chunksCollection, 4);
+
+        $this->bucket->deleteByName('filename');
+
+        $this->assertCollectionCount($this->filesCollection, 1);
+        $this->assertCollectionCount($this->chunksCollection, 1);
+
+        $this->bucket->deleteByName('other');
+
+        $this->assertCollectionCount($this->filesCollection, 0);
+        $this->assertCollectionCount($this->chunksCollection, 0);
+    }
+
+    public function testDeleteByNameShouldRequireFileToExist(): void
+    {
+        $this->expectException(FileNotFoundException::class);
+        $this->bucket->deleteByName('nonexistent-name');
+    }
+
     public function testDownloadingFileWithMissingChunk(): void
     {
         $id = $this->bucket->uploadFromStream('filename', self::createStream('foobar'));
@@ -719,6 +747,24 @@ class BucketFunctionalTest extends FunctionalTestCase
     {
         $this->expectException(FileNotFoundException::class);
         $this->bucket->rename('nonexistent-id', 'b');
+    }
+
+    public function testRenameByName(): void
+    {
+        $this->bucket->uploadFromStream('filename', self::createStream('foo'));
+        $this->bucket->uploadFromStream('filename', self::createStream('foo'));
+        $this->bucket->uploadFromStream('filename', self::createStream('foo'));
+
+        $this->bucket->renameByName('filename', 'newname');
+
+        $this->assertNull($this->bucket->findOne(['filename' => 'filename']), 'No file has the old name');
+        $this->assertStreamContents('foo', $this->bucket->openDownloadStreamByName('newname'));
+    }
+
+    public function testRenameByNameShouldRequireFileToExist(): void
+    {
+        $this->expectException(FileNotFoundException::class);
+        $this->bucket->renameByName('nonexistent-name', 'b');
     }
 
     public function testUploadFromStream(): void

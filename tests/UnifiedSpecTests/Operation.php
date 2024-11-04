@@ -777,6 +777,12 @@ final class Operation
 
                 return $bucket->delete($args['id']);
 
+            case 'deleteByName':
+                assertArrayHasKey('filename', $args);
+                assertIsString($args['filename']);
+
+                return $bucket->deleteByName($args['filename']);
+
             case 'downloadByName':
                 assertArrayHasKey('filename', $args);
                 assertIsString($args['filename']);
@@ -799,6 +805,14 @@ final class Operation
                 $bucket->rename($args['id'], $args['newFilename']);
 
                 return null;
+
+            case 'renameByName':
+                assertArrayHasKey('filename', $args);
+                assertArrayHasKey('newFilename', $args);
+                assertIsString($args['filename']);
+                assertIsString($args['newFilename']);
+
+                return $bucket->renameByName($args['filename'], $args['newFilename']);
 
             case 'uploadWithId':
                 assertArrayHasKey('id', $args);
