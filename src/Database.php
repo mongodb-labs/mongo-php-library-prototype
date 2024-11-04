@@ -428,10 +428,8 @@ class Database
      * If the collection does not exist in the database, it is not created when
      * invoking this method.
      *
-     * @param string $collectionName Name of the collection to select
-     * @param array  $options        Collection constructor options
-     * @throws InvalidArgumentException for parameter/option parsing errors
      * @see Collection::__construct() for supported options
+     * @throws InvalidArgumentException for parameter/option parsing errors
      */
     public function getCollection(string $collectionName, array $options = []): Collection
     {

@@ -254,9 +254,6 @@ class Client
      * invoking this method.
      *
      * @see Collection::__construct() for supported options
-     * @param string $databaseName   Name of the database containing the collection
-     * @param string $collectionName Name of the collection to select
-     * @param array  $options        Collection constructor options
      * @throws InvalidArgumentException for parameter/option parsing errors
      */
     public function getCollection(string $databaseName, string $collectionName, array $options = []): Collection
@@ -272,9 +269,6 @@ class Client
      * If the database does not exist on the server, it is not created when
      * invoking this method.
      *
-     * @param string $databaseName Name of the database to select
-     * @param array  $options      Database constructor options
-     * @throws InvalidArgumentException for parameter/option parsing errors
      * @see Database::__construct() for supported options
      */
     public function getDatabase(string $databaseName, array $options = []): Database
