@@ -23,22 +23,22 @@ buildvariants:
     run_on: rhel90-small
     tasks:
       - name: "build-all-php"
-  - name: build-rhel83-zseries
-    display_name: "Build: RHEL 8.3 Zseries"
+  - name: build-rhel9-zseries
+    display_name: "Build: RHEL 9 Zseries"
     tags: ["build", "rhel", "zseries", "tag"]
-    run_on: rhel83-zseries-small
+    run_on: rhel9-zseries-small
+    tasks:
+      - name: "build-all-php"
+  - name: build-rhel9-power
+    display_name: "Build: RHEL 9 PPC"
+    tags: ["build", "rhel", "power", "tag"]
+    run_on: rhel9-power-small
     tasks:
       - name: "build-all-php"
   - name: build-rhel82-arm64
     display_name: "Build: RHEL 8.2 ARM64"
     tags: ["build", "rhel", "arm64", "tag"]
     run_on: rhel82-arm64
-    tasks:
-      - name: "build-all-php"
-  - name: build-rhel81-power8
-    display_name: "Build: RHEL 8.1 Power8"
-    tags: ["build", "rhel", "power8", "tag"]
-    run_on: rhel81-power8-large
     tasks:
       - name: "build-all-php"
   - name: build-rhel80
