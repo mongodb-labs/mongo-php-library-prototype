@@ -3,6 +3,7 @@
 namespace MongoDB\Tests\UnifiedSpecTests\Constraint;
 
 use LogicException;
+use MongoDB\BSON\Document;
 use MongoDB\BSON\Serializable;
 use MongoDB\BSON\Type;
 use MongoDB\Model\BSONArray;
@@ -25,10 +26,13 @@ use function is_float;
 use function is_int;
 use function is_object;
 use function ltrim;
+use function PHPUnit\Framework\assertInstanceOf;
 use function PHPUnit\Framework\assertIsBool;
 use function PHPUnit\Framework\assertIsString;
+use function PHPUnit\Framework\assertJson;
 use function PHPUnit\Framework\assertMatchesRegularExpression;
 use function PHPUnit\Framework\assertNotNull;
+use function PHPUnit\Framework\assertStringStartsWith;
 use function PHPUnit\Framework\assertThat;
 use function PHPUnit\Framework\containsOnly;
 use function PHPUnit\Framework\isInstanceOf;
@@ -39,6 +43,7 @@ use function range;
 use function sprintf;
 use function str_starts_with;
 use function strrchr;
+use function trim;
 
 /**
  * Constraint that checks if one value matches another.
@@ -258,6 +263,35 @@ class Matches extends Constraint
 
             if (! $constraint->evaluate($actual, '', true)) {
                 self::failAt(sprintf('%s is not an expected BSON type: %s', (new Exporter())->shortenedExport($actual), implode(', ', (array) $operator['$$type'])), $keyPath);
+            }
+
+            return;
+        }
+
+        if ($name === '$$matchAsDocument') {
+            assertInstanceOf(BSONDocument::class, $operator['$$matchAsDocument'], '$$matchAsDocument requires a BSON document');
+            assertIsString($actual, '$$matchAsDocument requires actual value to be a JSON string');
+            assertJson($actual, '$$matchAsDocument requires actual value to be a JSON string');
+
+            /* Note: assertJson() accepts array and scalar values, but the spec
+             * assumes that the JSON string will yield a document. */
+            assertStringStartsWith('{', trim($actual), '$$matchAsDocument requires actual value to be a JSON string denoting an object');
+
+            $actualDocument = Document::fromJSON($actual)->toPHP();
+            $constraint = new Matches($operator['$$matchAsDocument'], $this->entityMap, allowExtraRootKeys: false);
+
+            if (! $constraint->evaluate($actualDocument, '', true)) {
+                self::failAt(sprintf('%s did not match: %s', (new Exporter())->shortenedExport($actual), $constraint->additionalFailureDescription(null)), $keyPath);
+            }
+
+            return;
+        }
+
+        if ($name === '$$matchAsRoot') {
+            $constraint = new Matches($operator['$$matchAsRoot'], $this->entityMap, allowExtraRootKeys: true);
+
+            if (! $constraint->evaluate($actual, '', true)) {
+                self::failAt(sprintf('$actual did not match as root-level document: %s', $constraint->additionalFailureDescription(null)), $keyPath);
             }
 
             return;
