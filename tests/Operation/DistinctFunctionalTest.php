@@ -3,13 +3,16 @@
 namespace MongoDB\Tests\Operation;
 
 use MongoDB\Driver\BulkWrite;
+use MongoDB\Operation\CreateIndexes;
 use MongoDB\Operation\Distinct;
+use MongoDB\Operation\InsertMany;
 use MongoDB\Tests\CommandObserver;
 use PHPUnit\Framework\Attributes\DataProvider;
 use stdClass;
 
 use function is_scalar;
 use function json_encode;
+use function sort;
 use function usort;
 
 use const JSON_THROW_ON_ERROR;
@@ -54,6 +57,47 @@ class DistinctFunctionalTest extends FunctionalTestCase
                 $this->assertObjectNotHasProperty('readConcern', $event['started']->getCommand());
             },
         );
+    }
+
+    public function testHintOption(): void
+    {
+        $this->skipIfServerVersion('<', '7.1.0', 'hint is not supported');
+
+        $insertMany = new InsertMany($this->getDatabaseName(), $this->getCollectionName(), [
+            ['x' => 1],
+            ['x' => 2, 'y' => 2],
+            ['y' => 3],
+        ]);
+        $insertMany->execute($this->getPrimaryServer());
+
+        $createIndexes = new CreateIndexes($this->getDatabaseName(), $this->getCollectionName(), [
+            ['key' => ['x' => 1], 'sparse' => true, 'name' => 'sparse_x'],
+            ['key' => ['y' => 1]],
+        ]);
+        $createIndexes->execute($this->getPrimaryServer());
+
+        $hintsUsingSparseIndex = [
+            ['x' => 1],
+            'sparse_x',
+        ];
+
+        foreach ($hintsUsingSparseIndex as $hint) {
+            $operation = new Distinct($this->getDatabaseName(), $this->getCollectionName(), 'y', [], ['hint' => $hint]);
+            $this->assertSame([2], $operation->execute($this->getPrimaryServer()));
+        }
+
+        $hintsNotUsingSparseIndex = [
+            ['_id' => 1],
+            ['y' => 1],
+            'y_1',
+        ];
+
+        foreach ($hintsNotUsingSparseIndex as $hint) {
+            $operation = new Distinct($this->getDatabaseName(), $this->getCollectionName(), 'x', [], ['hint' => $hint]);
+            $values = $operation->execute($this->getPrimaryServer());
+            sort($values);
+            $this->assertSame([1, 2], $values);
+        }
     }
 
     public function testSessionOption(): void
