@@ -137,8 +137,9 @@ final class Util
             'download' => ['id'],
             'rename' => ['id', 'newFilename'],
             'renameByName' => ['filename', 'newFilename'],
-            'uploadWithId' => ['id', 'filename', 'source', 'chunkSizeBytes', 'metadata'],
-            'upload' => ['filename', 'source', 'chunkSizeBytes', 'metadata'],
+            // "disableMD5" is ignored but allowed for backward compatibility
+            'uploadWithId' => ['id', 'filename', 'source', 'chunkSizeBytes', 'disableMD5', 'metadata'],
+            'upload' => ['filename', 'source', 'chunkSizeBytes', 'disableMD5', 'metadata'],
         ],
     ];
 
