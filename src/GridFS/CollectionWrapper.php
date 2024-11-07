@@ -148,9 +148,6 @@ final class CollectionWrapper
      */
     public function findFileByFilenameAndRevision(string $filename, int $revision): ?object
     {
-        $filename = $filename;
-        $revision = $revision;
-
         if ($revision < 0) {
             $skip = abs($revision) - 1;
             $sortOrder = -1;
