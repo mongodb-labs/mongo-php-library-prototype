@@ -488,7 +488,7 @@ class WatchFunctionalTest extends FunctionalTestCase
     }
 
     #[DataProvider('provideCodecOptions')]
-    public function testNoChangeAfterResumeBeforeInsert(array $options): void
+    public function testNoChangeAfterResumeBeforeInsert(array $options, Closure $getIdentifier): void
     {
         $operation = new Watch(
             $this->manager,
@@ -1427,7 +1427,7 @@ class WatchFunctionalTest extends FunctionalTestCase
      *  - If neither the startAfter nor resumeAfter options were specified, the getResumeToken result must be empty.
      */
     #[DataProvider('provideCodecOptions')]
-    public function testResumeTokenBehaviour(array $options): void
+    public function testResumeTokenBehaviour(array $options, Closure $getIdentifier): void
     {
         $this->skipIfServerVersion('<', '4.1.1', 'Testing resumeAfter and startAfter can only be tested on servers >= 4.1.1');
         $this->skipIfIsShardedCluster('Resume token behaviour can\'t be reliably tested on sharded clusters.');
