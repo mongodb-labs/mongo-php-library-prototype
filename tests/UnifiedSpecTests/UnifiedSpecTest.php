@@ -43,6 +43,7 @@ class UnifiedSpecTest extends FunctionalTestCase
         'crud/replaceOne-sort' => 'Sort for replace operations is not supported (PHPLIB-1492)',
         'crud/updateOne-sort' => 'Sort for update operations is not supported (PHPLIB-1492)',
         'crud/bypassDocumentValidation' => 'bypassDocumentValidation is handled by libmongoc (PHPLIB-1576)',
+        'crud/distinct-hint' => 'Hint for distinct operations is not supported (PHPLIB-1582)',
     ];
 
     /** @var array<string, string> */
@@ -60,7 +61,7 @@ class UnifiedSpecTest extends FunctionalTestCase
         'valid-pass/expectedEventsForClient-eventType: eventType defaults to command if unset' => 'PHPC does not implement CMAP',
         // CSOT is not yet implemented (PHPC-1760)
         'valid-pass/collectionData-createOptions: collection is created with the correct options' => 'CSOT is not yet implemented (PHPC-1760)',
-        'valid-pass/matches-lte-operator: special lte matching operator' => 'CSOT is not yet implemented (PHPC-1760)',
+        'valid-pass/operator-lte: special lte matching operator' => 'CSOT is not yet implemented (PHPC-1760)',
         // libmongoc always adds readConcern to aggregate command
         'index-management/search index operations ignore read and write concern: listSearchIndexes ignores read and write concern' => 'libmongoc appends readConcern to aggregate command',
         // Uses an invalid object name
