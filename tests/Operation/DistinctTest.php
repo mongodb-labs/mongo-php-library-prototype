@@ -30,6 +30,7 @@ class DistinctTest extends TestCase
     {
         return self::createOptionDataProvider([
             'collation' => self::getInvalidDocumentValues(),
+            'hint' => self::getInvalidHintValues(),
             'maxTimeMS' => self::getInvalidIntegerValues(),
             'readConcern' => self::getInvalidReadConcernValues(),
             'readPreference' => self::getInvalidReadPreferenceValues(),
@@ -42,6 +43,7 @@ class DistinctTest extends TestCase
     {
         $options = [
             'collation' => ['locale' => 'fr'],
+            'hint' => '_id_',
             'maxTimeMS' => 100,
             'readConcern' => new ReadConcern(ReadConcern::LOCAL),
             'comment' => 'explain me',
@@ -56,6 +58,7 @@ class DistinctTest extends TestCase
             'key' => 'f',
             'query' => (object) ['x' => 1],
             'collation' => (object) ['locale' => 'fr'],
+            'hint' => '_id_',
             'comment' => 'explain me',
             'maxTimeMS' => 100,
             'readConcern' => new ReadConcern(ReadConcern::LOCAL),

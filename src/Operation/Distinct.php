@@ -31,6 +31,7 @@ use function current;
 use function is_array;
 use function is_integer;
 use function is_object;
+use function is_string;
 use function MongoDB\create_field_path_type_map;
 use function MongoDB\is_document;
 
@@ -51,7 +52,13 @@ final class Distinct implements Explainable
      *
      *  * comment (mixed): BSON value to attach as a comment to this command.
      *
-     *    This is not supported for servers versions < 4.4.
+     *    This is not supported for server versions < 4.4.
+     *
+     *  * hint (string|document): The index to use. Specify either the index
+     *    name as a string or the index key pattern as a document. If specified,
+     *    then the query system will only consider plans using the hinted index.
+     *
+     *    This is not supported for server versions < 7.1.
      *
      *  * maxTimeMS (integer): The maximum amount of time to allow the query to
      *    run.
@@ -79,6 +86,10 @@ final class Distinct implements Explainable
 
         if (isset($this->options['collation']) && ! is_document($this->options['collation'])) {
             throw InvalidArgumentException::expectedDocumentType('"collation" option', $this->options['collation']);
+        }
+
+        if (isset($this->options['hint']) && ! is_string($this->options['hint']) && ! is_document($this->options['hint'])) {
+            throw InvalidArgumentException::invalidType('"hint" option', $this->options['hint'], 'string or array or object');
         }
 
         if (isset($this->options['maxTimeMS']) && ! is_integer($this->options['maxTimeMS'])) {
@@ -168,6 +179,11 @@ final class Distinct implements Explainable
 
         if (isset($this->options['collation'])) {
             $cmd['collation'] = (object) $this->options['collation'];
+        }
+
+        if (isset($this->options['hint'])) {
+            /** @psalm-var string|object */
+            $cmd['hint'] = is_array($this->options['hint']) ? (object) $this->options['hint'] : $this->options['hint'];
         }
 
         foreach (['comment', 'maxTimeMS'] as $option) {
