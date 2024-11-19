@@ -30,6 +30,7 @@ use MongoDB\Exception\InvalidArgumentException;
 use MongoDB\Exception\UnsupportedException;
 use MongoDB\Model\CodecCursor;
 
+use function assert;
 use function is_array;
 use function is_bool;
 use function is_integer;
@@ -416,6 +417,12 @@ class Find implements Executable, Explainable
             /** @psalm-var array|object */
             $modifiers = $this->options['modifiers'];
             $options['modifiers'] = is_object($modifiers) ? document_to_array($modifiers) : $modifiers;
+        }
+
+        // Ensure no cursor is left behind when limit == batchSize by increasing batchSize
+        if (isset($options['limit'], $options['batchSize']) && $options['limit'] === $options['batchSize']) {
+            assert(is_integer($options['batchSize']));
+            $options['batchSize']++;
         }
 
         return $options;
