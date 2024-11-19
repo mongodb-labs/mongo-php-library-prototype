@@ -425,6 +425,10 @@ class Find implements Executable, Explainable
             $options['batchSize']++;
         }
 
+        if (isset($options['limit']) && $options['limit'] === 1) {
+            $options['singleBatch'] = true;
+        }
+
         return $options;
     }
 }
