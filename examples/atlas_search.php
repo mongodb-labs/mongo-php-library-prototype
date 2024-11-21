@@ -2,7 +2,7 @@
 
 /**
  * This example demonstrates how to create an Atlas Search index and perform a search query.
- * It requires a MongoDB Atlas M10+ cluster with Sample Dataset loaded.
+ * It requires a MongoDB Atlas cluster with Sample Dataset loaded.
  *
  * Use the MONGODB_URI environment variable to specify the connection string from the Atlas UI.
  */
