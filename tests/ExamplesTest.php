@@ -224,7 +224,7 @@ OUTPUT;
     }
 
     /**
-     * MongoDB Atlas Search example requires a MongoDB Atlas M10+ cluster with MongoDB 7.0+
+     * MongoDB Atlas Search example requires a MongoDB Atlas cluster with MongoDB 7.0+
      * Tips for insiders: if using a cloud-dev server, append ".mongodb.net" to the MONGODB_URI.
      */
     #[Group('atlas')]
