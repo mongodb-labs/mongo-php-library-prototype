@@ -29,6 +29,7 @@ use MongoDB\Exception\InvalidArgumentException;
 use MongoDB\Exception\UnsupportedException;
 use MongoDB\Model\CodecCursor;
 
+use function assert;
 use function is_array;
 use function is_bool;
 use function is_integer;
@@ -345,6 +346,16 @@ final class Find implements Explainable
             if (isset($this->options[$option])) {
                 $options[$option] = (object) $this->options[$option];
             }
+        }
+
+        // Ensure no cursor is left behind when limit == batchSize by increasing batchSize
+        if (isset($options['limit'], $options['batchSize']) && $options['limit'] === $options['batchSize']) {
+            assert(is_integer($options['batchSize']));
+            $options['batchSize']++;
+        }
+
+        if (isset($options['limit']) && $options['limit'] === 1) {
+            $options['singleBatch'] = true;
         }
 
         return $options;
