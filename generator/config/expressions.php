@@ -109,6 +109,10 @@ return $expressions + [
         'implements' => [ResolvesToAny::class],
         'acceptedTypes' => ['string'],
     ],
+    'searchOperator' => [
+        'returnType' => Type\SearchOperatorInterface::class,
+        'acceptedTypes' => [Type\SearchOperatorInterface::class, ...$bsonTypes['object']],
+    ],
     'geometry' => [
         'returnType' => Type\GeometryInterface::class,
         'acceptedTypes' => [Type\GeometryInterface::class, ...$bsonTypes['object']],
@@ -166,6 +170,14 @@ return $expressions + [
         'acceptedTypes' => [...$bsonTypes['object']],
     ],
     'GeoPoint' => [
+        'acceptedTypes' => [...$bsonTypes['object']],
+    ],
+
+    // Search
+    'searchPath' => [
+        'acceptedTypes' => ['string', 'array'],
+    ],
+    'searchScore' => [
         'acceptedTypes' => [...$bsonTypes['object']],
     ],
 ];

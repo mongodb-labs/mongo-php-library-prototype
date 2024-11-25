@@ -42,6 +42,8 @@ Each operator can contain a `tests` section with a list if pipelines. To represe
 | Int64       | `!bson_int64 '123456789'`                              |
 | Decimal128  | `!bson_decimal128 '0.9'`                               |
 | UTCDateTime | `!bson_utcdatetime 0`                                  |
+| ObjectId    | `!bson_ObjectId '5a9427648b0beebeb69589a1`             |
 | Binary      | `!bson_binary 'IA=='`                                  |
+| Binary UUID | `!bson_uuid 'fac32260-b511-4c69-8485-a2be5b7dda9e'`    |
 
 To add new test cases to operators, you can get inspiration from the official MongoDB documentation and use the `generator/js2yaml.html` web page to manually convert a pipeline array from JS to Yaml.

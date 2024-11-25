@@ -8,10 +8,9 @@ use DateTime;
 use MongoDB\BSON\UTCDateTime;
 use MongoDB\Builder\Expression;
 use MongoDB\Builder\Pipeline;
+use MongoDB\Builder\Search;
 use MongoDB\Builder\Stage;
 use MongoDB\Tests\Builder\PipelineTestCase;
-
-use function MongoDB\object;
 
 /**
  * Test $search stage
@@ -21,13 +20,13 @@ class SearchStageTest extends PipelineTestCase
     public function testExample(): void
     {
         $pipeline = new Pipeline(
-            Stage::search(object(
-                near: object(
+            Stage::search(
+                Search::near(
                     path: 'released',
                     origin: new UTCDateTime(new DateTime('2011-09-01T00:00:00.000+00:00')),
                     pivot: 7776000000,
                 ),
-            )),
+            ),
             Stage::project(_id: 0, title: 1, released: 1),
             Stage::limit(5),
             Stage::facet(

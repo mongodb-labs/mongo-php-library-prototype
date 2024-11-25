@@ -46,7 +46,8 @@
                             "resolvesToInt",
                             "resolvesToTimestamp",
                             "resolvesToLong",
-                            "resolvesToDecimal"
+                            "resolvesToDecimal",
+                            "searchOperator"
                         ]
                     }
                 },
@@ -60,7 +61,8 @@
                     "enum": [
                         "array",
                         "object",
-                        "single"
+                        "single",
+                        "search"
                     ]
                 },
                 "description": {
@@ -135,7 +137,8 @@
                             "resolvesToInt", "intFieldPath", "int",
                             "resolvesToTimestamp", "timestampFieldPath", "timestamp",
                             "resolvesToLong", "longFieldPath", "long",
-                            "resolvesToDecimal", "decimalFieldPath", "decimal"
+                            "resolvesToDecimal", "decimalFieldPath", "decimal",
+                            "searchPath", "searchScore", "searchOperator"
                         ]
                     }
                 },

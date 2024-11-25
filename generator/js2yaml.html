@@ -28,6 +28,9 @@
       binary: BinData(0, "IA=="),
       empty_object: {},
       empty_array: [],
+      objectId: ObjectId("5f0f1d9b1c9d440000f3f3f3"),
+      uuid: UUID("fac32260-b511-4c69-8485-a2be5b7dda9e"),
+      list: [1, 2, 3],
     }
   },
   // First Stage
@@ -90,6 +93,14 @@
         return new TaggedValue('bson_int64', value)
     }
 
+    function ObjectId(value) {
+        return new TaggedValue('bson_objectId', value)
+    }
+
+    function UUID(value) {
+        return new TaggedValue('bson_uuid', value)
+    }
+
     function convert(jsString) {
         try {
             return toYaml(eval(jsString), 1);
@@ -107,6 +118,11 @@
         if (Array.isArray(object)) {
             if (object.length === 0) {
                 return ' []';
+            }
+
+            // Inline list of numbers
+            if (object.every(item => typeof item === 'number')) {
+                return ' [' + object.join(', ') + ']';
             }
 
             return newline + '-' + object.map((item) => toYaml(item, indent + 1)).join(newline + '-');
