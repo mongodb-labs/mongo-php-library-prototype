@@ -348,12 +348,6 @@ final class Find implements Explainable
             }
         }
 
-        if (! empty($this->options['modifiers'])) {
-            /** @psalm-var array|object */
-            $modifiers = $this->options['modifiers'];
-            $options['modifiers'] = is_object($modifiers) ? document_to_array($modifiers) : $modifiers;
-        }
-
         // Ensure no cursor is left behind when limit == batchSize by increasing batchSize
         if (isset($options['limit'], $options['batchSize']) && $options['limit'] === $options['batchSize']) {
             assert(is_integer($options['batchSize']));
