@@ -116,6 +116,7 @@ class ClientSideEncryptionSpecTest extends FunctionalTestCase
         'timeoutMS: remaining timeoutMS applied to find to get keyvault data' => 'Not yet implemented (PHPC-1760)',
         'namedKMS: Automatically encrypt and decrypt with a named KMS provider' => 'Not yet implemented (PHPLIB-1328)',
         'fle2v2-Compact: Compact works' => 'Failing due to bug in libmongocrypt (LIBMONGOCRYPT-699)',
+        'keyCache: Insert with deterministic encryption, then find it' => 'Wait operation not supported (PHPLIB-1496)',
     ];
 
     private static string $specDir = __DIR__ . '/../specifications/source/client-side-encryption';
