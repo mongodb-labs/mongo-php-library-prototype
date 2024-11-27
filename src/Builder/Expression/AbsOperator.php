@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class AbsOperator implements ResolvesToNumber, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $value */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $value;

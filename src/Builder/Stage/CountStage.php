@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\StageInterface;
 class CountStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['field' => 'field'];
 
     /** @var string $field Name of the output field which has the count as its value. It must be a non-empty string, must not start with $ and must not contain the . character. */
     public readonly string $field;

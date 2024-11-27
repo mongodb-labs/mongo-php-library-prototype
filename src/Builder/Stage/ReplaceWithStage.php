@@ -25,6 +25,7 @@ use stdClass;
 class ReplaceWithStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Document|ResolvesToObject|Serializable|array|stdClass $expression */
     public readonly Document|Serializable|ResolvesToObject|stdClass|array $expression;

@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\StageInterface;
 class LimitStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['limit' => 'limit'];
 
     /** @var int $limit */
     public readonly int $limit;

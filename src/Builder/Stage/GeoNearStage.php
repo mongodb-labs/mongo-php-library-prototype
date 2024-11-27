@@ -32,6 +32,18 @@ class GeoNearStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'distanceField' => 'distanceField',
+        'near' => 'near',
+        'distanceMultiplier' => 'distanceMultiplier',
+        'includeLocs' => 'includeLocs',
+        'key' => 'key',
+        'maxDistance' => 'maxDistance',
+        'minDistance' => 'minDistance',
+        'query' => 'query',
+        'spherical' => 'spherical',
+    ];
+
     /** @var string $distanceField The output field that contains the calculated distance. To specify a field within an embedded document, use dot notation. */
     public readonly string $distanceField;
 

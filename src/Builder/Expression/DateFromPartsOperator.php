@@ -23,6 +23,20 @@ class DateFromPartsOperator implements ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'year' => 'year',
+        'isoWeekYear' => 'isoWeekYear',
+        'month' => 'month',
+        'isoWeek' => 'isoWeek',
+        'day' => 'day',
+        'isoDayOfWeek' => 'isoDayOfWeek',
+        'hour' => 'hour',
+        'minute' => 'minute',
+        'second' => 'second',
+        'millisecond' => 'millisecond',
+        'timezone' => 'timezone',
+    ];
+
     /** @var Optional|Decimal128|Int64|ResolvesToNumber|float|int $year Calendar year. Can be any expression that evaluates to a number. */
     public readonly Optional|Decimal128|Int64|ResolvesToNumber|float|int $year;
 

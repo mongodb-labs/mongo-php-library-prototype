@@ -29,6 +29,7 @@ use function is_array;
 class UnionWithStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['coll' => 'coll', 'pipeline' => 'pipeline'];
 
     /** @var string $coll The collection or view whose pipeline results you wish to include in the result set. */
     public readonly string $coll;

@@ -24,6 +24,7 @@ use stdClass;
 class SearchMetaStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['meta' => 'meta'];
 
     /** @var Document|Serializable|array|stdClass $meta */
     public readonly Document|Serializable|stdClass|array $meta;

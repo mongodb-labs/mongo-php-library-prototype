@@ -32,6 +32,16 @@ class AccumulatorAccumulator implements AccumulatorInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'init' => 'init',
+        'accumulate' => 'accumulate',
+        'accumulateArgs' => 'accumulateArgs',
+        'merge' => 'merge',
+        'lang' => 'lang',
+        'initArgs' => 'initArgs',
+        'finalize' => 'finalize',
+    ];
+
     /** @var Javascript|string $init Function used to initialize the state. The init function receives its arguments from the initArgs array expression. You can specify the function definition as either BSON type Code or String. */
     public readonly Javascript|string $init;
 

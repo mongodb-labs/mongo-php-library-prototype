@@ -22,6 +22,7 @@ use stdClass;
 class BsonSizeOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['object' => 'object'];
 
     /** @var Document|ResolvesToNull|ResolvesToObject|Serializable|array|null|stdClass $object */
     public readonly Document|Serializable|ResolvesToNull|ResolvesToObject|stdClass|array|null $object;

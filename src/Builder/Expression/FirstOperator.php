@@ -25,6 +25,7 @@ use function is_array;
 class FirstOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $expression */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $expression;

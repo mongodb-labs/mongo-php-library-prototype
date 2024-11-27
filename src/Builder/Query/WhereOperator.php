@@ -23,6 +23,7 @@ use function is_string;
 class WhereOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['function' => 'function'];
 
     /** @var Javascript|string $function */
     public readonly Javascript|string $function;

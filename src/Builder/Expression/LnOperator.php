@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class LnOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['number' => 'number'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $number Any valid expression as long as it resolves to a non-negative number. For more information on expressions, see Expressions. */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $number;

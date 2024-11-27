@@ -26,6 +26,7 @@ use function is_array;
 class CenterOperator implements GeometryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var BSONArray|PackedArray|array $value */
     public readonly PackedArray|BSONArray|array $value;

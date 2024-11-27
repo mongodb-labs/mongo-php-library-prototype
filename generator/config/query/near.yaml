@@ -3,23 +3,24 @@ name: $near
 link: 'https://www.mongodb.com/docs/manual/reference/operator/query/near/'
 type:
     - fieldQuery
-encode: dollar_object
+encode: object
 description: |
     Returns geospatial objects in proximity to a point. Requires a geospatial index. The 2dsphere and 2d indexes support $near.
 arguments:
     -
         name: geometry
+        noName: true
         type:
             - geometry
     -
-        name: maxDistance
+        name: $maxDistance
         type:
             - number
         optional: true
         description: |
             Distance in meters. Limits the results to those documents that are at most the specified distance from the center point.
     -
-        name: minDistance
+        name: $minDistance
         type:
             - number
         optional: true

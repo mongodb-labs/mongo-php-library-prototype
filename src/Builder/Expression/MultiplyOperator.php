@@ -24,6 +24,7 @@ use function array_is_list;
 class MultiplyOperator implements ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /**
      * @var list<Decimal128|Int64|ResolvesToNumber|float|int> $expression The arguments can be any valid expression as long as they resolve to numbers.

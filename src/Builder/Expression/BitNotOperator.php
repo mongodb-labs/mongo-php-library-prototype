@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class BitNotOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Int64|ResolvesToInt|ResolvesToLong|int $expression */
     public readonly Int64|ResolvesToInt|ResolvesToLong|int $expression;

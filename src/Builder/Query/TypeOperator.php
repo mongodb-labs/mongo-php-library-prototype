@@ -23,6 +23,7 @@ use function array_is_list;
 class TypeOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['type' => 'type'];
 
     /** @var list<int|string> $type */
     public readonly array $type;

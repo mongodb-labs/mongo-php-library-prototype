@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class LogOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const PROPERTIES = ['number' => 'number', 'base' => 'base'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $number Any valid expression as long as it resolves to a non-negative number. */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $number;

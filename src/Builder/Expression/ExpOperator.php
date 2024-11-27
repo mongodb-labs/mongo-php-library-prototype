@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class ExpOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['exponent' => 'exponent'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $exponent */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $exponent;

@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\Optional;
 class RegexFindAllOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['input' => 'input', 'regex' => 'regex', 'options' => 'options'];
 
     /** @var ResolvesToString|string $input The string on which you wish to apply the regex pattern. Can be a string or any valid expression that resolves to a string. */
     public readonly ResolvesToString|string $input;

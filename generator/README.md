@@ -10,17 +10,30 @@ Updating the generated code can be done only by modifying the code generator, or
 To run the generator, you need to have PHP 8.1+ installed and Composer.
 
 1. Move to the `generator` directory: `cd generator`
-1. Install dependencies: `composer install`
-1. Run the generator: `./generate`
+2. Install dependencies: `composer install`
+3. Run the generator: `./generate`
 
 ## Configuration
 
 The `generator/config/*.yaml` files contains the list of operators and stages that are supported by the library.
 
+### Arguments
+
+| Field | Type | Description |
+| `name` | `string` | The name of the argument. It can start with `$`. |
+| `type` | list of `string` | The list of accepted types |
+| `description` | `string` | The description of the argument from MongoDB's documentation. |
+| `optional` | `boolean` | Whether the argument is optional or not. |
+| `valueMin` | `number` | The minimum value for a numeric argument. |
+| `valueMax` | `number` | The maximum value for a numeric argument. |
+| `variadic` | `string` | If sent, the argument is variadic. Defines the format `array` for a list or `object` for a map |
+| `variadicMin` | `integer` | The minimum number of arguments for a variadic parameter. |
+| `default` | `scalar` or `array` | The default value for the argument. |
+| `noName` | `bool` | Default `false`. If `true`, the value must be an object and the properties of the value object are merged into the parent operator. `$group` stage uses it for the fields. |
+
 ### Test pipelines
 
-Each operator can contain a `tests` section with a list if pipelines. To represent specific BSON objects,
-it is necessary to use Yaml tags:
+Each operator can contain a `tests` section with a list if pipelines. To represent specific BSON objects, it is necessary to use Yaml tags:
 
 | BSON Type   | Example                                                |
 |-------------|--------------------------------------------------------|
@@ -30,5 +43,4 @@ it is necessary to use Yaml tags:
 | UTCDateTime | `!bson_utcdatetime 0`                                  |
 | Binary      | `!bson_binary 'IA=='`                                  |
 
-To add new test cases to operators, you can get inspiration from the official MongoDB documentation and use
-the `generator/js2yaml.html` web page to manually convert a pipeline array from JS to Yaml.
+To add new test cases to operators, you can get inspiration from the official MongoDB documentation and use the `generator/js2yaml.html` web page to manually convert a pipeline array from JS to Yaml.

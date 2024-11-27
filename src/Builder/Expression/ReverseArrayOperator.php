@@ -25,6 +25,7 @@ use function is_array;
 class ReverseArrayOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $expression The argument can be any valid expression as long as it resolves to an array. */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $expression;

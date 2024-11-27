@@ -19,6 +19,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class SubstrOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const PROPERTIES = ['string' => 'string', 'start' => 'start', 'length' => 'length'];
 
     /** @var ResolvesToString|string $string */
     public readonly ResolvesToString|string $string;

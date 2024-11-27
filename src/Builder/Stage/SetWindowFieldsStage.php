@@ -27,6 +27,7 @@ use stdClass;
 class SetWindowFieldsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['sortBy' => 'sortBy', 'output' => 'output', 'partitionBy' => 'partitionBy'];
 
     /** @var Document|Serializable|array|stdClass $sortBy Specifies the field(s) to sort the documents by in the partition. Uses the same syntax as the $sort stage. Default is no sorting. */
     public readonly Document|Serializable|stdClass|array $sortBy;

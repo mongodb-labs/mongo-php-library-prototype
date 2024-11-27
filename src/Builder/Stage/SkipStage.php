@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\StageInterface;
 class SkipStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['skip' => 'skip'];
 
     /** @var int $skip */
     public readonly int $skip;

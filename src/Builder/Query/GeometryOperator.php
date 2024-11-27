@@ -30,6 +30,7 @@ use function is_array;
 class GeometryOperator implements GeometryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['type' => 'type', 'coordinates' => 'coordinates', 'crs' => 'crs'];
 
     /** @var string $type */
     public readonly string $type;

@@ -22,6 +22,7 @@ use stdClass;
 class LtOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var Type|array|bool|float|int|null|stdClass|string $value */
     public readonly Type|stdClass|array|bool|float|int|null|string $value;

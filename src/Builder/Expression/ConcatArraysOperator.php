@@ -24,6 +24,7 @@ use function array_is_list;
 class ConcatArraysOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['array' => 'array'];
 
     /** @var list<BSONArray|PackedArray|ResolvesToArray|array> $array */
     public readonly array $array;

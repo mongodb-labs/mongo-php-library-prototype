@@ -24,6 +24,7 @@ use MongoDB\Builder\Type\WindowInterface;
 class CovariancePopAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $expression1 */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $expression1;

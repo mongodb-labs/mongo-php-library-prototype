@@ -27,6 +27,13 @@ class BucketAutoStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'groupBy' => 'groupBy',
+        'buckets' => 'buckets',
+        'output' => 'output',
+        'granularity' => 'granularity',
+    ];
+
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $groupBy An expression to group documents by. To specify a field path, prefix the field name with a dollar sign $ and enclose it in quotes. */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $groupBy;
 

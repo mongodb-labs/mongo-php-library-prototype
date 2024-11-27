@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\StageInterface;
 class SampleStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['size' => 'size'];
 
     /** @var int $size The number of documents to randomly select. */
     public readonly int $size;

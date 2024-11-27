@@ -23,6 +23,7 @@ use stdClass;
 class OutStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['coll' => 'coll'];
 
     /** @var Document|Serializable|array|stdClass|string $coll Target database name to write documents from $out to. */
     public readonly Document|Serializable|stdClass|array|string $coll;

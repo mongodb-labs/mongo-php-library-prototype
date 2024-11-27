@@ -61,14 +61,23 @@
   </file>
   <file src="src/Builder/Encoder/OperatorEncoder.php">
     <MixedAssignment>
+      <code><![CDATA[$k]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$prop]]></code>
+      <code><![CDATA[$prop]]></code>
+      <code><![CDATA[$prop]]></code>
       <code><![CDATA[$result]]></code>
       <code><![CDATA[$result[]]]></code>
-      <code><![CDATA[$val]]></code>
-      <code><![CDATA[$val]]></code>
+      <code><![CDATA[$v]]></code>
       <code><![CDATA[$val]]></code>
       <code><![CDATA[$val]]></code>
       <code><![CDATA[$val]]></code>
     </MixedAssignment>
+    <PossibleRawObjectIteration>
+      <code><![CDATA[$val]]></code>
+    </PossibleRawObjectIteration>
   </file>
   <file src="src/Builder/Encoder/OutputWindowEncoder.php">
     <MixedArgument>

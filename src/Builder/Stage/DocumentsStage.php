@@ -27,6 +27,7 @@ use function is_array;
 class DocumentsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['documents' => 'documents'];
 
     /**
      * @var BSONArray|PackedArray|ResolvesToArray|array $documents $documents accepts any valid expression that resolves to an array of objects. This includes:

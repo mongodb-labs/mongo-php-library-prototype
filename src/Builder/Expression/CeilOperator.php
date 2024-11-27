@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class CeilOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $expression If the argument resolves to a value of null or refers to a field that is missing, $ceil returns null. If the argument resolves to NaN, $ceil returns NaN. */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $expression;

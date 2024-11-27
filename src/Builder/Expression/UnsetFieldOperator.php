@@ -23,6 +23,7 @@ use stdClass;
 class UnsetFieldOperator implements ResolvesToObject, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['field' => 'field', 'input' => 'input'];
 
     /** @var ResolvesToString|string $field Field in the input object that you want to add, update, or remove. field can be any valid expression that resolves to a string constant. */
     public readonly ResolvesToString|string $field;

@@ -25,6 +25,7 @@ use function array_is_list;
 class AddOperator implements ResolvesToInt, ResolvesToLong, ResolvesToDouble, ResolvesToDecimal, ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<Decimal128|Int64|ResolvesToDate|ResolvesToNumber|UTCDateTime|float|int> $expression The arguments can be any valid expression as long as they resolve to either all numbers or to numbers and a date. */
     public readonly array $expression;

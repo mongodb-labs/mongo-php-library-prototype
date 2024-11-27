@@ -35,6 +35,7 @@ use function is_array;
 class PercentileOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['input' => 'input', 'p' => 'p', 'method' => 'method'];
 
     /** @var BSONArray|Decimal128|Int64|PackedArray|ResolvesToNumber|array|float|int $input $percentile calculates the percentile values of this data. input must be a field name or an expression that evaluates to a numeric type. If the expression cannot be converted to a numeric type, the $percentile calculation ignores it. */
     public readonly Decimal128|Int64|PackedArray|ResolvesToNumber|BSONArray|array|float|int $input;

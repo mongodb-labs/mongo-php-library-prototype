@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class TsSecondOperator implements ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var ResolvesToTimestamp|Timestamp|int $expression */
     public readonly Timestamp|ResolvesToTimestamp|int $expression;

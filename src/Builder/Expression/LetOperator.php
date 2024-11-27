@@ -25,6 +25,7 @@ use stdClass;
 class LetOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['vars' => 'vars', 'in' => 'in'];
 
     /**
      * @var Document|Serializable|array|stdClass $vars Assignment block for the variables accessible in the in expression. To assign a variable, specify a string for the variable name and assign a valid expression for the value.

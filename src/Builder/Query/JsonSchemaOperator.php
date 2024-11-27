@@ -23,6 +23,7 @@ use stdClass;
 class JsonSchemaOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['schema' => 'schema'];
 
     /** @var Document|Serializable|array|stdClass $schema */
     public readonly Document|Serializable|stdClass|array $schema;

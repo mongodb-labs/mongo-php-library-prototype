@@ -25,6 +25,7 @@ use function is_array;
 class SetDifferenceOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $expression1 The arguments can be any valid expression as long as they each resolve to an array. */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $expression1;

@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\StageInterface;
 class ListSampledQueriesStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['namespace' => 'namespace'];
 
     /** @var Optional|string $namespace */
     public readonly Optional|string $namespace;

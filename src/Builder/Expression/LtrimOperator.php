@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\Optional;
 class LtrimOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['input' => 'input', 'chars' => 'chars'];
 
     /** @var ResolvesToString|string $input The string to trim. The argument can be any valid expression that resolves to a string. */
     public readonly ResolvesToString|string $input;

@@ -29,6 +29,7 @@ use stdClass;
 class BottomNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['n' => 'n', 'sortBy' => 'sortBy', 'output' => 'output'];
 
     /** @var ResolvesToInt|int $n Limits the number of results per group and has to be a positive integral expression that is either a constant or depends on the _id value for $group. */
     public readonly ResolvesToInt|int $n;

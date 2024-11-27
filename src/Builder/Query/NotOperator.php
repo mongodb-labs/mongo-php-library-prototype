@@ -22,6 +22,7 @@ use stdClass;
 class NotOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var FieldQueryInterface|Type|array|bool|float|int|null|stdClass|string $expression */
     public readonly Type|FieldQueryInterface|stdClass|array|bool|float|int|null|string $expression;

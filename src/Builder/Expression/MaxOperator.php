@@ -26,6 +26,7 @@ use function array_is_list;
 class MaxOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<ExpressionInterface|Type|array|bool|float|int|null|stdClass|string> $expression */
     public readonly array $expression;

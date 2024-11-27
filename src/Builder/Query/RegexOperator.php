@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class RegexOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['regex' => 'regex'];
 
     /** @var Regex $regex */
     public readonly Regex $regex;

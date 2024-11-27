@@ -23,6 +23,7 @@ use stdClass;
 class CaseOperator implements SwitchBranchInterface, OperatorInterface
 {
     public const ENCODE = Encode::FlatObject;
+    public const PROPERTIES = ['case' => 'case', 'then' => 'then'];
 
     /** @var ResolvesToBool|bool $case Can be any valid expression that resolves to a boolean. If the result is not a boolean, it is coerced to a boolean value. More information about how MongoDB evaluates expressions as either true or false can be found here. */
     public readonly ResolvesToBool|bool $case;

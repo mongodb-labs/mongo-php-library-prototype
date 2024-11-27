@@ -22,6 +22,7 @@ use function array_is_list;
 class ConcatOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<ResolvesToString|string> $expression */
     public readonly array $expression;

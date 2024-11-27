@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\Optional;
 class IndexOfBytesOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const PROPERTIES = ['string' => 'string', 'substring' => 'substring', 'start' => 'start', 'end' => 'end'];
 
     /**
      * @var ResolvesToString|string $string Can be any valid expression as long as it resolves to a string.

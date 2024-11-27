@@ -25,6 +25,7 @@ use function is_array;
 class LastNOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['n' => 'n', 'input' => 'input'];
 
     /** @var ResolvesToInt|int $n An expression that resolves to a positive integer. The integer specifies the number of array elements that $firstN returns. */
     public readonly ResolvesToInt|int $n;

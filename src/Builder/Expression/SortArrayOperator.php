@@ -29,6 +29,7 @@ use function is_array;
 class SortArrayOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['input' => 'input', 'sortBy' => 'sortBy'];
 
     /**
      * @var BSONArray|PackedArray|ResolvesToArray|array $input The array to be sorted.

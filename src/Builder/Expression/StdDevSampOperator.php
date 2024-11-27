@@ -25,6 +25,7 @@ use function array_is_list;
 class StdDevSampOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<Decimal128|Int64|ResolvesToNumber|float|int> $expression */
     public readonly array $expression;

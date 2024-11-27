@@ -25,6 +25,7 @@ final class ArgumentDefinition
         string|null $variadic = null,
         int|null $variadicMin = null,
         public mixed $default = null,
+        public bool $noName = false,
     ) {
         assert($this->optional === false || $this->default === null, 'Optional arguments cannot have a default value');
         if (is_array($type)) {

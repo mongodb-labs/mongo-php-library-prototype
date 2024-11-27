@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\Optional;
 class RangeOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const PROPERTIES = ['start' => 'start', 'end' => 'end', 'step' => 'step'];
 
     /** @var ResolvesToInt|int $start An integer that specifies the start of the sequence. Can be any valid expression that resolves to an integer. */
     public readonly ResolvesToInt|int $start;

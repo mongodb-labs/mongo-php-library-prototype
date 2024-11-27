@@ -24,6 +24,7 @@ use stdClass;
 class ReplaceRootStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['newRoot' => 'newRoot'];
 
     /** @var Document|ResolvesToObject|Serializable|array|stdClass $newRoot */
     public readonly Document|Serializable|ResolvesToObject|stdClass|array $newRoot;

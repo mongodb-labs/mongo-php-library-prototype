@@ -24,6 +24,7 @@ use stdClass;
 class ConvertOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['input' => 'input', 'to' => 'to', 'onError' => 'onError', 'onNull' => 'onNull'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $input */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $input;

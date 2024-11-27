@@ -29,6 +29,7 @@ use function is_array;
 class MapOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['input' => 'input', 'in' => 'in', 'as' => 'as'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $input An expression that resolves to an array. */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $input;

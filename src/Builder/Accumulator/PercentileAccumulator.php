@@ -39,6 +39,7 @@ use function is_array;
 class PercentileAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['input' => 'input', 'p' => 'p', 'method' => 'method'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $input $percentile calculates the percentile values of this data. input must be a field name or an expression that evaluates to a numeric type. If the expression cannot be converted to a numeric type, the $percentile calculation ignores it. */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $input;
