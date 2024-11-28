@@ -19,8 +19,9 @@ use MongoDB\Builder\Type\Optional;
  * Returns the day of the week for a date as a number between 1 (Sunday) and 7 (Saturday).
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dayOfWeek/
+ * @internal
  */
-class DayOfWeekOperator implements ResolvesToInt, OperatorInterface
+final class DayOfWeekOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

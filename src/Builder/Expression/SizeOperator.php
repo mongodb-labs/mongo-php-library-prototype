@@ -21,8 +21,9 @@ use function is_array;
  * Returns the number of elements in the array. Accepts a single expression as argument.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/size/
+ * @internal
  */
-class SizeOperator implements ResolvesToInt, OperatorInterface
+final class SizeOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

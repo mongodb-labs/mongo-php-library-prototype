@@ -20,8 +20,9 @@ use function array_is_list;
  * New in MongoDB 6.3.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/bitXor/
+ * @internal
  */
-class BitXorOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
+final class BitXorOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

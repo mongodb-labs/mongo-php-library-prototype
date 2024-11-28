@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the inverse tangent (arc tangent) of a value in radians.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/atan/
+ * @internal
  */
-class AtanOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class AtanOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

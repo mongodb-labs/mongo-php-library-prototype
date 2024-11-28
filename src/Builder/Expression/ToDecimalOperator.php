@@ -19,8 +19,9 @@ use stdClass;
  * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/toDecimal/
+ * @internal
  */
-class ToDecimalOperator implements ResolvesToDecimal, OperatorInterface
+final class ToDecimalOperator implements ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

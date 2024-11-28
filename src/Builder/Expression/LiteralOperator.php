@@ -17,8 +17,9 @@ use stdClass;
  * Return a value without parsing. Use for values that the aggregation pipeline may interpret as an expression. For example, use a $literal expression to a string that starts with a dollar sign ($) to avoid parsing as a field path.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/literal/
+ * @internal
  */
-class LiteralOperator implements ResolvesToAny, OperatorInterface
+final class LiteralOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

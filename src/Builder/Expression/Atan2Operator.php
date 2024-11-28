@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the inverse tangent (arc tangent) of y / x in radians, where y and x are the first and second values passed to the expression respectively.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/atan2/
+ * @internal
  */
-class Atan2Operator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class Atan2Operator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Array;
 

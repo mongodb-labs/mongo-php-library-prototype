@@ -21,8 +21,9 @@ use stdClass;
  * New in MongoDB 5.2.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/locf/
+ * @internal
  */
-class LocfAccumulator implements WindowInterface, OperatorInterface
+final class LocfAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

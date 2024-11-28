@@ -22,8 +22,9 @@ use function array_is_list;
  * Changed in MongoDB 5.0: Available in the $setWindowFields stage.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/min/
+ * @internal
  */
-class MinOperator implements ResolvesToAny, OperatorInterface
+final class MinOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

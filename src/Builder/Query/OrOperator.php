@@ -19,8 +19,9 @@ use function array_is_list;
  * Joins query clauses with a logical OR returns all documents that match the conditions of either clause.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/or/
+ * @internal
  */
-class OrOperator implements QueryInterface, OperatorInterface
+final class OrOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

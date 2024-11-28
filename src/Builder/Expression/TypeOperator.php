@@ -18,8 +18,9 @@ use stdClass;
  * Return the BSON data type of the field.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/type/
+ * @internal
  */
-class TypeOperator implements ResolvesToString, OperatorInterface
+final class TypeOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

@@ -22,8 +22,9 @@ use function is_array;
  * Specifies a rectangular box using legacy coordinate pairs for $geoWithin queries. The 2d index supports $box.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/box/
+ * @internal
  */
-class BoxOperator implements GeometryInterface, OperatorInterface
+final class BoxOperator implements GeometryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

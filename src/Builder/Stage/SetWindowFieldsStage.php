@@ -23,8 +23,9 @@ use stdClass;
  * New in MongoDB 5.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/setWindowFields/
+ * @internal
  */
-class SetWindowFieldsStage implements StageInterface, OperatorInterface
+final class SetWindowFieldsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

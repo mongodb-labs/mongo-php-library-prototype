@@ -19,8 +19,9 @@ use MongoDB\Builder\Type\Optional;
  * Returns the day of the year for a date as a number between 1 and 366 (leap year).
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dayOfYear/
+ * @internal
  */
-class DayOfYearOperator implements ResolvesToInt, OperatorInterface
+final class DayOfYearOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

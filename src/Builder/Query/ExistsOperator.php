@@ -16,8 +16,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Matches documents that have the specified field.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/exists/
+ * @internal
  */
-class ExistsOperator implements FieldQueryInterface, OperatorInterface
+final class ExistsOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

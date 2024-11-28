@@ -23,8 +23,9 @@ use stdClass;
  * Returns geospatial objects in proximity to a point on a sphere. Requires a geospatial index. The 2dsphere and 2d indexes support $nearSphere.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/nearSphere/
+ * @internal
  */
-class NearSphereOperator implements FieldQueryInterface, OperatorInterface
+final class NearSphereOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::DollarObject;
 

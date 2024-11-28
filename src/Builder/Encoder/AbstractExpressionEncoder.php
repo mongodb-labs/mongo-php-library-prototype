@@ -14,6 +14,7 @@ use function is_array;
  * @template BSONType of stdClass|array|string|int
  * @template NativeType
  * @template-implements ExpressionEncoder<BSONType, NativeType>
+ * @internal
  */
 abstract class AbstractExpressionEncoder implements ExpressionEncoder
 {

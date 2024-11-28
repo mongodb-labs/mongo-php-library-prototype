@@ -20,8 +20,9 @@ use stdClass;
  * New in MongoDB 5.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/shift/
+ * @internal
  */
-class ShiftAccumulator implements WindowInterface, OperatorInterface
+final class ShiftAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

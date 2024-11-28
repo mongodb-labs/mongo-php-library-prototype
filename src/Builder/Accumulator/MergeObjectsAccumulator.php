@@ -20,8 +20,9 @@ use stdClass;
  * Combines multiple documents into a single document.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/mergeObjects/
+ * @internal
  */
-class MergeObjectsAccumulator implements AccumulatorInterface, OperatorInterface
+final class MergeObjectsAccumulator implements AccumulatorInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

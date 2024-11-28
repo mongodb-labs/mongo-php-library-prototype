@@ -19,8 +19,9 @@ use MongoDB\Builder\Type\Optional;
  * Returns the hour for a date as a number between 0 and 23.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/hour/
+ * @internal
  */
-class HourOperator implements ResolvesToInt, OperatorInterface
+final class HourOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

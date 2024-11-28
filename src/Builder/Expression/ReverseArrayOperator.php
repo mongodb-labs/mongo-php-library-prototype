@@ -21,8 +21,9 @@ use function is_array;
  * Returns an array with the elements in reverse order.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/reverseArray/
+ * @internal
  */
-class ReverseArrayOperator implements ResolvesToArray, OperatorInterface
+final class ReverseArrayOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

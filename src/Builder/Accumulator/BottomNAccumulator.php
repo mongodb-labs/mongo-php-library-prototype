@@ -25,8 +25,9 @@ use stdClass;
  * Available in the $group and $setWindowFields stages.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/bottomN/
+ * @internal
  */
-class BottomNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class BottomNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

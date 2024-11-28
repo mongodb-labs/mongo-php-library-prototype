@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * New in MongoDB 6.3.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/bitNot/
+ * @internal
  */
-class BitNotOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
+final class BitNotOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

@@ -21,8 +21,9 @@ use function is_array;
  * Returns the element at the specified array index.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/arrayElemAt/
+ * @internal
  */
-class ArrayElemAtOperator implements ResolvesToAny, OperatorInterface
+final class ArrayElemAtOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Array;
 

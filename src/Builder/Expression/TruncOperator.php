@@ -18,8 +18,9 @@ use MongoDB\Builder\Type\Optional;
  * Truncates a number to a whole integer or to a specified decimal place.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/trunc/
+ * @internal
  */
-class TruncOperator implements ResolvesToString, OperatorInterface
+final class TruncOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Array;
 

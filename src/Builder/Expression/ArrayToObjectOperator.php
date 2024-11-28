@@ -21,8 +21,9 @@ use function is_array;
  * Converts an array of key value pairs to a document.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/arrayToObject/
+ * @internal
  */
-class ArrayToObjectOperator implements ResolvesToObject, OperatorInterface
+final class ArrayToObjectOperator implements ResolvesToObject, OperatorInterface
 {
     public const ENCODE = Encode::Array;
 

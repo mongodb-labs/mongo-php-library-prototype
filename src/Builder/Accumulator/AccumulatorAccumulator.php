@@ -27,8 +27,9 @@ use function is_string;
  * New in MongoDB 4.4.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/accumulator/
+ * @internal
  */
-class AccumulatorAccumulator implements AccumulatorInterface, OperatorInterface
+final class AccumulatorAccumulator implements AccumulatorInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

@@ -20,8 +20,9 @@ use stdClass;
  * New in MongoDB 4.4.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/isNumber/
+ * @internal
  */
-class IsNumberOperator implements ResolvesToBool, OperatorInterface
+final class IsNumberOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

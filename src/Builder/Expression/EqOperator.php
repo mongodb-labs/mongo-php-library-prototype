@@ -18,8 +18,9 @@ use stdClass;
  * Returns true if the values are equivalent.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/eq/
+ * @internal
  */
-class EqOperator implements ResolvesToBool, OperatorInterface
+final class EqOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
 

@@ -20,8 +20,9 @@ use function is_array;
  * Filters the document stream to allow only matching documents to pass unmodified into the next pipeline stage. $match uses standard MongoDB queries. For each input document, outputs either one document (a match) or zero documents (no match).
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/match/
+ * @internal
  */
-class MatchStage implements StageInterface, OperatorInterface
+final class MatchStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

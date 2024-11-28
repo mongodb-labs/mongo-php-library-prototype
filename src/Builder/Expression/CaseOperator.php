@@ -19,8 +19,9 @@ use stdClass;
  * Represents a single case in a $switch expression
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/switch/
+ * @internal
  */
-class CaseOperator implements SwitchBranchInterface, OperatorInterface
+final class CaseOperator implements SwitchBranchInterface, OperatorInterface
 {
     public const ENCODE = Encode::FlatObject;
 

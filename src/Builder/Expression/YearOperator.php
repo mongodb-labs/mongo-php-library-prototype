@@ -19,8 +19,9 @@ use MongoDB\Builder\Type\Optional;
  * Returns the year for a date as a number (e.g. 2014).
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/year/
+ * @internal
  */
-class YearOperator implements ResolvesToInt, OperatorInterface
+final class YearOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

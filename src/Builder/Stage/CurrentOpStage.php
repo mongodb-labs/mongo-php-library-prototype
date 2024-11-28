@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\StageInterface;
  * Returns information on active and/or dormant operations for the MongoDB deployment. To run, use the db.aggregate() method.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/currentOp/
+ * @internal
  */
-class CurrentOpStage implements StageInterface, OperatorInterface
+final class CurrentOpStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

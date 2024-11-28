@@ -27,8 +27,9 @@ use function is_array;
  * Returns an ordered stream of documents based on the proximity to a geospatial point. Incorporates the functionality of $match, $sort, and $limit for geospatial data. The output documents include an additional distance field and can include a location identifier field.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/geoNear/
+ * @internal
  */
-class GeoNearStage implements StageInterface, OperatorInterface
+final class GeoNearStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

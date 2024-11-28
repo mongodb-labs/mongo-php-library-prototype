@@ -23,8 +23,9 @@ use function is_array;
  * Returns literal documents from input values.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/documents/
+ * @internal
  */
-class DocumentsStage implements StageInterface, OperatorInterface
+final class DocumentsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

@@ -35,8 +35,9 @@ use function is_array;
  * It is also available as an aggregation expression.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/percentile/
+ * @internal
  */
-class PercentileAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class PercentileAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

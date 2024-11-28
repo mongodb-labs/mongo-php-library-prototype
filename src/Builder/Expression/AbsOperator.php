@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the absolute value of a number.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/abs/
+ * @internal
  */
-class AbsOperator implements ResolvesToNumber, OperatorInterface
+final class AbsOperator implements ResolvesToNumber, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

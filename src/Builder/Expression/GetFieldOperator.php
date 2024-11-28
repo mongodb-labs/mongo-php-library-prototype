@@ -20,8 +20,9 @@ use stdClass;
  * New in MongoDB 5.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/getField/
+ * @internal
  */
-class GetFieldOperator implements ResolvesToAny, OperatorInterface
+final class GetFieldOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

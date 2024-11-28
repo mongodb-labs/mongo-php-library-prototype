@@ -25,8 +25,9 @@ use function is_array;
  * New in MongoDB 4.4.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/unionWith/
+ * @internal
  */
-class UnionWithStage implements StageInterface, OperatorInterface
+final class UnionWithStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

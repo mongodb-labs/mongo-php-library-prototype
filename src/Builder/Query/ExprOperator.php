@@ -19,8 +19,9 @@ use stdClass;
  * Allows use of aggregation expressions within the query language.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/expr/
+ * @internal
  */
-class ExprOperator implements QueryInterface, OperatorInterface
+final class ExprOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

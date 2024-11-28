@@ -18,8 +18,9 @@ use stdClass;
  * Converts a document to an array of documents representing key-value pairs.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/objectToArray/
+ * @internal
  */
-class ObjectToArrayOperator implements ResolvesToArray, OperatorInterface
+final class ObjectToArrayOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

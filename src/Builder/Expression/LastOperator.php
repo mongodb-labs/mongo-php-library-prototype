@@ -21,8 +21,9 @@ use function is_array;
  * Returns the result of an expression for the last document in an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/last/
+ * @internal
  */
-class LastOperator implements ResolvesToAny, OperatorInterface
+final class LastOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

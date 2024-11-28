@@ -26,8 +26,9 @@ use function is_array;
  * Specifies a geometry in GeoJSON format to geospatial query operators.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/geometry/
+ * @internal
  */
-class GeometryOperator implements GeometryInterface, OperatorInterface
+final class GeometryOperator implements GeometryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

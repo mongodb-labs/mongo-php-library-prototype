@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the result of dividing the first number by the second. Accepts two argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/divide/
+ * @internal
  */
-class DivideOperator implements ResolvesToDouble, OperatorInterface
+final class DivideOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Array;
 

@@ -21,8 +21,11 @@ use function is_object;
 use function property_exists;
 use function sprintf;
 
-/** @template-extends AbstractExpressionEncoder<stdClass, OperatorInterface> */
-class OperatorEncoder extends AbstractExpressionEncoder
+/**
+ * @template-extends AbstractExpressionEncoder<stdClass, OperatorInterface>
+ * @internal
+ */
+final class OperatorEncoder extends AbstractExpressionEncoder
 {
     /** @template-use EncodeIfSupported<stdClass, OperatorInterface> */
     use EncodeIfSupported;

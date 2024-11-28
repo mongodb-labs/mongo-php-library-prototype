@@ -18,8 +18,9 @@ use stdClass;
  * Returns true if the first value is greater than or equal to the second.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/gte/
+ * @internal
  */
-class GteOperator implements ResolvesToBool, OperatorInterface
+final class GteOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
 

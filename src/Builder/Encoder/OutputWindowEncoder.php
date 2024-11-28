@@ -17,8 +17,11 @@ use function get_debug_type;
 use function MongoDB\is_first_key_operator;
 use function sprintf;
 
-/** @template-extends AbstractExpressionEncoder<stdClass, OutputWindow> */
-class OutputWindowEncoder extends AbstractExpressionEncoder
+/**
+ * @template-extends AbstractExpressionEncoder<stdClass, OutputWindow>
+ * @internal
+ */
+final class OutputWindowEncoder extends AbstractExpressionEncoder
 {
     /** @template-use EncodeIfSupported<stdClass, OutputWindow> */
     use EncodeIfSupported;

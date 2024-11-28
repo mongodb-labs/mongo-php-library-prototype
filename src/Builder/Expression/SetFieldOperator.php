@@ -21,8 +21,9 @@ use stdClass;
  * New in MongoDB 5.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/setField/
+ * @internal
  */
-class SetFieldOperator implements ResolvesToObject, OperatorInterface
+final class SetFieldOperator implements ResolvesToObject, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

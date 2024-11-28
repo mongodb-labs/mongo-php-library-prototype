@@ -21,8 +21,9 @@ use function is_array;
  * Returns true if all elements of the first set appear in the second set, including when the first set equals the second set; i.e. not a strict subset. Accepts exactly two argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/setIsSubset/
+ * @internal
  */
-class SetIsSubsetOperator implements ResolvesToBool, OperatorInterface
+final class SetIsSubsetOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
 

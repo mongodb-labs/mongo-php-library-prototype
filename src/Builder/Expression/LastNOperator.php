@@ -21,8 +21,9 @@ use function is_array;
  * Returns a specified number of elements from the end of an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/lastN-array-element/
+ * @internal
  */
-class LastNOperator implements ResolvesToArray, OperatorInterface
+final class LastNOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

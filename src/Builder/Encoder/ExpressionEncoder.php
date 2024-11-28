@@ -12,6 +12,7 @@ use stdClass;
  * @template BSONType of stdClass|array|string|int
  * @template NativeType
  * @template-extends Encoder<BSONType, NativeType>
+ * @internal
  */
 interface ExpressionEncoder extends Encoder
 {

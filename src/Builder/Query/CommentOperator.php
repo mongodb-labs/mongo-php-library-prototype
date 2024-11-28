@@ -16,8 +16,9 @@ use MongoDB\Builder\Type\QueryInterface;
  * Adds a comment to a query predicate.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/comment/
+ * @internal
  */
-class CommentOperator implements QueryInterface, OperatorInterface
+final class CommentOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

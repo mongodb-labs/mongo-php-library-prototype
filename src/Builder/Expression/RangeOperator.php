@@ -16,8 +16,9 @@ use MongoDB\Builder\Type\Optional;
  * Outputs an array containing a sequence of integers according to user-defined inputs.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/range/
+ * @internal
  */
-class RangeOperator implements ResolvesToArray, OperatorInterface
+final class RangeOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Array;
 

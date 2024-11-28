@@ -26,8 +26,9 @@ use function is_array;
  * Populates null and missing field values within documents.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/fill/
+ * @internal
  */
-class FillStage implements StageInterface, OperatorInterface
+final class FillStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

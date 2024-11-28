@@ -22,8 +22,9 @@ use function is_array;
  * Selects a subset of the array to return an array with only the elements that match the filter condition.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/filter/
+ * @internal
  */
-class FilterOperator implements ResolvesToArray, OperatorInterface
+final class FilterOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

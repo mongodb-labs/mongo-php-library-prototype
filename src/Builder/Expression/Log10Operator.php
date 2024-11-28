@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Calculates the log base 10 of a number.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/log10/
+ * @internal
  */
-class Log10Operator implements ResolvesToDouble, OperatorInterface
+final class Log10Operator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

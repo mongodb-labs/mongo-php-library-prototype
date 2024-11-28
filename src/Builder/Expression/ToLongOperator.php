@@ -19,8 +19,9 @@ use stdClass;
  * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/toLong/
+ * @internal
  */
-class ToLongOperator implements ResolvesToLong, OperatorInterface
+final class ToLongOperator implements ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

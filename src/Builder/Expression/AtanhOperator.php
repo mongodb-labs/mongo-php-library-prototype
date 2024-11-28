@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the inverse hyperbolic tangent (hyperbolic arc tangent) of a value in radians.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/atanh/
+ * @internal
  */
-class AtanhOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class AtanhOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

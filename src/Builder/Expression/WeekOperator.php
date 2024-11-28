@@ -19,8 +19,9 @@ use MongoDB\Builder\Type\Optional;
  * Returns the week number for a date as a number between 0 (the partial week that precedes the first Sunday of the year) and 53 (leap year).
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/week/
+ * @internal
  */
-class WeekOperator implements ResolvesToInt, OperatorInterface
+final class WeekOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

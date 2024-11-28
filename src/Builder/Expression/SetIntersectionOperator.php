@@ -20,8 +20,9 @@ use function array_is_list;
  * Returns a set with elements that appear in all of the input sets. Accepts any number of argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/setIntersection/
+ * @internal
  */
-class SetIntersectionOperator implements ResolvesToArray, OperatorInterface
+final class SetIntersectionOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

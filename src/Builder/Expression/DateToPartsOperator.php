@@ -19,8 +19,9 @@ use MongoDB\Builder\Type\Optional;
  * Returns a document containing the constituent parts of a date.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateToParts/
+ * @internal
  */
-class DateToPartsOperator implements ResolvesToObject, OperatorInterface
+final class DateToPartsOperator implements ResolvesToObject, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

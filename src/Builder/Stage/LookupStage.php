@@ -27,8 +27,9 @@ use function is_array;
  * Performs a left outer join to another collection in the same database to filter in documents from the "joined" collection for processing.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/lookup/
+ * @internal
  */
-class LookupStage implements StageInterface, OperatorInterface
+final class LookupStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

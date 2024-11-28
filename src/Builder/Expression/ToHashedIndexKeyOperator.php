@@ -18,8 +18,9 @@ use stdClass;
  * Computes and returns the hash value of the input expression using the same hash function that MongoDB uses to create a hashed index. A hash function maps a key or string to a fixed-size numeric value.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/toHashedIndexKey/
+ * @internal
  */
-class ToHashedIndexKeyOperator implements ResolvesToLong, OperatorInterface
+final class ToHashedIndexKeyOperator implements ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

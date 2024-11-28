@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Converts a value from radians to degrees.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/radiansToDegrees/
+ * @internal
  */
-class RadiansToDegreesOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class RadiansToDegreesOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

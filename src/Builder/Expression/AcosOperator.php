@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the inverse cosine (arc cosine) of a value in radians.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/acos/
+ * @internal
  */
-class AcosOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class AcosOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

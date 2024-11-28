@@ -18,8 +18,9 @@ use stdClass;
  * Returns the size in bytes of a given document (i.e. BSON type Object) when encoded as BSON.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/bsonSize/
+ * @internal
  */
-class BsonSizeOperator implements ResolvesToInt, OperatorInterface
+final class BsonSizeOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

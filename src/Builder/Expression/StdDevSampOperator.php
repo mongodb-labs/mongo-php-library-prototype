@@ -21,8 +21,9 @@ use function array_is_list;
  * If the values represent the entire population of data or you do not wish to generalize about a larger population, use $stdDevPop instead.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/stdDevSamp/
+ * @internal
  */
-class StdDevSampOperator implements ResolvesToDouble, OperatorInterface
+final class StdDevSampOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

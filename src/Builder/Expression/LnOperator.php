@@ -18,8 +18,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * $ln is equivalent to $log: [ <number>, Math.E ] expression, where Math.E is a JavaScript representation for Euler's number e.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/ln/
+ * @internal
  */
-class LnOperator implements ResolvesToDouble, OperatorInterface
+final class LnOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

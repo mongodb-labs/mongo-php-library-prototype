@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the hyperbolic tangent of a value that is measured in radians.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/tanh/
+ * @internal
  */
-class TanhOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class TanhOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

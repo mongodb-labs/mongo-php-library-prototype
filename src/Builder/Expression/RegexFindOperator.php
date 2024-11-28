@@ -18,8 +18,9 @@ use MongoDB\Builder\Type\Optional;
  * New in MongoDB 4.2.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/regexFind/
+ * @internal
  */
-class RegexFindOperator implements ResolvesToObject, OperatorInterface
+final class RegexFindOperator implements ResolvesToObject, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

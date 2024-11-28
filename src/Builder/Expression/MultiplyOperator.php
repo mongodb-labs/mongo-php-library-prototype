@@ -20,8 +20,9 @@ use function array_is_list;
  * Multiplies numbers to return the product. Accepts any number of argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/multiply/
+ * @internal
  */
-class MultiplyOperator implements ResolvesToDecimal, OperatorInterface
+final class MultiplyOperator implements ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

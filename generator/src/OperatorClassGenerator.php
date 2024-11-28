@@ -50,6 +50,7 @@ class OperatorClassGenerator extends OperatorGenerator
         }
 
         $class = $namespace->addClass($this->getOperatorClassName($definition, $operator));
+        $class->setFinal();
         $class->setImplements($interfaces);
         $namespace->addUse(OperatorInterface::class);
         $class->addImplement(OperatorInterface::class);
@@ -58,6 +59,7 @@ class OperatorClassGenerator extends OperatorGenerator
         // @todo move to encoder class
         $class->addComment($operator->description);
         $class->addComment('@see ' . $operator->link);
+        $class->addComment('@internal');
         $namespace->addUse(Encode::class);
         $class->addConstant('ENCODE', new Literal('Encode::' . $operator->encode->name));
 

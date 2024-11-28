@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\Optional;
  * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/ltrim/
+ * @internal
  */
-class LtrimOperator implements ResolvesToString, OperatorInterface
+final class LtrimOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

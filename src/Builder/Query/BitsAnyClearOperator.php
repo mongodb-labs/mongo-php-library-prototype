@@ -23,8 +23,9 @@ use function is_array;
  * Matches numeric or binary values in which any bit from a set of bit positions has a value of 0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/bitsAnyClear/
+ * @internal
  */
-class BitsAnyClearOperator implements FieldQueryInterface, OperatorInterface
+final class BitsAnyClearOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

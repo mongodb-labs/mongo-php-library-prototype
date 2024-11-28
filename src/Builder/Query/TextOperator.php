@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\QueryInterface;
  * Performs text search.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/text/
+ * @internal
  */
-class TextOperator implements QueryInterface, OperatorInterface
+final class TextOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::DollarObject;
 

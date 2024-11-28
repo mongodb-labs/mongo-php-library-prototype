@@ -21,8 +21,9 @@ use stdClass;
  * Accepts any number of argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/let/
+ * @internal
  */
-class LetOperator implements ResolvesToAny, OperatorInterface
+final class LetOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

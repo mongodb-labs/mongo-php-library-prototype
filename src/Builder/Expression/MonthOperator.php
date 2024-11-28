@@ -19,8 +19,9 @@ use MongoDB\Builder\Type\Optional;
  * Returns the month for a date as a number between 1 (January) and 12 (December).
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/month/
+ * @internal
  */
-class MonthOperator implements ResolvesToInt, OperatorInterface
+final class MonthOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

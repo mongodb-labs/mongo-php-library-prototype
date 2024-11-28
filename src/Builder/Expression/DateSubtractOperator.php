@@ -21,8 +21,9 @@ use MongoDB\Builder\Type\TimeUnit;
  * Subtracts a number of time units from a date object.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateSubtract/
+ * @internal
  */
-class DateSubtractOperator implements ResolvesToDate, OperatorInterface
+final class DateSubtractOperator implements ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

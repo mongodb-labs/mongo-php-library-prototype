@@ -21,8 +21,9 @@ use function array_is_list;
  * Returns true when any of its expressions evaluates to true. Accepts any number of argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/or/
+ * @internal
  */
-class OrOperator implements ResolvesToBool, OperatorInterface
+final class OrOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

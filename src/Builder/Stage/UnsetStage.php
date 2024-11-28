@@ -21,8 +21,9 @@ use function array_is_list;
  * Alias for $project stage that removes or excludes fields.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/unset/
+ * @internal
  */
-class UnsetStage implements StageInterface, OperatorInterface
+final class UnsetStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

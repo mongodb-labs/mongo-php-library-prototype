@@ -19,8 +19,9 @@ use stdClass;
  * Groups incoming documents based on the value of a specified expression, then computes the count of documents in each distinct group.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sortByCount/
+ * @internal
  */
-class SortByCountStage implements StageInterface, OperatorInterface
+final class SortByCountStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

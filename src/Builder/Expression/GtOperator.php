@@ -18,8 +18,9 @@ use stdClass;
  * Returns true if the first value is greater than the second.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/gt/
+ * @internal
  */
-class GtOperator implements ResolvesToBool, OperatorInterface
+final class GtOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
 

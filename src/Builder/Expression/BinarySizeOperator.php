@@ -16,8 +16,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the size of a given string or binary data value's content in bytes.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/binarySize/
+ * @internal
  */
-class BinarySizeOperator implements ResolvesToInt, OperatorInterface
+final class BinarySizeOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

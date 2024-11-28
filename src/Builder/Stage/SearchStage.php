@@ -20,8 +20,9 @@ use stdClass;
  * NOTE: $search is only available for MongoDB Atlas clusters, and is not available for self-managed deployments.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/search/
+ * @internal
  */
-class SearchStage implements StageInterface, OperatorInterface
+final class SearchStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

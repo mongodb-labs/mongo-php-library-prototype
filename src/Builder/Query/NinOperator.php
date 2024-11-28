@@ -22,8 +22,9 @@ use function is_array;
  * Matches none of the values specified in an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/nin/
+ * @internal
  */
-class NinOperator implements FieldQueryInterface, OperatorInterface
+final class NinOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

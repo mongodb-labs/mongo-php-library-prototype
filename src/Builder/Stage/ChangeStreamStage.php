@@ -21,8 +21,9 @@ use stdClass;
  * Returns a Change Stream cursor for the collection or database. This stage can only occur once in an aggregation pipeline and it must occur as the first stage.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/changeStream/
+ * @internal
  */
-class ChangeStreamStage implements StageInterface, OperatorInterface
+final class ChangeStreamStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

@@ -18,8 +18,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Specifies a maximum distance to limit the results of $near and $nearSphere queries. The 2dsphere and 2d indexes support $maxDistance.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/maxDistance/
+ * @internal
  */
-class MaxDistanceOperator implements FieldQueryInterface, OperatorInterface
+final class MaxDistanceOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

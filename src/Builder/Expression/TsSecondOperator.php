@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * New in MongoDB 5.1.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/tsSecond/
+ * @internal
  */
-class TsSecondOperator implements ResolvesToLong, OperatorInterface
+final class TsSecondOperator implements ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

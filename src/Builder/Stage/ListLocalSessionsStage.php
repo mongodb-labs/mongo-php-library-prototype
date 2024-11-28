@@ -23,8 +23,9 @@ use function is_array;
  * Lists all active sessions recently in use on the currently connected mongos or mongod instance. These sessions may have not yet propagated to the system.sessions collection.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/listLocalSessions/
+ * @internal
  */
-class ListLocalSessionsStage implements StageInterface, OperatorInterface
+final class ListLocalSessionsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

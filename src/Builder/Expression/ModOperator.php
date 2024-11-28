@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the remainder of the first number divided by the second. Accepts two argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/mod/
+ * @internal
  */
-class ModOperator implements ResolvesToInt, OperatorInterface
+final class ModOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Array;
 

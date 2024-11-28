@@ -18,8 +18,9 @@ use MongoDB\Builder\Type\Optional;
  * New in MongoDB 4.2.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/regexFindAll/
+ * @internal
  */
-class RegexFindAllOperator implements ResolvesToArray, OperatorInterface
+final class RegexFindAllOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

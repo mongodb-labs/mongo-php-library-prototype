@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the smallest integer greater than or equal to the specified number.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/ceil/
+ * @internal
  */
-class CeilOperator implements ResolvesToInt, OperatorInterface
+final class CeilOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

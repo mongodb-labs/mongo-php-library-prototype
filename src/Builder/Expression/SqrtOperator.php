@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Calculates the square root.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sqrt/
+ * @internal
  */
-class SqrtOperator implements ResolvesToDouble, OperatorInterface
+final class SqrtOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

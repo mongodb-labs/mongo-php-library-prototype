@@ -18,8 +18,9 @@ use stdClass;
  * Matches all values that are not equal to a specified value.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/ne/
+ * @internal
  */
-class NeOperator implements FieldQueryInterface, OperatorInterface
+final class NeOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\WindowInterface;
  * New in MongoDB 5.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/rank/
+ * @internal
  */
-class RankAccumulator implements WindowInterface, OperatorInterface
+final class RankAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

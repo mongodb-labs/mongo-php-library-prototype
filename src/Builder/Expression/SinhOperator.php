@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the hyperbolic sine of a value that is measured in radians.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sinh/
+ * @internal
  */
-class SinhOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class SinhOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

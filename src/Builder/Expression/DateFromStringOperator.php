@@ -19,8 +19,9 @@ use stdClass;
  * Converts a date/time string to a date object.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateFromString/
+ * @internal
  */
-class DateFromStringOperator implements ResolvesToDate, OperatorInterface
+final class DateFromStringOperator implements ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

@@ -24,8 +24,9 @@ use function is_array;
  * Returns a boolean indicating whether a specified value is in an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/in/
+ * @internal
  */
-class InOperator implements ResolvesToBool, OperatorInterface
+final class InOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
 

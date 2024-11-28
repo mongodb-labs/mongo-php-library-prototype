@@ -16,8 +16,9 @@ use MongoDB\Builder\Type\Optional;
  * Searches a string for an occurrence of a substring and returns the UTF-8 byte index of the first occurrence. If the substring is not found, returns -1.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/indexOfBytes/
+ * @internal
  */
-class IndexOfBytesOperator implements ResolvesToInt, OperatorInterface
+final class IndexOfBytesOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Array;
 

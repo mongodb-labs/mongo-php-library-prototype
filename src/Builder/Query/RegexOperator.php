@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Selects documents where values match a specified regular expression.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/regex/
+ * @internal
  */
-class RegexOperator implements FieldQueryInterface, OperatorInterface
+final class RegexOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 

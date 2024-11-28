@@ -22,8 +22,9 @@ use function is_array;
  * Matches any of the values specified in an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/in/
+ * @internal
  */
-class InOperator implements FieldQueryInterface, OperatorInterface
+final class InOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
 
