@@ -168,8 +168,8 @@
                     "$comment": "The default value for the argument.",
                     "type": ["array", "boolean", "number", "string"]
                 },
-                "noName": {
-                    "$comment": "Skip the name in object encoding and merge the value object",
+                "mergeObject": {
+                    "$comment": "Skip the name in object encoding and merge the properties of the value into the operator",
                     "type": "boolean",
                     "default": false
                 }

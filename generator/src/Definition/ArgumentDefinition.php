@@ -9,10 +9,12 @@ use function assert;
 use function get_debug_type;
 use function is_array;
 use function is_string;
+use function ltrim;
 use function sprintf;
 
 final class ArgumentDefinition
 {
+    public string $propertyName;
     public VariadicType|null $variadic;
     public int|null $variadicMin;
 
@@ -25,7 +27,7 @@ final class ArgumentDefinition
         string|null $variadic = null,
         int|null $variadicMin = null,
         public mixed $default = null,
-        public bool $noName = false,
+        public bool $mergeObject = false,
     ) {
         assert($this->optional === false || $this->default === null, 'Optional arguments cannot have a default value');
         if (is_array($type)) {
@@ -34,6 +36,8 @@ final class ArgumentDefinition
                 assert(is_string($t), sprintf('Type must be a list of strings. Got %s', get_debug_type($type)));
             }
         }
+
+        $this->propertyName = ltrim($this->name, '$');
 
         if ($variadic) {
             $this->variadic = VariadicType::from($variadic);

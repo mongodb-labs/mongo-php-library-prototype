@@ -15,7 +15,7 @@ arguments:
             The _id expression specifies the group key. If you specify an _id value of null, or any other constant value, the $group stage returns a single document that aggregates values across all of the input documents.
     -
         name: field
-        noName: true
+        mergeObject: true
         type:
             - accumulator
         variadic: object
