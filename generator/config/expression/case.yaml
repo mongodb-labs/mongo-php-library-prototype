@@ -3,7 +3,8 @@ name: $case
 link: 'https://www.mongodb.com/docs/manual/reference/operator/aggregation/switch/'
 type:
     - switchBranch
-encode: flat_object
+encode: object
+wrapObject: false
 description: |
     Represents a single case in a $switch expression
 arguments:

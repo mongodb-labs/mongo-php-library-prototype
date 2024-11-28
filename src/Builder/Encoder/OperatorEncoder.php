@@ -37,7 +37,7 @@ final class OperatorEncoder extends AbstractExpressionEncoder
         return match ($value::ENCODE) {
             Encode::Single => $this->encodeAsSingle($value),
             Encode::Array => $this->encodeAsArray($value),
-            Encode::Object, Encode::FlatObject => $this->encodeAsObject($value),
+            Encode::Object => $this->encodeAsObject($value),
             default => throw new LogicException(sprintf('Class "%s" does not have a valid ENCODE constant.', $value::class)),
         };
     }
@@ -89,9 +89,7 @@ final class OperatorEncoder extends AbstractExpressionEncoder
             }
         }
 
-        return $value::ENCODE === Encode::FlatObject
-            ? $result
-            : $this->wrap($value, $result);
+        return $this->wrap($value, $result);
     }
 
     /**
@@ -108,10 +106,19 @@ final class OperatorEncoder extends AbstractExpressionEncoder
         throw new LogicException(sprintf('Class "%s" does not have a single property.', $value::class));
     }
 
+    /**
+     * Wrap the result in an object if the operator has a name.
+     * The operator name is NULL, and the result is returned as is
+     * when wrapObject is false in the YAML configuration of the operator.
+     */
     private function wrap(OperatorInterface $value, mixed $result): stdClass
     {
+        if ($value::NAME === null) {
+            return $result;
+        }
+
         $object = new stdClass();
-        $object->{$value->getOperator()} = $result;
+        $object->{$value::NAME} = $result;
 
         return $object;
     }

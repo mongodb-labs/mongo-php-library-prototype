@@ -22,7 +22,6 @@ use function assert;
 use function interface_exists;
 use function rtrim;
 use function sprintf;
-use function var_export;
 
 /**
  * Generates a value object class for stages and operators.
@@ -62,6 +61,7 @@ class OperatorClassGenerator extends OperatorGenerator
         $class->addComment('@internal');
         $namespace->addUse(Encode::class);
         $class->addConstant('ENCODE', new Literal('Encode::' . $operator->encode->name));
+        $class->addConstant('NAME', $operator->wrapObject ? $operator->name : null);
 
         $encodeNames = [];
         $constructor = $class->addMethod('__construct');
@@ -178,10 +178,6 @@ class OperatorClassGenerator extends OperatorGenerator
         if ($encodeNames !== []) {
             $class->addConstant('PROPERTIES', $encodeNames);
         }
-
-        $class->addMethod('getOperator')
-            ->setReturnType('string')
-            ->setBody('return ' . var_export($operator->name, true) . ';');
 
         return $namespace;
     }

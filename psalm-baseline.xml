@@ -75,6 +75,12 @@
       <code><![CDATA[$val]]></code>
       <code><![CDATA[$val]]></code>
     </MixedAssignment>
+    <MixedInferredReturnType>
+      <code><![CDATA[stdClass]]></code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$result]]></code>
+    </MixedReturnStatement>
     <PossibleRawObjectIteration>
       <code><![CDATA[$val]]></code>
     </PossibleRawObjectIteration>
@@ -172,7 +178,26 @@
       <code><![CDATA[stdClass]]></code>
     </TooManyTemplateParams>
   </file>
+  <file src="src/Builder/Type/CombinedFieldQuery.php">
+    <MixedArgument>
+      <code><![CDATA[$operator]]></code>
+      <code><![CDATA[$operator]]></code>
+    </MixedArgument>
+    <MixedArrayOffset>
+      <code><![CDATA[$seenOperators[$operator]]]></code>
+    </MixedArrayOffset>
+    <MixedAssignment>
+      <code><![CDATA[$operator]]></code>
+    </MixedAssignment>
+  </file>
   <file src="src/Builder/Type/QueryObject.php">
+    <MixedArgument>
+      <code><![CDATA[$query::NAME]]></code>
+    </MixedArgument>
+    <MixedArrayOffset>
+      <code><![CDATA[$seenQueryOperators[$query::NAME]]]></code>
+      <code><![CDATA[$seenQueryOperators[$query::NAME]]]></code>
+    </MixedArrayOffset>
     <MixedAssignment>
       <code><![CDATA[$queries[$fieldPath]]]></code>
       <code><![CDATA[$query]]></code>
@@ -183,6 +208,11 @@
             is_array($queriesOrArrayOfQueries[0]) &&
             count($queriesOrArrayOfQueries[0]) > 0]]></code>
     </RedundantConditionGivenDocblockType>
+    <UndefinedConstant>
+      <code><![CDATA[$query::NAME]]></code>
+      <code><![CDATA[$query::NAME]]></code>
+      <code><![CDATA[$query::NAME]]></code>
+    </UndefinedConstant>
   </file>
   <file src="src/ChangeStream.php">
     <DeprecatedConstant>

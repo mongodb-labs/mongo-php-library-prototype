@@ -56,11 +56,11 @@ final class QueryObject implements QueryInterface
         foreach ($queriesOrArrayOfQueries as $fieldPath => $query) {
             if ($query instanceof QueryInterface) {
                 if ($query instanceof OperatorInterface) {
-                    if (isset($seenQueryOperators[$query->getOperator()])) {
-                        throw new InvalidArgumentException(sprintf('Query operator "%s" cannot be used multiple times in the same query.', $query->getOperator()));
+                    if (isset($seenQueryOperators[$query::NAME])) {
+                        throw new InvalidArgumentException(sprintf('Query operator "%s" cannot be used multiple times in the same query.', $query::NAME));
                     }
 
-                    $seenQueryOperators[$query->getOperator()] = true;
+                    $seenQueryOperators[$query::NAME] = true;
                 }
 
                 $queries[] = $query;

@@ -25,11 +25,6 @@ enum Encode
     case Object;
 
     /**
-     * Same as Object, but only parameters are returned. The operator name will not be used.
-     */
-    case FlatObject;
-
-    /**
      * Get the single parameter value
      */
     case Single;

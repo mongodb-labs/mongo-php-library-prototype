@@ -60,13 +60,17 @@
                     "enum": [
                         "array",
                         "object",
-                        "flat_object",
                         "single"
                     ]
                 },
                 "description": {
                     "$comment": "The description of the argument from MongoDB's documentation.",
                     "type": "string"
+                },
+                "wrapObject": {
+                    "$comment": "Wrap the properties in an object with the operator name",
+                    "type": "boolean",
+                    "default": true
                 },
                 "arguments": {
                     "$comment": "An optional list of arguments for the operator.",
