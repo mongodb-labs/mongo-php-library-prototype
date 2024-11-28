@@ -90,11 +90,6 @@
       <code><![CDATA[$value]]></code>
     </MixedAssignment>
   </file>
-  <file src="src/Builder/Projection/ElemMatchOperator.php">
-    <MixedArgumentTypeCoercion>
-      <code><![CDATA[$query]]></code>
-    </MixedArgumentTypeCoercion>
-  </file>
   <file src="src/Builder/Query.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$query]]></code>
