@@ -27,6 +27,7 @@ use stdClass;
 final class DateToStringOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$dateToString';
     public const PROPERTIES = ['date' => 'date', 'format' => 'format', 'timezone' => 'timezone', 'onNull' => 'onNull'];
 
     /** @var ObjectId|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|Timestamp|UTCDateTime|int $date The date to convert to string. Must be a valid expression that resolves to a Date, a Timestamp, or an ObjectID. */
@@ -65,10 +66,5 @@ final class DateToStringOperator implements ResolvesToString, OperatorInterface
         $this->format = $format;
         $this->timezone = $timezone;
         $this->onNull = $onNull;
-    }
-
-    public function getOperator(): string
-    {
-        return '$dateToString';
     }
 }

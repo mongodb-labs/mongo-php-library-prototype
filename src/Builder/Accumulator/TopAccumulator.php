@@ -29,6 +29,7 @@ use stdClass;
 final class TopAccumulator implements AccumulatorInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$top';
     public const PROPERTIES = ['sortBy' => 'sortBy', 'output' => 'output'];
 
     /** @var Document|Serializable|array|stdClass $sortBy Specifies the order of results, with syntax similar to $sort. */
@@ -47,10 +48,5 @@ final class TopAccumulator implements AccumulatorInterface, OperatorInterface
     ) {
         $this->sortBy = $sortBy;
         $this->output = $output;
-    }
-
-    public function getOperator(): string
-    {
-        return '$top';
     }
 }

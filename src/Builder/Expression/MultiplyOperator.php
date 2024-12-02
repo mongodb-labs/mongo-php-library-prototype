@@ -25,6 +25,7 @@ use function array_is_list;
 final class MultiplyOperator implements ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$multiply';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /**
@@ -49,10 +50,5 @@ final class MultiplyOperator implements ResolvesToDecimal, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$multiply';
     }
 }

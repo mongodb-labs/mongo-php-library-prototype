@@ -25,6 +25,7 @@ use stdClass;
 final class ReplaceRootStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$replaceRoot';
     public const PROPERTIES = ['newRoot' => 'newRoot'];
 
     /** @var Document|ResolvesToObject|Serializable|array|stdClass $newRoot */
@@ -36,10 +37,5 @@ final class ReplaceRootStage implements StageInterface, OperatorInterface
     public function __construct(Document|Serializable|ResolvesToObject|stdClass|array $newRoot)
     {
         $this->newRoot = $newRoot;
-    }
-
-    public function getOperator(): string
-    {
-        return '$replaceRoot';
     }
 }

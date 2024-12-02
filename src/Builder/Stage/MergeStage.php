@@ -33,6 +33,7 @@ use function is_array;
 final class MergeStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$merge';
 
     public const PROPERTIES = [
         'into' => 'into',
@@ -84,10 +85,5 @@ final class MergeStage implements StageInterface, OperatorInterface
 
         $this->whenMatched = $whenMatched;
         $this->whenNotMatched = $whenNotMatched;
-    }
-
-    public function getOperator(): string
-    {
-        return '$merge';
     }
 }

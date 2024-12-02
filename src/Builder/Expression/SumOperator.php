@@ -28,6 +28,7 @@ use function array_is_list;
 final class SumOperator implements ResolvesToNumber, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$sum';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<BSONArray|Decimal128|Int64|PackedArray|ResolvesToArray|ResolvesToNumber|array|float|int> $expression */
@@ -49,10 +50,5 @@ final class SumOperator implements ResolvesToNumber, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$sum';
     }
 }

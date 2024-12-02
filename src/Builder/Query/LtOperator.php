@@ -23,6 +23,7 @@ use stdClass;
 final class LtOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$lt';
     public const PROPERTIES = ['value' => 'value'];
 
     /** @var Type|array|bool|float|int|null|stdClass|string $value */
@@ -34,10 +35,5 @@ final class LtOperator implements FieldQueryInterface, OperatorInterface
     public function __construct(Type|stdClass|array|bool|float|int|null|string $value)
     {
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$lt';
     }
 }

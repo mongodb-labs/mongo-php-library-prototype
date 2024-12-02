@@ -26,6 +26,7 @@ use function array_is_list;
 final class AvgOperator implements ResolvesToNumber, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$avg';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<Decimal128|Int64|ResolvesToNumber|float|int> $expression */
@@ -46,10 +47,5 @@ final class AvgOperator implements ResolvesToNumber, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$avg';
     }
 }

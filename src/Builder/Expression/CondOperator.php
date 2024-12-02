@@ -23,6 +23,7 @@ use stdClass;
 final class CondOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$cond';
     public const PROPERTIES = ['if' => 'if', 'then' => 'then', 'else' => 'else'];
 
     /** @var ResolvesToBool|bool $if */
@@ -47,10 +48,5 @@ final class CondOperator implements ResolvesToAny, OperatorInterface
         $this->if = $if;
         $this->then = $then;
         $this->else = $else;
-    }
-
-    public function getOperator(): string
-    {
-        return '$cond';
     }
 }

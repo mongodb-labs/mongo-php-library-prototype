@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class RegexOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$regex';
     public const PROPERTIES = ['regex' => 'regex'];
 
     /** @var Regex $regex */
@@ -33,10 +34,5 @@ final class RegexOperator implements FieldQueryInterface, OperatorInterface
     public function __construct(Regex $regex)
     {
         $this->regex = $regex;
-    }
-
-    public function getOperator(): string
-    {
-        return '$regex';
     }
 }

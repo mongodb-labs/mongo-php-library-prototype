@@ -23,6 +23,7 @@ use function array_is_list;
 final class ConcatOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$concat';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<ResolvesToString|string> $expression */
@@ -43,10 +44,5 @@ final class ConcatOperator implements ResolvesToString, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$concat';
     }
 }

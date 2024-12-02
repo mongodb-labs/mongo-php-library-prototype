@@ -26,6 +26,7 @@ use function array_is_list;
 final class UnsetStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$unset';
     public const PROPERTIES = ['field' => 'field'];
 
     /** @var list<FieldPath|string> $field */
@@ -46,10 +47,5 @@ final class UnsetStage implements StageInterface, OperatorInterface
         }
 
         $this->field = $field;
-    }
-
-    public function getOperator(): string
-    {
-        return '$unset';
     }
 }

@@ -27,6 +27,7 @@ use function array_is_list;
 final class MinOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$min';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<ExpressionInterface|Type|array|bool|float|int|null|stdClass|string> $expression */
@@ -47,10 +48,5 @@ final class MinOperator implements ResolvesToAny, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$min';
     }
 }

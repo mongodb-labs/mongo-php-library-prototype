@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class Atan2Operator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$atan2';
     public const PROPERTIES = ['y' => 'y', 'x' => 'x'];
 
     /**
@@ -46,10 +47,5 @@ final class Atan2Operator implements ResolvesToDouble, ResolvesToDecimal, Operat
     ) {
         $this->y = $y;
         $this->x = $x;
-    }
-
-    public function getOperator(): string
-    {
-        return '$atan2';
     }
 }

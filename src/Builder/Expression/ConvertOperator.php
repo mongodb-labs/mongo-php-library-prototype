@@ -25,6 +25,7 @@ use stdClass;
 final class ConvertOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$convert';
     public const PROPERTIES = ['input' => 'input', 'to' => 'to', 'onError' => 'onError', 'onNull' => 'onNull'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $input */
@@ -63,10 +64,5 @@ final class ConvertOperator implements ResolvesToAny, OperatorInterface
         $this->to = $to;
         $this->onError = $onError;
         $this->onNull = $onNull;
-    }
-
-    public function getOperator(): string
-    {
-        return '$convert';
     }
 }

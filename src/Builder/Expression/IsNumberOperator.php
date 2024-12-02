@@ -25,6 +25,7 @@ use stdClass;
 final class IsNumberOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$isNumber';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $expression */
@@ -36,10 +37,5 @@ final class IsNumberOperator implements ResolvesToBool, OperatorInterface
     public function __construct(Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$isNumber';
     }
 }

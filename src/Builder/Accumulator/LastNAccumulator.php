@@ -32,6 +32,7 @@ use function is_array;
 final class LastNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$lastN';
     public const PROPERTIES = ['input' => 'input', 'n' => 'n'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $input An expression that resolves to the array from which to return n elements. */
@@ -52,10 +53,5 @@ final class LastNAccumulator implements AccumulatorInterface, WindowInterface, O
 
         $this->input = $input;
         $this->n = $n;
-    }
-
-    public function getOperator(): string
-    {
-        return '$lastN';
     }
 }

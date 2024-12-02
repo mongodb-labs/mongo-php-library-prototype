@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class TsIncrementOperator implements ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$tsIncrement';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var ResolvesToTimestamp|Timestamp|int $expression */
@@ -33,10 +34,5 @@ final class TsIncrementOperator implements ResolvesToLong, OperatorInterface
     public function __construct(Timestamp|ResolvesToTimestamp|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$tsIncrement';
     }
 }

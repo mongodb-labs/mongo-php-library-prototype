@@ -32,6 +32,7 @@ use function is_string;
 final class AccumulatorAccumulator implements AccumulatorInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$accumulator';
 
     public const PROPERTIES = [
         'init' => 'init',
@@ -113,10 +114,5 @@ final class AccumulatorAccumulator implements AccumulatorInterface, OperatorInte
         }
 
         $this->finalize = $finalize;
-    }
-
-    public function getOperator(): string
-    {
-        return '$accumulator';
     }
 }

@@ -29,6 +29,7 @@ use function is_array;
 final class ReduceOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$reduce';
     public const PROPERTIES = ['input' => 'input', 'initialValue' => 'initialValue', 'in' => 'in'];
 
     /**
@@ -71,10 +72,5 @@ final class ReduceOperator implements ResolvesToAny, OperatorInterface
         $this->input = $input;
         $this->initialValue = $initialValue;
         $this->in = $in;
-    }
-
-    public function getOperator(): string
-    {
-        return '$reduce';
     }
 }

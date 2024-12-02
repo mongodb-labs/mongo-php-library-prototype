@@ -25,6 +25,7 @@ use MongoDB\Builder\Type\TimeUnit;
 final class DateDiffOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$dateDiff';
 
     public const PROPERTIES = [
         'startDate' => 'startDate',
@@ -68,10 +69,5 @@ final class DateDiffOperator implements ResolvesToInt, OperatorInterface
         $this->unit = $unit;
         $this->timezone = $timezone;
         $this->startOfWeek = $startOfWeek;
-    }
-
-    public function getOperator(): string
-    {
-        return '$dateDiff';
     }
 }

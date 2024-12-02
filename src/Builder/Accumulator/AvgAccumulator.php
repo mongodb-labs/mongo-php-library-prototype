@@ -26,6 +26,7 @@ use MongoDB\Builder\Type\WindowInterface;
 final class AvgAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$avg';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $expression */
@@ -37,10 +38,5 @@ final class AvgAccumulator implements AccumulatorInterface, WindowInterface, Ope
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$avg';
     }
 }

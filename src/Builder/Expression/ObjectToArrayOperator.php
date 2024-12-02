@@ -23,6 +23,7 @@ use stdClass;
 final class ObjectToArrayOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$objectToArray';
     public const PROPERTIES = ['object' => 'object'];
 
     /** @var Document|ResolvesToObject|Serializable|array|stdClass $object Any valid expression as long as it resolves to a document object. $objectToArray applies to the top-level fields of its argument. If the argument is a document that itself contains embedded document fields, the $objectToArray does not recursively apply to the embedded document fields. */
@@ -34,10 +35,5 @@ final class ObjectToArrayOperator implements ResolvesToArray, OperatorInterface
     public function __construct(Document|Serializable|ResolvesToObject|stdClass|array $object)
     {
         $this->object = $object;
-    }
-
-    public function getOperator(): string
-    {
-        return '$objectToArray';
     }
 }

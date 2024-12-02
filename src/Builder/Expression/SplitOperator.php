@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class SplitOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$split';
     public const PROPERTIES = ['string' => 'string', 'delimiter' => 'delimiter'];
 
     /** @var ResolvesToString|string $string The string to be split. string expression can be any valid expression as long as it resolves to a string. */
@@ -36,10 +37,5 @@ final class SplitOperator implements ResolvesToArray, OperatorInterface
     {
         $this->string = $string;
         $this->delimiter = $delimiter;
-    }
-
-    public function getOperator(): string
-    {
-        return '$split';
     }
 }

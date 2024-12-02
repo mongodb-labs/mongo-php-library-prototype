@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class PowOperator implements ResolvesToNumber, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$pow';
     public const PROPERTIES = ['number' => 'number', 'exponent' => 'exponent'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $number */
@@ -40,10 +41,5 @@ final class PowOperator implements ResolvesToNumber, OperatorInterface
     ) {
         $this->number = $number;
         $this->exponent = $exponent;
-    }
-
-    public function getOperator(): string
-    {
-        return '$pow';
     }
 }

@@ -27,6 +27,7 @@ use function is_array;
 final class FilterOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$filter';
     public const PROPERTIES = ['input' => 'input', 'cond' => 'cond', 'as' => 'as', 'limit' => 'limit'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $input */
@@ -65,10 +66,5 @@ final class FilterOperator implements ResolvesToArray, OperatorInterface
         $this->cond = $cond;
         $this->as = $as;
         $this->limit = $limit;
-    }
-
-    public function getOperator(): string
-    {
-        return '$filter';
     }
 }

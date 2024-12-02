@@ -30,6 +30,7 @@ use stdClass;
 final class BottomNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$bottomN';
     public const PROPERTIES = ['n' => 'n', 'sortBy' => 'sortBy', 'output' => 'output'];
 
     /** @var ResolvesToInt|int $n Limits the number of results per group and has to be a positive integral expression that is either a constant or depends on the _id value for $group. */
@@ -54,10 +55,5 @@ final class BottomNAccumulator implements AccumulatorInterface, WindowInterface,
         $this->n = $n;
         $this->sortBy = $sortBy;
         $this->output = $output;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bottomN';
     }
 }

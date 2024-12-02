@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class MinDistanceOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$minDistance';
     public const PROPERTIES = ['value' => 'value'];
 
     /** @var Int64|float|int $value */
@@ -33,10 +34,5 @@ final class MinDistanceOperator implements FieldQueryInterface, OperatorInterfac
     public function __construct(Int64|float|int $value)
     {
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$minDistance';
     }
 }

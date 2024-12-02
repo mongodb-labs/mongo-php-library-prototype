@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\StageInterface;
 final class ListSampledQueriesStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$listSampledQueries';
     public const PROPERTIES = ['namespace' => 'namespace'];
 
     /** @var Optional|string $namespace */
@@ -33,10 +34,5 @@ final class ListSampledQueriesStage implements StageInterface, OperatorInterface
     public function __construct(Optional|string $namespace = Optional::Undefined)
     {
         $this->namespace = $namespace;
-    }
-
-    public function getOperator(): string
-    {
-        return '$listSampledQueries';
     }
 }

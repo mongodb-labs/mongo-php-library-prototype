@@ -28,6 +28,7 @@ use function is_string;
 final class FacetStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$facet';
     public const PROPERTIES = ['facet' => 'facet'];
 
     /** @var stdClass<BSONArray|PackedArray|Pipeline|array> $facet */
@@ -50,10 +51,5 @@ final class FacetStage implements StageInterface, OperatorInterface
 
         $facet = (object) $facet;
         $this->facet = $facet;
-    }
-
-    public function getOperator(): string
-    {
-        return '$facet';
     }
 }

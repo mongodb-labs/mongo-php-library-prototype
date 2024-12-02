@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class MetaOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$meta';
     public const PROPERTIES = ['keyword' => 'keyword'];
 
     /** @var string $keyword */
@@ -31,10 +32,5 @@ final class MetaOperator implements ResolvesToAny, OperatorInterface
     public function __construct(string $keyword)
     {
         $this->keyword = $keyword;
-    }
-
-    public function getOperator(): string
-    {
-        return '$meta';
     }
 }

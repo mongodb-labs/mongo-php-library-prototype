@@ -24,6 +24,7 @@ use stdClass;
 final class DateFromStringOperator implements ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$dateFromString';
 
     public const PROPERTIES = [
         'dateString' => 'dateString',
@@ -79,10 +80,5 @@ final class DateFromStringOperator implements ResolvesToDate, OperatorInterface
         $this->timezone = $timezone;
         $this->onError = $onError;
         $this->onNull = $onNull;
-    }
-
-    public function getOperator(): string
-    {
-        return '$dateFromString';
     }
 }

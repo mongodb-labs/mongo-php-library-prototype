@@ -23,6 +23,7 @@ use stdClass;
 final class NotOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$not';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var FieldQueryInterface|Type|array|bool|float|int|null|stdClass|string $expression */
@@ -34,10 +35,5 @@ final class NotOperator implements FieldQueryInterface, OperatorInterface
     public function __construct(Type|FieldQueryInterface|stdClass|array|bool|float|int|null|string $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$not';
     }
 }

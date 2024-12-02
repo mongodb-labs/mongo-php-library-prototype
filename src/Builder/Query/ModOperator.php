@@ -23,6 +23,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class ModOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$mod';
     public const PROPERTIES = ['divisor' => 'divisor', 'remainder' => 'remainder'];
 
     /** @var Decimal128|Int64|float|int $divisor */
@@ -39,10 +40,5 @@ final class ModOperator implements FieldQueryInterface, OperatorInterface
     {
         $this->divisor = $divisor;
         $this->remainder = $remainder;
-    }
-
-    public function getOperator(): string
-    {
-        return '$mod';
     }
 }

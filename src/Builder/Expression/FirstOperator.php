@@ -26,6 +26,7 @@ use function is_array;
 final class FirstOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$first';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $expression */
@@ -41,10 +42,5 @@ final class FirstOperator implements ResolvesToAny, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$first';
     }
 }

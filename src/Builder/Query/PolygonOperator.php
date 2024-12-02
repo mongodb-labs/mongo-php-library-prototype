@@ -27,6 +27,7 @@ use function is_array;
 final class PolygonOperator implements GeometryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$polygon';
     public const PROPERTIES = ['points' => 'points'];
 
     /** @var BSONArray|PackedArray|array $points */
@@ -42,10 +43,5 @@ final class PolygonOperator implements GeometryInterface, OperatorInterface
         }
 
         $this->points = $points;
-    }
-
-    public function getOperator(): string
-    {
-        return '$polygon';
     }
 }

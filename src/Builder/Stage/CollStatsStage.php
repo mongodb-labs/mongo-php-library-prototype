@@ -25,6 +25,7 @@ use stdClass;
 final class CollStatsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$collStats';
 
     public const PROPERTIES = [
         'latencyStats' => 'latencyStats',
@@ -61,10 +62,5 @@ final class CollStatsStage implements StageInterface, OperatorInterface
         $this->storageStats = $storageStats;
         $this->count = $count;
         $this->queryExecStats = $queryExecStats;
-    }
-
-    public function getOperator(): string
-    {
-        return '$collStats';
     }
 }

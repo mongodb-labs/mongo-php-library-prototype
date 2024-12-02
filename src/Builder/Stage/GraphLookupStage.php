@@ -33,6 +33,7 @@ use function is_array;
 final class GraphLookupStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$graphLookup';
 
     public const PROPERTIES = [
         'from' => 'from',
@@ -109,10 +110,5 @@ final class GraphLookupStage implements StageInterface, OperatorInterface
         }
 
         $this->restrictSearchWithMatch = $restrictSearchWithMatch;
-    }
-
-    public function getOperator(): string
-    {
-        return '$graphLookup';
     }
 }

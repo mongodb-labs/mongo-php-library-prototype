@@ -28,6 +28,7 @@ use function is_array;
 final class ListLocalSessionsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$listLocalSessions';
     public const PROPERTIES = ['users' => 'users', 'allUsers' => 'allUsers'];
 
     /** @var Optional|BSONArray|PackedArray|array $users Returns all sessions for the specified users. If running with access control, the authenticated user must have privileges with listSessions action on the cluster to list sessions for other users. */
@@ -50,10 +51,5 @@ final class ListLocalSessionsStage implements StageInterface, OperatorInterface
 
         $this->users = $users;
         $this->allUsers = $allUsers;
-    }
-
-    public function getOperator(): string
-    {
-        return '$listLocalSessions';
     }
 }

@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class StrLenBytesOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$strLenBytes';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var ResolvesToString|string $expression */
@@ -31,10 +32,5 @@ final class StrLenBytesOperator implements ResolvesToInt, OperatorInterface
     public function __construct(ResolvesToString|string $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$strLenBytes';
     }
 }

@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\QueryInterface;
 final class TextOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$text';
 
     public const PROPERTIES = [
         'search' => '$search',
@@ -66,10 +67,5 @@ final class TextOperator implements QueryInterface, OperatorInterface
         $this->language = $language;
         $this->caseSensitive = $caseSensitive;
         $this->diacriticSensitive = $diacriticSensitive;
-    }
-
-    public function getOperator(): string
-    {
-        return '$text';
     }
 }

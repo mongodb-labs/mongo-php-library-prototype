@@ -28,6 +28,7 @@ use function is_string;
 final class SetStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$set';
     public const PROPERTIES = ['field' => 'field'];
 
     /** @var stdClass<ExpressionInterface|Type|array|bool|float|int|null|stdClass|string> $field */
@@ -50,10 +51,5 @@ final class SetStage implements StageInterface, OperatorInterface
 
         $field = (object) $field;
         $this->field = $field;
-    }
-
-    public function getOperator(): string
-    {
-        return '$set';
     }
 }

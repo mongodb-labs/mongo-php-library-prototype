@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\StageInterface;
 final class ListSearchIndexesStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$listSearchIndexes';
     public const PROPERTIES = ['id' => 'id', 'name' => 'name'];
 
     /** @var Optional|string $id The id of the index to return information about. */
@@ -40,10 +41,5 @@ final class ListSearchIndexesStage implements StageInterface, OperatorInterface
     ) {
         $this->id = $id;
         $this->name = $name;
-    }
-
-    public function getOperator(): string
-    {
-        return '$listSearchIndexes';
     }
 }

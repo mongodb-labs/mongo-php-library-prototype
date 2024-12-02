@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\StageInterface;
 final class SkipStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$skip';
     public const PROPERTIES = ['skip' => 'skip'];
 
     /** @var int $skip */
@@ -32,10 +33,5 @@ final class SkipStage implements StageInterface, OperatorInterface
     public function __construct(int $skip)
     {
         $this->skip = $skip;
-    }
-
-    public function getOperator(): string
-    {
-        return '$skip';
     }
 }

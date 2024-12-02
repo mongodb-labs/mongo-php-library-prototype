@@ -28,6 +28,7 @@ use function is_array;
 final class BitsAnyClearOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$bitsAnyClear';
     public const PROPERTIES = ['bitmask' => 'bitmask'];
 
     /** @var BSONArray|Binary|PackedArray|array|int|string $bitmask */
@@ -43,10 +44,5 @@ final class BitsAnyClearOperator implements FieldQueryInterface, OperatorInterfa
         }
 
         $this->bitmask = $bitmask;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bitsAnyClear';
     }
 }

@@ -23,6 +23,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class SubtractOperator implements ResolvesToInt, ResolvesToLong, ResolvesToDouble, ResolvesToDecimal, ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$subtract';
     public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];
 
     /** @var Decimal128|Int64|ResolvesToDate|ResolvesToNumber|UTCDateTime|float|int $expression1 */
@@ -41,10 +42,5 @@ final class SubtractOperator implements ResolvesToInt, ResolvesToLong, ResolvesT
     ) {
         $this->expression1 = $expression1;
         $this->expression2 = $expression2;
-    }
-
-    public function getOperator(): string
-    {
-        return '$subtract';
     }
 }

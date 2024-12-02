@@ -30,6 +30,7 @@ use function is_array;
 final class SortArrayOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$sortArray';
     public const PROPERTIES = ['input' => 'input', 'sortBy' => 'sortBy'];
 
     /**
@@ -58,10 +59,5 @@ final class SortArrayOperator implements ResolvesToArray, OperatorInterface
 
         $this->input = $input;
         $this->sortBy = $sortBy;
-    }
-
-    public function getOperator(): string
-    {
-        return '$sortArray';
     }
 }

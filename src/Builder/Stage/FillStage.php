@@ -31,6 +31,7 @@ use function is_array;
 final class FillStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$fill';
 
     public const PROPERTIES = [
         'output' => 'output',
@@ -87,10 +88,5 @@ final class FillStage implements StageInterface, OperatorInterface
 
         $this->partitionByFields = $partitionByFields;
         $this->sortBy = $sortBy;
-    }
-
-    public function getOperator(): string
-    {
-        return '$fill';
     }
 }

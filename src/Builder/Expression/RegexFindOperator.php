@@ -23,6 +23,7 @@ use MongoDB\Builder\Type\Optional;
 final class RegexFindOperator implements ResolvesToObject, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$regexFind';
     public const PROPERTIES = ['input' => 'input', 'regex' => 'regex', 'options' => 'options'];
 
     /** @var ResolvesToString|string $input The string on which you wish to apply the regex pattern. Can be a string or any valid expression that resolves to a string. */
@@ -47,10 +48,5 @@ final class RegexFindOperator implements ResolvesToObject, OperatorInterface
         $this->input = $input;
         $this->regex = $regex;
         $this->options = $options;
-    }
-
-    public function getOperator(): string
-    {
-        return '$regexFind';
     }
 }

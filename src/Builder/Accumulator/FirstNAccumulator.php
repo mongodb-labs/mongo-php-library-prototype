@@ -28,6 +28,7 @@ use stdClass;
 final class FirstNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$firstN';
     public const PROPERTIES = ['input' => 'input', 'n' => 'n'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $input An expression that resolves to the array from which to return n elements. */
@@ -46,10 +47,5 @@ final class FirstNAccumulator implements AccumulatorInterface, WindowInterface, 
     ) {
         $this->input = $input;
         $this->n = $n;
-    }
-
-    public function getOperator(): string
-    {
-        return '$firstN';
     }
 }

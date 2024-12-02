@@ -23,6 +23,7 @@ use MongoDB\Builder\Type\Optional;
 final class RoundOperator implements ResolvesToInt, ResolvesToDouble, ResolvesToDecimal, ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$round';
     public const PROPERTIES = ['number' => 'number', 'place' => 'place'];
 
     /**
@@ -45,10 +46,5 @@ final class RoundOperator implements ResolvesToInt, ResolvesToDouble, ResolvesTo
     ) {
         $this->number = $number;
         $this->place = $place;
-    }
-
-    public function getOperator(): string
-    {
-        return '$round';
     }
 }

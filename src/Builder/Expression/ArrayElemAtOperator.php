@@ -26,6 +26,7 @@ use function is_array;
 final class ArrayElemAtOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$arrayElemAt';
     public const PROPERTIES = ['array' => 'array', 'idx' => 'idx'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $array */
@@ -46,10 +47,5 @@ final class ArrayElemAtOperator implements ResolvesToAny, OperatorInterface
 
         $this->array = $array;
         $this->idx = $idx;
-    }
-
-    public function getOperator(): string
-    {
-        return '$arrayElemAt';
     }
 }

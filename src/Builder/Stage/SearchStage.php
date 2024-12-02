@@ -25,6 +25,7 @@ use stdClass;
 final class SearchStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$search';
     public const PROPERTIES = ['search' => 'search'];
 
     /** @var Document|Serializable|array|stdClass $search */
@@ -36,10 +37,5 @@ final class SearchStage implements StageInterface, OperatorInterface
     public function __construct(Document|Serializable|stdClass|array $search)
     {
         $this->search = $search;
-    }
-
-    public function getOperator(): string
-    {
-        return '$search';
     }
 }

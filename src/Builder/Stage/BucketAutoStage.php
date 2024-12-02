@@ -27,6 +27,7 @@ use stdClass;
 final class BucketAutoStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$bucketAuto';
 
     public const PROPERTIES = [
         'groupBy' => 'groupBy',
@@ -71,10 +72,5 @@ final class BucketAutoStage implements StageInterface, OperatorInterface
         $this->buckets = $buckets;
         $this->output = $output;
         $this->granularity = $granularity;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bucketAuto';
     }
 }

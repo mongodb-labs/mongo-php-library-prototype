@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class StrcasecmpOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$strcasecmp';
     public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];
 
     /** @var ResolvesToString|string $expression1 */
@@ -36,10 +37,5 @@ final class StrcasecmpOperator implements ResolvesToInt, OperatorInterface
     {
         $this->expression1 = $expression1;
         $this->expression2 = $expression2;
-    }
-
-    public function getOperator(): string
-    {
-        return '$strcasecmp';
     }
 }

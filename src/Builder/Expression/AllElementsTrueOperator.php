@@ -26,6 +26,7 @@ use function is_array;
 final class AllElementsTrueOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$allElementsTrue';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $expression */
@@ -41,10 +42,5 @@ final class AllElementsTrueOperator implements ResolvesToBool, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$allElementsTrue';
     }
 }

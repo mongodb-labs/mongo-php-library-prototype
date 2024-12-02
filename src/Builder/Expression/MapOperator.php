@@ -30,6 +30,7 @@ use function is_array;
 final class MapOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$map';
     public const PROPERTIES = ['input' => 'input', 'in' => 'in', 'as' => 'as'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $input An expression that resolves to an array. */
@@ -58,10 +59,5 @@ final class MapOperator implements ResolvesToArray, OperatorInterface
         $this->input = $input;
         $this->in = $in;
         $this->as = $as;
-    }
-
-    public function getOperator(): string
-    {
-        return '$map';
     }
 }

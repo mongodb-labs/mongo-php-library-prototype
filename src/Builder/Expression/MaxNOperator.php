@@ -26,6 +26,7 @@ use function is_array;
 final class MaxNOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$maxN';
     public const PROPERTIES = ['input' => 'input', 'n' => 'n'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $input An expression that resolves to the array from which to return the maximal n elements. */
@@ -46,10 +47,5 @@ final class MaxNOperator implements ResolvesToArray, OperatorInterface
 
         $this->input = $input;
         $this->n = $n;
-    }
-
-    public function getOperator(): string
-    {
-        return '$maxN';
     }
 }

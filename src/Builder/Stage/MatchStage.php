@@ -25,6 +25,7 @@ use function is_array;
 final class MatchStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$match';
     public const PROPERTIES = ['query' => 'query'];
 
     /** @var QueryInterface|array $query */
@@ -40,10 +41,5 @@ final class MatchStage implements StageInterface, OperatorInterface
         }
 
         $this->query = $query;
-    }
-
-    public function getOperator(): string
-    {
-        return '$match';
     }
 }

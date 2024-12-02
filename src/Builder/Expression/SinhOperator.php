@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class SinhOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$sinh';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /**
@@ -37,10 +38,5 @@ final class SinhOperator implements ResolvesToDouble, ResolvesToDecimal, Operato
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$sinh';
     }
 }

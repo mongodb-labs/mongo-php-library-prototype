@@ -33,6 +33,7 @@ use function is_array;
 final class BucketStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$bucket';
 
     public const PROPERTIES = [
         'groupBy' => 'groupBy',
@@ -95,10 +96,5 @@ final class BucketStage implements StageInterface, OperatorInterface
         $this->boundaries = $boundaries;
         $this->default = $default;
         $this->output = $output;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bucket';
     }
 }

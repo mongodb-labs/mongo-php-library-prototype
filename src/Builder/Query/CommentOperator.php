@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\QueryInterface;
 final class CommentOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$comment';
     public const PROPERTIES = ['comment' => 'comment'];
 
     /** @var string $comment */
@@ -32,10 +33,5 @@ final class CommentOperator implements QueryInterface, OperatorInterface
     public function __construct(string $comment)
     {
         $this->comment = $comment;
-    }
-
-    public function getOperator(): string
-    {
-        return '$comment';
     }
 }

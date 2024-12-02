@@ -24,6 +24,7 @@ use function array_is_list;
 final class TypeOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$type';
     public const PROPERTIES = ['type' => 'type'];
 
     /** @var list<int|string> $type */
@@ -44,10 +45,5 @@ final class TypeOperator implements FieldQueryInterface, OperatorInterface
         }
 
         $this->type = $type;
-    }
-
-    public function getOperator(): string
-    {
-        return '$type';
     }
 }
