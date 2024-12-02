@@ -16,8 +16,9 @@ use MongoDB\Builder\Type\StageInterface;
  * Returns plan cache information for a collection.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/planCacheStats/
+ * @internal
  */
-class PlanCacheStatsStage implements StageInterface, OperatorInterface
+final class PlanCacheStatsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

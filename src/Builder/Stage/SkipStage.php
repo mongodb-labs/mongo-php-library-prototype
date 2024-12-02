@@ -16,8 +16,9 @@ use MongoDB\Builder\Type\StageInterface;
  * Skips the first n documents where n is the specified skip number and passes the remaining documents unmodified to the pipeline. For each input document, outputs either zero documents (for the first n documents) or one document (if after the first n documents).
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/skip/
+ * @internal
  */
-class SkipStage implements StageInterface, OperatorInterface
+final class SkipStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['skip' => 'skip'];

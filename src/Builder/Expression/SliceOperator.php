@@ -22,8 +22,9 @@ use function is_array;
  * Returns a subset of an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/slice/
+ * @internal
  */
-class SliceOperator implements ResolvesToArray, OperatorInterface
+final class SliceOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Array;
     public const PROPERTIES = ['expression' => 'expression', 'n' => 'n', 'position' => 'position'];

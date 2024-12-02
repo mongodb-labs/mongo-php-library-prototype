@@ -21,8 +21,9 @@ use function array_is_list;
  * Returns either the non-null result of the first expression or the result of the second expression if the first expression results in a null result. Null result encompasses instances of undefined values or missing fields. Accepts two expressions as arguments. The result of the second expression can be null.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/ifNull/
+ * @internal
  */
-class IfNullOperator implements ResolvesToAny, OperatorInterface
+final class IfNullOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

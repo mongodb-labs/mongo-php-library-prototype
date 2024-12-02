@@ -22,8 +22,9 @@ use stdClass;
  * Returns the date as a formatted string.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateToString/
+ * @internal
  */
-class DateToStringOperator implements ResolvesToString, OperatorInterface
+final class DateToStringOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['date' => 'date', 'format' => 'format', 'timezone' => 'timezone', 'onNull' => 'onNull'];

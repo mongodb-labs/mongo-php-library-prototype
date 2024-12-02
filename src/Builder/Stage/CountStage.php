@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\StageInterface;
  * Distinct from the $count aggregation accumulator.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/count/
+ * @internal
  */
-class CountStage implements StageInterface, OperatorInterface
+final class CountStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['field' => 'field'];

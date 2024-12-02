@@ -21,8 +21,9 @@ use function array_is_list;
  * Matches arrays that contain all elements specified in the query.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/all/
+ * @internal
  */
-class AllOperator implements FieldQueryInterface, OperatorInterface
+final class AllOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['value' => 'value'];

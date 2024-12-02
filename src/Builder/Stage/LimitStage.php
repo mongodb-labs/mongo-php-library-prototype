@@ -16,8 +16,9 @@ use MongoDB\Builder\Type\StageInterface;
  * Passes the first n documents unmodified to the pipeline where n is the specified limit. For each input document, outputs either one document (for the first n documents) or zero documents (after the first n documents).
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/limit/
+ * @internal
  */
-class LimitStage implements StageInterface, OperatorInterface
+final class LimitStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['limit' => 'limit'];

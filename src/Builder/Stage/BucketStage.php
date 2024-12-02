@@ -28,8 +28,9 @@ use function is_array;
  * Categorizes incoming documents into groups, called buckets, based on a specified expression and bucket boundaries.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/bucket/
+ * @internal
  */
-class BucketStage implements StageInterface, OperatorInterface
+final class BucketStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

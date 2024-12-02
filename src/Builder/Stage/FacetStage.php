@@ -23,8 +23,9 @@ use function is_string;
  * Processes multiple aggregation pipelines within a single stage on the same set of input documents. Enables the creation of multi-faceted aggregations capable of characterizing data across multiple dimensions, or facets, in a single stage.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/facet/
+ * @internal
  */
-class FacetStage implements StageInterface, OperatorInterface
+final class FacetStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['facet' => 'facet'];

@@ -19,8 +19,9 @@ use MongoDB\Builder\Type\Optional;
  * Returns the week number in ISO 8601 format, ranging from 1 to 53. Week numbers start at 1 with the week (Monday through Sunday) that contains the year's first Thursday.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/isoWeek/
+ * @internal
  */
-class IsoWeekOperator implements ResolvesToInt, OperatorInterface
+final class IsoWeekOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['date' => 'date', 'timezone' => 'timezone'];

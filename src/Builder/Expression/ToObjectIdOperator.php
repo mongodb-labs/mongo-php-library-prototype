@@ -19,8 +19,9 @@ use stdClass;
  * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/toObjectId/
+ * @internal
  */
-class ToObjectIdOperator implements ResolvesToObjectId, OperatorInterface
+final class ToObjectIdOperator implements ResolvesToObjectId, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

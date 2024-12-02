@@ -15,8 +15,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns a random float between 0 and 1
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/rand/
+ * @internal
  */
-class RandOperator implements ResolvesToDouble, OperatorInterface
+final class RandOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

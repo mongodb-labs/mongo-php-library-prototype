@@ -21,8 +21,9 @@ use stdClass;
  * Alias for $replaceRoot.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/replaceWith/
+ * @internal
  */
-class ReplaceWithStage implements StageInterface, OperatorInterface
+final class ReplaceWithStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

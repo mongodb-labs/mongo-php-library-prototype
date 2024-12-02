@@ -28,8 +28,9 @@ use function is_array;
  * It is also available as an aggregation expression.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/median/
+ * @internal
  */
-class MedianOperator implements ResolvesToDouble, OperatorInterface
+final class MedianOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['input' => 'input', 'method' => 'method'];

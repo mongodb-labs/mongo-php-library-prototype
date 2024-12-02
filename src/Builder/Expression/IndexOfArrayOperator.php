@@ -25,8 +25,9 @@ use function is_array;
  * Searches an array for an occurrence of a specified value and returns the array index of the first occurrence. Array indexes start at zero.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/indexOfArray/
+ * @internal
  */
-class IndexOfArrayOperator implements ResolvesToInt, OperatorInterface
+final class IndexOfArrayOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Array;
     public const PROPERTIES = ['array' => 'array', 'search' => 'search', 'start' => 'start', 'end' => 'end'];

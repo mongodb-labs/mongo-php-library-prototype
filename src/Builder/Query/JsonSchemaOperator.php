@@ -19,8 +19,9 @@ use stdClass;
  * Validate documents against the given JSON Schema.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/jsonSchema/
+ * @internal
  */
-class JsonSchemaOperator implements QueryInterface, OperatorInterface
+final class JsonSchemaOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['schema' => 'schema'];

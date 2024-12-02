@@ -21,8 +21,9 @@ use MongoDB\Builder\Type\TimeUnit;
  * Adds a number of time units to a date object.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateAdd/
+ * @internal
  */
-class DateAddOperator implements ResolvesToDate, OperatorInterface
+final class DateAddOperator implements ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['startDate' => 'startDate', 'unit' => 'unit', 'amount' => 'amount', 'timezone' => 'timezone'];

@@ -19,8 +19,9 @@ use MongoDB\Builder\Type\Optional;
  * Returns the year number in ISO 8601 format. The year starts with the Monday of week 1 (ISO 8601) and ends with the Sunday of the last week (ISO 8601).
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/isoWeekYear/
+ * @internal
  */
-class IsoWeekYearOperator implements ResolvesToInt, OperatorInterface
+final class IsoWeekYearOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['date' => 'date', 'timezone' => 'timezone'];

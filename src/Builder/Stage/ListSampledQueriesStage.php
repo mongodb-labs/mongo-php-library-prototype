@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\StageInterface;
  * Lists sampled queries for all collections or a specific collection.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/listSampledQueries/
+ * @internal
  */
-class ListSampledQueriesStage implements StageInterface, OperatorInterface
+final class ListSampledQueriesStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['namespace' => 'namespace'];

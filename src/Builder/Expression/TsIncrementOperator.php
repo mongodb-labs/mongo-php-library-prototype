@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * New in MongoDB 5.1.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/tsIncrement/
+ * @internal
  */
-class TsIncrementOperator implements ResolvesToLong, OperatorInterface
+final class TsIncrementOperator implements ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

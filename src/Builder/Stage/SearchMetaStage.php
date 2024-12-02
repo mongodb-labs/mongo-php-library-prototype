@@ -20,8 +20,9 @@ use stdClass;
  * NOTE: $searchMeta is only available for MongoDB Atlas clusters running MongoDB v4.4.9 or higher, and is not available for self-managed deployments.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/searchMeta/
+ * @internal
  */
-class SearchMetaStage implements StageInterface, OperatorInterface
+final class SearchMetaStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['meta' => 'meta'];

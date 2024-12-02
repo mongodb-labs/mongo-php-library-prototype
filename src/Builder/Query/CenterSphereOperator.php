@@ -22,8 +22,9 @@ use function is_array;
  * Specifies a circle using either legacy coordinate pairs or GeoJSON format for $geoWithin queries when using spherical geometry. The 2dsphere and 2d indexes support $centerSphere.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/centerSphere/
+ * @internal
  */
-class CenterSphereOperator implements GeometryInterface, OperatorInterface
+final class CenterSphereOperator implements GeometryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['value' => 'value'];

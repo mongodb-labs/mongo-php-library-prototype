@@ -25,8 +25,9 @@ use function is_array;
  * Evaluates a series of case expressions. When it finds an expression which evaluates to true, $switch executes a specified expression and breaks out of the control flow.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/switch/
+ * @internal
  */
-class SwitchOperator implements ResolvesToAny, OperatorInterface
+final class SwitchOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['branches' => 'branches', 'default' => 'default'];

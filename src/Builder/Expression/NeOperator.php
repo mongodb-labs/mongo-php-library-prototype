@@ -18,8 +18,9 @@ use stdClass;
  * Returns true if the values are not equivalent.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/ne/
+ * @internal
  */
-class NeOperator implements ResolvesToBool, OperatorInterface
+final class NeOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
     public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];

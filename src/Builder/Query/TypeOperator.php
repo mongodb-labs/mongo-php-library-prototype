@@ -19,8 +19,9 @@ use function array_is_list;
  * Selects documents if a field is of the specified type.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/type/
+ * @internal
  */
-class TypeOperator implements FieldQueryInterface, OperatorInterface
+final class TypeOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['type' => 'type'];

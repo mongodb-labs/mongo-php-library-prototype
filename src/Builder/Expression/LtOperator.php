@@ -18,8 +18,9 @@ use stdClass;
  * Returns true if the first value is less than the second.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/lt/
+ * @internal
  */
-class LtOperator implements ResolvesToBool, OperatorInterface
+final class LtOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
     public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];

@@ -25,8 +25,9 @@ use function is_array;
  * Sorts the elements of an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sortArray/
+ * @internal
  */
-class SortArrayOperator implements ResolvesToArray, OperatorInterface
+final class SortArrayOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['input' => 'input', 'sortBy' => 'sortBy'];

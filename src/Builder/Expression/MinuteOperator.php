@@ -19,8 +19,9 @@ use MongoDB\Builder\Type\Optional;
  * Returns the minute for a date as a number between 0 and 59.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/minute/
+ * @internal
  */
-class MinuteOperator implements ResolvesToInt, OperatorInterface
+final class MinuteOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['date' => 'date', 'timezone' => 'timezone'];

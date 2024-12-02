@@ -20,8 +20,9 @@ use stdClass;
  * Replaces a document with the specified embedded document. The operation replaces all existing fields in the input document, including the _id field. Specify a document embedded in the input document to promote the embedded document to the top level.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/replaceRoot/
+ * @internal
  */
-class ReplaceRootStage implements StageInterface, OperatorInterface
+final class ReplaceRootStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['newRoot' => 'newRoot'];

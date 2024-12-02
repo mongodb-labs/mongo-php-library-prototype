@@ -21,8 +21,9 @@ use function is_array;
  * Returns true if no element of a set evaluates to false, otherwise, returns false. Accepts a single argument expression.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/allElementsTrue/
+ * @internal
  */
-class AllElementsTrueOperator implements ResolvesToBool, OperatorInterface
+final class AllElementsTrueOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
     public const PROPERTIES = ['expression' => 'expression'];

@@ -19,8 +19,9 @@ use function is_string;
  * Matches documents that satisfy a JavaScript expression.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/where/
+ * @internal
  */
-class WhereOperator implements QueryInterface, OperatorInterface
+final class WhereOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['function' => 'function'];

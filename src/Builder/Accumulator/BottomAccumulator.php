@@ -23,8 +23,9 @@ use stdClass;
  * New in MongoDB 5.2: Available in the $group and $setWindowFields stages.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/bottom/
+ * @internal
  */
-class BottomAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class BottomAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['sortBy' => 'sortBy', 'output' => 'output'];

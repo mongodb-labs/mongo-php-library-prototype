@@ -19,8 +19,9 @@ use stdClass;
  * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/toBool/
+ * @internal
  */
-class ToBoolOperator implements ResolvesToBool, OperatorInterface
+final class ToBoolOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

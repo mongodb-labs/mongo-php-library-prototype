@@ -19,8 +19,9 @@ use stdClass;
  * $unsetField is an alias for $setField using $$REMOVE to remove fields.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/unsetField/
+ * @internal
  */
-class UnsetFieldOperator implements ResolvesToObject, OperatorInterface
+final class UnsetFieldOperator implements ResolvesToObject, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['field' => 'field', 'input' => 'input'];

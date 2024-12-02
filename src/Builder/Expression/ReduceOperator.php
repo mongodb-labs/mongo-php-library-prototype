@@ -24,8 +24,9 @@ use function is_array;
  * Applies an expression to each element in an array and combines them into a single value.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/reduce/
+ * @internal
  */
-class ReduceOperator implements ResolvesToAny, OperatorInterface
+final class ReduceOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['input' => 'input', 'initialValue' => 'initialValue', 'in' => 'in'];

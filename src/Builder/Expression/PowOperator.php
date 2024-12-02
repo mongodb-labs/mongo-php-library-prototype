@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Raises a number to the specified exponent.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/pow/
+ * @internal
  */
-class PowOperator implements ResolvesToNumber, OperatorInterface
+final class PowOperator implements ResolvesToNumber, OperatorInterface
 {
     public const ENCODE = Encode::Array;
     public const PROPERTIES = ['number' => 'number', 'exponent' => 'exponent'];

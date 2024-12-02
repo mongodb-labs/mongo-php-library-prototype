@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\Optional;
  * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/trim/
+ * @internal
  */
-class TrimOperator implements ResolvesToString, OperatorInterface
+final class TrimOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['input' => 'input', 'chars' => 'chars'];

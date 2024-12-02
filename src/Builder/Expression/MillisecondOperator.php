@@ -19,8 +19,9 @@ use MongoDB\Builder\Type\Optional;
  * Returns the milliseconds of a date as a number between 0 and 999.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/millisecond/
+ * @internal
  */
-class MillisecondOperator implements ResolvesToInt, OperatorInterface
+final class MillisecondOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['date' => 'date', 'timezone' => 'timezone'];

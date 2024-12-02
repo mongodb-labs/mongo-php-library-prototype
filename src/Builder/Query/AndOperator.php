@@ -19,8 +19,9 @@ use function array_is_list;
  * Joins query clauses with a logical AND returns all documents that match the conditions of both clauses.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/and/
+ * @internal
  */
-class AndOperator implements QueryInterface, OperatorInterface
+final class AndOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['queries' => 'queries'];

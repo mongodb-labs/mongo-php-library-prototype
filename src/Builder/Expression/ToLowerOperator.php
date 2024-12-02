@@ -15,8 +15,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Converts a string to lowercase. Accepts a single argument expression.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/toLower/
+ * @internal
  */
-class ToLowerOperator implements ResolvesToString, OperatorInterface
+final class ToLowerOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

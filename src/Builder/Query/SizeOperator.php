@@ -16,8 +16,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Selects documents if the array field is a specified size.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/size/
+ * @internal
  */
-class SizeOperator implements FieldQueryInterface, OperatorInterface
+final class SizeOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['value' => 'value'];

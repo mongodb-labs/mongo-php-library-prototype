@@ -18,8 +18,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Performs a modulo operation on the value of a field and selects documents with a specified result.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/mod/
+ * @internal
  */
-class ModOperator implements FieldQueryInterface, OperatorInterface
+final class ModOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Array;
     public const PROPERTIES = ['divisor' => 'divisor', 'remainder' => 'remainder'];

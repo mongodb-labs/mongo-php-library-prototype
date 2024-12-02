@@ -22,8 +22,9 @@ use function array_is_list;
  * Changed in MongoDB 5.0: Available in the $setWindowFields stage.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/stdDevPop/
+ * @internal
  */
-class StdDevPopOperator implements ResolvesToDouble, OperatorInterface
+final class StdDevPopOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

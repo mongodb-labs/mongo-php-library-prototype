@@ -15,8 +15,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Deprecated. Use $substrBytes or $substrCP.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/substr/
+ * @internal
  */
-class SubstrOperator implements ResolvesToString, OperatorInterface
+final class SubstrOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Array;
     public const PROPERTIES = ['string' => 'string', 'start' => 'start', 'length' => 'length'];

@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Calculates the log of a number in the specified base.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/log/
+ * @internal
  */
-class LogOperator implements ResolvesToDouble, OperatorInterface
+final class LogOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Array;
     public const PROPERTIES = ['number' => 'number', 'base' => 'base'];

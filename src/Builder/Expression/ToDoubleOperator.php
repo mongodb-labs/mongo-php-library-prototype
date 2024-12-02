@@ -19,8 +19,9 @@ use stdClass;
  * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/toDouble/
+ * @internal
  */
-class ToDoubleOperator implements ResolvesToDouble, OperatorInterface
+final class ToDoubleOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

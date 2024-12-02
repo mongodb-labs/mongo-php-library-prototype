@@ -22,8 +22,9 @@ use function is_array;
  * The $elemMatch operator matches documents that contain an array field with at least one element that matches all the specified query criteria.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/elemMatch/
+ * @internal
  */
-class ElemMatchOperator implements FieldQueryInterface, OperatorInterface
+final class ElemMatchOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['query' => 'query'];

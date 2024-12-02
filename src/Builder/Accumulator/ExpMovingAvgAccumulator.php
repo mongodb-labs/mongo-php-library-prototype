@@ -21,8 +21,9 @@ use MongoDB\Builder\Type\WindowInterface;
  * New in MongoDB 5.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/expMovingAvg/
+ * @internal
  */
-class ExpMovingAvgAccumulator implements WindowInterface, OperatorInterface
+final class ExpMovingAvgAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['input' => 'input', 'N' => 'N', 'alpha' => 'alpha'];

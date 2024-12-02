@@ -22,8 +22,9 @@ use MongoDB\Builder\Type\TimeUnit;
  * Truncates a date.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateTrunc/
+ * @internal
  */
-class DateTruncOperator implements ResolvesToDate, OperatorInterface
+final class DateTruncOperator implements ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

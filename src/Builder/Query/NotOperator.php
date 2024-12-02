@@ -18,8 +18,9 @@ use stdClass;
  * Inverts the effect of a query expression and returns documents that do not match the query expression.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/not/
+ * @internal
  */
-class NotOperator implements FieldQueryInterface, OperatorInterface
+final class NotOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

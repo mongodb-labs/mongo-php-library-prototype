@@ -25,8 +25,9 @@ use stdClass;
  * Available in the $group and $setWindowFields stages.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/topN/
+ * @internal
  */
-class TopNAccumulator implements AccumulatorInterface, OperatorInterface
+final class TopNAccumulator implements AccumulatorInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['n' => 'n', 'sortBy' => 'sortBy', 'output' => 'output'];

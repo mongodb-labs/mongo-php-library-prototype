@@ -16,8 +16,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * New in MongoDB 4.4.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/replaceOne/
+ * @internal
  */
-class ReplaceOneOperator implements ResolvesToString, OperatorInterface
+final class ReplaceOneOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['input' => 'input', 'find' => 'find', 'replacement' => 'replacement'];

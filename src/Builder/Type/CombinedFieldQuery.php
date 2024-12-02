@@ -23,8 +23,10 @@ use function str_starts_with;
 
 /**
  * List of field queries that apply to the same field path.
+ *
+ * @internal
  */
-class CombinedFieldQuery implements FieldQueryInterface
+final class CombinedFieldQuery implements FieldQueryInterface
 {
     /** @var list<QueryInterface|FieldQueryInterface|Type|stdClass|array|bool|float|int|string|null> $fieldQueries */
     public readonly array $fieldQueries;

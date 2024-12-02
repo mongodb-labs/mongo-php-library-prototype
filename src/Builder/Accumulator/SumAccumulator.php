@@ -21,8 +21,9 @@ use MongoDB\Builder\Type\WindowInterface;
  * Changed in MongoDB 5.0: Available in the $setWindowFields stage.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sum/
+ * @internal
  */
-class SumAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class SumAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

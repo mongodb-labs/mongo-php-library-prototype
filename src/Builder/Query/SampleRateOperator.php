@@ -18,8 +18,9 @@ use MongoDB\Builder\Type\QueryInterface;
  * Randomly select documents at a given rate. Although the exact number of documents selected varies on each run, the quantity chosen approximates the sample rate expressed as a percentage of the total number of documents.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sampleRate/
+ * @internal
  */
-class SampleRateOperator implements QueryInterface, OperatorInterface
+final class SampleRateOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['rate' => 'rate'];

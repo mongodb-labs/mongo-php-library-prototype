@@ -19,8 +19,9 @@ use function array_is_list;
  * Joins query clauses with a logical NOR returns all documents that fail to match both clauses.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/nor/
+ * @internal
  */
-class NorOperator implements QueryInterface, OperatorInterface
+final class NorOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['queries' => 'queries'];

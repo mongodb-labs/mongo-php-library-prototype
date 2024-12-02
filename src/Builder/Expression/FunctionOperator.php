@@ -24,8 +24,9 @@ use function is_string;
  * New in MongoDB 4.4.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/function/
+ * @internal
  */
-class FunctionOperator implements ResolvesToAny, OperatorInterface
+final class FunctionOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['body' => 'body', 'args' => 'args', 'lang' => 'lang'];

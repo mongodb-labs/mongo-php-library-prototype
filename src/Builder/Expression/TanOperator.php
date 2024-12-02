@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the tangent of a value that is measured in radians.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/tan/
+ * @internal
  */
-class TanOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class TanOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

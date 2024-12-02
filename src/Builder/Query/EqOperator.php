@@ -18,8 +18,9 @@ use stdClass;
  * Matches values that are equal to a specified value.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/eq/
+ * @internal
  */
-class EqOperator implements FieldQueryInterface, OperatorInterface
+final class EqOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['value' => 'value'];

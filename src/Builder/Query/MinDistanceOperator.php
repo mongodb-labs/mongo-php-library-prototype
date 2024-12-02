@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Specifies a minimum distance to limit the results of $near and $nearSphere queries. For use with 2dsphere index only.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/minDistance/
+ * @internal
  */
-class MinDistanceOperator implements FieldQueryInterface, OperatorInterface
+final class MinDistanceOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['value' => 'value'];

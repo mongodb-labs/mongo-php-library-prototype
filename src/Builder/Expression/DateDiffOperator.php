@@ -20,8 +20,9 @@ use MongoDB\Builder\Type\TimeUnit;
  * Returns the difference between two dates.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateDiff/
+ * @internal
  */
-class DateDiffOperator implements ResolvesToInt, OperatorInterface
+final class DateDiffOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

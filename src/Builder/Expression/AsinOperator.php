@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the inverse sin (arc sine) of a value in radians.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/asin/
+ * @internal
  */
-class AsinOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class AsinOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

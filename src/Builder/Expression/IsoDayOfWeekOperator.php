@@ -19,8 +19,9 @@ use MongoDB\Builder\Type\Optional;
  * Returns the weekday number in ISO 8601 format, ranging from 1 (for Monday) to 7 (for Sunday).
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/isoDayOfWeek/
+ * @internal
  */
-class IsoDayOfWeekOperator implements ResolvesToInt, OperatorInterface
+final class IsoDayOfWeekOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['date' => 'date', 'timezone' => 'timezone'];

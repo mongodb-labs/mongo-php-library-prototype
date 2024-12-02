@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the inverse hyperbolic cosine (hyperbolic arc cosine) of a value in radians.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/acosh/
+ * @internal
  */
-class AcoshOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class AcoshOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

@@ -19,8 +19,9 @@ use stdClass;
  * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/toInt/
+ * @internal
  */
-class ToIntOperator implements ResolvesToInt, OperatorInterface
+final class ToIntOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

@@ -24,8 +24,9 @@ use stdClass;
  * Available in the $group and $setWindowFields stages.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/top/
+ * @internal
  */
-class TopAccumulator implements AccumulatorInterface, OperatorInterface
+final class TopAccumulator implements AccumulatorInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['sortBy' => 'sortBy', 'output' => 'output'];

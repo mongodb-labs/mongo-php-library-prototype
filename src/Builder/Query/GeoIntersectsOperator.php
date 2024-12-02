@@ -20,8 +20,9 @@ use stdClass;
  * Selects geometries that intersect with a GeoJSON geometry. The 2dsphere index supports $geoIntersects.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/geoIntersects/
+ * @internal
  */
-class GeoIntersectsOperator implements FieldQueryInterface, OperatorInterface
+final class GeoIntersectsOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['geometry' => null];

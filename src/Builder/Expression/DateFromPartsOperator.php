@@ -18,8 +18,9 @@ use MongoDB\Builder\Type\Optional;
  * Constructs a BSON Date object given the date's constituent parts.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateFromParts/
+ * @internal
  */
-class DateFromPartsOperator implements ResolvesToDate, OperatorInterface
+final class DateFromPartsOperator implements ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

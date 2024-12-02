@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the sine of a value that is measured in radians.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sin/
+ * @internal
  */
-class SinOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class SinOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

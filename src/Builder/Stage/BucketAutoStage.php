@@ -22,8 +22,9 @@ use stdClass;
  * Categorizes incoming documents into a specific number of groups, called buckets, based on a specified expression. Bucket boundaries are automatically determined in an attempt to evenly distribute the documents into the specified number of buckets.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/bucketAuto/
+ * @internal
  */
-class BucketAutoStage implements StageInterface, OperatorInterface
+final class BucketAutoStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

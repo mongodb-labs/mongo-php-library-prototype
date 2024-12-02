@@ -23,8 +23,9 @@ use function is_string;
  * Alias for $addFields.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/set/
+ * @internal
  */
-class SetStage implements StageInterface, OperatorInterface
+final class SetStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['field' => 'field'];

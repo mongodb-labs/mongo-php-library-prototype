@@ -23,8 +23,9 @@ use function is_array;
  * Matches numeric or binary values in which any bit from a set of bit positions has a value of 1.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/bitsAnySet/
+ * @internal
  */
-class BitsAnySetOperator implements FieldQueryInterface, OperatorInterface
+final class BitsAnySetOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['bitmask' => 'bitmask'];

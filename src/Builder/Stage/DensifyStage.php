@@ -26,8 +26,9 @@ use function is_array;
  * Creates new documents in a sequence of documents where certain values in a field are missing.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/densify/
+ * @internal
  */
-class DensifyStage implements StageInterface, OperatorInterface
+final class DensifyStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['field' => 'field', 'range' => 'range', 'partitionByFields' => 'partitionByFields'];

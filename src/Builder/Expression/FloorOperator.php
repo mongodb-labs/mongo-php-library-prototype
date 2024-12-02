@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the largest integer less than or equal to the specified number.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/floor/
+ * @internal
  */
-class FloorOperator implements ResolvesToInt, OperatorInterface
+final class FloorOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

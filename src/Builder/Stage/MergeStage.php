@@ -28,8 +28,9 @@ use function is_array;
  * New in MongoDB 4.2.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/merge/
+ * @internal
  */
-class MergeStage implements StageInterface, OperatorInterface
+final class MergeStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

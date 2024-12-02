@@ -23,8 +23,9 @@ use stdClass;
  * If the group contains fewer than n elements, $firstN returns all elements in the group.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/firstN/
+ * @internal
  */
-class FirstNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class FirstNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['input' => 'input', 'n' => 'n'];

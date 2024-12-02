@@ -22,8 +22,9 @@ use function is_string;
  * Adds new fields to documents. Outputs documents that contain all existing fields from the input documents and newly added fields.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/addFields/
+ * @internal
  */
-class AddFieldsStage implements StageInterface, OperatorInterface
+final class AddFieldsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

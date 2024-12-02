@@ -21,8 +21,9 @@ use function is_array;
  * Returns the result of an expression for the first document in an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/first/
+ * @internal
  */
-class FirstOperator implements ResolvesToAny, OperatorInterface
+final class FirstOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

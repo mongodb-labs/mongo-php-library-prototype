@@ -18,8 +18,9 @@ use stdClass;
  * Returns 0 if the two values are equivalent, 1 if the first value is greater than the second, and -1 if the first value is less than the second.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/cmp/
+ * @internal
  */
-class CmpOperator implements ResolvesToInt, OperatorInterface
+final class CmpOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Array;
     public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];

@@ -21,8 +21,9 @@ use function array_is_list;
  * Combines multiple documents into a single document.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/mergeObjects/
+ * @internal
  */
-class MergeObjectsOperator implements ResolvesToObject, OperatorInterface
+final class MergeObjectsOperator implements ResolvesToObject, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['document' => 'document'];

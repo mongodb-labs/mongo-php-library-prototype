@@ -22,8 +22,9 @@ use function is_array;
  * Merge two arrays together.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/zip/
+ * @internal
  */
-class ZipOperator implements ResolvesToArray, OperatorInterface
+final class ZipOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['inputs' => 'inputs', 'useLongestLength' => 'useLongestLength', 'defaults' => 'defaults'];

@@ -20,8 +20,9 @@ use stdClass;
  * Returns statistics regarding a collection or view.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/collStats/
+ * @internal
  */
-class CollStatsStage implements StageInterface, OperatorInterface
+final class CollStatsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

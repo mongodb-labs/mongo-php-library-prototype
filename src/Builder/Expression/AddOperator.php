@@ -21,8 +21,9 @@ use function array_is_list;
  * Adds numbers to return the sum, or adds numbers and a date to return a new date. If adding numbers and a date, treats the numbers as milliseconds. Accepts any number of argument expressions, but at most, one expression can resolve to a date.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/add/
+ * @internal
  */
-class AddOperator implements ResolvesToInt, ResolvesToLong, ResolvesToDouble, ResolvesToDecimal, ResolvesToDate, OperatorInterface
+final class AddOperator implements ResolvesToInt, ResolvesToLong, ResolvesToDouble, ResolvesToDecimal, ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

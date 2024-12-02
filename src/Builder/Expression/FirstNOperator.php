@@ -21,8 +21,9 @@ use function is_array;
  * Returns a specified number of elements from the beginning of an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/firstN-array-element/
+ * @internal
  */
-class FirstNOperator implements ResolvesToArray, OperatorInterface
+final class FirstNOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['n' => 'n', 'input' => 'input'];

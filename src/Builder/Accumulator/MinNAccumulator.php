@@ -25,8 +25,9 @@ use function is_array;
  * Returns the n smallest values in an array. Distinct from the $minN accumulator.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/minN/
+ * @internal
  */
-class MinNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class MinNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['input' => 'input', 'n' => 'n'];

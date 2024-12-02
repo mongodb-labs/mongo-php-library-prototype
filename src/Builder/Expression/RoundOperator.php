@@ -18,8 +18,9 @@ use MongoDB\Builder\Type\Optional;
  * Rounds a number to a whole integer or to a specified decimal place.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/round/
+ * @internal
  */
-class RoundOperator implements ResolvesToInt, ResolvesToDouble, ResolvesToDecimal, ResolvesToLong, OperatorInterface
+final class RoundOperator implements ResolvesToInt, ResolvesToDouble, ResolvesToDecimal, ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Array;
     public const PROPERTIES = ['number' => 'number', 'place' => 'place'];

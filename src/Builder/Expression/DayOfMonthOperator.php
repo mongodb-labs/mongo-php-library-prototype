@@ -19,8 +19,9 @@ use MongoDB\Builder\Type\Optional;
  * Returns the day of the month for a date as a number between 1 and 31.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dayOfMonth/
+ * @internal
  */
-class DayOfMonthOperator implements ResolvesToInt, OperatorInterface
+final class DayOfMonthOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
     public const PROPERTIES = ['date' => 'date', 'timezone' => 'timezone'];

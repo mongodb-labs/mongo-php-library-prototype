@@ -18,8 +18,9 @@ use stdClass;
  * Matches values that are greater than a specified value.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/gt/
+ * @internal
  */
-class GtOperator implements FieldQueryInterface, OperatorInterface
+final class GtOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['value' => 'value'];

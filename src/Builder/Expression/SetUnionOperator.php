@@ -20,8 +20,9 @@ use function array_is_list;
  * Returns a set with elements that appear in any of the input sets.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/setUnion/
+ * @internal
  */
-class SetUnionOperator implements ResolvesToArray, OperatorInterface
+final class SetUnionOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

@@ -28,8 +28,9 @@ use function is_array;
  * Performs a recursive search on a collection. To each output document, adds a new array field that contains the traversal results of the recursive search for that document.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/graphLookup/
+ * @internal
  */
-class GraphLookupStage implements StageInterface, OperatorInterface
+final class GraphLookupStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 

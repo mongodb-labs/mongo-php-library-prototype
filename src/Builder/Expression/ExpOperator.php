@@ -17,8 +17,9 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Raises e to the specified exponent.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/exp/
+ * @internal
  */
-class ExpOperator implements ResolvesToDouble, OperatorInterface
+final class ExpOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['exponent' => 'exponent'];

@@ -19,8 +19,9 @@ use stdClass;
  * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/toString/
+ * @internal
  */
-class ToStringOperator implements ResolvesToString, OperatorInterface
+final class ToStringOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

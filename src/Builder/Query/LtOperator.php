@@ -18,8 +18,9 @@ use stdClass;
  * Matches values that are less than a specified value.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/lt/
+ * @internal
  */
-class LtOperator implements FieldQueryInterface, OperatorInterface
+final class LtOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['value' => 'value'];

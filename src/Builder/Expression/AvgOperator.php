@@ -21,8 +21,9 @@ use function array_is_list;
  * Changed in MongoDB 5.0: Available in the $setWindowFields stage.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/avg/
+ * @internal
  */
-class AvgOperator implements ResolvesToNumber, OperatorInterface
+final class AvgOperator implements ResolvesToNumber, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];

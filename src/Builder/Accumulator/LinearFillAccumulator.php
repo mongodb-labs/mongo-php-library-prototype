@@ -21,8 +21,9 @@ use MongoDB\Builder\Type\WindowInterface;
  * New in MongoDB 5.3.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/linearFill/
+ * @internal
  */
-class LinearFillAccumulator implements WindowInterface, OperatorInterface
+final class LinearFillAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const PROPERTIES = ['expression' => 'expression'];
