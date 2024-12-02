@@ -19,17 +19,18 @@ The `generator/config/*.yaml` files contains the list of operators and stages th
 
 ### Arguments
 
-| Field | Type | Description |
-| `name` | `string` | The name of the argument. It can start with `$` when the aggregation operator needs it, but it will be trimmed from the class property name. |
-| `type` | list of `string` | The list of accepted types |
-| `description` | `string` | The description of the argument from MongoDB's documentation. |
-| `optional` | `boolean` | Whether the argument is optional or not. |
-| `valueMin` | `number` | The minimum value for a numeric argument. |
-| `valueMax` | `number` | The maximum value for a numeric argument. |
-| `variadic` | `string` | If sent, the argument is variadic. Defines the format `array` for a list or `object` for a map |
-| `variadicMin` | `integer` | The minimum number of arguments for a variadic parameter. |
-| `default` | `scalar` or `array` | The default value for the argument. |
-| `mergeObject` | `bool` | Default `false`. If `true`, the value must be an object and the properties of the value object are merged into the parent operator. `$group` stage uses it for the fields. |
+| Field         | Type                | Description                                                                                                                                                               |
+|---------------|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`        | `string`            | The name of the argument. If it starts with `$`, the dollar is trimmed from the class property name                                                                       |
+| `type`        | list of `string`    | The list of accepted types                                                                                                                                                |
+| `description` | `string`            | The description of the argument from MongoDB's documentation                                                                                                              |
+| `optional`    | `boolean`           | Whether the argument is optional or not                                                                                                                                   |
+| `valueMin`    | `number`            | The minimum value for a numeric argument                                                                                                                                  |
+| `valueMax`    | `number`            | The maximum value for a numeric argument                                                                                                                                  |
+| `variadic`    | `string`            | If sent, the argument is variadic. Defines the format `array` for a list or `object` for a map                                                                            |
+| `variadicMin` | `integer`           | The minimum number of arguments for a variadic parameter                                                                                                                  |
+| `default`     | `scalar` or `array` | The default value for the argument                                                                                                                                        |
+| `mergeObject` | `bool`              | Default `false`. If `true`, the value must be an object and the properties of the value object are merged into the parent operator. `$group` stage uses it for the fields |
 
 ### Test pipelines
 

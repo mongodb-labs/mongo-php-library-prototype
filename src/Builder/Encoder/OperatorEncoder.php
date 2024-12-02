@@ -74,6 +74,8 @@ class OperatorEncoder extends AbstractExpressionEncoder
                 continue;
             }
 
+            // The name is null for arguments with "mergeObject: true" in the YAML file,
+            // the value properties are merged into the parent object.
             if ($name === null) {
                 $val = $this->recursiveEncode($val);
                 foreach ($val as $k => $v) {
