@@ -22,6 +22,5 @@ rector.php export-ignore
 /src/Builder/Accumulator/*.php linguist-generated=true
 /src/Builder/Expression/*.php linguist-generated=true
 /src/Builder/Query/*.php linguist-generated=true
-/src/Builder/Projection/*.php linguist-generated=true
 /src/Builder/Stage/*.php linguist-generated=true
 /tests/Builder/*/Pipelines.php linguist-generated=true
