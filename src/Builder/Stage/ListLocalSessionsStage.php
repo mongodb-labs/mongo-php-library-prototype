@@ -27,6 +27,7 @@ use function is_array;
 class ListLocalSessionsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['users' => 'users', 'allUsers' => 'allUsers'];
 
     /** @var Optional|BSONArray|PackedArray|array $users Returns all sessions for the specified users. If running with access control, the authenticated user must have privileges with listSessions action on the cluster to list sessions for other users. */
     public readonly Optional|PackedArray|BSONArray|array $users;

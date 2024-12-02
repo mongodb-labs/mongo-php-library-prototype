@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\QueryInterface;
 class SampleRateOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['rate' => 'rate'];
 
     /**
      * @var Int64|ResolvesToDouble|float|int $rate The selection process uses a uniform random distribution. The sample rate is a floating point number between 0 and 1, inclusive, which represents the probability that a given document will be selected as it passes through the pipeline.

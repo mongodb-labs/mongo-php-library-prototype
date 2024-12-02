@@ -24,6 +24,7 @@ use stdClass;
 class MergeObjectsAccumulator implements AccumulatorInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['document' => 'document'];
 
     /** @var Document|ResolvesToObject|Serializable|array|stdClass $document Any valid expression that resolves to a document. */
     public readonly Document|Serializable|ResolvesToObject|stdClass|array $document;

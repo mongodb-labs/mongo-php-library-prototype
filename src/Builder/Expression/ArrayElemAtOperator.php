@@ -25,6 +25,7 @@ use function is_array;
 class ArrayElemAtOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const PROPERTIES = ['array' => 'array', 'idx' => 'idx'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $array */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $array;

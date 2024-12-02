@@ -65,7 +65,7 @@ final class OperatorFactoryGenerator extends OperatorGenerator
                 $namespace->addUse($use);
             }
 
-            $parameter = $method->addParameter($argument->name);
+            $parameter = $method->addParameter($argument->propertyName);
             $parameter->setType($type->native);
             if ($argument->variadic) {
                 if ($argument->variadic === VariadicType::Array) {
@@ -75,8 +75,8 @@ final class OperatorFactoryGenerator extends OperatorGenerator
                 }
 
                 $method->setVariadic();
-                $method->addComment('@param ' . $type->doc . ' ...$' . $argument->name . rtrim(' ' . $argument->description));
-                $args[] = '...$' . $argument->name;
+                $method->addComment('@param ' . $type->doc . ' ...$' . $argument->propertyName . rtrim(' ' . $argument->description));
+                $args[] = '...$' . $argument->propertyName;
             } else {
                 if ($argument->optional) {
                     $parameter->setDefaultValue(new Literal('Optional::Undefined'));
@@ -84,8 +84,8 @@ final class OperatorFactoryGenerator extends OperatorGenerator
                     $parameter->setDefaultValue($argument->default);
                 }
 
-                $method->addComment('@param ' . $type->doc . ' $' . $argument->name . rtrim(' ' . $argument->description));
-                $args[] = '$' . $argument->name;
+                $method->addComment('@param ' . $type->doc . ' $' . $argument->propertyName . rtrim(' ' . $argument->description));
+                $args[] = '$' . $argument->propertyName;
             }
         }
 

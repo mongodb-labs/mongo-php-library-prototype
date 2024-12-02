@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class SizeOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var int $value */
     public readonly int $value;

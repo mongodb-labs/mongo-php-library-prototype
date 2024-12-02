@@ -28,6 +28,7 @@ use function is_array;
 class ReduceOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['input' => 'input', 'initialValue' => 'initialValue', 'in' => 'in'];
 
     /**
      * @var BSONArray|PackedArray|ResolvesToArray|array $input Can be any valid expression that resolves to an array.

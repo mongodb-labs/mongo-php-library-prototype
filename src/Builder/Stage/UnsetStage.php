@@ -25,6 +25,7 @@ use function array_is_list;
 class UnsetStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['field' => 'field'];
 
     /** @var list<FieldPath|string> $field */
     public readonly array $field;

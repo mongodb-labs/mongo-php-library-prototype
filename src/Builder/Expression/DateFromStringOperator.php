@@ -24,6 +24,14 @@ class DateFromStringOperator implements ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'dateString' => 'dateString',
+        'format' => 'format',
+        'timezone' => 'timezone',
+        'onError' => 'onError',
+        'onNull' => 'onNull',
+    ];
+
     /** @var ResolvesToString|string $dateString The date/time string to convert to a date object. */
     public readonly ResolvesToString|string $dateString;
 

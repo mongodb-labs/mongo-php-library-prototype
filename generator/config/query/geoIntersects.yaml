@@ -3,12 +3,13 @@ name: $geoIntersects
 link: 'https://www.mongodb.com/docs/manual/reference/operator/query/geoIntersects/'
 type:
     - fieldQuery
-encode: single
+encode: object
 description: |
     Selects geometries that intersect with a GeoJSON geometry. The 2dsphere index supports $geoIntersects.
 arguments:
     -
         name: geometry
+        mergeObject: true
         type:
             - geometry
 tests:

@@ -23,6 +23,7 @@ use function array_is_list;
 class OrOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['queries' => 'queries'];
 
     /** @var list<QueryInterface|array> $queries */
     public readonly array $queries;

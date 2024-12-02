@@ -24,6 +24,7 @@ use stdClass;
 class GetFieldOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['field' => 'field', 'input' => 'input'];
 
     /**
      * @var ResolvesToString|string $field Field in the input object for which you want to return a value. field can be any valid expression that resolves to a string constant.

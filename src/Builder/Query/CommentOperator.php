@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\QueryInterface;
 class CommentOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['comment' => 'comment'];
 
     /** @var string $comment */
     public readonly string $comment;

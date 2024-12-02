@@ -61,27 +61,30 @@ class OperatorClassGenerator extends OperatorGenerator
         $namespace->addUse(Encode::class);
         $class->addConstant('ENCODE', new Literal('Encode::' . $operator->encode->name));
 
-        $constuctor = $class->addMethod('__construct');
+        $encodeNames = [];
+        $constructor = $class->addMethod('__construct');
         foreach ($operator->arguments as $argument) {
+            $encodeNames[$argument->propertyName] = $argument->mergeObject ? null : $argument->name;
+
             $type = $this->getAcceptedTypes($argument);
             foreach ($type->use as $use) {
                 $namespace->addUse($use);
             }
 
-            $property = $class->addProperty($argument->name);
+            $property = $class->addProperty($argument->propertyName);
             $property->setReadOnly();
-            $constuctorParam = $constuctor->addParameter($argument->name);
-            $constuctorParam->setType($type->native);
+            $constructorParam = $constructor->addParameter($argument->propertyName);
+            $constructorParam->setType($type->native);
 
             if ($argument->variadic) {
-                $constuctor->setVariadic();
-                $constuctor->addComment('@param ' . $type->doc . ' ...$' . $argument->name . rtrim(' ' . $argument->description));
+                $constructor->setVariadic();
+                $constructor->addComment('@param ' . $type->doc . ' ...$' . $argument->propertyName . rtrim(' ' . $argument->description));
 
                 if ($argument->variadicMin > 0) {
                     $namespace->addUse(InvalidArgumentException::class);
-                    $constuctor->addBody(<<<PHP
-                    if (\count(\${$argument->name}) < {$argument->variadicMin}) {
-                        throw new InvalidArgumentException(\sprintf('Expected at least %d values for \${$argument->name}, got %d.', {$argument->variadicMin}, \count(\${$argument->name})));
+                    $constructor->addBody(<<<PHP
+                    if (\count(\${$argument->propertyName}) < {$argument->variadicMin}) {
+                        throw new InvalidArgumentException(\sprintf('Expected at least %d values for \${$argument->propertyName}, got %d.', {$argument->variadicMin}, \count(\${$argument->propertyName})));
                     }
 
                     PHP);
@@ -89,45 +92,45 @@ class OperatorClassGenerator extends OperatorGenerator
 
                 if ($argument->variadic === VariadicType::Array) {
                     $property->setType('array');
-                    $property->addComment('@var list<' . $type->doc . '> $' . $argument->name . rtrim(' ' . $argument->description));
+                    $property->addComment('@var list<' . $type->doc . '> $' . $argument->propertyName . rtrim(' ' . $argument->description));
                     // Warn that named arguments are not supported
                     // @see https://psalm.dev/docs/running_psalm/issues/NamedArgumentNotAllowed/
-                    $constuctor->addComment('@no-named-arguments');
+                    $constructor->addComment('@no-named-arguments');
                     $namespace->addUseFunction('array_is_list');
                     $namespace->addUse(InvalidArgumentException::class);
-                    $constuctor->addBody(<<<PHP
-                    if (! array_is_list(\${$argument->name})) {
-                        throw new InvalidArgumentException('Expected \${$argument->name} arguments to be a list (array), named arguments are not supported');
+                    $constructor->addBody(<<<PHP
+                    if (! array_is_list(\${$argument->propertyName})) {
+                        throw new InvalidArgumentException('Expected \${$argument->propertyName} arguments to be a list (array), named arguments are not supported');
                     }
 
                     PHP);
                 } elseif ($argument->variadic === VariadicType::Object) {
                     $namespace->addUse(stdClass::class);
                     $property->setType(stdClass::class);
-                    $property->addComment('@var stdClass<' . $type->doc . '> $' . $argument->name . rtrim(' ' . $argument->description));
+                    $property->addComment('@var stdClass<' . $type->doc . '> $' . $argument->propertyName . rtrim(' ' . $argument->description));
                     $namespace->addUseFunction('is_string');
                     $namespace->addUse(InvalidArgumentException::class);
-                    $constuctor->addBody(<<<PHP
-                    foreach(\${$argument->name} as \$key => \$value) {
+                    $constructor->addBody(<<<PHP
+                    foreach(\${$argument->propertyName} as \$key => \$value) {
                         if (! is_string(\$key)) {
-                            throw new InvalidArgumentException('Expected \${$argument->name} arguments to be a map (object), named arguments (<name>:<value>) or array unpacking ...[\'<name>\' => <value>] must be used');
+                            throw new InvalidArgumentException('Expected \${$argument->propertyName} arguments to be a map (object), named arguments (<name>:<value>) or array unpacking ...[\'<name>\' => <value>] must be used');
                         }
                     }
 
-                    \${$argument->name} = (object) \${$argument->name};
+                    \${$argument->propertyName} = (object) \${$argument->propertyName};
                     PHP);
                 }
             } else {
                 // Non-variadic arguments
-                $property->addComment('@var ' . $type->doc . ' $' . $argument->name . rtrim(' ' . $argument->description));
+                $property->addComment('@var ' . $type->doc . ' $' . $argument->propertyName . rtrim(' ' . $argument->description));
                 $property->setType($type->native);
-                $constuctor->addComment('@param ' . $type->doc . ' $' . $argument->name . rtrim(' ' . $argument->description));
+                $constructor->addComment('@param ' . $type->doc . ' $' . $argument->propertyName . rtrim(' ' . $argument->description));
 
                 if ($argument->optional) {
                     // We use a special Optional::Undefined type to differentiate between null and undefined
-                    $constuctorParam->setDefaultValue(new Literal('Optional::Undefined'));
+                    $constructorParam->setDefaultValue(new Literal('Optional::Undefined'));
                 } elseif ($argument->default !== null) {
-                    $constuctorParam->setDefaultValue($argument->default);
+                    $constructorParam->setDefaultValue($argument->default);
                 }
 
                 // List type must be validated with array_is_list()
@@ -135,9 +138,9 @@ class OperatorClassGenerator extends OperatorGenerator
                     $namespace->addUseFunction('is_array');
                     $namespace->addUseFunction('array_is_list');
                     $namespace->addUse(InvalidArgumentException::class);
-                    $constuctor->addBody(<<<PHP
-                    if (is_array(\${$argument->name}) && ! array_is_list(\${$argument->name})) {
-                        throw new InvalidArgumentException('Expected \${$argument->name} argument to be a list, got an associative array.');
+                    $constructor->addBody(<<<PHP
+                    if (is_array(\${$argument->propertyName}) && ! array_is_list(\${$argument->propertyName})) {
+                        throw new InvalidArgumentException('Expected \${$argument->propertyName} argument to be a list, got an associative array.');
                     }
 
                     PHP);
@@ -146,9 +149,9 @@ class OperatorClassGenerator extends OperatorGenerator
                 if ($type->query) {
                     $namespace->addUseFunction('is_array');
                     $namespace->addUse(QueryObject::class);
-                    $constuctor->addBody(<<<PHP
-                    if (is_array(\${$argument->name})) {
-                        \${$argument->name} = QueryObject::create(\${$argument->name});
+                    $constructor->addBody(<<<PHP
+                    if (is_array(\${$argument->propertyName})) {
+                        \${$argument->propertyName} = QueryObject::create(\${$argument->propertyName});
                     }
 
                     PHP);
@@ -157,9 +160,9 @@ class OperatorClassGenerator extends OperatorGenerator
                 if ($type->javascript) {
                     $namespace->addUseFunction('is_string');
                     $namespace->addUse(Javascript::class);
-                    $constuctor->addBody(<<<PHP
-                    if (is_string(\${$argument->name})) {
-                        \${$argument->name} = new Javascript(\${$argument->name});
+                    $constructor->addBody(<<<PHP
+                    if (is_string(\${$argument->propertyName})) {
+                        \${$argument->propertyName} = new Javascript(\${$argument->propertyName});
                     }
 
                     PHP);
@@ -167,7 +170,11 @@ class OperatorClassGenerator extends OperatorGenerator
             }
 
             // Set property from constructor argument
-            $constuctor->addBody('$this->' . $argument->name . ' = $' . $argument->name . ';');
+            $constructor->addBody('$this->' . $argument->propertyName . ' = $' . $argument->propertyName . ';');
+        }
+
+        if ($encodeNames !== []) {
+            $class->addConstant('PROPERTIES', $encodeNames);
         }
 
         $class->addMethod('getOperator')

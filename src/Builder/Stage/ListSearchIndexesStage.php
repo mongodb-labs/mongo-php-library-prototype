@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\StageInterface;
 class ListSearchIndexesStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['id' => 'id', 'name' => 'name'];
 
     /** @var Optional|string $id The id of the index to return information about. */
     public readonly Optional|string $id;

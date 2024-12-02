@@ -24,6 +24,7 @@ use stdClass;
 class SearchStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['search' => 'search'];
 
     /** @var Document|Serializable|array|stdClass $search */
     public readonly Document|Serializable|stdClass|array $search;

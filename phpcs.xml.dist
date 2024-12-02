@@ -160,4 +160,7 @@
     <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps">
         <exclude-pattern>/tests/SpecTests/*/Prose*</exclude-pattern>
     </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.UselessConstantTypeHint.UselessDocComment">
+        <exclude-pattern>src/Builder/Type/OperatorInterface.php</exclude-pattern>
+    </rule>
 </ruleset>

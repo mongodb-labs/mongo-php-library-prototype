@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class ModOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const PROPERTIES = ['dividend' => 'dividend', 'divisor' => 'divisor'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $dividend The first argument is the dividend, and the second argument is the divisor; i.e. first argument is divided by the second argument. */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $dividend;

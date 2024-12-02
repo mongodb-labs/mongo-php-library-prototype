@@ -24,6 +24,7 @@ use stdClass;
 class ShiftAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['output' => 'output', 'by' => 'by', 'default' => 'default'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $output Specifies an expression to evaluate and return in the output. */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $output;

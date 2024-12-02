@@ -33,6 +33,17 @@ class GraphLookupStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'from' => 'from',
+        'startWith' => 'startWith',
+        'connectFromField' => 'connectFromField',
+        'connectToField' => 'connectToField',
+        'as' => 'as',
+        'maxDepth' => 'maxDepth',
+        'depthField' => 'depthField',
+        'restrictSearchWithMatch' => 'restrictSearchWithMatch',
+    ];
+
     /**
      * @var string $from Target collection for the $graphLookup operation to search, recursively matching the connectFromField to the connectToField. The from collection must be in the same database as any other collections used in the operation.
      * Starting in MongoDB 5.1, the collection specified in the from parameter can be sharded.

@@ -32,6 +32,15 @@ class LookupStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'as' => 'as',
+        'from' => 'from',
+        'localField' => 'localField',
+        'foreignField' => 'foreignField',
+        'let' => 'let',
+        'pipeline' => 'pipeline',
+    ];
+
     /** @var string $as Specifies the name of the new array field to add to the input documents. The new array field contains the matching documents from the from collection. If the specified name already exists in the input document, the existing field is overwritten. */
     public readonly string $as;
 

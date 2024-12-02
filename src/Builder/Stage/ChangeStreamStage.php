@@ -26,6 +26,16 @@ class ChangeStreamStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'allChangesForCluster' => 'allChangesForCluster',
+        'fullDocument' => 'fullDocument',
+        'fullDocumentBeforeChange' => 'fullDocumentBeforeChange',
+        'resumeAfter' => 'resumeAfter',
+        'showExpandedEvents' => 'showExpandedEvents',
+        'startAfter' => 'startAfter',
+        'startAtOperationTime' => 'startAtOperationTime',
+    ];
+
     /** @var Optional|bool $allChangesForCluster A flag indicating whether the stream should report all changes that occur on the deployment, aside from those on internal databases or collections. */
     public readonly Optional|bool $allChangesForCluster;
 

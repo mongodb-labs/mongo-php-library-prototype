@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class BinarySizeOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Binary|ResolvesToBinData|ResolvesToNull|ResolvesToString|null|string $expression */
     public readonly Binary|ResolvesToBinData|ResolvesToNull|ResolvesToString|null|string $expression;

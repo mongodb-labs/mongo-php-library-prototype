@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class AcoshOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /**
      * @var Decimal128|Int64|ResolvesToNumber|float|int $expression $acosh takes any valid expression that resolves to a number between 1 and +Infinity, e.g. 1 <= value <= +Infinity.

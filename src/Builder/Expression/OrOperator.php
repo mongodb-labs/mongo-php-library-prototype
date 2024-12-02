@@ -25,6 +25,7 @@ use function array_is_list;
 class OrOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<ExpressionInterface|ResolvesToBool|Type|array|bool|float|int|null|stdClass|string> $expression */
     public readonly array $expression;

@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class SqrtOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['number' => 'number'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $number The argument can be any valid expression as long as it resolves to a non-negative number. */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $number;

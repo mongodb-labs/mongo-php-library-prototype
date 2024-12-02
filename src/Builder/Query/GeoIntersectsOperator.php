@@ -23,7 +23,8 @@ use stdClass;
  */
 class GeoIntersectsOperator implements FieldQueryInterface, OperatorInterface
 {
-    public const ENCODE = Encode::Single;
+    public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['geometry' => null];
 
     /** @var Document|GeometryInterface|Serializable|array|stdClass $geometry */
     public readonly Document|Serializable|GeometryInterface|stdClass|array $geometry;

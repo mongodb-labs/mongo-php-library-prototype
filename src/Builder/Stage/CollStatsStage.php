@@ -25,6 +25,13 @@ class CollStatsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'latencyStats' => 'latencyStats',
+        'storageStats' => 'storageStats',
+        'count' => 'count',
+        'queryExecStats' => 'queryExecStats',
+    ];
+
     /** @var Optional|Document|Serializable|array|stdClass $latencyStats */
     public readonly Optional|Document|Serializable|stdClass|array $latencyStats;
 

@@ -27,6 +27,7 @@ use function is_string;
 class FacetStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['facet' => 'facet'];
 
     /** @var stdClass<BSONArray|PackedArray|Pipeline|array> $facet */
     public readonly stdClass $facet;

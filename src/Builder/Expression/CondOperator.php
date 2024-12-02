@@ -22,6 +22,7 @@ use stdClass;
 class CondOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['if' => 'if', 'then' => 'then', 'else' => 'else'];
 
     /** @var ResolvesToBool|bool $if */
     public readonly ResolvesToBool|bool $if;

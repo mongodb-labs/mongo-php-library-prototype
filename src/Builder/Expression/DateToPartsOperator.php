@@ -23,6 +23,7 @@ use MongoDB\Builder\Type\Optional;
 class DateToPartsOperator implements ResolvesToObject, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['date' => 'date', 'timezone' => 'timezone', 'iso8601' => 'iso8601'];
 
     /** @var ObjectId|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|Timestamp|UTCDateTime|int $date The input date for which to return parts. date can be any expression that resolves to a Date, a Timestamp, or an ObjectID. */
     public readonly ObjectId|Timestamp|UTCDateTime|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|int $date;

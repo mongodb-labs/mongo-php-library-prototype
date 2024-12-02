@@ -29,6 +29,7 @@ use MongoDB\Builder\Type\WindowInterface;
 class IntegralAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['input' => 'input', 'unit' => 'unit'];
 
     /** @var Decimal128|Int64|ResolvesToDate|ResolvesToNumber|UTCDateTime|float|int $input */
     public readonly Decimal128|Int64|UTCDateTime|ResolvesToDate|ResolvesToNumber|float|int $input;

@@ -22,6 +22,7 @@ use stdClass;
 class ToHashedIndexKeyOperator implements ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $value key or string to hash */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $value;

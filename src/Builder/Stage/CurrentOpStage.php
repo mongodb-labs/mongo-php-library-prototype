@@ -22,6 +22,14 @@ class CurrentOpStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'allUsers' => 'allUsers',
+        'idleConnections' => 'idleConnections',
+        'idleCursors' => 'idleCursors',
+        'idleSessions' => 'idleSessions',
+        'localOps' => 'localOps',
+    ];
+
     /** @var Optional|bool $allUsers */
     public readonly Optional|bool $allUsers;
 

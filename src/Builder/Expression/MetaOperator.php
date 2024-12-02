@@ -19,6 +19,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class MetaOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['keyword' => 'keyword'];
 
     /** @var string $keyword */
     public readonly string $keyword;

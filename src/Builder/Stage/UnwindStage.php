@@ -23,6 +23,12 @@ class UnwindStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'path' => 'path',
+        'includeArrayIndex' => 'includeArrayIndex',
+        'preserveNullAndEmptyArrays' => 'preserveNullAndEmptyArrays',
+    ];
+
     /** @var ArrayFieldPath|string $path Field path to an array field. */
     public readonly ArrayFieldPath|string $path;
 

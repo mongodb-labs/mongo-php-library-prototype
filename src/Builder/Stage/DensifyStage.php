@@ -30,6 +30,7 @@ use function is_array;
 class DensifyStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['field' => 'field', 'range' => 'range', 'partitionByFields' => 'partitionByFields'];
 
     /**
      * @var string $field The field to densify. The values of the specified field must either be all numeric values or all dates.

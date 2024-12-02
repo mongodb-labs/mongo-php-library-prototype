@@ -24,6 +24,7 @@ use function array_is_list;
 class SetEqualsOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<BSONArray|PackedArray|ResolvesToArray|array> $expression */
     public readonly array $expression;

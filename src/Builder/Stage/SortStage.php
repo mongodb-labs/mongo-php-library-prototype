@@ -27,6 +27,7 @@ use function is_string;
 class SortStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['sort' => 'sort'];
 
     /** @var stdClass<ExpressionInterface|Sort|Type|array|bool|float|int|null|stdClass|string> $sort */
     public readonly stdClass $sort;

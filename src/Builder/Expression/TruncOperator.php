@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\Optional;
 class TruncOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const PROPERTIES = ['number' => 'number', 'place' => 'place'];
 
     /**
      * @var Decimal128|Int64|ResolvesToNumber|float|int $number Can be any valid expression that resolves to a number. Specifically, the expression must resolve to an integer, double, decimal, or long.

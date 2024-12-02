@@ -24,6 +24,7 @@ use function array_is_list;
 class BitAndOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<Int64|ResolvesToInt|ResolvesToLong|int> $expression */
     public readonly array $expression;

@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class Atan2Operator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const PROPERTIES = ['y' => 'y', 'x' => 'x'];
 
     /**
      * @var Decimal128|Int64|ResolvesToNumber|float|int $y $atan2 takes any valid expression that resolves to a number.

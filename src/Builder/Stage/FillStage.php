@@ -31,6 +31,13 @@ class FillStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'output' => 'output',
+        'partitionBy' => 'partitionBy',
+        'partitionByFields' => 'partitionByFields',
+        'sortBy' => 'sortBy',
+    ];
+
     /**
      * @var Document|Serializable|array|stdClass $output Specifies an object containing each field for which to fill missing values. You can specify multiple fields in the output object.
      * The object name is the name of the field to fill. The object value specifies how the field is filled.

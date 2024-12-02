@@ -24,6 +24,7 @@ use function is_array;
 class MatchStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['query' => 'query'];
 
     /** @var QueryInterface|array $query */
     public readonly QueryInterface|array $query;

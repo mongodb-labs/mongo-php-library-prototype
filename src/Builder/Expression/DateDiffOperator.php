@@ -25,6 +25,14 @@ class DateDiffOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'startDate' => 'startDate',
+        'endDate' => 'endDate',
+        'unit' => 'unit',
+        'timezone' => 'timezone',
+        'startOfWeek' => 'startOfWeek',
+    ];
+
     /** @var ObjectId|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|Timestamp|UTCDateTime|int $startDate The start of the time period. The startDate can be any expression that resolves to a Date, a Timestamp, or an ObjectID. */
     public readonly ObjectId|Timestamp|UTCDateTime|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|int $startDate;
 

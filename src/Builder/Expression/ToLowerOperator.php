@@ -19,6 +19,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class ToLowerOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var ResolvesToString|string $expression */
     public readonly ResolvesToString|string $expression;

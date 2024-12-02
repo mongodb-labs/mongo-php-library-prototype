@@ -29,6 +29,7 @@ use function is_array;
 class SwitchOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['branches' => 'branches', 'default' => 'default'];
 
     /**
      * @var BSONArray|PackedArray|array $branches An array of control branch documents. Each branch is a document with the following fields:

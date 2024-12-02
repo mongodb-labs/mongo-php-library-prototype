@@ -26,6 +26,7 @@ use function is_array;
 class ZipOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['inputs' => 'inputs', 'useLongestLength' => 'useLongestLength', 'defaults' => 'defaults'];
 
     /**
      * @var BSONArray|PackedArray|ResolvesToArray|array $inputs An array of expressions that resolve to arrays. The elements of these input arrays combine to form the arrays of the output array.

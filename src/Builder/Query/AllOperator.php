@@ -25,6 +25,7 @@ use function array_is_list;
 class AllOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var list<FieldQueryInterface|Type|array|bool|float|int|null|stdClass|string> $value */
     public readonly array $value;

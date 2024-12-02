@@ -61,9 +61,7 @@
                         "array",
                         "object",
                         "flat_object",
-                        "dollar_object",
-                        "single",
-                        "group"
+                        "single"
                     ]
                 },
                 "description": {
@@ -100,7 +98,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "pattern": "^(_?[a-z][a-zA-Z0-9]*|N)$"
+                    "pattern": "^([_$]?[a-z][a-zA-Z0-9]*|N)$"
                 },
                 "type": {
                     "type": "array",
@@ -150,7 +148,7 @@
                     "type": "number"
                 },
                 "valueMax": {
-                    "$comment": "The minimum value for a numeric argument.",
+                    "$comment": "The maximum value for a numeric argument.",
                     "type": "number"
                 },
                 "variadic": {
@@ -169,6 +167,11 @@
                 "default": {
                     "$comment": "The default value for the argument.",
                     "type": ["array", "boolean", "number", "string"]
+                },
+                "mergeObject": {
+                    "$comment": "Skip the name in object encoding and merge the properties of the value into the operator",
+                    "type": "boolean",
+                    "default": false
                 }
             },
             "required": [

@@ -33,6 +33,14 @@ class MergeStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
 
+    public const PROPERTIES = [
+        'into' => 'into',
+        'on' => 'on',
+        'let' => 'let',
+        'whenMatched' => 'whenMatched',
+        'whenNotMatched' => 'whenNotMatched',
+    ];
+
     /** @var Document|Serializable|array|stdClass|string $into The output collection. */
     public readonly Document|Serializable|stdClass|array|string $into;
 

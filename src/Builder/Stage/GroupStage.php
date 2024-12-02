@@ -28,7 +28,8 @@ use function is_string;
  */
 class GroupStage implements StageInterface, OperatorInterface
 {
-    public const ENCODE = Encode::Group;
+    public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['_id' => '_id', 'field' => null];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $_id The _id expression specifies the group key. If you specify an _id value of null, or any other constant value, the $group stage returns a single document that aggregates values across all of the input documents. */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $_id;

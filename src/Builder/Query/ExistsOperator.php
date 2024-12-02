@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 class ExistsOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['exists' => 'exists'];
 
     /** @var bool $exists */
     public readonly bool $exists;

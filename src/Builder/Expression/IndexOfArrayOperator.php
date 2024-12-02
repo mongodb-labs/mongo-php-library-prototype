@@ -29,6 +29,7 @@ use function is_array;
 class IndexOfArrayOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const PROPERTIES = ['array' => 'array', 'search' => 'search', 'start' => 'start', 'end' => 'end'];
 
     /**
      * @var BSONArray|PackedArray|ResolvesToArray|array $array Can be any valid expression as long as it resolves to an array.

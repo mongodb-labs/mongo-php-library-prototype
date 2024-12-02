@@ -29,19 +29,9 @@ enum Encode
     case FlatObject;
 
     /**
-     * Parameters are encoded as an object with keys matching the parameter names prefixed with a dollar sign ($)
-     */
-    case DollarObject;
-
-    /**
      * Get the single parameter value
      */
     case Single;
-
-    /**
-     * Specific for $group stage
-     */
-    case Group;
 
     /**
      * Default case used in the interface; implementing classes are expected to override this value

@@ -25,6 +25,7 @@ use MongoDB\Builder\Type\WindowInterface;
 class ExpMovingAvgAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['input' => 'input', 'N' => 'N', 'alpha' => 'alpha'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $input */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $input;

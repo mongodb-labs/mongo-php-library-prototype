@@ -21,6 +21,7 @@ use stdClass;
 class LiteralOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var Type|array|bool|float|int|null|stdClass|string $value If the value is an expression, $literal does not evaluate the expression but instead returns the unparsed expression. */
     public readonly Type|stdClass|array|bool|float|int|null|string $value;

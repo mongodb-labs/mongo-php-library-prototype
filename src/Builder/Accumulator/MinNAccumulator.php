@@ -29,6 +29,7 @@ use function is_array;
 class MinNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['input' => 'input', 'n' => 'n'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $input An expression that resolves to the array from which to return the maximal n elements. */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $input;

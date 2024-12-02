@@ -28,6 +28,7 @@ use function is_string;
 class FunctionOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const PROPERTIES = ['body' => 'body', 'args' => 'args', 'lang' => 'lang'];
 
     /**
      * @var Javascript|string $body The function definition. You can specify the function definition as either BSON\JavaScript or string.
