@@ -23,6 +23,7 @@ use MongoDB\Builder\Type\Optional;
 final class TruncOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$trunc';
     public const PROPERTIES = ['number' => 'number', 'place' => 'place'];
 
     /**
@@ -45,10 +46,5 @@ final class TruncOperator implements ResolvesToString, OperatorInterface
     ) {
         $this->number = $number;
         $this->place = $place;
-    }
-
-    public function getOperator(): string
-    {
-        return '$trunc';
     }
 }

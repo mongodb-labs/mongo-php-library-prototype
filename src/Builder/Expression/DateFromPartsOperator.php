@@ -23,6 +23,7 @@ use MongoDB\Builder\Type\Optional;
 final class DateFromPartsOperator implements ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$dateFromParts';
 
     public const PROPERTIES = [
         'year' => 'year',
@@ -108,10 +109,5 @@ final class DateFromPartsOperator implements ResolvesToDate, OperatorInterface
         $this->second = $second;
         $this->millisecond = $millisecond;
         $this->timezone = $timezone;
-    }
-
-    public function getOperator(): string
-    {
-        return '$dateFromParts';
     }
 }

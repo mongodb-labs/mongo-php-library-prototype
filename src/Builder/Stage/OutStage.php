@@ -24,6 +24,7 @@ use stdClass;
 final class OutStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$out';
     public const PROPERTIES = ['coll' => 'coll'];
 
     /** @var Document|Serializable|array|stdClass|string $coll Target database name to write documents from $out to. */
@@ -35,10 +36,5 @@ final class OutStage implements StageInterface, OperatorInterface
     public function __construct(Document|Serializable|stdClass|array|string $coll)
     {
         $this->coll = $coll;
-    }
-
-    public function getOperator(): string
-    {
-        return '$out';
     }
 }

@@ -25,6 +25,7 @@ use stdClass;
 final class ShiftAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$shift';
     public const PROPERTIES = ['output' => 'output', 'by' => 'by', 'default' => 'default'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $output Specifies an expression to evaluate and return in the output. */
@@ -65,10 +66,5 @@ final class ShiftAccumulator implements WindowInterface, OperatorInterface
         $this->output = $output;
         $this->by = $by;
         $this->default = $default;
-    }
-
-    public function getOperator(): string
-    {
-        return '$shift';
     }
 }

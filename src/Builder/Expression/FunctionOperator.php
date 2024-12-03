@@ -29,6 +29,7 @@ use function is_string;
 final class FunctionOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$function';
     public const PROPERTIES = ['body' => 'body', 'args' => 'args', 'lang' => 'lang'];
 
     /**
@@ -62,10 +63,5 @@ final class FunctionOperator implements ResolvesToAny, OperatorInterface
 
         $this->args = $args;
         $this->lang = $lang;
-    }
-
-    public function getOperator(): string
-    {
-        return '$function';
     }
 }

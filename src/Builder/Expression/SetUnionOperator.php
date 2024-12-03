@@ -25,6 +25,7 @@ use function array_is_list;
 final class SetUnionOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$setUnion';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<BSONArray|PackedArray|ResolvesToArray|array> $expression */
@@ -45,10 +46,5 @@ final class SetUnionOperator implements ResolvesToArray, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$setUnion';
     }
 }

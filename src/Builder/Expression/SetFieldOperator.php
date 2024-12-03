@@ -26,6 +26,7 @@ use stdClass;
 final class SetFieldOperator implements ResolvesToObject, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$setField';
     public const PROPERTIES = ['field' => 'field', 'input' => 'input', 'value' => 'value'];
 
     /** @var ResolvesToString|string $field Field in the input object that you want to add, update, or remove. field can be any valid expression that resolves to a string constant. */
@@ -54,10 +55,5 @@ final class SetFieldOperator implements ResolvesToObject, OperatorInterface
         $this->field = $field;
         $this->input = $input;
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$setField';
     }
 }

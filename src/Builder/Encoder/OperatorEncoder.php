@@ -12,6 +12,8 @@ use MongoDB\Codec\EncodeIfSupported;
 use MongoDB\Exception\UnsupportedValueException;
 use stdClass;
 
+use function assert;
+use function is_string;
 use function sprintf;
 
 /**
@@ -37,7 +39,7 @@ final class OperatorEncoder extends AbstractExpressionEncoder
         return match ($value::ENCODE) {
             Encode::Single => $this->encodeAsSingle($value),
             Encode::Array => $this->encodeAsArray($value),
-            Encode::Object, Encode::FlatObject => $this->encodeAsObject($value),
+            Encode::Object => $this->encodeAsObject($value),
             default => throw new LogicException(sprintf('Class "%s" does not have a valid ENCODE constant.', $value::class)),
         };
     }
@@ -89,9 +91,11 @@ final class OperatorEncoder extends AbstractExpressionEncoder
             }
         }
 
-        return $value::ENCODE === Encode::FlatObject
-            ? $result
-            : $this->wrap($value, $result);
+        if ($value::NAME === null) {
+            return $result;
+        }
+
+        return $this->wrap($value, $result);
     }
 
     /**
@@ -110,8 +114,10 @@ final class OperatorEncoder extends AbstractExpressionEncoder
 
     private function wrap(OperatorInterface $value, mixed $result): stdClass
     {
+        assert(is_string($value::NAME));
+
         $object = new stdClass();
-        $object->{$value->getOperator()} = $result;
+        $object->{$value::NAME} = $result;
 
         return $object;
     }

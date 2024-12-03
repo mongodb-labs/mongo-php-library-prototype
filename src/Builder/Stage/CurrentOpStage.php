@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\StageInterface;
 final class CurrentOpStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$currentOp';
 
     public const PROPERTIES = [
         'allUsers' => 'allUsers',
@@ -65,10 +66,5 @@ final class CurrentOpStage implements StageInterface, OperatorInterface
         $this->idleCursors = $idleCursors;
         $this->idleSessions = $idleSessions;
         $this->localOps = $localOps;
-    }
-
-    public function getOperator(): string
-    {
-        return '$currentOp';
     }
 }

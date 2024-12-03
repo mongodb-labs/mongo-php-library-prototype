@@ -27,6 +27,7 @@ use function is_string;
 final class ProjectStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$project';
     public const PROPERTIES = ['specification' => 'specification'];
 
     /** @var stdClass<ExpressionInterface|Type|array|bool|float|int|null|stdClass|string> $specification */
@@ -49,10 +50,5 @@ final class ProjectStage implements StageInterface, OperatorInterface
 
         $specification = (object) $specification;
         $this->specification = $specification;
-    }
-
-    public function getOperator(): string
-    {
-        return '$project';
     }
 }

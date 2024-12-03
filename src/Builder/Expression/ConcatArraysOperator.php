@@ -25,6 +25,7 @@ use function array_is_list;
 final class ConcatArraysOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$concatArrays';
     public const PROPERTIES = ['array' => 'array'];
 
     /** @var list<BSONArray|PackedArray|ResolvesToArray|array> $array */
@@ -45,10 +46,5 @@ final class ConcatArraysOperator implements ResolvesToArray, OperatorInterface
         }
 
         $this->array = $array;
-    }
-
-    public function getOperator(): string
-    {
-        return '$concatArrays';
     }
 }

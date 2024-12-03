@@ -26,6 +26,7 @@ use stdClass;
 final class ReplaceWithStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$replaceWith';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Document|ResolvesToObject|Serializable|array|stdClass $expression */
@@ -37,10 +38,5 @@ final class ReplaceWithStage implements StageInterface, OperatorInterface
     public function __construct(Document|Serializable|ResolvesToObject|stdClass|array $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$replaceWith';
     }
 }

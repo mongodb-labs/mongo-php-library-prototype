@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class ExistsOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$exists';
     public const PROPERTIES = ['exists' => 'exists'];
 
     /** @var bool $exists */
@@ -32,10 +33,5 @@ final class ExistsOperator implements FieldQueryInterface, OperatorInterface
     public function __construct(bool $exists = true)
     {
         $this->exists = $exists;
-    }
-
-    public function getOperator(): string
-    {
-        return '$exists';
     }
 }

@@ -25,6 +25,7 @@ use stdClass;
 final class GeoIntersectsOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$geoIntersects';
     public const PROPERTIES = ['geometry' => null];
 
     /** @var Document|GeometryInterface|Serializable|array|stdClass $geometry */
@@ -36,10 +37,5 @@ final class GeoIntersectsOperator implements FieldQueryInterface, OperatorInterf
     public function __construct(Document|Serializable|GeometryInterface|stdClass|array $geometry)
     {
         $this->geometry = $geometry;
-    }
-
-    public function getOperator(): string
-    {
-        return '$geoIntersects';
     }
 }

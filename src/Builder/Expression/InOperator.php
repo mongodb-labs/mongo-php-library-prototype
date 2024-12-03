@@ -29,6 +29,7 @@ use function is_array;
 final class InOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$in';
     public const PROPERTIES = ['expression' => 'expression', 'array' => 'array'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $expression Any valid expression expression. */
@@ -51,10 +52,5 @@ final class InOperator implements ResolvesToBool, OperatorInterface
         }
 
         $this->array = $array;
-    }
-
-    public function getOperator(): string
-    {
-        return '$in';
     }
 }

@@ -27,6 +27,7 @@ use function is_array;
 final class ElemMatchOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$elemMatch';
     public const PROPERTIES = ['query' => 'query'];
 
     /** @var FieldQueryInterface|QueryInterface|Type|array|bool|float|int|null|stdClass|string $query */
@@ -43,10 +44,5 @@ final class ElemMatchOperator implements FieldQueryInterface, OperatorInterface
         }
 
         $this->query = $query;
-    }
-
-    public function getOperator(): string
-    {
-        return '$elemMatch';
     }
 }

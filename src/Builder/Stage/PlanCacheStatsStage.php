@@ -21,13 +21,9 @@ use MongoDB\Builder\Type\StageInterface;
 final class PlanCacheStatsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$planCacheStats';
 
     public function __construct()
     {
-    }
-
-    public function getOperator(): string
-    {
-        return '$planCacheStats';
     }
 }

@@ -59,6 +59,7 @@ final class CombinedFieldQuery implements FieldQueryInterface
         );
 
         // Validate FieldQuery types and non-duplicate operators
+        /** @var array<string, true> $seenOperators */
         $seenOperators = [];
         foreach ($this->fieldQueries as $fieldQuery) {
             if ($fieldQuery instanceof stdClass) {
@@ -66,7 +67,7 @@ final class CombinedFieldQuery implements FieldQueryInterface
             }
 
             if ($fieldQuery instanceof FieldQueryInterface && $fieldQuery instanceof OperatorInterface) {
-                $operator = $fieldQuery->getOperator();
+                $operator = $fieldQuery::NAME;
             } elseif (is_array($fieldQuery)) {
                 if (count($fieldQuery) !== 1) {
                     throw new InvalidArgumentException(sprintf('Operator must contain exactly one key, %d given', count($fieldQuery)));

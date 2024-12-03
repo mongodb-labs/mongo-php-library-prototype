@@ -30,6 +30,7 @@ use function is_string;
 final class GroupStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$group';
     public const PROPERTIES = ['_id' => '_id', 'field' => null];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $_id The _id expression specifies the group key. If you specify an _id value of null, or any other constant value, the $group stage returns a single document that aggregates values across all of the input documents. */
@@ -55,10 +56,5 @@ final class GroupStage implements StageInterface, OperatorInterface
 
         $field = (object) $field;
         $this->field = $field;
-    }
-
-    public function getOperator(): string
-    {
-        return '$group';
     }
 }

@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\Optional;
 final class TrimOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$trim';
     public const PROPERTIES = ['input' => 'input', 'chars' => 'chars'];
 
     /** @var ResolvesToString|string $input The string to trim. The argument can be any valid expression that resolves to a string. */
@@ -46,10 +47,5 @@ final class TrimOperator implements ResolvesToString, OperatorInterface
     ) {
         $this->input = $input;
         $this->chars = $chars;
-    }
-
-    public function getOperator(): string
-    {
-        return '$trim';
     }
 }

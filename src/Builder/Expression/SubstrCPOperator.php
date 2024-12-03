@@ -20,6 +20,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class SubstrCPOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$substrCP';
     public const PROPERTIES = ['string' => 'string', 'start' => 'start', 'length' => 'length'];
 
     /** @var ResolvesToString|string $string */
@@ -41,10 +42,5 @@ final class SubstrCPOperator implements ResolvesToString, OperatorInterface
         $this->string = $string;
         $this->start = $start;
         $this->length = $length;
-    }
-
-    public function getOperator(): string
-    {
-        return '$substrCP';
     }
 }

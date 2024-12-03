@@ -27,6 +27,7 @@ use function is_array;
 final class ZipOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$zip';
     public const PROPERTIES = ['inputs' => 'inputs', 'useLongestLength' => 'useLongestLength', 'defaults' => 'defaults'];
 
     /**
@@ -75,10 +76,5 @@ final class ZipOperator implements ResolvesToArray, OperatorInterface
         }
 
         $this->defaults = $defaults;
-    }
-
-    public function getOperator(): string
-    {
-        return '$zip';
     }
 }

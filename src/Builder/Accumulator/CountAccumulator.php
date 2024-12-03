@@ -24,13 +24,9 @@ use MongoDB\Builder\Type\WindowInterface;
 final class CountAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$count';
 
     public function __construct()
     {
-    }
-
-    public function getOperator(): string
-    {
-        return '$count';
     }
 }

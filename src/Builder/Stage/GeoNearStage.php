@@ -32,6 +32,7 @@ use function is_array;
 final class GeoNearStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$geoNear';
 
     public const PROPERTIES = [
         'distanceField' => 'distanceField',
@@ -127,10 +128,5 @@ final class GeoNearStage implements StageInterface, OperatorInterface
 
         $this->query = $query;
         $this->spherical = $spherical;
-    }
-
-    public function getOperator(): string
-    {
-        return '$geoNear';
     }
 }

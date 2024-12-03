@@ -27,6 +27,7 @@ use MongoDB\Builder\Type\TimeUnit;
 final class DateTruncOperator implements ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$dateTrunc';
 
     public const PROPERTIES = [
         'date' => 'date',
@@ -82,10 +83,5 @@ final class DateTruncOperator implements ResolvesToDate, OperatorInterface
         $this->binSize = $binSize;
         $this->timezone = $timezone;
         $this->startOfWeek = $startOfWeek;
-    }
-
-    public function getOperator(): string
-    {
-        return '$dateTrunc';
     }
 }

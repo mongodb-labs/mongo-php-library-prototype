@@ -25,6 +25,7 @@ use MongoDB\Builder\Type\WindowInterface;
 final class CovarianceSampAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$covarianceSamp';
     public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $expression1 */
@@ -43,10 +44,5 @@ final class CovarianceSampAccumulator implements WindowInterface, OperatorInterf
     ) {
         $this->expression1 = $expression1;
         $this->expression2 = $expression2;
-    }
-
-    public function getOperator(): string
-    {
-        return '$covarianceSamp';
     }
 }

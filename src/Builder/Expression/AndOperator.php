@@ -28,6 +28,7 @@ use function array_is_list;
 final class AndOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$and';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<Decimal128|ExpressionInterface|Int64|ResolvesToBool|ResolvesToNull|ResolvesToNumber|ResolvesToString|Type|array|bool|float|int|null|stdClass|string> $expression */
@@ -49,10 +50,5 @@ final class AndOperator implements ResolvesToBool, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$and';
     }
 }

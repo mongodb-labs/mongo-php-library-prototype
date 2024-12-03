@@ -26,6 +26,7 @@ use MongoDB\Builder\Type\WindowInterface;
 final class ExpMovingAvgAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$expMovingAvg';
     public const PROPERTIES = ['input' => 'input', 'N' => 'N', 'alpha' => 'alpha'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $input */
@@ -60,10 +61,5 @@ final class ExpMovingAvgAccumulator implements WindowInterface, OperatorInterfac
         $this->input = $input;
         $this->N = $N;
         $this->alpha = $alpha;
-    }
-
-    public function getOperator(): string
-    {
-        return '$expMovingAvg';
     }
 }

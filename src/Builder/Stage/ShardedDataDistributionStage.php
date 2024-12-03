@@ -22,13 +22,9 @@ use MongoDB\Builder\Type\StageInterface;
 final class ShardedDataDistributionStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$shardedDataDistribution';
 
     public function __construct()
     {
-    }
-
-    public function getOperator(): string
-    {
-        return '$shardedDataDistribution';
     }
 }

@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\Optional;
 final class IndexOfBytesOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$indexOfBytes';
     public const PROPERTIES = ['string' => 'string', 'substring' => 'substring', 'start' => 'start', 'end' => 'end'];
 
     /**
@@ -65,10 +66,5 @@ final class IndexOfBytesOperator implements ResolvesToInt, OperatorInterface
         $this->substring = $substring;
         $this->start = $start;
         $this->end = $end;
-    }
-
-    public function getOperator(): string
-    {
-        return '$indexOfBytes';
     }
 }

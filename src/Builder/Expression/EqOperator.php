@@ -23,6 +23,7 @@ use stdClass;
 final class EqOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$eq';
     public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $expression1 */
@@ -41,10 +42,5 @@ final class EqOperator implements ResolvesToBool, OperatorInterface
     ) {
         $this->expression1 = $expression1;
         $this->expression2 = $expression2;
-    }
-
-    public function getOperator(): string
-    {
-        return '$eq';
     }
 }

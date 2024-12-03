@@ -26,6 +26,7 @@ use function array_is_list;
 final class MergeObjectsOperator implements ResolvesToObject, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$mergeObjects';
     public const PROPERTIES = ['document' => 'document'];
 
     /** @var list<Document|ResolvesToObject|Serializable|array|stdClass> $document Any valid expression that resolves to a document. */
@@ -46,10 +47,5 @@ final class MergeObjectsOperator implements ResolvesToObject, OperatorInterface
         }
 
         $this->document = $document;
-    }
-
-    public function getOperator(): string
-    {
-        return '$mergeObjects';
     }
 }

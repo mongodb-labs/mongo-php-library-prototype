@@ -26,6 +26,7 @@ use stdClass;
 final class ChangeStreamStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$changeStream';
 
     public const PROPERTIES = [
         'allChangesForCluster' => 'allChangesForCluster',
@@ -87,10 +88,5 @@ final class ChangeStreamStage implements StageInterface, OperatorInterface
         $this->showExpandedEvents = $showExpandedEvents;
         $this->startAfter = $startAfter;
         $this->startAtOperationTime = $startAtOperationTime;
-    }
-
-    public function getOperator(): string
-    {
-        return '$changeStream';
     }
 }

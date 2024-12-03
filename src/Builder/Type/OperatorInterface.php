@@ -15,5 +15,6 @@ interface OperatorInterface
     /** @var array<string, string|null> */
     public const PROPERTIES = [];
 
-    public function getOperator(): string;
+    /** @var string|null */
+    public const NAME = null;
 }

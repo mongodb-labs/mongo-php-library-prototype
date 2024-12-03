@@ -24,6 +24,7 @@ use stdClass;
 final class JsonSchemaOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$jsonSchema';
     public const PROPERTIES = ['schema' => 'schema'];
 
     /** @var Document|Serializable|array|stdClass $schema */
@@ -35,10 +36,5 @@ final class JsonSchemaOperator implements QueryInterface, OperatorInterface
     public function __construct(Document|Serializable|stdClass|array $schema)
     {
         $this->schema = $schema;
-    }
-
-    public function getOperator(): string
-    {
-        return '$jsonSchema';
     }
 }

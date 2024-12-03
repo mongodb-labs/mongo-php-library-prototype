@@ -28,6 +28,7 @@ use function is_array;
 final class DocumentsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$documents';
     public const PROPERTIES = ['documents' => 'documents'];
 
     /**
@@ -53,10 +54,5 @@ final class DocumentsStage implements StageInterface, OperatorInterface
         }
 
         $this->documents = $documents;
-    }
-
-    public function getOperator(): string
-    {
-        return '$documents';
     }
 }

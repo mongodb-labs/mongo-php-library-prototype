@@ -32,6 +32,7 @@ use function is_array;
 final class LookupStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$lookup';
 
     public const PROPERTIES = [
         'as' => 'as',
@@ -98,10 +99,5 @@ final class LookupStage implements StageInterface, OperatorInterface
         }
 
         $this->pipeline = $pipeline;
-    }
-
-    public function getOperator(): string
-    {
-        return '$lookup';
     }
 }

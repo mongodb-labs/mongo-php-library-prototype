@@ -26,6 +26,7 @@ use function array_is_list;
 final class OrOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$or';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<ExpressionInterface|ResolvesToBool|Type|array|bool|float|int|null|stdClass|string> $expression */
@@ -47,10 +48,5 @@ final class OrOperator implements ResolvesToBool, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$or';
     }
 }

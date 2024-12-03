@@ -30,6 +30,7 @@ use MongoDB\Builder\Type\WindowInterface;
 final class DerivativeAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$derivative';
     public const PROPERTIES = ['input' => 'input', 'unit' => 'unit'];
 
     /** @var Decimal128|Int64|ResolvesToDate|ResolvesToNumber|UTCDateTime|float|int $input */
@@ -52,10 +53,5 @@ final class DerivativeAccumulator implements WindowInterface, OperatorInterface
     ) {
         $this->input = $input;
         $this->unit = $unit;
-    }
-
-    public function getOperator(): string
-    {
-        return '$derivative';
     }
 }

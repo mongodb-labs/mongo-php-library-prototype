@@ -31,6 +31,7 @@ use function is_array;
 final class DensifyStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$densify';
     public const PROPERTIES = ['field' => 'field', 'range' => 'range', 'partitionByFields' => 'partitionByFields'];
 
     /**
@@ -65,10 +66,5 @@ final class DensifyStage implements StageInterface, OperatorInterface
         }
 
         $this->partitionByFields = $partitionByFields;
-    }
-
-    public function getOperator(): string
-    {
-        return '$densify';
     }
 }

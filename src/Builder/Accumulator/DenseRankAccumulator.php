@@ -22,13 +22,9 @@ use MongoDB\Builder\Type\WindowInterface;
 final class DenseRankAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$denseRank';
 
     public function __construct()
     {
-    }
-
-    public function getOperator(): string
-    {
-        return '$denseRank';
     }
 }

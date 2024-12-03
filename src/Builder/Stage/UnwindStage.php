@@ -23,6 +23,7 @@ use MongoDB\Builder\Type\StageInterface;
 final class UnwindStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$unwind';
 
     public const PROPERTIES = [
         'path' => 'path',
@@ -58,10 +59,5 @@ final class UnwindStage implements StageInterface, OperatorInterface
         $this->path = $path;
         $this->includeArrayIndex = $includeArrayIndex;
         $this->preserveNullAndEmptyArrays = $preserveNullAndEmptyArrays;
-    }
-
-    public function getOperator(): string
-    {
-        return '$unwind';
     }
 }

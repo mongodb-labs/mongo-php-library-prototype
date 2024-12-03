@@ -22,13 +22,9 @@ use MongoDB\Builder\Type\WindowInterface;
 final class DocumentNumberAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$documentNumber';
 
     public function __construct()
     {
-    }
-
-    public function getOperator(): string
-    {
-        return '$documentNumber';
     }
 }

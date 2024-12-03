@@ -25,6 +25,7 @@ use stdClass;
 final class GetFieldOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$getField';
     public const PROPERTIES = ['field' => 'field', 'input' => 'input'];
 
     /**
@@ -51,10 +52,5 @@ final class GetFieldOperator implements ResolvesToAny, OperatorInterface
     ) {
         $this->field = $field;
         $this->input = $input;
-    }
-
-    public function getOperator(): string
-    {
-        return '$getField';
     }
 }

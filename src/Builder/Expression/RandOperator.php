@@ -20,13 +20,9 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class RandOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$rand';
 
     public function __construct()
     {
-    }
-
-    public function getOperator(): string
-    {
-        return '$rand';
     }
 }

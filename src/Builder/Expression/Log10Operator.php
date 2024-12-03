@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class Log10Operator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$log10';
     public const PROPERTIES = ['number' => 'number'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $number Any valid expression as long as it resolves to a non-negative number. */
@@ -33,10 +34,5 @@ final class Log10Operator implements ResolvesToDouble, OperatorInterface
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $number)
     {
         $this->number = $number;
-    }
-
-    public function getOperator(): string
-    {
-        return '$log10';
     }
 }

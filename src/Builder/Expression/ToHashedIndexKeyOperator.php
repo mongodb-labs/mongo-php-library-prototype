@@ -23,6 +23,7 @@ use stdClass;
 final class ToHashedIndexKeyOperator implements ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$toHashedIndexKey';
     public const PROPERTIES = ['value' => 'value'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $value key or string to hash */
@@ -34,10 +35,5 @@ final class ToHashedIndexKeyOperator implements ResolvesToLong, OperatorInterfac
     public function __construct(Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $value)
     {
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$toHashedIndexKey';
     }
 }

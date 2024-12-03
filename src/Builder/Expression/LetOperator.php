@@ -26,6 +26,7 @@ use stdClass;
 final class LetOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$let';
     public const PROPERTIES = ['vars' => 'vars', 'in' => 'in'];
 
     /**
@@ -48,10 +49,5 @@ final class LetOperator implements ResolvesToAny, OperatorInterface
     ) {
         $this->vars = $vars;
         $this->in = $in;
-    }
-
-    public function getOperator(): string
-    {
-        return '$let';
     }
 }

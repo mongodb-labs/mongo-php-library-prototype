@@ -31,6 +31,7 @@ use function is_array;
 final class GeometryOperator implements GeometryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$geometry';
     public const PROPERTIES = ['type' => 'type', 'coordinates' => 'coordinates', 'crs' => 'crs'];
 
     /** @var string $type */
@@ -59,10 +60,5 @@ final class GeometryOperator implements GeometryInterface, OperatorInterface
 
         $this->coordinates = $coordinates;
         $this->crs = $crs;
-    }
-
-    public function getOperator(): string
-    {
-        return '$geometry';
     }
 }

@@ -30,6 +30,7 @@ use function is_array;
 final class SwitchOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$switch';
     public const PROPERTIES = ['branches' => 'branches', 'default' => 'default'];
 
     /**
@@ -64,10 +65,5 @@ final class SwitchOperator implements ResolvesToAny, OperatorInterface
 
         $this->branches = $branches;
         $this->default = $default;
-    }
-
-    public function getOperator(): string
-    {
-        return '$switch';
     }
 }

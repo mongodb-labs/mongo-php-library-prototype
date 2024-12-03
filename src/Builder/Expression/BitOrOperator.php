@@ -25,6 +25,7 @@ use function array_is_list;
 final class BitOrOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$bitOr';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<Int64|ResolvesToInt|ResolvesToLong|int> $expression */
@@ -45,10 +46,5 @@ final class BitOrOperator implements ResolvesToInt, ResolvesToLong, OperatorInte
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bitOr';
     }
 }

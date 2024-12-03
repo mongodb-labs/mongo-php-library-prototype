@@ -23,6 +23,7 @@ use MongoDB\Builder\Type\QueryInterface;
 final class SampleRateOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$sampleRate';
     public const PROPERTIES = ['rate' => 'rate'];
 
     /**
@@ -38,10 +39,5 @@ final class SampleRateOperator implements QueryInterface, OperatorInterface
     public function __construct(Int64|ResolvesToDouble|float|int $rate)
     {
         $this->rate = $rate;
-    }
-
-    public function getOperator(): string
-    {
-        return '$sampleRate';
     }
 }

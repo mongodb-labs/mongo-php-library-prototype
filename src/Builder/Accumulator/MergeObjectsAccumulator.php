@@ -25,6 +25,7 @@ use stdClass;
 final class MergeObjectsAccumulator implements AccumulatorInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$mergeObjects';
     public const PROPERTIES = ['document' => 'document'];
 
     /** @var Document|ResolvesToObject|Serializable|array|stdClass $document Any valid expression that resolves to a document. */
@@ -36,10 +37,5 @@ final class MergeObjectsAccumulator implements AccumulatorInterface, OperatorInt
     public function __construct(Document|Serializable|ResolvesToObject|stdClass|array $document)
     {
         $this->document = $document;
-    }
-
-    public function getOperator(): string
-    {
-        return '$mergeObjects';
     }
 }

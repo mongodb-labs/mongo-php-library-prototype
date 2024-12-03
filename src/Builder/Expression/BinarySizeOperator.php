@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class BinarySizeOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$binarySize';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Binary|ResolvesToBinData|ResolvesToNull|ResolvesToString|null|string $expression */
@@ -32,10 +33,5 @@ final class BinarySizeOperator implements ResolvesToInt, OperatorInterface
     public function __construct(Binary|ResolvesToBinData|ResolvesToNull|ResolvesToString|null|string $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$binarySize';
     }
 }

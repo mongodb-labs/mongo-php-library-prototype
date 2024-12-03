@@ -27,6 +27,7 @@ use function is_array;
 final class SliceOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$slice';
     public const PROPERTIES = ['expression' => 'expression', 'n' => 'n', 'position' => 'position'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $expression Any valid expression as long as it resolves to an array. */
@@ -67,10 +68,5 @@ final class SliceOperator implements ResolvesToArray, OperatorInterface
         $this->expression = $expression;
         $this->n = $n;
         $this->position = $position;
-    }
-
-    public function getOperator(): string
-    {
-        return '$slice';
     }
 }

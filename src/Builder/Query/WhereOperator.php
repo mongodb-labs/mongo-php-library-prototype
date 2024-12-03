@@ -24,6 +24,7 @@ use function is_string;
 final class WhereOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$where';
     public const PROPERTIES = ['function' => 'function'];
 
     /** @var Javascript|string $function */
@@ -39,10 +40,5 @@ final class WhereOperator implements QueryInterface, OperatorInterface
         }
 
         $this->function = $function;
-    }
-
-    public function getOperator(): string
-    {
-        return '$where';
     }
 }

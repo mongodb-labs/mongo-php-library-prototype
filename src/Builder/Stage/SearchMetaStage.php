@@ -25,6 +25,7 @@ use stdClass;
 final class SearchMetaStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$searchMeta';
     public const PROPERTIES = ['meta' => 'meta'];
 
     /** @var Document|Serializable|array|stdClass $meta */
@@ -36,10 +37,5 @@ final class SearchMetaStage implements StageInterface, OperatorInterface
     public function __construct(Document|Serializable|stdClass|array $meta)
     {
         $this->meta = $meta;
-    }
-
-    public function getOperator(): string
-    {
-        return '$searchMeta';
     }
 }

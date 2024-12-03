@@ -27,6 +27,7 @@ use function array_is_list;
 final class StdDevPopOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$stdDevPop';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<Decimal128|Int64|ResolvesToNumber|float|int> $expression */
@@ -47,10 +48,5 @@ final class StdDevPopOperator implements ResolvesToDouble, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$stdDevPop';
     }
 }

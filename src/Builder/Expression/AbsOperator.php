@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class AbsOperator implements ResolvesToNumber, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$abs';
     public const PROPERTIES = ['value' => 'value'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $value */
@@ -33,10 +34,5 @@ final class AbsOperator implements ResolvesToNumber, OperatorInterface
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $value)
     {
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$abs';
     }
 }

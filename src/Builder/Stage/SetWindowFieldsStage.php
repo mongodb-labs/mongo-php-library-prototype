@@ -28,6 +28,7 @@ use stdClass;
 final class SetWindowFieldsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$setWindowFields';
     public const PROPERTIES = ['sortBy' => 'sortBy', 'output' => 'output', 'partitionBy' => 'partitionBy'];
 
     /** @var Document|Serializable|array|stdClass $sortBy Specifies the field(s) to sort the documents by in the partition. Uses the same syntax as the $sort stage. Default is no sorting. */
@@ -56,10 +57,5 @@ final class SetWindowFieldsStage implements StageInterface, OperatorInterface
         $this->sortBy = $sortBy;
         $this->output = $output;
         $this->partitionBy = $partitionBy;
-    }
-
-    public function getOperator(): string
-    {
-        return '$setWindowFields';
     }
 }

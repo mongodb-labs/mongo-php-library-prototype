@@ -26,6 +26,7 @@ use function is_array;
 final class LastNOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$lastN';
     public const PROPERTIES = ['n' => 'n', 'input' => 'input'];
 
     /** @var ResolvesToInt|int $n An expression that resolves to a positive integer. The integer specifies the number of array elements that $firstN returns. */
@@ -46,10 +47,5 @@ final class LastNOperator implements ResolvesToArray, OperatorInterface
         }
 
         $this->input = $input;
-    }
-
-    public function getOperator(): string
-    {
-        return '$lastN';
     }
 }

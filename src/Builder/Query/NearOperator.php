@@ -28,6 +28,7 @@ use stdClass;
 final class NearOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$near';
     public const PROPERTIES = ['geometry' => null, 'maxDistance' => '$maxDistance', 'minDistance' => '$minDistance'];
 
     /** @var Document|GeometryInterface|Serializable|array|stdClass $geometry */
@@ -52,10 +53,5 @@ final class NearOperator implements FieldQueryInterface, OperatorInterface
         $this->geometry = $geometry;
         $this->maxDistance = $maxDistance;
         $this->minDistance = $minDistance;
-    }
-
-    public function getOperator(): string
-    {
-        return '$near';
     }
 }

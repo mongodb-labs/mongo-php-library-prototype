@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class SizeOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$size';
     public const PROPERTIES = ['value' => 'value'];
 
     /** @var int $value */
@@ -32,10 +33,5 @@ final class SizeOperator implements FieldQueryInterface, OperatorInterface
     public function __construct(int $value)
     {
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$size';
     }
 }

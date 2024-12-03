@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\StageInterface;
 final class CountStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$count';
     public const PROPERTIES = ['field' => 'field'];
 
     /** @var string $field Name of the output field which has the count as its value. It must be a non-empty string, must not start with $ and must not contain the . character. */
@@ -33,10 +34,5 @@ final class CountStage implements StageInterface, OperatorInterface
     public function __construct(string $field)
     {
         $this->field = $field;
-    }
-
-    public function getOperator(): string
-    {
-        return '$count';
     }
 }

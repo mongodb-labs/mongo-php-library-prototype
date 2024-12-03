@@ -23,6 +23,7 @@ use stdClass;
 final class NotOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$not';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var ExpressionInterface|ResolvesToBool|Type|array|bool|float|int|null|stdClass|string $expression */
@@ -35,10 +36,5 @@ final class NotOperator implements ResolvesToBool, OperatorInterface
         Type|ResolvesToBool|ExpressionInterface|stdClass|array|bool|float|int|null|string $expression,
     ) {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$not';
     }
 }

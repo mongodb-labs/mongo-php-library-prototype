@@ -23,6 +23,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class MaxDistanceOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$maxDistance';
     public const PROPERTIES = ['value' => 'value'];
 
     /** @var Decimal128|Int64|float|int $value */
@@ -34,10 +35,5 @@ final class MaxDistanceOperator implements FieldQueryInterface, OperatorInterfac
     public function __construct(Decimal128|Int64|float|int $value)
     {
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$maxDistance';
     }
 }

@@ -27,6 +27,7 @@ use function is_array;
 final class NinOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$nin';
     public const PROPERTIES = ['value' => 'value'];
 
     /** @var BSONArray|PackedArray|array $value */
@@ -42,10 +43,5 @@ final class NinOperator implements FieldQueryInterface, OperatorInterface
         }
 
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$nin';
     }
 }

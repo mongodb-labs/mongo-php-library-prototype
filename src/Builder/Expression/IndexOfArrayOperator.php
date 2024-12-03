@@ -30,6 +30,7 @@ use function is_array;
 final class IndexOfArrayOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$indexOfArray';
     public const PROPERTIES = ['array' => 'array', 'search' => 'search', 'start' => 'start', 'end' => 'end'];
 
     /**
@@ -78,10 +79,5 @@ final class IndexOfArrayOperator implements ResolvesToInt, OperatorInterface
         $this->search = $search;
         $this->start = $start;
         $this->end = $end;
-    }
-
-    public function getOperator(): string
-    {
-        return '$indexOfArray';
     }
 }

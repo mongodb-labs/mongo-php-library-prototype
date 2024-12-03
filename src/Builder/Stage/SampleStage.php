@@ -21,6 +21,7 @@ use MongoDB\Builder\Type\StageInterface;
 final class SampleStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$sample';
     public const PROPERTIES = ['size' => 'size'];
 
     /** @var int $size The number of documents to randomly select. */
@@ -32,10 +33,5 @@ final class SampleStage implements StageInterface, OperatorInterface
     public function __construct(int $size)
     {
         $this->size = $size;
-    }
-
-    public function getOperator(): string
-    {
-        return '$sample';
     }
 }

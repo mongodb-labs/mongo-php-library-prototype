@@ -24,6 +24,7 @@ use function array_is_list;
 final class NorOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$nor';
     public const PROPERTIES = ['queries' => 'queries'];
 
     /** @var list<QueryInterface|array> $queries */
@@ -44,10 +45,5 @@ final class NorOperator implements QueryInterface, OperatorInterface
         }
 
         $this->queries = $queries;
-    }
-
-    public function getOperator(): string
-    {
-        return '$nor';
     }
 }

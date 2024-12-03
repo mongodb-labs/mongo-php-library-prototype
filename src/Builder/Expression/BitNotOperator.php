@@ -22,6 +22,7 @@ use MongoDB\Builder\Type\OperatorInterface;
 final class BitNotOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$bitNot';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Int64|ResolvesToInt|ResolvesToLong|int $expression */
@@ -33,10 +34,5 @@ final class BitNotOperator implements ResolvesToInt, ResolvesToLong, OperatorInt
     public function __construct(Int64|ResolvesToInt|ResolvesToLong|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bitNot';
     }
 }

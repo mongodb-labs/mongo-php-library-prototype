@@ -28,6 +28,7 @@ use stdClass;
 final class BottomAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$bottom';
     public const PROPERTIES = ['sortBy' => 'sortBy', 'output' => 'output'];
 
     /** @var Document|Serializable|array|stdClass $sortBy Specifies the order of results, with syntax similar to $sort. */
@@ -46,10 +47,5 @@ final class BottomAccumulator implements AccumulatorInterface, WindowInterface, 
     ) {
         $this->sortBy = $sortBy;
         $this->output = $output;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bottom';
     }
 }

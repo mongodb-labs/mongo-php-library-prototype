@@ -25,6 +25,7 @@ use function array_is_list;
 final class SetIntersectionOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$setIntersection';
     public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<BSONArray|PackedArray|ResolvesToArray|array> $expression */
@@ -45,10 +46,5 @@ final class SetIntersectionOperator implements ResolvesToArray, OperatorInterfac
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$setIntersection';
     }
 }

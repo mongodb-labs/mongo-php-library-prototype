@@ -26,6 +26,7 @@ use function array_is_list;
 final class AllOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$all';
     public const PROPERTIES = ['value' => 'value'];
 
     /** @var list<FieldQueryInterface|Type|array|bool|float|int|null|stdClass|string> $value */
@@ -46,10 +47,5 @@ final class AllOperator implements FieldQueryInterface, OperatorInterface
         }
 
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$all';
     }
 }

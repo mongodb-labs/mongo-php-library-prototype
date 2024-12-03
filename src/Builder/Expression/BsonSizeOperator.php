@@ -23,6 +23,7 @@ use stdClass;
 final class BsonSizeOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$bsonSize';
     public const PROPERTIES = ['object' => 'object'];
 
     /** @var Document|ResolvesToNull|ResolvesToObject|Serializable|array|null|stdClass $object */
@@ -34,10 +35,5 @@ final class BsonSizeOperator implements ResolvesToInt, OperatorInterface
     public function __construct(Document|Serializable|ResolvesToNull|ResolvesToObject|stdClass|array|null $object)
     {
         $this->object = $object;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bsonSize';
     }
 }
