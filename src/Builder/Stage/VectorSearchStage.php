@@ -54,17 +54,16 @@ final class VectorSearchStage implements StageInterface, OperatorInterface
     /** @var BSONArray|PackedArray|array $queryVector Array of numbers that represent the query vector. The number type must match the indexed field value type. */
     public readonly PackedArray|BSONArray|array $queryVector;
 
-    /**
-     * @var Optional|bool $exact This is required if numCandidates is omitted.
-     * - false to run ANN search
-     * - true to run ENN search
-     */
+    /** @var Optional|bool $exact This is required if numCandidates is omitted. false to run ANN search. true to run ENN search. */
     public readonly Optional|bool $exact;
 
-    /** @var Optional|QueryInterface|array $filter */
+    /** @var Optional|QueryInterface|array $filter Any match query that compares an indexed field with a boolean, date, objectId, number (not decimals), string, or UUID to use as a pre-filter. */
     public readonly Optional|QueryInterface|array $filter;
 
-    /** @var Optional|int $numCandidates */
+    /**
+     * @var Optional|int $numCandidates This field is required if exact is false or omitted.
+     * Number of nearest neighbors to use during the search. Value must be less than or equal to (<=) 10000. You can't specify a number less than the number of documents to return (limit).
+     */
     public readonly Optional|int $numCandidates;
 
     /**
@@ -72,11 +71,10 @@ final class VectorSearchStage implements StageInterface, OperatorInterface
      * @param int $limit Number of documents to return in the results. This value can't exceed the value of numCandidates if you specify numCandidates.
      * @param array|string $path Indexed vector type field to search.
      * @param BSONArray|PackedArray|array $queryVector Array of numbers that represent the query vector. The number type must match the indexed field value type.
-     * @param Optional|bool $exact This is required if numCandidates is omitted.
-     * - false to run ANN search
-     * - true to run ENN search
-     * @param Optional|QueryInterface|array $filter
-     * @param Optional|int $numCandidates
+     * @param Optional|bool $exact This is required if numCandidates is omitted. false to run ANN search. true to run ENN search.
+     * @param Optional|QueryInterface|array $filter Any match query that compares an indexed field with a boolean, date, objectId, number (not decimals), string, or UUID to use as a pre-filter.
+     * @param Optional|int $numCandidates This field is required if exact is false or omitted.
+     * Number of nearest neighbors to use during the search. Value must be less than or equal to (<=) 10000. You can't specify a number less than the number of documents to return (limit).
      */
     public function __construct(
         string $index,

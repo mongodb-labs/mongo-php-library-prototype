@@ -68,7 +68,7 @@ final class SearchStage implements StageInterface, OperatorInterface
     /** @var Optional|string $searchAfter Reference point for retrieving results. searchAfter returns documents starting immediately following the specified reference point. */
     public readonly Optional|string $searchAfter;
 
-    /** @var Optional|string $searchBefore Reference point for retrieving results. searchBefore returns documents starting immediately following the specified reference point. */
+    /** @var Optional|string $searchBefore Reference point for retrieving results. searchBefore returns documents starting immediately before the specified reference point. */
     public readonly Optional|string $searchBefore;
 
     /** @var Optional|bool $scoreDetails Flag that specifies whether to retrieve a detailed breakdown of the score for the documents in the results. If omitted, defaults to false. */
@@ -77,7 +77,7 @@ final class SearchStage implements StageInterface, OperatorInterface
     /** @var Optional|Document|Serializable|array|stdClass $sort Document that specifies the fields to sort the Atlas Search results by in ascending or descending order. */
     public readonly Optional|Document|Serializable|stdClass|array $sort;
 
-    /** @var Optional|bool $returnStoredSource Flag that specifies whether to return the stored source document in the search results. If omitted, defaults to false.Flag that specifies whether to perform a full document lookup on the backend database or return only stored source fields directly from Atlas Search. */
+    /** @var Optional|bool $returnStoredSource Flag that specifies whether to perform a full document lookup on the backend database or return only stored source fields directly from Atlas Search. */
     public readonly Optional|bool $returnStoredSource;
 
     /** @var Optional|Document|Serializable|array|stdClass $tracking Document that specifies the tracking option to retrieve analytics information on the search terms. */
@@ -93,10 +93,10 @@ final class SearchStage implements StageInterface, OperatorInterface
      * Atlas Search ignores this flag. If omitted, defaults to false.
      * @param Optional|string $count Document that specifies the count options for retrieving a count of the results.
      * @param Optional|string $searchAfter Reference point for retrieving results. searchAfter returns documents starting immediately following the specified reference point.
-     * @param Optional|string $searchBefore Reference point for retrieving results. searchBefore returns documents starting immediately following the specified reference point.
+     * @param Optional|string $searchBefore Reference point for retrieving results. searchBefore returns documents starting immediately before the specified reference point.
      * @param Optional|bool $scoreDetails Flag that specifies whether to retrieve a detailed breakdown of the score for the documents in the results. If omitted, defaults to false.
      * @param Optional|Document|Serializable|array|stdClass $sort Document that specifies the fields to sort the Atlas Search results by in ascending or descending order.
-     * @param Optional|bool $returnStoredSource Flag that specifies whether to return the stored source document in the search results. If omitted, defaults to false.Flag that specifies whether to perform a full document lookup on the backend database or return only stored source fields directly from Atlas Search.
+     * @param Optional|bool $returnStoredSource Flag that specifies whether to perform a full document lookup on the backend database or return only stored source fields directly from Atlas Search.
      * @param Optional|Document|Serializable|array|stdClass $tracking Document that specifies the tracking option to retrieve analytics information on the search terms.
      */
     public function __construct(

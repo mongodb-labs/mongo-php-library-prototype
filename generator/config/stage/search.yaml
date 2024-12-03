@@ -61,7 +61,7 @@ arguments:
         type:
             - string
         description: |
-            Reference point for retrieving results. searchBefore returns documents starting immediately following the specified reference point.
+            Reference point for retrieving results. searchBefore returns documents starting immediately before the specified reference point.
     -
         name: scoreDetails
         optional: true
@@ -82,7 +82,7 @@ arguments:
         type:
             - bool
         description: |
-            Flag that specifies whether to return the stored source document in the search results. If omitted, defaults to false.Flag that specifies whether to perform a full document lookup on the backend database or return only stored source fields directly from Atlas Search.
+            Flag that specifies whether to perform a full document lookup on the backend database or return only stored source fields directly from Atlas Search.
     -
         name: tracking
         optional: true

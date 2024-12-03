@@ -615,10 +615,10 @@ trait FluentFactoryTrait
      * Atlas Search ignores this flag. If omitted, defaults to false.
      * @param Optional|string $count Document that specifies the count options for retrieving a count of the results.
      * @param Optional|string $searchAfter Reference point for retrieving results. searchAfter returns documents starting immediately following the specified reference point.
-     * @param Optional|string $searchBefore Reference point for retrieving results. searchBefore returns documents starting immediately following the specified reference point.
+     * @param Optional|string $searchBefore Reference point for retrieving results. searchBefore returns documents starting immediately before the specified reference point.
      * @param Optional|bool $scoreDetails Flag that specifies whether to retrieve a detailed breakdown of the score for the documents in the results. If omitted, defaults to false.
      * @param Optional|Document|Serializable|array|stdClass $sort Document that specifies the fields to sort the Atlas Search results by in ascending or descending order.
-     * @param Optional|bool $returnStoredSource Flag that specifies whether to return the stored source document in the search results. If omitted, defaults to false.Flag that specifies whether to perform a full document lookup on the backend database or return only stored source fields directly from Atlas Search.
+     * @param Optional|bool $returnStoredSource Flag that specifies whether to perform a full document lookup on the backend database or return only stored source fields directly from Atlas Search.
      * @param Optional|Document|Serializable|array|stdClass $tracking Document that specifies the tracking option to retrieve analytics information on the search terms.
      */
     public function search(
@@ -807,11 +807,10 @@ trait FluentFactoryTrait
      * @param int $limit Number of documents to return in the results. This value can't exceed the value of numCandidates if you specify numCandidates.
      * @param array|string $path Indexed vector type field to search.
      * @param BSONArray|PackedArray|array $queryVector Array of numbers that represent the query vector. The number type must match the indexed field value type.
-     * @param Optional|bool $exact This is required if numCandidates is omitted.
-     * - false to run ANN search
-     * - true to run ENN search
-     * @param Optional|QueryInterface|array $filter
-     * @param Optional|int $numCandidates
+     * @param Optional|bool $exact This is required if numCandidates is omitted. false to run ANN search. true to run ENN search.
+     * @param Optional|QueryInterface|array $filter Any match query that compares an indexed field with a boolean, date, objectId, number (not decimals), string, or UUID to use as a pre-filter.
+     * @param Optional|int $numCandidates This field is required if exact is false or omitted.
+     * Number of nearest neighbors to use during the search. Value must be less than or equal to (<=) 10000. You can't specify a number less than the number of documents to return (limit).
      */
     public function vectorSearch(
         string $index,

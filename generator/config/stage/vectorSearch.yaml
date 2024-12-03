@@ -37,21 +37,23 @@ arguments:
         type:
             - bool
         description: |
-            This is required if numCandidates is omitted.
-            - false to run ANN search
-            - true to run ENN search
+            This is required if numCandidates is omitted. false to run ANN search. true to run ENN search.
     -
         name: filter
         optional: true
         type:
             - query
         description: |
+            Any match query that compares an indexed field with a boolean, date, objectId, number (not decimals), string, or UUID to use as a pre-filter.
     -
         name: numCandidates
         optional: true
         type:
             - int
         description: |
+            This field is required if exact is false or omitted.
+            Number of nearest neighbors to use during the search. Value must be less than or equal to (<=) 10000. You can't specify a number less than the number of documents to return (limit).
+
 tests:
     -
         name: 'ANN Basic'
@@ -61,11 +63,7 @@ tests:
                 $vectorSearch:
                     index: 'vector_index'
                     path: 'plot_embedding'
-                    queryVector:
-                        - -0.0016261312
-                        - -0.028070757
-                        - -0.011342932
-                        # skip other numbers, not relevant to the test
+                    queryVector: [-0.0016261312, -0.028070757, -0.011342932] # skip other numbers, not relevant to the test
                     numCandidates: 150
                     limit: 10
             -
@@ -89,11 +87,7 @@ tests:
                             -
                                 year:
                                     $lt: 1975
-                    queryVector:
-                        - 0.02421053
-                        - -0.022372592
-                        - -0.006231137
-                        # skip other numbers, not relevant to the test
+                    queryVector: [0.02421053, -0.022372592, -0.006231137] # skip other numbers, not relevant to the test
                     numCandidates: 150
                     limit: 10
             -
@@ -113,11 +107,7 @@ tests:
                 $vectorSearch:
                     index: 'vector_index'
                     path: 'plot_embedding'
-                    queryVector:
-                        - -0.006954097
-                        - -0.009932499
-                        - -0.001311474
-                        # skip other numbers, not relevant to the test
+                    queryVector: [-0.006954097, -0.009932499, -0.001311474] # skip other numbers, not relevant to the test
                     exact: true
                     limit: 10
             -
