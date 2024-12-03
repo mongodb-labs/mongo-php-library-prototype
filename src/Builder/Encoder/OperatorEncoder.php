@@ -12,6 +12,8 @@ use MongoDB\Codec\EncodeIfSupported;
 use MongoDB\Exception\UnsupportedValueException;
 use stdClass;
 
+use function assert;
+use function is_string;
 use function sprintf;
 
 /**
@@ -89,6 +91,10 @@ final class OperatorEncoder extends AbstractExpressionEncoder
             }
         }
 
+        if ($value::NAME === null) {
+            return $result;
+        }
+
         return $this->wrap($value, $result);
     }
 
@@ -106,16 +112,9 @@ final class OperatorEncoder extends AbstractExpressionEncoder
         throw new LogicException(sprintf('Class "%s" does not have a single property.', $value::class));
     }
 
-    /**
-     * Wrap the result in an object if the operator has a name.
-     * The operator name is NULL, and the result is returned as is
-     * when wrapObject is false in the YAML configuration of the operator.
-     */
     private function wrap(OperatorInterface $value, mixed $result): stdClass
     {
-        if ($value::NAME === null) {
-            return $result;
-        }
+        assert(is_string($value::NAME));
 
         $object = new stdClass();
         $object->{$value::NAME} = $result;

@@ -43,6 +43,10 @@ final class OperatorDefinition
             default => throw new UnexpectedValueException(sprintf('Unexpected "encode" value for operator "%s". Got "%s"', $name, $encode)),
         };
 
+        if (! $wrapObject && $this->encode !== Encode::Object) {
+            throw new UnexpectedValueException(sprintf('Operator "%s" cannot have wrapObject set to false when encode is not "object"', $name));
+        }
+
         // Convert arguments to ArgumentDefinition objects
         // Optional arguments must be after required arguments
         $requiredArgs = $optionalArgs = [];

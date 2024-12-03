@@ -75,12 +75,6 @@
       <code><![CDATA[$val]]></code>
       <code><![CDATA[$val]]></code>
     </MixedAssignment>
-    <MixedInferredReturnType>
-      <code><![CDATA[stdClass]]></code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement>
-      <code><![CDATA[$result]]></code>
-    </MixedReturnStatement>
     <PossibleRawObjectIteration>
       <code><![CDATA[$val]]></code>
     </PossibleRawObjectIteration>
