@@ -10,6 +10,7 @@ use MongoDB\BSON\Binary;
 use MongoDB\BSON\Decimal128;
 use MongoDB\BSON\Document;
 use MongoDB\BSON\Int64;
+use MongoDB\BSON\ObjectId;
 use MongoDB\BSON\Regex;
 use MongoDB\BSON\UTCDateTime;
 use MongoDB\Builder\Pipeline;
@@ -27,6 +28,7 @@ use Throwable;
 use function base64_decode;
 use function basename;
 use function get_object_vars;
+use function hex2bin;
 use function is_array;
 use function is_numeric;
 use function is_object;
@@ -145,6 +147,8 @@ class OperatorTestGenerator extends OperatorGenerator
                 'bson_decimal128' => new Decimal128($value),
                 'bson_utcdatetime' => new UTCDateTime(is_numeric($value) ? $value : new DateTimeImmutable($value)),
                 'bson_binary' => new Binary(base64_decode($value)),
+                'bson_objectId' => new ObjectId($value),
+                'bson_uuid' => new Binary(hex2bin(str_replace('-', '', $value)), Binary::TYPE_UUID),
                 default => throw new InvalidArgumentException(sprintf('Yaml tag "%s" is not supported.', $object->getTag())),
             };
         }
@@ -158,6 +162,7 @@ class OperatorTestGenerator extends OperatorGenerator
         }
 
         if (is_object($object)) {
+            $object = clone $object;
             foreach (get_object_vars($object) as $key => $value) {
                 $object->{$key} = $this->convertYamlTaggedValues($value);
             }

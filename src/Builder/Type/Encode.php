@@ -30,6 +30,11 @@ enum Encode
     case Single;
 
     /**
+     * Specific for $group stage
+     */
+    case Group;
+
+    /**
      * Default case used in the interface; implementing classes are expected to override this value
      */
     case Undefined;

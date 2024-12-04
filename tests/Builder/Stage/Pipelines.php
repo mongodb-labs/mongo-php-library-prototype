@@ -2639,6 +2639,197 @@ enum Pipelines: string
     JSON;
 
     /**
+     * Year Facet
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-search/facet/#example-1
+     */
+    case SearchMetaYearFacet = <<<'JSON'
+    [
+        {
+            "$searchMeta": {
+                "facet": {
+                    "operator": {
+                        "range": {
+                            "path": "year",
+                            "gte": {
+                                "$numberInt": "1980"
+                            },
+                            "lte": {
+                                "$numberInt": "2000"
+                            }
+                        }
+                    },
+                    "facets": {
+                        "yearFacet": {
+                            "type": "number",
+                            "path": "year",
+                            "boundaries": [
+                                {
+                                    "$numberInt": "1980"
+                                },
+                                {
+                                    "$numberInt": "1990"
+                                },
+                                {
+                                    "$numberInt": "2000"
+                                }
+                            ],
+                            "default": "other"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+    JSON;
+
+    /**
+     * Date Facet
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-search/facet/#example-2
+     */
+    case SearchMetaDateFacet = <<<'JSON'
+    [
+        {
+            "$searchMeta": {
+                "facet": {
+                    "operator": {
+                        "range": {
+                            "path": "released",
+                            "gte": {
+                                "$date": {
+                                    "$numberLong": "946684800000"
+                                }
+                            },
+                            "lte": {
+                                "$date": {
+                                    "$numberLong": "1422662400000"
+                                }
+                            }
+                        }
+                    },
+                    "facets": {
+                        "yearFacet": {
+                            "type": "date",
+                            "path": "released",
+                            "boundaries": [
+                                {
+                                    "$date": {
+                                        "$numberLong": "946684800000"
+                                    }
+                                },
+                                {
+                                    "$date": {
+                                        "$numberLong": "1104537600000"
+                                    }
+                                },
+                                {
+                                    "$date": {
+                                        "$numberLong": "1262304000000"
+                                    }
+                                },
+                                {
+                                    "$date": {
+                                        "$numberLong": "1420070400000"
+                                    }
+                                }
+                            ],
+                            "default": "other"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+    JSON;
+
+    /**
+     * Metadata Results
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-search/facet/#examples
+     */
+    case SearchMetaMetadataResults = <<<'JSON'
+    [
+        {
+            "$searchMeta": {
+                "facet": {
+                    "operator": {
+                        "range": {
+                            "path": "released",
+                            "gte": {
+                                "$date": {
+                                    "$numberLong": "946684800000"
+                                }
+                            },
+                            "lte": {
+                                "$date": {
+                                    "$numberLong": "1422662400000"
+                                }
+                            }
+                        }
+                    },
+                    "facets": {
+                        "directorsFacet": {
+                            "type": "string",
+                            "path": "directors",
+                            "numBuckets": {
+                                "$numberInt": "7"
+                            }
+                        },
+                        "yearFacet": {
+                            "type": "number",
+                            "path": "year",
+                            "boundaries": [
+                                {
+                                    "$numberInt": "2000"
+                                },
+                                {
+                                    "$numberInt": "2005"
+                                },
+                                {
+                                    "$numberInt": "2010"
+                                },
+                                {
+                                    "$numberInt": "2015"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    ]
+    JSON;
+
+    /**
+     * Autocomplete Bucket Results through Facet Queries
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-search/autocomplete/#bucket-results-through-facet-queries
+     */
+    case SearchMetaAutocompleteBucketResultsThroughFacetQueries = <<<'JSON'
+    [
+        {
+            "$searchMeta": {
+                "facet": {
+                    "operator": {
+                        "autocomplete": {
+                            "path": "title",
+                            "query": "Gravity"
+                        }
+                    },
+                    "facets": {
+                        "titleFacet": {
+                            "type": "string",
+                            "path": "title"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+    JSON;
+
+    /**
      * Using Two $set Stages
      *
      * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/set/#using-two--set-stages
@@ -3357,6 +3548,165 @@ enum Pipelines: string
                             "$items.quantity"
                         ]
                     }
+                }
+            }
+        }
+    ]
+    JSON;
+
+    /**
+     * ANN Basic
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-vector-search/vector-search-stage/#ann-examples
+     */
+    case VectorSearchANNBasic = <<<'JSON'
+    [
+        {
+            "$vectorSearch": {
+                "index": "vector_index",
+                "path": "plot_embedding",
+                "queryVector": [
+                    {
+                        "$numberDouble": "-0.0016261311999999999121"
+                    },
+                    {
+                        "$numberDouble": "-0.028070756999999998266"
+                    },
+                    {
+                        "$numberDouble": "-0.011342932000000000015"
+                    }
+                ],
+                "numCandidates": {
+                    "$numberInt": "150"
+                },
+                "limit": {
+                    "$numberInt": "10"
+                }
+            }
+        },
+        {
+            "$project": {
+                "_id": {
+                    "$numberInt": "0"
+                },
+                "plot": {
+                    "$numberInt": "1"
+                },
+                "title": {
+                    "$numberInt": "1"
+                },
+                "score": {
+                    "$meta": "vectorSearchScore"
+                }
+            }
+        }
+    ]
+    JSON;
+
+    /**
+     * ANN Filter
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-vector-search/vector-search-stage/#ann-examples
+     */
+    case VectorSearchANNFilter = <<<'JSON'
+    [
+        {
+            "$vectorSearch": {
+                "index": "vector_index",
+                "path": "plot_embedding",
+                "filter": {
+                    "$and": [
+                        {
+                            "year": {
+                                "$lt": {
+                                    "$numberInt": "1975"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "queryVector": [
+                    {
+                        "$numberDouble": "0.024210530000000000939"
+                    },
+                    {
+                        "$numberDouble": "-0.022372592000000000173"
+                    },
+                    {
+                        "$numberDouble": "-0.0062311370000000003075"
+                    }
+                ],
+                "numCandidates": {
+                    "$numberInt": "150"
+                },
+                "limit": {
+                    "$numberInt": "10"
+                }
+            }
+        },
+        {
+            "$project": {
+                "_id": {
+                    "$numberInt": "0"
+                },
+                "title": {
+                    "$numberInt": "1"
+                },
+                "plot": {
+                    "$numberInt": "1"
+                },
+                "year": {
+                    "$numberInt": "1"
+                },
+                "score": {
+                    "$meta": "vectorSearchScore"
+                }
+            }
+        }
+    ]
+    JSON;
+
+    /**
+     * ENN
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-vector-search/vector-search-stage/#enn-examples
+     */
+    case VectorSearchENN = <<<'JSON'
+    [
+        {
+            "$vectorSearch": {
+                "index": "vector_index",
+                "path": "plot_embedding",
+                "queryVector": [
+                    {
+                        "$numberDouble": "-0.0069540970000000002296"
+                    },
+                    {
+                        "$numberDouble": "-0.009932498999999999148"
+                    },
+                    {
+                        "$numberDouble": "-0.0013114739999999999731"
+                    }
+                ],
+                "exact": true,
+                "limit": {
+                    "$numberInt": "10"
+                }
+            }
+        },
+        {
+            "$project": {
+                "_id": {
+                    "$numberInt": "0"
+                },
+                "plot": {
+                    "$numberInt": "1"
+                },
+                "title": {
+                    "$numberInt": "1"
+                },
+                "score": {
+                    "$meta": "vectorSearchScore"
                 }
             }
         }

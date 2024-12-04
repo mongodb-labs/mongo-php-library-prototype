@@ -24,6 +24,7 @@ use MongoDB\Builder\Type\AccumulatorInterface;
 use MongoDB\Builder\Type\ExpressionInterface;
 use MongoDB\Builder\Type\Optional;
 use MongoDB\Builder\Type\QueryInterface;
+use MongoDB\Builder\Type\SearchOperatorInterface;
 use MongoDB\Builder\Type\Sort;
 use MongoDB\Model\BSONArray;
 use stdClass;
@@ -537,11 +538,35 @@ trait FactoryTrait
      * NOTE: $search is only available for MongoDB Atlas clusters, and is not available for self-managed deployments.
      *
      * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/search/
-     * @param Document|Serializable|array|stdClass $search
+     * @param Document|SearchOperatorInterface|Serializable|array|stdClass $operator Operator to search with.  You can provide a specific operator or use
+     * the compound operator to run a compound query with multiple operators.
+     * @param Optional|string $index Name of the Atlas Search index to use. If omitted, defaults to "default".
+     * @param Optional|Document|Serializable|array|stdClass $highlight Specifies the highlighting options for displaying search terms in their original context.
+     * @param Optional|bool $concurrent Parallelize search across segments on dedicated search nodes.
+     * If you don't have separate search nodes on your cluster,
+     * Atlas Search ignores this flag. If omitted, defaults to false.
+     * @param Optional|string $count Document that specifies the count options for retrieving a count of the results.
+     * @param Optional|string $searchAfter Reference point for retrieving results. searchAfter returns documents starting immediately following the specified reference point.
+     * @param Optional|string $searchBefore Reference point for retrieving results. searchBefore returns documents starting immediately before the specified reference point.
+     * @param Optional|bool $scoreDetails Flag that specifies whether to retrieve a detailed breakdown of the score for the documents in the results. If omitted, defaults to false.
+     * @param Optional|Document|Serializable|array|stdClass $sort Document that specifies the fields to sort the Atlas Search results by in ascending or descending order.
+     * @param Optional|bool $returnStoredSource Flag that specifies whether to perform a full document lookup on the backend database or return only stored source fields directly from Atlas Search.
+     * @param Optional|Document|Serializable|array|stdClass $tracking Document that specifies the tracking option to retrieve analytics information on the search terms.
      */
-    public static function search(Document|Serializable|stdClass|array $search): SearchStage
-    {
-        return new SearchStage($search);
+    public static function search(
+        Document|Serializable|SearchOperatorInterface|stdClass|array $operator,
+        Optional|string $index = Optional::Undefined,
+        Optional|Document|Serializable|stdClass|array $highlight = Optional::Undefined,
+        Optional|bool $concurrent = Optional::Undefined,
+        Optional|string $count = Optional::Undefined,
+        Optional|string $searchAfter = Optional::Undefined,
+        Optional|string $searchBefore = Optional::Undefined,
+        Optional|bool $scoreDetails = Optional::Undefined,
+        Optional|Document|Serializable|stdClass|array $sort = Optional::Undefined,
+        Optional|bool $returnStoredSource = Optional::Undefined,
+        Optional|Document|Serializable|stdClass|array $tracking = Optional::Undefined,
+    ): SearchStage {
+        return new SearchStage($operator, $index, $highlight, $concurrent, $count, $searchAfter, $searchBefore, $scoreDetails, $sort, $returnStoredSource, $tracking);
     }
 
     /**
@@ -549,11 +574,17 @@ trait FactoryTrait
      * NOTE: $searchMeta is only available for MongoDB Atlas clusters running MongoDB v4.4.9 or higher, and is not available for self-managed deployments.
      *
      * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/searchMeta/
-     * @param Document|Serializable|array|stdClass $meta
+     * @param Document|SearchOperatorInterface|Serializable|array|stdClass $operator Operator to search with.  You can provide a specific operator or use
+     * the compound operator to run a compound query with multiple operators.
+     * @param Optional|string $index Name of the Atlas Search index to use. If omitted, defaults to default.
+     * @param Optional|Document|Serializable|array|stdClass $count Document that specifies the count options for retrieving a count of the results.
      */
-    public static function searchMeta(Document|Serializable|stdClass|array $meta): SearchMetaStage
-    {
-        return new SearchMetaStage($meta);
+    public static function searchMeta(
+        Document|Serializable|SearchOperatorInterface|stdClass|array $operator,
+        Optional|string $index = Optional::Undefined,
+        Optional|Document|Serializable|stdClass|array $count = Optional::Undefined,
+    ): SearchMetaStage {
+        return new SearchMetaStage($operator, $index, $count);
     }
 
     /**
@@ -677,5 +708,30 @@ trait FactoryTrait
         Optional|bool $preserveNullAndEmptyArrays = Optional::Undefined,
     ): UnwindStage {
         return new UnwindStage($path, $includeArrayIndex, $preserveNullAndEmptyArrays);
+    }
+
+    /**
+     * The $vectorSearch stage performs an ANN or ENN search on a vector in the specified field.
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-vector-search/vector-search-stage/
+     * @param string $index Name of the Atlas Vector Search index to use.
+     * @param int $limit Number of documents to return in the results. This value can't exceed the value of numCandidates if you specify numCandidates.
+     * @param array|string $path Indexed vector type field to search.
+     * @param BSONArray|PackedArray|array $queryVector Array of numbers that represent the query vector. The number type must match the indexed field value type.
+     * @param Optional|bool $exact This is required if numCandidates is omitted. false to run ANN search. true to run ENN search.
+     * @param Optional|QueryInterface|array $filter Any match query that compares an indexed field with a boolean, date, objectId, number (not decimals), string, or UUID to use as a pre-filter.
+     * @param Optional|int $numCandidates This field is required if exact is false or omitted.
+     * Number of nearest neighbors to use during the search. Value must be less than or equal to (<=) 10000. You can't specify a number less than the number of documents to return (limit).
+     */
+    public static function vectorSearch(
+        string $index,
+        int $limit,
+        array|string $path,
+        PackedArray|BSONArray|array $queryVector,
+        Optional|bool $exact = Optional::Undefined,
+        Optional|QueryInterface|array $filter = Optional::Undefined,
+        Optional|int $numCandidates = Optional::Undefined,
+    ): VectorSearchStage {
+        return new VectorSearchStage($index, $limit, $path, $queryVector, $exact, $filter, $numCandidates);
     }
 }
