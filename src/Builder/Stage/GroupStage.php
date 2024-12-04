@@ -25,10 +25,13 @@ use function is_string;
  * Groups input documents by a specified identifier expression and applies the accumulator expression(s), if specified, to each group. Consumes all input documents and outputs one document per each distinct group. The output documents only contain the identifier field and, if specified, accumulated fields.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/group/
+ * @internal
  */
-class GroupStage implements StageInterface, OperatorInterface
+final class GroupStage implements StageInterface, OperatorInterface
 {
-    public const ENCODE = Encode::Group;
+    public const ENCODE = Encode::Object;
+    public const NAME = '$group';
+    public const PROPERTIES = ['_id' => '_id', 'field' => null];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $_id The _id expression specifies the group key. If you specify an _id value of null, or any other constant value, the $group stage returns a single document that aggregates values across all of the input documents. */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $_id;
@@ -53,10 +56,5 @@ class GroupStage implements StageInterface, OperatorInterface
 
         $field = (object) $field;
         $this->field = $field;
-    }
-
-    public function getOperator(): string
-    {
-        return '$group';
     }
 }

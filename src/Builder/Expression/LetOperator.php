@@ -21,10 +21,13 @@ use stdClass;
  * Accepts any number of argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/let/
+ * @internal
  */
-class LetOperator implements ResolvesToAny, OperatorInterface
+final class LetOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$let';
+    public const PROPERTIES = ['vars' => 'vars', 'in' => 'in'];
 
     /**
      * @var Document|Serializable|array|stdClass $vars Assignment block for the variables accessible in the in expression. To assign a variable, specify a string for the variable name and assign a valid expression for the value.
@@ -46,10 +49,5 @@ class LetOperator implements ResolvesToAny, OperatorInterface
     ) {
         $this->vars = $vars;
         $this->in = $in;
-    }
-
-    public function getOperator(): string
-    {
-        return '$let';
     }
 }

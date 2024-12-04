@@ -19,17 +19,14 @@ use MongoDB\Builder\Type\WindowInterface;
  * New in MongoDB 5.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/count-accumulator/
+ * @internal
  */
-class CountAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class CountAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$count';
 
     public function __construct()
     {
-    }
-
-    public function getOperator(): string
-    {
-        return '$count';
     }
 }

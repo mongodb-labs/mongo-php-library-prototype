@@ -19,10 +19,13 @@ use stdClass;
  * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/toLong/
+ * @internal
  */
-class ToLongOperator implements ResolvesToLong, OperatorInterface
+final class ToLongOperator implements ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$toLong';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $expression */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $expression;
@@ -33,10 +36,5 @@ class ToLongOperator implements ResolvesToLong, OperatorInterface
     public function __construct(Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$toLong';
     }
 }

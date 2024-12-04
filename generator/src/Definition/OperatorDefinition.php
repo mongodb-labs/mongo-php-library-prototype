@@ -32,6 +32,7 @@ final class OperatorDefinition
         /** @var list<string> */
         public array $type,
         public string|null $description = null,
+        public bool $wrapObject = true,
         array $arguments = [],
         array $tests = [],
     ) {
@@ -39,11 +40,12 @@ final class OperatorDefinition
             'single' => Encode::Single,
             'array' => Encode::Array,
             'object' => Encode::Object,
-            'flat_object' => Encode::FlatObject,
-            'dollar_object' => Encode::DollarObject,
-            'group' => Encode::Group,
             default => throw new UnexpectedValueException(sprintf('Unexpected "encode" value for operator "%s". Got "%s"', $name, $encode)),
         };
+
+        if (! $wrapObject && $this->encode !== Encode::Object) {
+            throw new UnexpectedValueException(sprintf('Operator "%s" cannot have wrapObject set to false when encode is not "object"', $name));
+        }
 
         // Convert arguments to ArgumentDefinition objects
         // Optional arguments must be after required arguments

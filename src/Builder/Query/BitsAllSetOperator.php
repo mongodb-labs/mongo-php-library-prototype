@@ -23,10 +23,13 @@ use function is_array;
  * Matches numeric or binary values in which a set of bit positions all have a value of 1.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/bitsAllSet/
+ * @internal
  */
-class BitsAllSetOperator implements FieldQueryInterface, OperatorInterface
+final class BitsAllSetOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$bitsAllSet';
+    public const PROPERTIES = ['bitmask' => 'bitmask'];
 
     /** @var BSONArray|Binary|PackedArray|array|int|string $bitmask */
     public readonly Binary|PackedArray|BSONArray|array|int|string $bitmask;
@@ -41,10 +44,5 @@ class BitsAllSetOperator implements FieldQueryInterface, OperatorInterface
         }
 
         $this->bitmask = $bitmask;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bitsAllSet';
     }
 }

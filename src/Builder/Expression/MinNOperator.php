@@ -21,10 +21,13 @@ use function is_array;
  * Returns the n smallest values in an array. Distinct from the $minN accumulator.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/minN-array-element/
+ * @internal
  */
-class MinNOperator implements ResolvesToArray, OperatorInterface
+final class MinNOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$minN';
+    public const PROPERTIES = ['input' => 'input', 'n' => 'n'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $input An expression that resolves to the array from which to return the maximal n elements. */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $input;
@@ -44,10 +47,5 @@ class MinNOperator implements ResolvesToArray, OperatorInterface
 
         $this->input = $input;
         $this->n = $n;
-    }
-
-    public function getOperator(): string
-    {
-        return '$minN';
     }
 }

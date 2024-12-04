@@ -26,10 +26,13 @@ use function is_array;
  * Creates new documents in a sequence of documents where certain values in a field are missing.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/densify/
+ * @internal
  */
-class DensifyStage implements StageInterface, OperatorInterface
+final class DensifyStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$densify';
+    public const PROPERTIES = ['field' => 'field', 'range' => 'range', 'partitionByFields' => 'partitionByFields'];
 
     /**
      * @var string $field The field to densify. The values of the specified field must either be all numeric values or all dates.
@@ -63,10 +66,5 @@ class DensifyStage implements StageInterface, OperatorInterface
         }
 
         $this->partitionByFields = $partitionByFields;
-    }
-
-    public function getOperator(): string
-    {
-        return '$densify';
     }
 }

@@ -18,10 +18,13 @@ use stdClass;
  * Converts a document to an array of documents representing key-value pairs.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/objectToArray/
+ * @internal
  */
-class ObjectToArrayOperator implements ResolvesToArray, OperatorInterface
+final class ObjectToArrayOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$objectToArray';
+    public const PROPERTIES = ['object' => 'object'];
 
     /** @var Document|ResolvesToObject|Serializable|array|stdClass $object Any valid expression as long as it resolves to a document object. $objectToArray applies to the top-level fields of its argument. If the argument is a document that itself contains embedded document fields, the $objectToArray does not recursively apply to the embedded document fields. */
     public readonly Document|Serializable|ResolvesToObject|stdClass|array $object;
@@ -32,10 +35,5 @@ class ObjectToArrayOperator implements ResolvesToArray, OperatorInterface
     public function __construct(Document|Serializable|ResolvesToObject|stdClass|array $object)
     {
         $this->object = $object;
-    }
-
-    public function getOperator(): string
-    {
-        return '$objectToArray';
     }
 }

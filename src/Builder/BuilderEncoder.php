@@ -32,7 +32,7 @@ use function array_key_exists;
 use function is_object;
 
 /** @template-implements Encoder<stdClass|array|string|int, Pipeline|StageInterface|ExpressionInterface|QueryInterface> */
-class BuilderEncoder implements Encoder
+final class BuilderEncoder implements Encoder
 {
     /** @template-use EncodeIfSupported<stdClass|array|string|int, Pipeline|StageInterface|ExpressionInterface|QueryInterface> */
     use EncodeIfSupported;

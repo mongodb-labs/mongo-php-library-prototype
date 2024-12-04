@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Selects documents where values match a specified regular expression.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/regex/
+ * @internal
  */
-class RegexOperator implements FieldQueryInterface, OperatorInterface
+final class RegexOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$regex';
+    public const PROPERTIES = ['regex' => 'regex'];
 
     /** @var Regex $regex */
     public readonly Regex $regex;
@@ -31,10 +34,5 @@ class RegexOperator implements FieldQueryInterface, OperatorInterface
     public function __construct(Regex $regex)
     {
         $this->regex = $regex;
-    }
-
-    public function getOperator(): string
-    {
-        return '$regex';
     }
 }

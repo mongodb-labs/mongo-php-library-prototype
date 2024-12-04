@@ -22,10 +22,20 @@ use MongoDB\Builder\Type\TimeUnit;
  * Truncates a date.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateTrunc/
+ * @internal
  */
-class DateTruncOperator implements ResolvesToDate, OperatorInterface
+final class DateTruncOperator implements ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$dateTrunc';
+
+    public const PROPERTIES = [
+        'date' => 'date',
+        'unit' => 'unit',
+        'binSize' => 'binSize',
+        'timezone' => 'timezone',
+        'startOfWeek' => 'startOfWeek',
+    ];
 
     /** @var ObjectId|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|Timestamp|UTCDateTime|int $date The date to truncate, specified in UTC. The date can be any expression that resolves to a Date, a Timestamp, or an ObjectID. */
     public readonly ObjectId|Timestamp|UTCDateTime|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|int $date;
@@ -73,10 +83,5 @@ class DateTruncOperator implements ResolvesToDate, OperatorInterface
         $this->binSize = $binSize;
         $this->timezone = $timezone;
         $this->startOfWeek = $startOfWeek;
-    }
-
-    public function getOperator(): string
-    {
-        return '$dateTrunc';
     }
 }

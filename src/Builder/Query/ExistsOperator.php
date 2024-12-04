@@ -16,10 +16,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Matches documents that have the specified field.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/exists/
+ * @internal
  */
-class ExistsOperator implements FieldQueryInterface, OperatorInterface
+final class ExistsOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$exists';
+    public const PROPERTIES = ['exists' => 'exists'];
 
     /** @var bool $exists */
     public readonly bool $exists;
@@ -30,10 +33,5 @@ class ExistsOperator implements FieldQueryInterface, OperatorInterface
     public function __construct(bool $exists = true)
     {
         $this->exists = $exists;
-    }
-
-    public function getOperator(): string
-    {
-        return '$exists';
     }
 }

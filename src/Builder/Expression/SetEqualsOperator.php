@@ -20,10 +20,13 @@ use function array_is_list;
  * Returns true if the input sets have the same distinct elements. Accepts two or more argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/setEquals/
+ * @internal
  */
-class SetEqualsOperator implements ResolvesToBool, OperatorInterface
+final class SetEqualsOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$setEquals';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<BSONArray|PackedArray|ResolvesToArray|array> $expression */
     public readonly array $expression;
@@ -43,10 +46,5 @@ class SetEqualsOperator implements ResolvesToBool, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$setEquals';
     }
 }

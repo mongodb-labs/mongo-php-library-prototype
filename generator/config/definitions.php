@@ -58,4 +58,16 @@ return [
             OperatorTestGenerator::class,
         ],
     ],
+
+    // Search Operators
+    [
+        'configFiles' => __DIR__ . '/search',
+        'namespace' => 'MongoDB\\Builder\\Search',
+        'classNameSuffix' => 'Operator',
+        'generators' => [
+            OperatorClassGenerator::class,
+            OperatorFactoryGenerator::class,
+            OperatorTestGenerator::class,
+        ],
+    ],
 ];

@@ -21,10 +21,22 @@ use stdClass;
  * Returns a Change Stream cursor for the collection or database. This stage can only occur once in an aggregation pipeline and it must occur as the first stage.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/changeStream/
+ * @internal
  */
-class ChangeStreamStage implements StageInterface, OperatorInterface
+final class ChangeStreamStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$changeStream';
+
+    public const PROPERTIES = [
+        'allChangesForCluster' => 'allChangesForCluster',
+        'fullDocument' => 'fullDocument',
+        'fullDocumentBeforeChange' => 'fullDocumentBeforeChange',
+        'resumeAfter' => 'resumeAfter',
+        'showExpandedEvents' => 'showExpandedEvents',
+        'startAfter' => 'startAfter',
+        'startAtOperationTime' => 'startAtOperationTime',
+    ];
 
     /** @var Optional|bool $allChangesForCluster A flag indicating whether the stream should report all changes that occur on the deployment, aside from those on internal databases or collections. */
     public readonly Optional|bool $allChangesForCluster;
@@ -76,10 +88,5 @@ class ChangeStreamStage implements StageInterface, OperatorInterface
         $this->showExpandedEvents = $showExpandedEvents;
         $this->startAfter = $startAfter;
         $this->startAtOperationTime = $startAtOperationTime;
-    }
-
-    public function getOperator(): string
-    {
-        return '$changeStream';
     }
 }

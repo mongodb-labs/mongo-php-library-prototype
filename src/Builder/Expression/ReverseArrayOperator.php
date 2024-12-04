@@ -21,10 +21,13 @@ use function is_array;
  * Returns an array with the elements in reverse order.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/reverseArray/
+ * @internal
  */
-class ReverseArrayOperator implements ResolvesToArray, OperatorInterface
+final class ReverseArrayOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$reverseArray';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $expression The argument can be any valid expression as long as it resolves to an array. */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $expression;
@@ -39,10 +42,5 @@ class ReverseArrayOperator implements ResolvesToArray, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$reverseArray';
     }
 }

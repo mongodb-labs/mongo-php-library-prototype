@@ -19,10 +19,13 @@ use MongoDB\Builder\Type\Optional;
  * Returns the day of the week for a date as a number between 1 (Sunday) and 7 (Saturday).
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dayOfWeek/
+ * @internal
  */
-class DayOfWeekOperator implements ResolvesToInt, OperatorInterface
+final class DayOfWeekOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$dayOfWeek';
+    public const PROPERTIES = ['date' => 'date', 'timezone' => 'timezone'];
 
     /** @var ObjectId|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|Timestamp|UTCDateTime|int $date The date to which the operator is applied. date must be a valid expression that resolves to a Date, a Timestamp, or an ObjectID. */
     public readonly ObjectId|Timestamp|UTCDateTime|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|int $date;
@@ -40,10 +43,5 @@ class DayOfWeekOperator implements ResolvesToInt, OperatorInterface
     ) {
         $this->date = $date;
         $this->timezone = $timezone;
-    }
-
-    public function getOperator(): string
-    {
-        return '$dayOfWeek';
     }
 }

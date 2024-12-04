@@ -21,10 +21,13 @@ use function array_is_list;
  * Matches arrays that contain all elements specified in the query.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/all/
+ * @internal
  */
-class AllOperator implements FieldQueryInterface, OperatorInterface
+final class AllOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$all';
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var list<FieldQueryInterface|Type|array|bool|float|int|null|stdClass|string> $value */
     public readonly array $value;
@@ -44,10 +47,5 @@ class AllOperator implements FieldQueryInterface, OperatorInterface
         }
 
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$all';
     }
 }

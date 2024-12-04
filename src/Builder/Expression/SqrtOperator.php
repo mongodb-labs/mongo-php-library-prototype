@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Calculates the square root.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sqrt/
+ * @internal
  */
-class SqrtOperator implements ResolvesToDouble, OperatorInterface
+final class SqrtOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$sqrt';
+    public const PROPERTIES = ['number' => 'number'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $number The argument can be any valid expression as long as it resolves to a non-negative number. */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $number;
@@ -31,10 +34,5 @@ class SqrtOperator implements ResolvesToDouble, OperatorInterface
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $number)
     {
         $this->number = $number;
-    }
-
-    public function getOperator(): string
-    {
-        return '$sqrt';
     }
 }

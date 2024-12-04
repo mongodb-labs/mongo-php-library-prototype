@@ -22,10 +22,13 @@ use function is_array;
  * Returns a subset of an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/slice/
+ * @internal
  */
-class SliceOperator implements ResolvesToArray, OperatorInterface
+final class SliceOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$slice';
+    public const PROPERTIES = ['expression' => 'expression', 'n' => 'n', 'position' => 'position'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $expression Any valid expression as long as it resolves to an array. */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $expression;
@@ -65,10 +68,5 @@ class SliceOperator implements ResolvesToArray, OperatorInterface
         $this->expression = $expression;
         $this->n = $n;
         $this->position = $position;
-    }
-
-    public function getOperator(): string
-    {
-        return '$slice';
     }
 }

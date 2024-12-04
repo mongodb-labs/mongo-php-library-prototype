@@ -21,10 +21,13 @@ use function is_array;
  * Returns a set with elements that appear in the first set but not in the second set; i.e. performs a relative complement of the second set relative to the first. Accepts exactly two argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/setDifference/
+ * @internal
  */
-class SetDifferenceOperator implements ResolvesToArray, OperatorInterface
+final class SetDifferenceOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$setDifference';
+    public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $expression1 The arguments can be any valid expression as long as they each resolve to an array. */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $expression1;
@@ -50,10 +53,5 @@ class SetDifferenceOperator implements ResolvesToArray, OperatorInterface
         }
 
         $this->expression2 = $expression2;
-    }
-
-    public function getOperator(): string
-    {
-        return '$setDifference';
     }
 }

@@ -25,10 +25,13 @@ use function is_array;
  * New in MongoDB 4.4.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/unionWith/
+ * @internal
  */
-class UnionWithStage implements StageInterface, OperatorInterface
+final class UnionWithStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$unionWith';
+    public const PROPERTIES = ['coll' => 'coll', 'pipeline' => 'pipeline'];
 
     /** @var string $coll The collection or view whose pipeline results you wish to include in the result set. */
     public readonly string $coll;
@@ -54,10 +57,5 @@ class UnionWithStage implements StageInterface, OperatorInterface
         }
 
         $this->pipeline = $pipeline;
-    }
-
-    public function getOperator(): string
-    {
-        return '$unionWith';
     }
 }

@@ -21,10 +21,13 @@ use function array_is_list;
  * Alias for $project stage that removes or excludes fields.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/unset/
+ * @internal
  */
-class UnsetStage implements StageInterface, OperatorInterface
+final class UnsetStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$unset';
+    public const PROPERTIES = ['field' => 'field'];
 
     /** @var list<FieldPath|string> $field */
     public readonly array $field;
@@ -44,10 +47,5 @@ class UnsetStage implements StageInterface, OperatorInterface
         }
 
         $this->field = $field;
-    }
-
-    public function getOperator(): string
-    {
-        return '$unset';
     }
 }

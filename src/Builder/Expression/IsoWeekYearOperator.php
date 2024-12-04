@@ -19,10 +19,13 @@ use MongoDB\Builder\Type\Optional;
  * Returns the year number in ISO 8601 format. The year starts with the Monday of week 1 (ISO 8601) and ends with the Sunday of the last week (ISO 8601).
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/isoWeekYear/
+ * @internal
  */
-class IsoWeekYearOperator implements ResolvesToInt, OperatorInterface
+final class IsoWeekYearOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$isoWeekYear';
+    public const PROPERTIES = ['date' => 'date', 'timezone' => 'timezone'];
 
     /** @var ObjectId|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|Timestamp|UTCDateTime|int $date The date to which the operator is applied. date must be a valid expression that resolves to a Date, a Timestamp, or an ObjectID. */
     public readonly ObjectId|Timestamp|UTCDateTime|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|int $date;
@@ -40,10 +43,5 @@ class IsoWeekYearOperator implements ResolvesToInt, OperatorInterface
     ) {
         $this->date = $date;
         $this->timezone = $timezone;
-    }
-
-    public function getOperator(): string
-    {
-        return '$isoWeekYear';
     }
 }

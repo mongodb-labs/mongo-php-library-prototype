@@ -22,10 +22,13 @@ use function array_is_list;
  * Changed in MongoDB 5.0: Available in the $setWindowFields stage.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/max/
+ * @internal
  */
-class MaxOperator implements ResolvesToAny, OperatorInterface
+final class MaxOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$max';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<ExpressionInterface|Type|array|bool|float|int|null|stdClass|string> $expression */
     public readonly array $expression;
@@ -45,10 +48,5 @@ class MaxOperator implements ResolvesToAny, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$max';
     }
 }

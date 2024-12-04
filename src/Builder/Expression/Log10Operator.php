@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Calculates the log base 10 of a number.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/log10/
+ * @internal
  */
-class Log10Operator implements ResolvesToDouble, OperatorInterface
+final class Log10Operator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$log10';
+    public const PROPERTIES = ['number' => 'number'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $number Any valid expression as long as it resolves to a non-negative number. */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $number;
@@ -31,10 +34,5 @@ class Log10Operator implements ResolvesToDouble, OperatorInterface
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $number)
     {
         $this->number = $number;
-    }
-
-    public function getOperator(): string
-    {
-        return '$log10';
     }
 }

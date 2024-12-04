@@ -8,8 +8,11 @@ use MongoDB\Builder\Pipeline;
 use MongoDB\Codec\EncodeIfSupported;
 use MongoDB\Exception\UnsupportedValueException;
 
-/** @template-extends AbstractExpressionEncoder<list<mixed>, Pipeline> */
-class PipelineEncoder extends AbstractExpressionEncoder
+/**
+ * @template-extends AbstractExpressionEncoder<list<mixed>, Pipeline>
+ * @internal
+ */
+final class PipelineEncoder extends AbstractExpressionEncoder
 {
     /** @template-use EncodeIfSupported<list<mixed>, Pipeline> */
     use EncodeIfSupported;

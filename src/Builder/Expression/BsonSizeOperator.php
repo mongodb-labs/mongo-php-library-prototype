@@ -18,10 +18,13 @@ use stdClass;
  * Returns the size in bytes of a given document (i.e. BSON type Object) when encoded as BSON.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/bsonSize/
+ * @internal
  */
-class BsonSizeOperator implements ResolvesToInt, OperatorInterface
+final class BsonSizeOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$bsonSize';
+    public const PROPERTIES = ['object' => 'object'];
 
     /** @var Document|ResolvesToNull|ResolvesToObject|Serializable|array|null|stdClass $object */
     public readonly Document|Serializable|ResolvesToNull|ResolvesToObject|stdClass|array|null $object;
@@ -32,10 +35,5 @@ class BsonSizeOperator implements ResolvesToInt, OperatorInterface
     public function __construct(Document|Serializable|ResolvesToNull|ResolvesToObject|stdClass|array|null $object)
     {
         $this->object = $object;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bsonSize';
     }
 }

@@ -22,10 +22,13 @@ use function is_string;
  * Reshapes each document in the stream, such as by adding new fields or removing existing fields. For each input document, outputs one document.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/project/
+ * @internal
  */
-class ProjectStage implements StageInterface, OperatorInterface
+final class ProjectStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$project';
+    public const PROPERTIES = ['specification' => 'specification'];
 
     /** @var stdClass<ExpressionInterface|Type|array|bool|float|int|null|stdClass|string> $specification */
     public readonly stdClass $specification;
@@ -47,10 +50,5 @@ class ProjectStage implements StageInterface, OperatorInterface
 
         $specification = (object) $specification;
         $this->specification = $specification;
-    }
-
-    public function getOperator(): string
-    {
-        return '$project';
     }
 }

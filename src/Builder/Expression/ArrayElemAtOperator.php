@@ -21,10 +21,13 @@ use function is_array;
  * Returns the element at the specified array index.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/arrayElemAt/
+ * @internal
  */
-class ArrayElemAtOperator implements ResolvesToAny, OperatorInterface
+final class ArrayElemAtOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$arrayElemAt';
+    public const PROPERTIES = ['array' => 'array', 'idx' => 'idx'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $array */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $array;
@@ -44,10 +47,5 @@ class ArrayElemAtOperator implements ResolvesToAny, OperatorInterface
 
         $this->array = $array;
         $this->idx = $idx;
-    }
-
-    public function getOperator(): string
-    {
-        return '$arrayElemAt';
     }
 }

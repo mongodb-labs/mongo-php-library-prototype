@@ -23,10 +23,13 @@ use function array_is_list;
  * Returns true only when all its expressions evaluate to true. Accepts any number of argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/and/
+ * @internal
  */
-class AndOperator implements ResolvesToBool, OperatorInterface
+final class AndOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$and';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<Decimal128|ExpressionInterface|Int64|ResolvesToBool|ResolvesToNull|ResolvesToNumber|ResolvesToString|Type|array|bool|float|int|null|stdClass|string> $expression */
     public readonly array $expression;
@@ -47,10 +50,5 @@ class AndOperator implements ResolvesToBool, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$and';
     }
 }

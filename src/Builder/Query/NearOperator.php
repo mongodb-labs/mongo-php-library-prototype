@@ -23,10 +23,13 @@ use stdClass;
  * Returns geospatial objects in proximity to a point. Requires a geospatial index. The 2dsphere and 2d indexes support $near.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/near/
+ * @internal
  */
-class NearOperator implements FieldQueryInterface, OperatorInterface
+final class NearOperator implements FieldQueryInterface, OperatorInterface
 {
-    public const ENCODE = Encode::DollarObject;
+    public const ENCODE = Encode::Object;
+    public const NAME = '$near';
+    public const PROPERTIES = ['geometry' => null, 'maxDistance' => '$maxDistance', 'minDistance' => '$minDistance'];
 
     /** @var Document|GeometryInterface|Serializable|array|stdClass $geometry */
     public readonly Document|Serializable|GeometryInterface|stdClass|array $geometry;
@@ -50,10 +53,5 @@ class NearOperator implements FieldQueryInterface, OperatorInterface
         $this->geometry = $geometry;
         $this->maxDistance = $maxDistance;
         $this->minDistance = $minDistance;
-    }
-
-    public function getOperator(): string
-    {
-        return '$near';
     }
 }

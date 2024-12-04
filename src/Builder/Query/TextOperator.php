@@ -17,10 +17,19 @@ use MongoDB\Builder\Type\QueryInterface;
  * Performs text search.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/text/
+ * @internal
  */
-class TextOperator implements QueryInterface, OperatorInterface
+final class TextOperator implements QueryInterface, OperatorInterface
 {
-    public const ENCODE = Encode::DollarObject;
+    public const ENCODE = Encode::Object;
+    public const NAME = '$text';
+
+    public const PROPERTIES = [
+        'search' => '$search',
+        'language' => '$language',
+        'caseSensitive' => '$caseSensitive',
+        'diacriticSensitive' => '$diacriticSensitive',
+    ];
 
     /** @var string $search A string of terms that MongoDB parses and uses to query the text index. MongoDB performs a logical OR search of the terms unless specified as a phrase. */
     public readonly string $search;
@@ -58,10 +67,5 @@ class TextOperator implements QueryInterface, OperatorInterface
         $this->language = $language;
         $this->caseSensitive = $caseSensitive;
         $this->diacriticSensitive = $diacriticSensitive;
-    }
-
-    public function getOperator(): string
-    {
-        return '$text';
     }
 }

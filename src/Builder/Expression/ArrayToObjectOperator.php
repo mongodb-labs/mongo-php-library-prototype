@@ -21,10 +21,13 @@ use function is_array;
  * Converts an array of key value pairs to a document.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/arrayToObject/
+ * @internal
  */
-class ArrayToObjectOperator implements ResolvesToObject, OperatorInterface
+final class ArrayToObjectOperator implements ResolvesToObject, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$arrayToObject';
+    public const PROPERTIES = ['array' => 'array'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $array */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $array;
@@ -39,10 +42,5 @@ class ArrayToObjectOperator implements ResolvesToObject, OperatorInterface
         }
 
         $this->array = $array;
-    }
-
-    public function getOperator(): string
-    {
-        return '$arrayToObject';
     }
 }

@@ -18,10 +18,13 @@ use stdClass;
  * A ternary operator that evaluates one expression, and depending on the result, returns the value of one of the other two expressions. Accepts either three expressions in an ordered list or three named parameters.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/cond/
+ * @internal
  */
-class CondOperator implements ResolvesToAny, OperatorInterface
+final class CondOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$cond';
+    public const PROPERTIES = ['if' => 'if', 'then' => 'then', 'else' => 'else'];
 
     /** @var ResolvesToBool|bool $if */
     public readonly ResolvesToBool|bool $if;
@@ -45,10 +48,5 @@ class CondOperator implements ResolvesToAny, OperatorInterface
         $this->if = $if;
         $this->then = $then;
         $this->else = $else;
-    }
-
-    public function getOperator(): string
-    {
-        return '$cond';
     }
 }

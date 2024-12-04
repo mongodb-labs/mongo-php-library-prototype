@@ -21,10 +21,13 @@ use function is_array;
  * Returns true if all elements of the first set appear in the second set, including when the first set equals the second set; i.e. not a strict subset. Accepts exactly two argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/setIsSubset/
+ * @internal
  */
-class SetIsSubsetOperator implements ResolvesToBool, OperatorInterface
+final class SetIsSubsetOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$setIsSubset';
+    public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $expression1 */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $expression1;
@@ -50,10 +53,5 @@ class SetIsSubsetOperator implements ResolvesToBool, OperatorInterface
         }
 
         $this->expression2 = $expression2;
-    }
-
-    public function getOperator(): string
-    {
-        return '$setIsSubset';
     }
 }

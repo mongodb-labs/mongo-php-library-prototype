@@ -21,10 +21,13 @@ use MongoDB\Builder\Type\TimeUnit;
  * Adds a number of time units to a date object.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateAdd/
+ * @internal
  */
-class DateAddOperator implements ResolvesToDate, OperatorInterface
+final class DateAddOperator implements ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$dateAdd';
+    public const PROPERTIES = ['startDate' => 'startDate', 'unit' => 'unit', 'amount' => 'amount', 'timezone' => 'timezone'];
 
     /** @var ObjectId|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|Timestamp|UTCDateTime|int $startDate The beginning date, in UTC, for the addition operation. The startDate can be any expression that resolves to a Date, a Timestamp, or an ObjectID. */
     public readonly ObjectId|Timestamp|UTCDateTime|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|int $startDate;
@@ -54,10 +57,5 @@ class DateAddOperator implements ResolvesToDate, OperatorInterface
         $this->unit = $unit;
         $this->amount = $amount;
         $this->timezone = $timezone;
-    }
-
-    public function getOperator(): string
-    {
-        return '$dateAdd';
     }
 }

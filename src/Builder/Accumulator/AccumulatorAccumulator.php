@@ -27,10 +27,22 @@ use function is_string;
  * New in MongoDB 4.4.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/accumulator/
+ * @internal
  */
-class AccumulatorAccumulator implements AccumulatorInterface, OperatorInterface
+final class AccumulatorAccumulator implements AccumulatorInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$accumulator';
+
+    public const PROPERTIES = [
+        'init' => 'init',
+        'accumulate' => 'accumulate',
+        'accumulateArgs' => 'accumulateArgs',
+        'merge' => 'merge',
+        'lang' => 'lang',
+        'initArgs' => 'initArgs',
+        'finalize' => 'finalize',
+    ];
 
     /** @var Javascript|string $init Function used to initialize the state. The init function receives its arguments from the initArgs array expression. You can specify the function definition as either BSON type Code or String. */
     public readonly Javascript|string $init;
@@ -102,10 +114,5 @@ class AccumulatorAccumulator implements AccumulatorInterface, OperatorInterface
         }
 
         $this->finalize = $finalize;
-    }
-
-    public function getOperator(): string
-    {
-        return '$accumulator';
     }
 }

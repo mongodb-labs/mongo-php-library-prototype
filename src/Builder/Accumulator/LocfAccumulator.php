@@ -21,10 +21,13 @@ use stdClass;
  * New in MongoDB 5.2.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/locf/
+ * @internal
  */
-class LocfAccumulator implements WindowInterface, OperatorInterface
+final class LocfAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$locf';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $expression */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $expression;
@@ -35,10 +38,5 @@ class LocfAccumulator implements WindowInterface, OperatorInterface
     public function __construct(Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$locf';
     }
 }

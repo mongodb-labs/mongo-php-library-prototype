@@ -18,10 +18,13 @@ use stdClass;
  * Computes and returns the hash value of the input expression using the same hash function that MongoDB uses to create a hashed index. A hash function maps a key or string to a fixed-size numeric value.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/toHashedIndexKey/
+ * @internal
  */
-class ToHashedIndexKeyOperator implements ResolvesToLong, OperatorInterface
+final class ToHashedIndexKeyOperator implements ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$toHashedIndexKey';
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $value key or string to hash */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $value;
@@ -32,10 +35,5 @@ class ToHashedIndexKeyOperator implements ResolvesToLong, OperatorInterface
     public function __construct(Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $value)
     {
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$toHashedIndexKey';
     }
 }

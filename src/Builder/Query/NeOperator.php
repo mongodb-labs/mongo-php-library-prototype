@@ -18,10 +18,13 @@ use stdClass;
  * Matches all values that are not equal to a specified value.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/ne/
+ * @internal
  */
-class NeOperator implements FieldQueryInterface, OperatorInterface
+final class NeOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$ne';
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var Type|array|bool|float|int|null|stdClass|string $value */
     public readonly Type|stdClass|array|bool|float|int|null|string $value;
@@ -32,10 +35,5 @@ class NeOperator implements FieldQueryInterface, OperatorInterface
     public function __construct(Type|stdClass|array|bool|float|int|null|string $value)
     {
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$ne';
     }
 }

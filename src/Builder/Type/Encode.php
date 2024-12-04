@@ -10,6 +10,7 @@ use MongoDB\Builder\BuilderEncoder;
  * Defines how to encode a stage or an operator into BSON.
  *
  * @see BuilderEncoder
+ * @internal
  */
 enum Encode
 {
@@ -22,16 +23,6 @@ enum Encode
      * Parameters are encoded as an object with keys matching the parameter names
      */
     case Object;
-
-    /**
-     * Same as Object, but only parameters are returned. The operator name will not be used.
-     */
-    case FlatObject;
-
-    /**
-     * Parameters are encoded as an object with keys matching the parameter names prefixed with a dollar sign ($)
-     */
-    case DollarObject;
 
     /**
      * Get the single parameter value

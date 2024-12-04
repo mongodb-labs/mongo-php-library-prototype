@@ -20,10 +20,13 @@ use stdClass;
  * New in MongoDB 5.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/getField/
+ * @internal
  */
-class GetFieldOperator implements ResolvesToAny, OperatorInterface
+final class GetFieldOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$getField';
+    public const PROPERTIES = ['field' => 'field', 'input' => 'input'];
 
     /**
      * @var ResolvesToString|string $field Field in the input object for which you want to return a value. field can be any valid expression that resolves to a string constant.
@@ -49,10 +52,5 @@ class GetFieldOperator implements ResolvesToAny, OperatorInterface
     ) {
         $this->field = $field;
         $this->input = $input;
-    }
-
-    public function getOperator(): string
-    {
-        return '$getField';
     }
 }

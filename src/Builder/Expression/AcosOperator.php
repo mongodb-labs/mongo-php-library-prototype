@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the inverse cosine (arc cosine) of a value in radians.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/acos/
+ * @internal
  */
-class AcosOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class AcosOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$acos';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /**
      * @var Decimal128|Int64|ResolvesToNumber|float|int $expression $acos takes any valid expression that resolves to a number between -1 and 1, e.g. -1 <= value <= 1.
@@ -37,10 +40,5 @@ class AcosOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInter
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$acos';
     }
 }

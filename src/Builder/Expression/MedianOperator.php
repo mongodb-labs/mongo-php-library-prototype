@@ -28,10 +28,13 @@ use function is_array;
  * It is also available as an aggregation expression.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/median/
+ * @internal
  */
-class MedianOperator implements ResolvesToDouble, OperatorInterface
+final class MedianOperator implements ResolvesToDouble, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$median';
+    public const PROPERTIES = ['input' => 'input', 'method' => 'method'];
 
     /** @var BSONArray|Decimal128|Int64|PackedArray|ResolvesToNumber|array|float|int $input $median calculates the 50th percentile value of this data. input must be a field name or an expression that evaluates to a numeric type. If the expression cannot be converted to a numeric type, the $median calculation ignores it. */
     public readonly Decimal128|Int64|PackedArray|ResolvesToNumber|BSONArray|array|float|int $input;
@@ -53,10 +56,5 @@ class MedianOperator implements ResolvesToDouble, OperatorInterface
 
         $this->input = $input;
         $this->method = $method;
-    }
-
-    public function getOperator(): string
-    {
-        return '$median';
     }
 }

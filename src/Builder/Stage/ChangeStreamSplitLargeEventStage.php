@@ -17,17 +17,14 @@ use MongoDB\Builder\Type\StageInterface;
  * You can only use $changeStreamSplitLargeEvent in a $changeStream pipeline and it must be the final stage in the pipeline.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/changeStreamSplitLargeEvent/
+ * @internal
  */
-class ChangeStreamSplitLargeEventStage implements StageInterface, OperatorInterface
+final class ChangeStreamSplitLargeEventStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$changeStreamSplitLargeEvent';
 
     public function __construct()
     {
-    }
-
-    public function getOperator(): string
-    {
-        return '$changeStreamSplitLargeEvent';
     }
 }

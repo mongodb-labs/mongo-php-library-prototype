@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\StageInterface;
  * Distinct from the $count aggregation accumulator.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/count/
+ * @internal
  */
-class CountStage implements StageInterface, OperatorInterface
+final class CountStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$count';
+    public const PROPERTIES = ['field' => 'field'];
 
     /** @var string $field Name of the output field which has the count as its value. It must be a non-empty string, must not start with $ and must not contain the . character. */
     public readonly string $field;
@@ -31,10 +34,5 @@ class CountStage implements StageInterface, OperatorInterface
     public function __construct(string $field)
     {
         $this->field = $field;
-    }
-
-    public function getOperator(): string
-    {
-        return '$count';
     }
 }

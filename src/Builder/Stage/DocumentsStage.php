@@ -23,10 +23,13 @@ use function is_array;
  * Returns literal documents from input values.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/documents/
+ * @internal
  */
-class DocumentsStage implements StageInterface, OperatorInterface
+final class DocumentsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$documents';
+    public const PROPERTIES = ['documents' => 'documents'];
 
     /**
      * @var BSONArray|PackedArray|ResolvesToArray|array $documents $documents accepts any valid expression that resolves to an array of objects. This includes:
@@ -51,10 +54,5 @@ class DocumentsStage implements StageInterface, OperatorInterface
         }
 
         $this->documents = $documents;
-    }
-
-    public function getOperator(): string
-    {
-        return '$documents';
     }
 }

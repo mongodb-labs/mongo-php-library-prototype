@@ -21,10 +21,13 @@ use MongoDB\Builder\Type\WindowInterface;
  * Changed in MongoDB 5.0: Available in the $setWindowFields stage.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sum/
+ * @internal
  */
-class SumAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class SumAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$sum';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $expression */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $expression;
@@ -35,10 +38,5 @@ class SumAccumulator implements AccumulatorInterface, WindowInterface, OperatorI
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$sum';
     }
 }

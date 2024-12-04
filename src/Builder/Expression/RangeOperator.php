@@ -16,10 +16,13 @@ use MongoDB\Builder\Type\Optional;
  * Outputs an array containing a sequence of integers according to user-defined inputs.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/range/
+ * @internal
  */
-class RangeOperator implements ResolvesToArray, OperatorInterface
+final class RangeOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$range';
+    public const PROPERTIES = ['start' => 'start', 'end' => 'end', 'step' => 'step'];
 
     /** @var ResolvesToInt|int $start An integer that specifies the start of the sequence. Can be any valid expression that resolves to an integer. */
     public readonly ResolvesToInt|int $start;
@@ -43,10 +46,5 @@ class RangeOperator implements ResolvesToArray, OperatorInterface
         $this->start = $start;
         $this->end = $end;
         $this->step = $step;
-    }
-
-    public function getOperator(): string
-    {
-        return '$range';
     }
 }

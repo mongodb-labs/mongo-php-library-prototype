@@ -16,10 +16,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Selects documents if the array field is a specified size.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/size/
+ * @internal
  */
-class SizeOperator implements FieldQueryInterface, OperatorInterface
+final class SizeOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$size';
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var int $value */
     public readonly int $value;
@@ -30,10 +33,5 @@ class SizeOperator implements FieldQueryInterface, OperatorInterface
     public function __construct(int $value)
     {
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$size';
     }
 }

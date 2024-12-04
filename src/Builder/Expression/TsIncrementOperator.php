@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * New in MongoDB 5.1.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/tsIncrement/
+ * @internal
  */
-class TsIncrementOperator implements ResolvesToLong, OperatorInterface
+final class TsIncrementOperator implements ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$tsIncrement';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var ResolvesToTimestamp|Timestamp|int $expression */
     public readonly Timestamp|ResolvesToTimestamp|int $expression;
@@ -31,10 +34,5 @@ class TsIncrementOperator implements ResolvesToLong, OperatorInterface
     public function __construct(Timestamp|ResolvesToTimestamp|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$tsIncrement';
     }
 }

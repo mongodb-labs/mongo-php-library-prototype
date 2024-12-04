@@ -23,10 +23,13 @@ use stdClass;
  * If the group contains fewer than n elements, $firstN returns all elements in the group.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/firstN/
+ * @internal
  */
-class FirstNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class FirstNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$firstN';
+    public const PROPERTIES = ['input' => 'input', 'n' => 'n'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $input An expression that resolves to the array from which to return n elements. */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $input;
@@ -44,10 +47,5 @@ class FirstNAccumulator implements AccumulatorInterface, WindowInterface, Operat
     ) {
         $this->input = $input;
         $this->n = $n;
-    }
-
-    public function getOperator(): string
-    {
-        return '$firstN';
     }
 }

@@ -22,10 +22,13 @@ use function is_array;
  * Selects a subset of the array to return an array with only the elements that match the filter condition.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/filter/
+ * @internal
  */
-class FilterOperator implements ResolvesToArray, OperatorInterface
+final class FilterOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$filter';
+    public const PROPERTIES = ['input' => 'input', 'cond' => 'cond', 'as' => 'as', 'limit' => 'limit'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $input */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $input;
@@ -63,10 +66,5 @@ class FilterOperator implements ResolvesToArray, OperatorInterface
         $this->cond = $cond;
         $this->as = $as;
         $this->limit = $limit;
-    }
-
-    public function getOperator(): string
-    {
-        return '$filter';
     }
 }

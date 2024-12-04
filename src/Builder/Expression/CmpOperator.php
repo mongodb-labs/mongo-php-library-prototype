@@ -18,10 +18,13 @@ use stdClass;
  * Returns 0 if the two values are equivalent, 1 if the first value is greater than the second, and -1 if the first value is less than the second.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/cmp/
+ * @internal
  */
-class CmpOperator implements ResolvesToInt, OperatorInterface
+final class CmpOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$cmp';
+    public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $expression1 */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $expression1;
@@ -39,10 +42,5 @@ class CmpOperator implements ResolvesToInt, OperatorInterface
     ) {
         $this->expression1 = $expression1;
         $this->expression2 = $expression2;
-    }
-
-    public function getOperator(): string
-    {
-        return '$cmp';
     }
 }

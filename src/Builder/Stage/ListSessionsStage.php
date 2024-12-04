@@ -23,10 +23,13 @@ use function is_array;
  * Lists all sessions that have been active long enough to propagate to the system.sessions collection.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/listSessions/
+ * @internal
  */
-class ListSessionsStage implements StageInterface, OperatorInterface
+final class ListSessionsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$listSessions';
+    public const PROPERTIES = ['users' => 'users', 'allUsers' => 'allUsers'];
 
     /** @var Optional|BSONArray|PackedArray|array $users Returns all sessions for the specified users. If running with access control, the authenticated user must have privileges with listSessions action on the cluster to list sessions for other users. */
     public readonly Optional|PackedArray|BSONArray|array $users;
@@ -48,10 +51,5 @@ class ListSessionsStage implements StageInterface, OperatorInterface
 
         $this->users = $users;
         $this->allUsers = $allUsers;
-    }
-
-    public function getOperator(): string
-    {
-        return '$listSessions';
     }
 }

@@ -21,10 +21,13 @@ use function is_array;
  * Returns true if no element of a set evaluates to false, otherwise, returns false. Accepts a single argument expression.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/allElementsTrue/
+ * @internal
  */
-class AllElementsTrueOperator implements ResolvesToBool, OperatorInterface
+final class AllElementsTrueOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$allElementsTrue';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $expression */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $expression;
@@ -39,10 +42,5 @@ class AllElementsTrueOperator implements ResolvesToBool, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$allElementsTrue';
     }
 }

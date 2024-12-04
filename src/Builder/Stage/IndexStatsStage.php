@@ -16,17 +16,14 @@ use MongoDB\Builder\Type\StageInterface;
  * Returns statistics regarding the use of each index for the collection.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/indexStats/
+ * @internal
  */
-class IndexStatsStage implements StageInterface, OperatorInterface
+final class IndexStatsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$indexStats';
 
     public function __construct()
     {
-    }
-
-    public function getOperator(): string
-    {
-        return '$indexStats';
     }
 }

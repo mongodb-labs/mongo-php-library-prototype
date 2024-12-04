@@ -22,10 +22,13 @@ use function is_array;
  * Merge two arrays together.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/zip/
+ * @internal
  */
-class ZipOperator implements ResolvesToArray, OperatorInterface
+final class ZipOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$zip';
+    public const PROPERTIES = ['inputs' => 'inputs', 'useLongestLength' => 'useLongestLength', 'defaults' => 'defaults'];
 
     /**
      * @var BSONArray|PackedArray|ResolvesToArray|array $inputs An array of expressions that resolve to arrays. The elements of these input arrays combine to form the arrays of the output array.
@@ -73,10 +76,5 @@ class ZipOperator implements ResolvesToArray, OperatorInterface
         }
 
         $this->defaults = $defaults;
-    }
-
-    public function getOperator(): string
-    {
-        return '$zip';
     }
 }

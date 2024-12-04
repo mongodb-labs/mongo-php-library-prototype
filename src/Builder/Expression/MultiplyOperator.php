@@ -20,10 +20,13 @@ use function array_is_list;
  * Multiplies numbers to return the product. Accepts any number of argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/multiply/
+ * @internal
  */
-class MultiplyOperator implements ResolvesToDecimal, OperatorInterface
+final class MultiplyOperator implements ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$multiply';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /**
      * @var list<Decimal128|Int64|ResolvesToNumber|float|int> $expression The arguments can be any valid expression as long as they resolve to numbers.
@@ -47,10 +50,5 @@ class MultiplyOperator implements ResolvesToDecimal, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$multiply';
     }
 }

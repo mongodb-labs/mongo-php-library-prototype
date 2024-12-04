@@ -18,10 +18,18 @@ use MongoDB\Builder\Type\StageInterface;
  * Deconstructs an array field from the input documents to output a document for each element. Each output document replaces the array with an element value. For each input document, outputs n documents where n is the number of array elements and can be zero for an empty array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/unwind/
+ * @internal
  */
-class UnwindStage implements StageInterface, OperatorInterface
+final class UnwindStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$unwind';
+
+    public const PROPERTIES = [
+        'path' => 'path',
+        'includeArrayIndex' => 'includeArrayIndex',
+        'preserveNullAndEmptyArrays' => 'preserveNullAndEmptyArrays',
+    ];
 
     /** @var ArrayFieldPath|string $path Field path to an array field. */
     public readonly ArrayFieldPath|string $path;
@@ -51,10 +59,5 @@ class UnwindStage implements StageInterface, OperatorInterface
         $this->path = $path;
         $this->includeArrayIndex = $includeArrayIndex;
         $this->preserveNullAndEmptyArrays = $preserveNullAndEmptyArrays;
-    }
-
-    public function getOperator(): string
-    {
-        return '$unwind';
     }
 }

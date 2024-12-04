@@ -15,8 +15,11 @@ use function get_object_vars;
 use function property_exists;
 use function sprintf;
 
-/** @template-extends AbstractExpressionEncoder<stdClass, QueryObject> */
-class QueryEncoder extends AbstractExpressionEncoder
+/**
+ * @template-extends AbstractExpressionEncoder<stdClass, QueryObject>
+ * @internal
+ */
+final class QueryEncoder extends AbstractExpressionEncoder
 {
     /** @template-use EncodeIfSupported<stdClass, QueryObject> */
     use EncodeIfSupported;

@@ -22,10 +22,13 @@ use function is_string;
  * Adds new fields to documents. Outputs documents that contain all existing fields from the input documents and newly added fields.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/addFields/
+ * @internal
  */
-class AddFieldsStage implements StageInterface, OperatorInterface
+final class AddFieldsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$addFields';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var stdClass<ExpressionInterface|Type|array|bool|float|int|null|stdClass|string> $expression Specify the name of each field to add and set its value to an aggregation expression or an empty object. */
     public readonly stdClass $expression;
@@ -47,10 +50,5 @@ class AddFieldsStage implements StageInterface, OperatorInterface
 
         $expression = (object) $expression;
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$addFields';
     }
 }

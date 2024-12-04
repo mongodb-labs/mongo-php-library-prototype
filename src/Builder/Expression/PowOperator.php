@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Raises a number to the specified exponent.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/pow/
+ * @internal
  */
-class PowOperator implements ResolvesToNumber, OperatorInterface
+final class PowOperator implements ResolvesToNumber, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$pow';
+    public const PROPERTIES = ['number' => 'number', 'exponent' => 'exponent'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $number */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $number;
@@ -38,10 +41,5 @@ class PowOperator implements ResolvesToNumber, OperatorInterface
     ) {
         $this->number = $number;
         $this->exponent = $exponent;
-    }
-
-    public function getOperator(): string
-    {
-        return '$pow';
     }
 }

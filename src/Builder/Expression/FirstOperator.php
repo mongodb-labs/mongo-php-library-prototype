@@ -21,10 +21,13 @@ use function is_array;
  * Returns the result of an expression for the first document in an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/first/
+ * @internal
  */
-class FirstOperator implements ResolvesToAny, OperatorInterface
+final class FirstOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$first';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $expression */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $expression;
@@ -39,10 +42,5 @@ class FirstOperator implements ResolvesToAny, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$first';
     }
 }

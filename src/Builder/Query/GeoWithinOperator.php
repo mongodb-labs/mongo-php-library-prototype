@@ -20,10 +20,13 @@ use stdClass;
  * Selects geometries within a bounding GeoJSON geometry. The 2dsphere and 2d indexes support $geoWithin.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/geoWithin/
+ * @internal
  */
-class GeoWithinOperator implements FieldQueryInterface, OperatorInterface
+final class GeoWithinOperator implements FieldQueryInterface, OperatorInterface
 {
-    public const ENCODE = Encode::Single;
+    public const ENCODE = Encode::Object;
+    public const NAME = '$geoWithin';
+    public const PROPERTIES = ['geometry' => null];
 
     /** @var Document|GeometryInterface|Serializable|array|stdClass $geometry */
     public readonly Document|Serializable|GeometryInterface|stdClass|array $geometry;
@@ -34,10 +37,5 @@ class GeoWithinOperator implements FieldQueryInterface, OperatorInterface
     public function __construct(Document|Serializable|GeometryInterface|stdClass|array $geometry)
     {
         $this->geometry = $geometry;
-    }
-
-    public function getOperator(): string
-    {
-        return '$geoWithin';
     }
 }

@@ -19,10 +19,13 @@ use function array_is_list;
  * Joins query clauses with a logical AND returns all documents that match the conditions of both clauses.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/and/
+ * @internal
  */
-class AndOperator implements QueryInterface, OperatorInterface
+final class AndOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$and';
+    public const PROPERTIES = ['queries' => 'queries'];
 
     /** @var list<QueryInterface|array> $queries */
     public readonly array $queries;
@@ -42,10 +45,5 @@ class AndOperator implements QueryInterface, OperatorInterface
         }
 
         $this->queries = $queries;
-    }
-
-    public function getOperator(): string
-    {
-        return '$and';
     }
 }

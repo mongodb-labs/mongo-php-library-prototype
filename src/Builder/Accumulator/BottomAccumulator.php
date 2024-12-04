@@ -23,10 +23,13 @@ use stdClass;
  * New in MongoDB 5.2: Available in the $group and $setWindowFields stages.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/bottom/
+ * @internal
  */
-class BottomAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class BottomAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$bottom';
+    public const PROPERTIES = ['sortBy' => 'sortBy', 'output' => 'output'];
 
     /** @var Document|Serializable|array|stdClass $sortBy Specifies the order of results, with syntax similar to $sort. */
     public readonly Document|Serializable|stdClass|array $sortBy;
@@ -44,10 +47,5 @@ class BottomAccumulator implements AccumulatorInterface, WindowInterface, Operat
     ) {
         $this->sortBy = $sortBy;
         $this->output = $output;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bottom';
     }
 }

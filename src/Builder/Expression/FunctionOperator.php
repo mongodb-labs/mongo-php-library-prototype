@@ -24,10 +24,13 @@ use function is_string;
  * New in MongoDB 4.4.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/function/
+ * @internal
  */
-class FunctionOperator implements ResolvesToAny, OperatorInterface
+final class FunctionOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$function';
+    public const PROPERTIES = ['body' => 'body', 'args' => 'args', 'lang' => 'lang'];
 
     /**
      * @var Javascript|string $body The function definition. You can specify the function definition as either BSON\JavaScript or string.
@@ -60,10 +63,5 @@ class FunctionOperator implements ResolvesToAny, OperatorInterface
 
         $this->args = $args;
         $this->lang = $lang;
-    }
-
-    public function getOperator(): string
-    {
-        return '$function';
     }
 }

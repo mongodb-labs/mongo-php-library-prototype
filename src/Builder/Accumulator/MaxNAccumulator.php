@@ -25,10 +25,13 @@ use function is_array;
  * Returns the n largest values in an array. Distinct from the $maxN accumulator.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/maxN/
+ * @internal
  */
-class MaxNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class MaxNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$maxN';
+    public const PROPERTIES = ['input' => 'input', 'n' => 'n'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $input An expression that resolves to the array from which to return the maximal n elements. */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $input;
@@ -48,10 +51,5 @@ class MaxNAccumulator implements AccumulatorInterface, WindowInterface, Operator
 
         $this->input = $input;
         $this->n = $n;
-    }
-
-    public function getOperator(): string
-    {
-        return '$maxN';
     }
 }

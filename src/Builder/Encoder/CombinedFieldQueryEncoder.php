@@ -16,8 +16,11 @@ use function is_array;
 use function is_object;
 use function sprintf;
 
-/** @template-extends AbstractExpressionEncoder<stdClass, CombinedFieldQuery> */
-class CombinedFieldQueryEncoder extends AbstractExpressionEncoder
+/**
+ * @template-extends AbstractExpressionEncoder<stdClass, CombinedFieldQuery>
+ * @internal
+ */
+final class CombinedFieldQueryEncoder extends AbstractExpressionEncoder
 {
     /** @template-use EncodeIfSupported<stdClass, CombinedFieldQuery> */
     use EncodeIfSupported;

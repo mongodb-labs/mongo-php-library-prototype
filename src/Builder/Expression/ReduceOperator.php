@@ -24,10 +24,13 @@ use function is_array;
  * Applies an expression to each element in an array and combines them into a single value.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/reduce/
+ * @internal
  */
-class ReduceOperator implements ResolvesToAny, OperatorInterface
+final class ReduceOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$reduce';
+    public const PROPERTIES = ['input' => 'input', 'initialValue' => 'initialValue', 'in' => 'in'];
 
     /**
      * @var BSONArray|PackedArray|ResolvesToArray|array $input Can be any valid expression that resolves to an array.
@@ -69,10 +72,5 @@ class ReduceOperator implements ResolvesToAny, OperatorInterface
         $this->input = $input;
         $this->initialValue = $initialValue;
         $this->in = $in;
-    }
-
-    public function getOperator(): string
-    {
-        return '$reduce';
     }
 }

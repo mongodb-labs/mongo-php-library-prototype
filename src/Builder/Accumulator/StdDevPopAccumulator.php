@@ -22,10 +22,13 @@ use MongoDB\Builder\Type\WindowInterface;
  * Changed in MongoDB 5.0: Available in the $setWindowFields stage.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/stdDevPop/
+ * @internal
  */
-class StdDevPopAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class StdDevPopAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$stdDevPop';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $expression */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $expression;
@@ -36,10 +39,5 @@ class StdDevPopAccumulator implements AccumulatorInterface, WindowInterface, Ope
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$stdDevPop';
     }
 }

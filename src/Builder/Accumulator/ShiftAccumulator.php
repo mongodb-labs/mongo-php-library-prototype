@@ -20,10 +20,13 @@ use stdClass;
  * New in MongoDB 5.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/shift/
+ * @internal
  */
-class ShiftAccumulator implements WindowInterface, OperatorInterface
+final class ShiftAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$shift';
+    public const PROPERTIES = ['output' => 'output', 'by' => 'by', 'default' => 'default'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $output Specifies an expression to evaluate and return in the output. */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $output;
@@ -63,10 +66,5 @@ class ShiftAccumulator implements WindowInterface, OperatorInterface
         $this->output = $output;
         $this->by = $by;
         $this->default = $default;
-    }
-
-    public function getOperator(): string
-    {
-        return '$shift';
     }
 }

@@ -21,10 +21,13 @@ use stdClass;
  * Alias for $replaceRoot.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/replaceWith/
+ * @internal
  */
-class ReplaceWithStage implements StageInterface, OperatorInterface
+final class ReplaceWithStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$replaceWith';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Document|ResolvesToObject|Serializable|array|stdClass $expression */
     public readonly Document|Serializable|ResolvesToObject|stdClass|array $expression;
@@ -35,10 +38,5 @@ class ReplaceWithStage implements StageInterface, OperatorInterface
     public function __construct(Document|Serializable|ResolvesToObject|stdClass|array $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$replaceWith';
     }
 }

@@ -19,7 +19,7 @@
     <file>rector.php</file>
 
     <!-- Ignore auto-generated code -->
-    <exclude-pattern>src/Builder/(Accumulator|Expression|Query|Projection|Stage)/*\.php</exclude-pattern>
+    <exclude-pattern>src/Builder/(Accumulator|Expression|Query|Projection|Search|Stage)/*\.php</exclude-pattern>
 
     <!-- Target minimum supported PHP version -->
     <config name="php_version" value="80100"/>
@@ -151,5 +151,8 @@
     </rule>
     <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps">
         <exclude-pattern>/tests/SpecTests/*/Prose*</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.UselessConstantTypeHint.UselessDocComment">
+        <exclude-pattern>src/Builder/Type/OperatorInterface.php</exclude-pattern>
     </rule>
 </ruleset>

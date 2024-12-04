@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the smallest integer greater than or equal to the specified number.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/ceil/
+ * @internal
  */
-class CeilOperator implements ResolvesToInt, OperatorInterface
+final class CeilOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$ceil';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $expression If the argument resolves to a value of null or refers to a field that is missing, $ceil returns null. If the argument resolves to NaN, $ceil returns NaN. */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $expression;
@@ -31,10 +34,5 @@ class CeilOperator implements ResolvesToInt, OperatorInterface
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$ceil';
     }
 }

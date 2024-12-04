@@ -8,8 +8,11 @@ use MongoDB\Builder\Expression\Variable;
 use MongoDB\Codec\EncodeIfSupported;
 use MongoDB\Exception\UnsupportedValueException;
 
-/** @template-extends AbstractExpressionEncoder<string, Variable> */
-class VariableEncoder extends AbstractExpressionEncoder
+/**
+ * @template-extends AbstractExpressionEncoder<string, Variable>
+ * @internal
+ */
+final class VariableEncoder extends AbstractExpressionEncoder
 {
     /** @template-use EncodeIfSupported<string, Variable> */
     use EncodeIfSupported;

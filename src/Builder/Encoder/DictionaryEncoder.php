@@ -9,8 +9,11 @@ use MongoDB\Codec\EncodeIfSupported;
 use MongoDB\Exception\UnsupportedValueException;
 use stdClass;
 
-/** @template-extends AbstractExpressionEncoder<string|int|array|stdClass, DictionaryInterface> */
-class DictionaryEncoder extends AbstractExpressionEncoder
+/**
+ * @template-extends AbstractExpressionEncoder<string|int|array|stdClass, DictionaryInterface>
+ * @internal
+ */
+final class DictionaryEncoder extends AbstractExpressionEncoder
 {
     /** @template-use EncodeIfSupported<string|int|array|stdClass, DictionaryInterface> */
     use EncodeIfSupported;

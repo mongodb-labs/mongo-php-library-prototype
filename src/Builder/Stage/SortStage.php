@@ -23,10 +23,13 @@ use function is_string;
  * Reorders the document stream by a specified sort key. Only the order changes; the documents remain unmodified. For each input document, outputs one document.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sort/
+ * @internal
  */
-class SortStage implements StageInterface, OperatorInterface
+final class SortStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$sort';
+    public const PROPERTIES = ['sort' => 'sort'];
 
     /** @var stdClass<ExpressionInterface|Sort|Type|array|bool|float|int|null|stdClass|string> $sort */
     public readonly stdClass $sort;
@@ -48,10 +51,5 @@ class SortStage implements StageInterface, OperatorInterface
 
         $sort = (object) $sort;
         $this->sort = $sort;
-    }
-
-    public function getOperator(): string
-    {
-        return '$sort';
     }
 }

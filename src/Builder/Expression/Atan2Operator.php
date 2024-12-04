@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the inverse tangent (arc tangent) of y / x in radians, where y and x are the first and second values passed to the expression respectively.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/atan2/
+ * @internal
  */
-class Atan2Operator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class Atan2Operator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$atan2';
+    public const PROPERTIES = ['y' => 'y', 'x' => 'x'];
 
     /**
      * @var Decimal128|Int64|ResolvesToNumber|float|int $y $atan2 takes any valid expression that resolves to a number.
@@ -44,10 +47,5 @@ class Atan2Operator implements ResolvesToDouble, ResolvesToDecimal, OperatorInte
     ) {
         $this->y = $y;
         $this->x = $x;
-    }
-
-    public function getOperator(): string
-    {
-        return '$atan2';
     }
 }

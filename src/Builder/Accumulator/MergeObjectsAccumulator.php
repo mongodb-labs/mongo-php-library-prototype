@@ -20,10 +20,13 @@ use stdClass;
  * Combines multiple documents into a single document.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/mergeObjects/
+ * @internal
  */
-class MergeObjectsAccumulator implements AccumulatorInterface, OperatorInterface
+final class MergeObjectsAccumulator implements AccumulatorInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$mergeObjects';
+    public const PROPERTIES = ['document' => 'document'];
 
     /** @var Document|ResolvesToObject|Serializable|array|stdClass $document Any valid expression that resolves to a document. */
     public readonly Document|Serializable|ResolvesToObject|stdClass|array $document;
@@ -34,10 +37,5 @@ class MergeObjectsAccumulator implements AccumulatorInterface, OperatorInterface
     public function __construct(Document|Serializable|ResolvesToObject|stdClass|array $document)
     {
         $this->document = $document;
-    }
-
-    public function getOperator(): string
-    {
-        return '$mergeObjects';
     }
 }

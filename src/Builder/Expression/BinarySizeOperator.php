@@ -16,10 +16,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the size of a given string or binary data value's content in bytes.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/binarySize/
+ * @internal
  */
-class BinarySizeOperator implements ResolvesToInt, OperatorInterface
+final class BinarySizeOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$binarySize';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Binary|ResolvesToBinData|ResolvesToNull|ResolvesToString|null|string $expression */
     public readonly Binary|ResolvesToBinData|ResolvesToNull|ResolvesToString|null|string $expression;
@@ -30,10 +33,5 @@ class BinarySizeOperator implements ResolvesToInt, OperatorInterface
     public function __construct(Binary|ResolvesToBinData|ResolvesToNull|ResolvesToString|null|string $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$binarySize';
     }
 }

@@ -17,17 +17,14 @@ use MongoDB\Builder\Type\WindowInterface;
  * New in MongoDB 5.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/documentNumber/
+ * @internal
  */
-class DocumentNumberAccumulator implements WindowInterface, OperatorInterface
+final class DocumentNumberAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$documentNumber';
 
     public function __construct()
     {
-    }
-
-    public function getOperator(): string
-    {
-        return '$documentNumber';
     }
 }

@@ -18,10 +18,13 @@ use MongoDB\Builder\Type\Optional;
  * Truncates a number to a whole integer or to a specified decimal place.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/trunc/
+ * @internal
  */
-class TruncOperator implements ResolvesToString, OperatorInterface
+final class TruncOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$trunc';
+    public const PROPERTIES = ['number' => 'number', 'place' => 'place'];
 
     /**
      * @var Decimal128|Int64|ResolvesToNumber|float|int $number Can be any valid expression that resolves to a number. Specifically, the expression must resolve to an integer, double, decimal, or long.
@@ -43,10 +46,5 @@ class TruncOperator implements ResolvesToString, OperatorInterface
     ) {
         $this->number = $number;
         $this->place = $place;
-    }
-
-    public function getOperator(): string
-    {
-        return '$trunc';
     }
 }

@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the inverse hyperbolic cosine (hyperbolic arc cosine) of a value in radians.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/acosh/
+ * @internal
  */
-class AcoshOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class AcoshOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$acosh';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /**
      * @var Decimal128|Int64|ResolvesToNumber|float|int $expression $acosh takes any valid expression that resolves to a number between 1 and +Infinity, e.g. 1 <= value <= +Infinity.
@@ -37,10 +40,5 @@ class AcoshOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInte
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$acosh';
     }
 }

@@ -16,10 +16,13 @@ use MongoDB\Builder\Type\QueryInterface;
  * Adds a comment to a query predicate.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/comment/
+ * @internal
  */
-class CommentOperator implements QueryInterface, OperatorInterface
+final class CommentOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$comment';
+    public const PROPERTIES = ['comment' => 'comment'];
 
     /** @var string $comment */
     public readonly string $comment;
@@ -30,10 +33,5 @@ class CommentOperator implements QueryInterface, OperatorInterface
     public function __construct(string $comment)
     {
         $this->comment = $comment;
-    }
-
-    public function getOperator(): string
-    {
-        return '$comment';
     }
 }

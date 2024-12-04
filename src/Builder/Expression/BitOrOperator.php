@@ -20,10 +20,13 @@ use function array_is_list;
  * New in MongoDB 6.3.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/bitOr/
+ * @internal
  */
-class BitOrOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
+final class BitOrOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$bitOr';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<Int64|ResolvesToInt|ResolvesToLong|int> $expression */
     public readonly array $expression;
@@ -43,10 +46,5 @@ class BitOrOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bitOr';
     }
 }

@@ -16,10 +16,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * New in MongoDB 4.4.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/replaceOne/
+ * @internal
  */
-class ReplaceOneOperator implements ResolvesToString, OperatorInterface
+final class ReplaceOneOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$replaceOne';
+    public const PROPERTIES = ['input' => 'input', 'find' => 'find', 'replacement' => 'replacement'];
 
     /** @var ResolvesToNull|ResolvesToString|null|string $input The string on which you wish to apply the find. Can be any valid expression that resolves to a string or a null. If input refers to a field that is missing, $replaceAll returns null. */
     public readonly ResolvesToNull|ResolvesToString|null|string $input;
@@ -43,10 +46,5 @@ class ReplaceOneOperator implements ResolvesToString, OperatorInterface
         $this->input = $input;
         $this->find = $find;
         $this->replacement = $replacement;
-    }
-
-    public function getOperator(): string
-    {
-        return '$replaceOne';
     }
 }

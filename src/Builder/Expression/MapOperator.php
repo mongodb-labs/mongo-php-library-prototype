@@ -25,10 +25,13 @@ use function is_array;
  * Applies a subexpression to each element of an array and returns the array of resulting values in order. Accepts named parameters.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/map/
+ * @internal
  */
-class MapOperator implements ResolvesToArray, OperatorInterface
+final class MapOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$map';
+    public const PROPERTIES = ['input' => 'input', 'in' => 'in', 'as' => 'as'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $input An expression that resolves to an array. */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $input;
@@ -56,10 +59,5 @@ class MapOperator implements ResolvesToArray, OperatorInterface
         $this->input = $input;
         $this->in = $in;
         $this->as = $as;
-    }
-
-    public function getOperator(): string
-    {
-        return '$map';
     }
 }

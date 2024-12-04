@@ -28,10 +28,20 @@ use function is_array;
  * New in MongoDB 4.2.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/merge/
+ * @internal
  */
-class MergeStage implements StageInterface, OperatorInterface
+final class MergeStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$merge';
+
+    public const PROPERTIES = [
+        'into' => 'into',
+        'on' => 'on',
+        'let' => 'let',
+        'whenMatched' => 'whenMatched',
+        'whenNotMatched' => 'whenNotMatched',
+    ];
 
     /** @var Document|Serializable|array|stdClass|string $into The output collection. */
     public readonly Document|Serializable|stdClass|array|string $into;
@@ -75,10 +85,5 @@ class MergeStage implements StageInterface, OperatorInterface
 
         $this->whenMatched = $whenMatched;
         $this->whenNotMatched = $whenNotMatched;
-    }
-
-    public function getOperator(): string
-    {
-        return '$merge';
     }
 }

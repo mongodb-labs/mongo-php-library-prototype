@@ -25,10 +25,13 @@ use function is_array;
  * Sorts the elements of an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sortArray/
+ * @internal
  */
-class SortArrayOperator implements ResolvesToArray, OperatorInterface
+final class SortArrayOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$sortArray';
+    public const PROPERTIES = ['input' => 'input', 'sortBy' => 'sortBy'];
 
     /**
      * @var BSONArray|PackedArray|ResolvesToArray|array $input The array to be sorted.
@@ -56,10 +59,5 @@ class SortArrayOperator implements ResolvesToArray, OperatorInterface
 
         $this->input = $input;
         $this->sortBy = $sortBy;
-    }
-
-    public function getOperator(): string
-    {
-        return '$sortArray';
     }
 }

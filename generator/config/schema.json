@@ -46,7 +46,8 @@
                             "resolvesToInt",
                             "resolvesToTimestamp",
                             "resolvesToLong",
-                            "resolvesToDecimal"
+                            "resolvesToDecimal",
+                            "searchOperator"
                         ]
                     }
                 },
@@ -60,15 +61,18 @@
                     "enum": [
                         "array",
                         "object",
-                        "flat_object",
-                        "dollar_object",
                         "single",
-                        "group"
+                        "search"
                     ]
                 },
                 "description": {
                     "$comment": "The description of the argument from MongoDB's documentation.",
                     "type": "string"
+                },
+                "wrapObject": {
+                    "$comment": "Wrap the properties in an object with the operator name",
+                    "type": "boolean",
+                    "default": true
                 },
                 "arguments": {
                     "$comment": "An optional list of arguments for the operator.",
@@ -100,7 +104,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "pattern": "^(_?[a-z][a-zA-Z0-9]*|N)$"
+                    "pattern": "^([_$]?[a-z][a-zA-Z0-9]*|N)$"
                 },
                 "type": {
                     "type": "array",
@@ -133,7 +137,8 @@
                             "resolvesToInt", "intFieldPath", "int",
                             "resolvesToTimestamp", "timestampFieldPath", "timestamp",
                             "resolvesToLong", "longFieldPath", "long",
-                            "resolvesToDecimal", "decimalFieldPath", "decimal"
+                            "resolvesToDecimal", "decimalFieldPath", "decimal",
+                            "searchPath", "searchScore", "searchOperator"
                         ]
                     }
                 },
@@ -150,7 +155,7 @@
                     "type": "number"
                 },
                 "valueMax": {
-                    "$comment": "The minimum value for a numeric argument.",
+                    "$comment": "The maximum value for a numeric argument.",
                     "type": "number"
                 },
                 "variadic": {
@@ -169,6 +174,11 @@
                 "default": {
                     "$comment": "The default value for the argument.",
                     "type": ["array", "boolean", "number", "string"]
+                },
+                "mergeObject": {
+                    "$comment": "Skip the name in object encoding and merge the properties of the value into the operator",
+                    "type": "boolean",
+                    "default": false
                 }
             },
             "required": [

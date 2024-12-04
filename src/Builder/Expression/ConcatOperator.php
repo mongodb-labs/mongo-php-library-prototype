@@ -18,10 +18,13 @@ use function array_is_list;
  * Concatenates any number of strings.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/concat/
+ * @internal
  */
-class ConcatOperator implements ResolvesToString, OperatorInterface
+final class ConcatOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$concat';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<ResolvesToString|string> $expression */
     public readonly array $expression;
@@ -41,10 +44,5 @@ class ConcatOperator implements ResolvesToString, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$concat';
     }
 }

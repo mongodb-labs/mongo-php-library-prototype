@@ -20,10 +20,13 @@ use MongoDB\Builder\Type\WindowInterface;
  * New in MongoDB 5.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/covariancePop/
+ * @internal
  */
-class CovariancePopAccumulator implements WindowInterface, OperatorInterface
+final class CovariancePopAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$covariancePop';
+    public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $expression1 */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $expression1;
@@ -41,10 +44,5 @@ class CovariancePopAccumulator implements WindowInterface, OperatorInterface
     ) {
         $this->expression1 = $expression1;
         $this->expression2 = $expression2;
-    }
-
-    public function getOperator(): string
-    {
-        return '$covariancePop';
     }
 }

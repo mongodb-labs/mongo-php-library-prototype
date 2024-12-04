@@ -19,10 +19,13 @@ use stdClass;
  * Groups incoming documents based on the value of a specified expression, then computes the count of documents in each distinct group.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sortByCount/
+ * @internal
  */
-class SortByCountStage implements StageInterface, OperatorInterface
+final class SortByCountStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$sortByCount';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $expression */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $expression;
@@ -33,10 +36,5 @@ class SortByCountStage implements StageInterface, OperatorInterface
     public function __construct(Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$sortByCount';
     }
 }

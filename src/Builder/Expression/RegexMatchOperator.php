@@ -18,10 +18,13 @@ use MongoDB\Builder\Type\Optional;
  * New in MongoDB 4.2.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/regexMatch/
+ * @internal
  */
-class RegexMatchOperator implements ResolvesToBool, OperatorInterface
+final class RegexMatchOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$regexMatch';
+    public const PROPERTIES = ['input' => 'input', 'regex' => 'regex', 'options' => 'options'];
 
     /** @var ResolvesToString|string $input The string on which you wish to apply the regex pattern. Can be a string or any valid expression that resolves to a string. */
     public readonly ResolvesToString|string $input;
@@ -45,10 +48,5 @@ class RegexMatchOperator implements ResolvesToBool, OperatorInterface
         $this->input = $input;
         $this->regex = $regex;
         $this->options = $options;
-    }
-
-    public function getOperator(): string
-    {
-        return '$regexMatch';
     }
 }

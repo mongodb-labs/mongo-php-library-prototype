@@ -19,10 +19,13 @@ use stdClass;
  * Validate documents against the given JSON Schema.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/jsonSchema/
+ * @internal
  */
-class JsonSchemaOperator implements QueryInterface, OperatorInterface
+final class JsonSchemaOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$jsonSchema';
+    public const PROPERTIES = ['schema' => 'schema'];
 
     /** @var Document|Serializable|array|stdClass $schema */
     public readonly Document|Serializable|stdClass|array $schema;
@@ -33,10 +36,5 @@ class JsonSchemaOperator implements QueryInterface, OperatorInterface
     public function __construct(Document|Serializable|stdClass|array $schema)
     {
         $this->schema = $schema;
-    }
-
-    public function getOperator(): string
-    {
-        return '$jsonSchema';
     }
 }

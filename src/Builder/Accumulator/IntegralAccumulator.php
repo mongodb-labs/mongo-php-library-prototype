@@ -25,10 +25,13 @@ use MongoDB\Builder\Type\WindowInterface;
  * New in MongoDB 5.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/integral/
+ * @internal
  */
-class IntegralAccumulator implements WindowInterface, OperatorInterface
+final class IntegralAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$integral';
+    public const PROPERTIES = ['input' => 'input', 'unit' => 'unit'];
 
     /** @var Decimal128|Int64|ResolvesToDate|ResolvesToNumber|UTCDateTime|float|int $input */
     public readonly Decimal128|Int64|UTCDateTime|ResolvesToDate|ResolvesToNumber|float|int $input;
@@ -50,10 +53,5 @@ class IntegralAccumulator implements WindowInterface, OperatorInterface
     ) {
         $this->input = $input;
         $this->unit = $unit;
-    }
-
-    public function getOperator(): string
-    {
-        return '$integral';
     }
 }

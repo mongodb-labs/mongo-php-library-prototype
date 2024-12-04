@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the inverse hyperbolic sine (hyperbolic arc sine) of a value in radians.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/asinh/
+ * @internal
  */
-class AsinhOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class AsinhOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$asinh';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /**
      * @var Decimal128|Int64|ResolvesToNumber|float|int $expression $asinh takes any valid expression that resolves to a number.
@@ -37,10 +40,5 @@ class AsinhOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInte
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$asinh';
     }
 }

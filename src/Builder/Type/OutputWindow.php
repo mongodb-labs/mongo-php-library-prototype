@@ -23,7 +23,7 @@ use function sprintf;
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/setWindowFields/
  */
-class OutputWindow implements WindowInterface
+final class OutputWindow implements WindowInterface
 {
     /**
      * Function used to initialize the state. The init function receives its arguments from the initArgs array expression.

@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\Optional;
  * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/ltrim/
+ * @internal
  */
-class LtrimOperator implements ResolvesToString, OperatorInterface
+final class LtrimOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$ltrim';
+    public const PROPERTIES = ['input' => 'input', 'chars' => 'chars'];
 
     /** @var ResolvesToString|string $input The string to trim. The argument can be any valid expression that resolves to a string. */
     public readonly ResolvesToString|string $input;
@@ -44,10 +47,5 @@ class LtrimOperator implements ResolvesToString, OperatorInterface
     ) {
         $this->input = $input;
         $this->chars = $chars;
-    }
-
-    public function getOperator(): string
-    {
-        return '$ltrim';
     }
 }

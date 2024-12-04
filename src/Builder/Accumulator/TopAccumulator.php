@@ -24,10 +24,13 @@ use stdClass;
  * Available in the $group and $setWindowFields stages.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/top/
+ * @internal
  */
-class TopAccumulator implements AccumulatorInterface, OperatorInterface
+final class TopAccumulator implements AccumulatorInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$top';
+    public const PROPERTIES = ['sortBy' => 'sortBy', 'output' => 'output'];
 
     /** @var Document|Serializable|array|stdClass $sortBy Specifies the order of results, with syntax similar to $sort. */
     public readonly Document|Serializable|stdClass|array $sortBy;
@@ -45,10 +48,5 @@ class TopAccumulator implements AccumulatorInterface, OperatorInterface
     ) {
         $this->sortBy = $sortBy;
         $this->output = $output;
-    }
-
-    public function getOperator(): string
-    {
-        return '$top';
     }
 }

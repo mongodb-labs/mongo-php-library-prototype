@@ -19,10 +19,13 @@ use MongoDB\Builder\Type\Optional;
  * Returns the weekday number in ISO 8601 format, ranging from 1 (for Monday) to 7 (for Sunday).
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/isoDayOfWeek/
+ * @internal
  */
-class IsoDayOfWeekOperator implements ResolvesToInt, OperatorInterface
+final class IsoDayOfWeekOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$isoDayOfWeek';
+    public const PROPERTIES = ['date' => 'date', 'timezone' => 'timezone'];
 
     /** @var ObjectId|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|Timestamp|UTCDateTime|int $date The date to which the operator is applied. date must be a valid expression that resolves to a Date, a Timestamp, or an ObjectID. */
     public readonly ObjectId|Timestamp|UTCDateTime|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|int $date;
@@ -40,10 +43,5 @@ class IsoDayOfWeekOperator implements ResolvesToInt, OperatorInterface
     ) {
         $this->date = $date;
         $this->timezone = $timezone;
-    }
-
-    public function getOperator(): string
-    {
-        return '$isoDayOfWeek';
     }
 }

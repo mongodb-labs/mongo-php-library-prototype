@@ -21,10 +21,13 @@ use MongoDB\Builder\Type\WindowInterface;
  * New in MongoDB 5.3.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/linearFill/
+ * @internal
  */
-class LinearFillAccumulator implements WindowInterface, OperatorInterface
+final class LinearFillAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$linearFill';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $expression */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $expression;
@@ -35,10 +38,5 @@ class LinearFillAccumulator implements WindowInterface, OperatorInterface
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$linearFill';
     }
 }

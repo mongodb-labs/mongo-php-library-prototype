@@ -60,14 +60,23 @@
   </file>
   <file src="src/Builder/Encoder/OperatorEncoder.php">
     <MixedAssignment>
+      <code><![CDATA[$k]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$name]]></code>
+      <code><![CDATA[$prop]]></code>
+      <code><![CDATA[$prop]]></code>
+      <code><![CDATA[$prop]]></code>
       <code><![CDATA[$result]]></code>
       <code><![CDATA[$result[]]]></code>
-      <code><![CDATA[$val]]></code>
-      <code><![CDATA[$val]]></code>
+      <code><![CDATA[$v]]></code>
       <code><![CDATA[$val]]></code>
       <code><![CDATA[$val]]></code>
       <code><![CDATA[$val]]></code>
     </MixedAssignment>
+    <PossibleRawObjectIteration>
+      <code><![CDATA[$val]]></code>
+    </PossibleRawObjectIteration>
   </file>
   <file src="src/Builder/Encoder/OutputWindowEncoder.php">
     <MixedArgument>
@@ -88,11 +97,6 @@
       <code><![CDATA[$subValue]]></code>
       <code><![CDATA[$value]]></code>
     </MixedAssignment>
-  </file>
-  <file src="src/Builder/Projection/ElemMatchOperator.php">
-    <MixedArgumentTypeCoercion>
-      <code><![CDATA[$query]]></code>
-    </MixedArgumentTypeCoercion>
   </file>
   <file src="src/Builder/Query.php">
     <ArgumentTypeCoercion>
@@ -167,7 +171,31 @@
       <code><![CDATA[stdClass]]></code>
     </TooManyTemplateParams>
   </file>
+  <file src="src/Builder/Stage/VectorSearchStage.php">
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$filter]]></code>
+    </MixedArgumentTypeCoercion>
+  </file>
+  <file src="src/Builder/Type/CombinedFieldQuery.php">
+    <MixedArgument>
+      <code><![CDATA[$operator]]></code>
+      <code><![CDATA[$operator]]></code>
+    </MixedArgument>
+    <MixedArrayOffset>
+      <code><![CDATA[$seenOperators[$operator]]]></code>
+    </MixedArrayOffset>
+    <MixedAssignment>
+      <code><![CDATA[$operator]]></code>
+    </MixedAssignment>
+  </file>
   <file src="src/Builder/Type/QueryObject.php">
+    <MixedArgument>
+      <code><![CDATA[$query::NAME]]></code>
+    </MixedArgument>
+    <MixedArrayOffset>
+      <code><![CDATA[$seenQueryOperators[$query::NAME]]]></code>
+      <code><![CDATA[$seenQueryOperators[$query::NAME]]]></code>
+    </MixedArrayOffset>
     <MixedAssignment>
       <code><![CDATA[$queries[$fieldPath]]]></code>
       <code><![CDATA[$query]]></code>
@@ -178,6 +206,11 @@
             is_array($queriesOrArrayOfQueries[0]) &&
             count($queriesOrArrayOfQueries[0]) > 0]]></code>
     </RedundantConditionGivenDocblockType>
+    <UndefinedConstant>
+      <code><![CDATA[$query::NAME]]></code>
+      <code><![CDATA[$query::NAME]]></code>
+      <code><![CDATA[$query::NAME]]></code>
+    </UndefinedConstant>
   </file>
   <file src="src/Client.php">
     <MixedArgument>

@@ -22,10 +22,13 @@ use function is_array;
  * Matches none of the values specified in an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/nin/
+ * @internal
  */
-class NinOperator implements FieldQueryInterface, OperatorInterface
+final class NinOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$nin';
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var BSONArray|PackedArray|array $value */
     public readonly PackedArray|BSONArray|array $value;
@@ -40,10 +43,5 @@ class NinOperator implements FieldQueryInterface, OperatorInterface
         }
 
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$nin';
     }
 }

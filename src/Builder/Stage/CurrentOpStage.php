@@ -17,10 +17,20 @@ use MongoDB\Builder\Type\StageInterface;
  * Returns information on active and/or dormant operations for the MongoDB deployment. To run, use the db.aggregate() method.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/currentOp/
+ * @internal
  */
-class CurrentOpStage implements StageInterface, OperatorInterface
+final class CurrentOpStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$currentOp';
+
+    public const PROPERTIES = [
+        'allUsers' => 'allUsers',
+        'idleConnections' => 'idleConnections',
+        'idleCursors' => 'idleCursors',
+        'idleSessions' => 'idleSessions',
+        'localOps' => 'localOps',
+    ];
 
     /** @var Optional|bool $allUsers */
     public readonly Optional|bool $allUsers;
@@ -56,10 +66,5 @@ class CurrentOpStage implements StageInterface, OperatorInterface
         $this->idleCursors = $idleCursors;
         $this->idleSessions = $idleSessions;
         $this->localOps = $localOps;
-    }
-
-    public function getOperator(): string
-    {
-        return '$currentOp';
     }
 }

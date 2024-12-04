@@ -16,10 +16,13 @@ use MongoDB\Builder\Type\Optional;
  * Removes whitespace characters, including null, or the specified characters from the end of a string.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/rtrim/
+ * @internal
  */
-class RtrimOperator implements ResolvesToString, OperatorInterface
+final class RtrimOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$rtrim';
+    public const PROPERTIES = ['input' => 'input', 'chars' => 'chars'];
 
     /** @var ResolvesToString|string $input The string to trim. The argument can be any valid expression that resolves to a string. */
     public readonly ResolvesToString|string $input;
@@ -43,10 +46,5 @@ class RtrimOperator implements ResolvesToString, OperatorInterface
     ) {
         $this->input = $input;
         $this->chars = $chars;
-    }
-
-    public function getOperator(): string
-    {
-        return '$rtrim';
     }
 }

@@ -28,10 +28,19 @@ use function is_array;
  * Categorizes incoming documents into groups, called buckets, based on a specified expression and bucket boundaries.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/bucket/
+ * @internal
  */
-class BucketStage implements StageInterface, OperatorInterface
+final class BucketStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$bucket';
+
+    public const PROPERTIES = [
+        'groupBy' => 'groupBy',
+        'boundaries' => 'boundaries',
+        'default' => 'default',
+        'output' => 'output',
+    ];
 
     /**
      * @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $groupBy An expression to group documents by. To specify a field path, prefix the field name with a dollar sign $ and enclose it in quotes.
@@ -87,10 +96,5 @@ class BucketStage implements StageInterface, OperatorInterface
         $this->boundaries = $boundaries;
         $this->default = $default;
         $this->output = $output;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bucket';
     }
 }

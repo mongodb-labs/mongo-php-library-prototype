@@ -9,8 +9,12 @@ namespace MongoDB\Builder\Type;
  */
 interface OperatorInterface
 {
-    /** To be overridden by implementing classes */
+    /** @var Encode */
     public const ENCODE = Encode::Undefined;
 
-    public function getOperator(): string;
+    /** @var array<string, string|null> */
+    public const PROPERTIES = [];
+
+    /** @var string|null */
+    public const NAME = null;
 }

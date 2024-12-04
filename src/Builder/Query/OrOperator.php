@@ -19,10 +19,13 @@ use function array_is_list;
  * Joins query clauses with a logical OR returns all documents that match the conditions of either clause.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/or/
+ * @internal
  */
-class OrOperator implements QueryInterface, OperatorInterface
+final class OrOperator implements QueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$or';
+    public const PROPERTIES = ['queries' => 'queries'];
 
     /** @var list<QueryInterface|array> $queries */
     public readonly array $queries;
@@ -42,10 +45,5 @@ class OrOperator implements QueryInterface, OperatorInterface
         }
 
         $this->queries = $queries;
-    }
-
-    public function getOperator(): string
-    {
-        return '$or';
     }
 }

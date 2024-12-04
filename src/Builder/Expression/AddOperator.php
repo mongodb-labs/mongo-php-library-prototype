@@ -21,10 +21,13 @@ use function array_is_list;
  * Adds numbers to return the sum, or adds numbers and a date to return a new date. If adding numbers and a date, treats the numbers as milliseconds. Accepts any number of argument expressions, but at most, one expression can resolve to a date.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/add/
+ * @internal
  */
-class AddOperator implements ResolvesToInt, ResolvesToLong, ResolvesToDouble, ResolvesToDecimal, ResolvesToDate, OperatorInterface
+final class AddOperator implements ResolvesToInt, ResolvesToLong, ResolvesToDouble, ResolvesToDecimal, ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$add';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<Decimal128|Int64|ResolvesToDate|ResolvesToNumber|UTCDateTime|float|int> $expression The arguments can be any valid expression as long as they resolve to either all numbers or to numbers and a date. */
     public readonly array $expression;
@@ -44,10 +47,5 @@ class AddOperator implements ResolvesToInt, ResolvesToLong, ResolvesToDouble, Re
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$add';
     }
 }

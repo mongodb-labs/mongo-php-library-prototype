@@ -20,10 +20,13 @@ use stdClass;
  * Selects geometries that intersect with a GeoJSON geometry. The 2dsphere index supports $geoIntersects.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/geoIntersects/
+ * @internal
  */
-class GeoIntersectsOperator implements FieldQueryInterface, OperatorInterface
+final class GeoIntersectsOperator implements FieldQueryInterface, OperatorInterface
 {
-    public const ENCODE = Encode::Single;
+    public const ENCODE = Encode::Object;
+    public const NAME = '$geoIntersects';
+    public const PROPERTIES = ['geometry' => null];
 
     /** @var Document|GeometryInterface|Serializable|array|stdClass $geometry */
     public readonly Document|Serializable|GeometryInterface|stdClass|array $geometry;
@@ -34,10 +37,5 @@ class GeoIntersectsOperator implements FieldQueryInterface, OperatorInterface
     public function __construct(Document|Serializable|GeometryInterface|stdClass|array $geometry)
     {
         $this->geometry = $geometry;
-    }
-
-    public function getOperator(): string
-    {
-        return '$geoIntersects';
     }
 }

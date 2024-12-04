@@ -22,10 +22,13 @@ use function is_array;
  * Matches any of the values specified in an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/in/
+ * @internal
  */
-class InOperator implements FieldQueryInterface, OperatorInterface
+final class InOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$in';
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var BSONArray|PackedArray|array $value */
     public readonly PackedArray|BSONArray|array $value;
@@ -40,10 +43,5 @@ class InOperator implements FieldQueryInterface, OperatorInterface
         }
 
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$in';
     }
 }

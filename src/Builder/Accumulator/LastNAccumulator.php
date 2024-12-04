@@ -27,10 +27,13 @@ use function is_array;
  * If the group contains fewer than n elements, $lastN returns all elements in the group.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/lastN/
+ * @internal
  */
-class LastNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class LastNAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$lastN';
+    public const PROPERTIES = ['input' => 'input', 'n' => 'n'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $input An expression that resolves to the array from which to return n elements. */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $input;
@@ -50,10 +53,5 @@ class LastNAccumulator implements AccumulatorInterface, WindowInterface, Operato
 
         $this->input = $input;
         $this->n = $n;
-    }
-
-    public function getOperator(): string
-    {
-        return '$lastN';
     }
 }

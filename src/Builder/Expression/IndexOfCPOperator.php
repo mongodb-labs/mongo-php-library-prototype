@@ -16,10 +16,13 @@ use MongoDB\Builder\Type\Optional;
  * Searches a string for an occurrence of a substring and returns the UTF-8 code point index of the first occurrence. If the substring is not found, returns -1
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/indexOfCP/
+ * @internal
  */
-class IndexOfCPOperator implements ResolvesToInt, OperatorInterface
+final class IndexOfCPOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$indexOfCP';
+    public const PROPERTIES = ['string' => 'string', 'substring' => 'substring', 'start' => 'start', 'end' => 'end'];
 
     /**
      * @var ResolvesToString|string $string Can be any valid expression as long as it resolves to a string.
@@ -63,10 +66,5 @@ class IndexOfCPOperator implements ResolvesToInt, OperatorInterface
         $this->substring = $substring;
         $this->start = $start;
         $this->end = $end;
-    }
-
-    public function getOperator(): string
-    {
-        return '$indexOfCP';
     }
 }

@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the largest integer less than or equal to the specified number.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/floor/
+ * @internal
  */
-class FloorOperator implements ResolvesToInt, OperatorInterface
+final class FloorOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$floor';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $expression */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $expression;
@@ -31,10 +34,5 @@ class FloorOperator implements ResolvesToInt, OperatorInterface
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$floor';
     }
 }

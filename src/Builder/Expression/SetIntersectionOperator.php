@@ -20,10 +20,13 @@ use function array_is_list;
  * Returns a set with elements that appear in all of the input sets. Accepts any number of argument expressions.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/setIntersection/
+ * @internal
  */
-class SetIntersectionOperator implements ResolvesToArray, OperatorInterface
+final class SetIntersectionOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$setIntersection';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<BSONArray|PackedArray|ResolvesToArray|array> $expression */
     public readonly array $expression;
@@ -43,10 +46,5 @@ class SetIntersectionOperator implements ResolvesToArray, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$setIntersection';
     }
 }

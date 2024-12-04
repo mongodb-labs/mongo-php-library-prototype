@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Converts a value from radians to degrees.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/radiansToDegrees/
+ * @internal
  */
-class RadiansToDegreesOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
+final class RadiansToDegreesOperator implements ResolvesToDouble, ResolvesToDecimal, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$radiansToDegrees';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $expression */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $expression;
@@ -31,10 +34,5 @@ class RadiansToDegreesOperator implements ResolvesToDouble, ResolvesToDecimal, O
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$radiansToDegrees';
     }
 }

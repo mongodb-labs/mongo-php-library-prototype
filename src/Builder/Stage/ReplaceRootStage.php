@@ -20,10 +20,13 @@ use stdClass;
  * Replaces a document with the specified embedded document. The operation replaces all existing fields in the input document, including the _id field. Specify a document embedded in the input document to promote the embedded document to the top level.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/replaceRoot/
+ * @internal
  */
-class ReplaceRootStage implements StageInterface, OperatorInterface
+final class ReplaceRootStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$replaceRoot';
+    public const PROPERTIES = ['newRoot' => 'newRoot'];
 
     /** @var Document|ResolvesToObject|Serializable|array|stdClass $newRoot */
     public readonly Document|Serializable|ResolvesToObject|stdClass|array $newRoot;
@@ -34,10 +37,5 @@ class ReplaceRootStage implements StageInterface, OperatorInterface
     public function __construct(Document|Serializable|ResolvesToObject|stdClass|array $newRoot)
     {
         $this->newRoot = $newRoot;
-    }
-
-    public function getOperator(): string
-    {
-        return '$replaceRoot';
     }
 }

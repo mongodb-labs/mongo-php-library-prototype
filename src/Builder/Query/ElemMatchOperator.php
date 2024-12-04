@@ -22,10 +22,13 @@ use function is_array;
  * The $elemMatch operator matches documents that contain an array field with at least one element that matches all the specified query criteria.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/elemMatch/
+ * @internal
  */
-class ElemMatchOperator implements FieldQueryInterface, OperatorInterface
+final class ElemMatchOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$elemMatch';
+    public const PROPERTIES = ['query' => 'query'];
 
     /** @var FieldQueryInterface|QueryInterface|Type|array|bool|float|int|null|stdClass|string $query */
     public readonly Type|FieldQueryInterface|QueryInterface|stdClass|array|bool|float|int|null|string $query;
@@ -41,10 +44,5 @@ class ElemMatchOperator implements FieldQueryInterface, OperatorInterface
         }
 
         $this->query = $query;
-    }
-
-    public function getOperator(): string
-    {
-        return '$elemMatch';
     }
 }

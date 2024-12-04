@@ -15,10 +15,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the substring of a string. Starts with the character at the specified UTF-8 code point (CP) index (zero-based) in the string and continues for the number of code points specified.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/substrCP/
+ * @internal
  */
-class SubstrCPOperator implements ResolvesToString, OperatorInterface
+final class SubstrCPOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$substrCP';
+    public const PROPERTIES = ['string' => 'string', 'start' => 'start', 'length' => 'length'];
 
     /** @var ResolvesToString|string $string */
     public readonly ResolvesToString|string $string;
@@ -39,10 +42,5 @@ class SubstrCPOperator implements ResolvesToString, OperatorInterface
         $this->string = $string;
         $this->start = $start;
         $this->length = $length;
-    }
-
-    public function getOperator(): string
-    {
-        return '$substrCP';
     }
 }

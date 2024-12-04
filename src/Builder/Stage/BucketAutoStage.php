@@ -22,10 +22,19 @@ use stdClass;
  * Categorizes incoming documents into a specific number of groups, called buckets, based on a specified expression. Bucket boundaries are automatically determined in an attempt to evenly distribute the documents into the specified number of buckets.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/bucketAuto/
+ * @internal
  */
-class BucketAutoStage implements StageInterface, OperatorInterface
+final class BucketAutoStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$bucketAuto';
+
+    public const PROPERTIES = [
+        'groupBy' => 'groupBy',
+        'buckets' => 'buckets',
+        'output' => 'output',
+        'granularity' => 'granularity',
+    ];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $groupBy An expression to group documents by. To specify a field path, prefix the field name with a dollar sign $ and enclose it in quotes. */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $groupBy;
@@ -63,10 +72,5 @@ class BucketAutoStage implements StageInterface, OperatorInterface
         $this->buckets = $buckets;
         $this->output = $output;
         $this->granularity = $granularity;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bucketAuto';
     }
 }

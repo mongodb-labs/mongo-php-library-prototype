@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\StageInterface;
  * Returns information about existing Atlas Search indexes on a specified collection.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/listSearchIndexes/
+ * @internal
  */
-class ListSearchIndexesStage implements StageInterface, OperatorInterface
+final class ListSearchIndexesStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$listSearchIndexes';
+    public const PROPERTIES = ['id' => 'id', 'name' => 'name'];
 
     /** @var Optional|string $id The id of the index to return information about. */
     public readonly Optional|string $id;
@@ -38,10 +41,5 @@ class ListSearchIndexesStage implements StageInterface, OperatorInterface
     ) {
         $this->id = $id;
         $this->name = $name;
-    }
-
-    public function getOperator(): string
-    {
-        return '$listSearchIndexes';
     }
 }

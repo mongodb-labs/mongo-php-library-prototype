@@ -26,10 +26,13 @@ use function is_array;
  * Specifies a geometry in GeoJSON format to geospatial query operators.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/geometry/
+ * @internal
  */
-class GeometryOperator implements GeometryInterface, OperatorInterface
+final class GeometryOperator implements GeometryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$geometry';
+    public const PROPERTIES = ['type' => 'type', 'coordinates' => 'coordinates', 'crs' => 'crs'];
 
     /** @var string $type */
     public readonly string $type;
@@ -57,10 +60,5 @@ class GeometryOperator implements GeometryInterface, OperatorInterface
 
         $this->coordinates = $coordinates;
         $this->crs = $crs;
-    }
-
-    public function getOperator(): string
-    {
-        return '$geometry';
     }
 }

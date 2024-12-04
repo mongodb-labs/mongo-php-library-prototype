@@ -24,10 +24,13 @@ use function is_array;
  * Returns a boolean indicating whether a specified value is in an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/in/
+ * @internal
  */
-class InOperator implements ResolvesToBool, OperatorInterface
+final class InOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$in';
+    public const PROPERTIES = ['expression' => 'expression', 'array' => 'array'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $expression Any valid expression expression. */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $expression;
@@ -49,10 +52,5 @@ class InOperator implements ResolvesToBool, OperatorInterface
         }
 
         $this->array = $array;
-    }
-
-    public function getOperator(): string
-    {
-        return '$in';
     }
 }

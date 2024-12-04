@@ -19,10 +19,20 @@ use stdClass;
  * Converts a date/time string to a date object.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateFromString/
+ * @internal
  */
-class DateFromStringOperator implements ResolvesToDate, OperatorInterface
+final class DateFromStringOperator implements ResolvesToDate, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$dateFromString';
+
+    public const PROPERTIES = [
+        'dateString' => 'dateString',
+        'format' => 'format',
+        'timezone' => 'timezone',
+        'onError' => 'onError',
+        'onNull' => 'onNull',
+    ];
 
     /** @var ResolvesToString|string $dateString The date/time string to convert to a date object. */
     public readonly ResolvesToString|string $dateString;
@@ -70,10 +80,5 @@ class DateFromStringOperator implements ResolvesToDate, OperatorInterface
         $this->timezone = $timezone;
         $this->onError = $onError;
         $this->onNull = $onNull;
-    }
-
-    public function getOperator(): string
-    {
-        return '$dateFromString';
     }
 }

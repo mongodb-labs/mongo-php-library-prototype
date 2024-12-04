@@ -20,10 +20,19 @@ use stdClass;
  * Returns statistics regarding a collection or view.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/collStats/
+ * @internal
  */
-class CollStatsStage implements StageInterface, OperatorInterface
+final class CollStatsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$collStats';
+
+    public const PROPERTIES = [
+        'latencyStats' => 'latencyStats',
+        'storageStats' => 'storageStats',
+        'count' => 'count',
+        'queryExecStats' => 'queryExecStats',
+    ];
 
     /** @var Optional|Document|Serializable|array|stdClass $latencyStats */
     public readonly Optional|Document|Serializable|stdClass|array $latencyStats;
@@ -53,10 +62,5 @@ class CollStatsStage implements StageInterface, OperatorInterface
         $this->storageStats = $storageStats;
         $this->count = $count;
         $this->queryExecStats = $queryExecStats;
-    }
-
-    public function getOperator(): string
-    {
-        return '$collStats';
     }
 }

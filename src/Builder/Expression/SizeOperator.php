@@ -21,10 +21,13 @@ use function is_array;
  * Returns the number of elements in the array. Accepts a single expression as argument.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/size/
+ * @internal
  */
-class SizeOperator implements ResolvesToInt, OperatorInterface
+final class SizeOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$size';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var BSONArray|PackedArray|ResolvesToArray|array $expression The argument for $size can be any expression as long as it resolves to an array. */
     public readonly PackedArray|ResolvesToArray|BSONArray|array $expression;
@@ -39,10 +42,5 @@ class SizeOperator implements ResolvesToInt, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$size';
     }
 }

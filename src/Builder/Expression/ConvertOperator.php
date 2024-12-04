@@ -20,10 +20,13 @@ use stdClass;
  * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/convert/
+ * @internal
  */
-class ConvertOperator implements ResolvesToAny, OperatorInterface
+final class ConvertOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$convert';
+    public const PROPERTIES = ['input' => 'input', 'to' => 'to', 'onError' => 'onError', 'onNull' => 'onNull'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $input */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $input;
@@ -61,10 +64,5 @@ class ConvertOperator implements ResolvesToAny, OperatorInterface
         $this->to = $to;
         $this->onError = $onError;
         $this->onNull = $onNull;
-    }
-
-    public function getOperator(): string
-    {
-        return '$convert';
     }
 }

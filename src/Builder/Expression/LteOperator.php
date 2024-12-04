@@ -18,10 +18,13 @@ use stdClass;
  * Returns true if the first value is less than or equal to the second.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/lte/
+ * @internal
  */
-class LteOperator implements ResolvesToBool, OperatorInterface
+final class LteOperator implements ResolvesToBool, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$lte';
+    public const PROPERTIES = ['expression1' => 'expression1', 'expression2' => 'expression2'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $expression1 */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $expression1;
@@ -39,10 +42,5 @@ class LteOperator implements ResolvesToBool, OperatorInterface
     ) {
         $this->expression1 = $expression1;
         $this->expression2 = $expression2;
-    }
-
-    public function getOperator(): string
-    {
-        return '$lte';
     }
 }

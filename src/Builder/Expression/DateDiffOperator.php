@@ -20,10 +20,20 @@ use MongoDB\Builder\Type\TimeUnit;
  * Returns the difference between two dates.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateDiff/
+ * @internal
  */
-class DateDiffOperator implements ResolvesToInt, OperatorInterface
+final class DateDiffOperator implements ResolvesToInt, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$dateDiff';
+
+    public const PROPERTIES = [
+        'startDate' => 'startDate',
+        'endDate' => 'endDate',
+        'unit' => 'unit',
+        'timezone' => 'timezone',
+        'startOfWeek' => 'startOfWeek',
+    ];
 
     /** @var ObjectId|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|Timestamp|UTCDateTime|int $startDate The start of the time period. The startDate can be any expression that resolves to a Date, a Timestamp, or an ObjectID. */
     public readonly ObjectId|Timestamp|UTCDateTime|ResolvesToDate|ResolvesToObjectId|ResolvesToTimestamp|int $startDate;
@@ -59,10 +69,5 @@ class DateDiffOperator implements ResolvesToInt, OperatorInterface
         $this->unit = $unit;
         $this->timezone = $timezone;
         $this->startOfWeek = $startOfWeek;
-    }
-
-    public function getOperator(): string
-    {
-        return '$dateDiff';
     }
 }

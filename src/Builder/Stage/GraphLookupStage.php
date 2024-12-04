@@ -28,10 +28,23 @@ use function is_array;
  * Performs a recursive search on a collection. To each output document, adds a new array field that contains the traversal results of the recursive search for that document.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/graphLookup/
+ * @internal
  */
-class GraphLookupStage implements StageInterface, OperatorInterface
+final class GraphLookupStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$graphLookup';
+
+    public const PROPERTIES = [
+        'from' => 'from',
+        'startWith' => 'startWith',
+        'connectFromField' => 'connectFromField',
+        'connectToField' => 'connectToField',
+        'as' => 'as',
+        'maxDepth' => 'maxDepth',
+        'depthField' => 'depthField',
+        'restrictSearchWithMatch' => 'restrictSearchWithMatch',
+    ];
 
     /**
      * @var string $from Target collection for the $graphLookup operation to search, recursively matching the connectFromField to the connectToField. The from collection must be in the same database as any other collections used in the operation.
@@ -97,10 +110,5 @@ class GraphLookupStage implements StageInterface, OperatorInterface
         }
 
         $this->restrictSearchWithMatch = $restrictSearchWithMatch;
-    }
-
-    public function getOperator(): string
-    {
-        return '$graphLookup';
     }
 }

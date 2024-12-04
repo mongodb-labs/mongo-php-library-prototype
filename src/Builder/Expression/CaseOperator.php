@@ -19,10 +19,13 @@ use stdClass;
  * Represents a single case in a $switch expression
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/switch/
+ * @internal
  */
-class CaseOperator implements SwitchBranchInterface, OperatorInterface
+final class CaseOperator implements SwitchBranchInterface, OperatorInterface
 {
-    public const ENCODE = Encode::FlatObject;
+    public const ENCODE = Encode::Object;
+    public const NAME = null;
+    public const PROPERTIES = ['case' => 'case', 'then' => 'then'];
 
     /** @var ResolvesToBool|bool $case Can be any valid expression that resolves to a boolean. If the result is not a boolean, it is coerced to a boolean value. More information about how MongoDB evaluates expressions as either true or false can be found here. */
     public readonly ResolvesToBool|bool $case;
@@ -40,10 +43,5 @@ class CaseOperator implements SwitchBranchInterface, OperatorInterface
     ) {
         $this->case = $case;
         $this->then = $then;
-    }
-
-    public function getOperator(): string
-    {
-        return '$case';
     }
 }

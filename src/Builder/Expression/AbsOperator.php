@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Returns the absolute value of a number.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/abs/
+ * @internal
  */
-class AbsOperator implements ResolvesToNumber, OperatorInterface
+final class AbsOperator implements ResolvesToNumber, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$abs';
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $value */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $value;
@@ -31,10 +34,5 @@ class AbsOperator implements ResolvesToNumber, OperatorInterface
     public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $value)
     {
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$abs';
     }
 }

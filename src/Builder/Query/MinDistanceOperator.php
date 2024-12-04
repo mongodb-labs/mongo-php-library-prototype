@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Specifies a minimum distance to limit the results of $near and $nearSphere queries. For use with 2dsphere index only.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/minDistance/
+ * @internal
  */
-class MinDistanceOperator implements FieldQueryInterface, OperatorInterface
+final class MinDistanceOperator implements FieldQueryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$minDistance';
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var Int64|float|int $value */
     public readonly Int64|float|int $value;
@@ -31,10 +34,5 @@ class MinDistanceOperator implements FieldQueryInterface, OperatorInterface
     public function __construct(Int64|float|int $value)
     {
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$minDistance';
     }
 }

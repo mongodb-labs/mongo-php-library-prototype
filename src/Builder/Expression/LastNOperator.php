@@ -21,10 +21,13 @@ use function is_array;
  * Returns a specified number of elements from the end of an array.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/lastN-array-element/
+ * @internal
  */
-class LastNOperator implements ResolvesToArray, OperatorInterface
+final class LastNOperator implements ResolvesToArray, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$lastN';
+    public const PROPERTIES = ['n' => 'n', 'input' => 'input'];
 
     /** @var ResolvesToInt|int $n An expression that resolves to a positive integer. The integer specifies the number of array elements that $firstN returns. */
     public readonly ResolvesToInt|int $n;
@@ -44,10 +47,5 @@ class LastNOperator implements ResolvesToArray, OperatorInterface
         }
 
         $this->input = $input;
-    }
-
-    public function getOperator(): string
-    {
-        return '$lastN';
     }
 }

@@ -22,10 +22,13 @@ use function is_array;
  * Specifies a circle using legacy coordinate pairs to $geoWithin queries when using planar geometry. The 2d index supports $center.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/center/
+ * @internal
  */
-class CenterOperator implements GeometryInterface, OperatorInterface
+final class CenterOperator implements GeometryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$center';
+    public const PROPERTIES = ['value' => 'value'];
 
     /** @var BSONArray|PackedArray|array $value */
     public readonly PackedArray|BSONArray|array $value;
@@ -40,10 +43,5 @@ class CenterOperator implements GeometryInterface, OperatorInterface
         }
 
         $this->value = $value;
-    }
-
-    public function getOperator(): string
-    {
-        return '$center';
     }
 }

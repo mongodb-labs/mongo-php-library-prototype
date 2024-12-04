@@ -26,10 +26,19 @@ use function is_array;
  * Populates null and missing field values within documents.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/fill/
+ * @internal
  */
-class FillStage implements StageInterface, OperatorInterface
+final class FillStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$fill';
+
+    public const PROPERTIES = [
+        'output' => 'output',
+        'partitionBy' => 'partitionBy',
+        'partitionByFields' => 'partitionByFields',
+        'sortBy' => 'sortBy',
+    ];
 
     /**
      * @var Document|Serializable|array|stdClass $output Specifies an object containing each field for which to fill missing values. You can specify multiple fields in the output object.
@@ -79,10 +88,5 @@ class FillStage implements StageInterface, OperatorInterface
 
         $this->partitionByFields = $partitionByFields;
         $this->sortBy = $sortBy;
-    }
-
-    public function getOperator(): string
-    {
-        return '$fill';
     }
 }

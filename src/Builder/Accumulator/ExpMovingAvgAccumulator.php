@@ -21,10 +21,13 @@ use MongoDB\Builder\Type\WindowInterface;
  * New in MongoDB 5.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/expMovingAvg/
+ * @internal
  */
-class ExpMovingAvgAccumulator implements WindowInterface, OperatorInterface
+final class ExpMovingAvgAccumulator implements WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$expMovingAvg';
+    public const PROPERTIES = ['input' => 'input', 'N' => 'N', 'alpha' => 'alpha'];
 
     /** @var Decimal128|Int64|ResolvesToNumber|float|int $input */
     public readonly Decimal128|Int64|ResolvesToNumber|float|int $input;
@@ -58,10 +61,5 @@ class ExpMovingAvgAccumulator implements WindowInterface, OperatorInterface
         $this->input = $input;
         $this->N = $N;
         $this->alpha = $alpha;
-    }
-
-    public function getOperator(): string
-    {
-        return '$expMovingAvg';
     }
 }

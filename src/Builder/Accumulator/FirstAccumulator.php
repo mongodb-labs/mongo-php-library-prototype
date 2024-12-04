@@ -21,10 +21,13 @@ use stdClass;
  * Changed in MongoDB 5.0: Available in the $setWindowFields stage.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/first/
+ * @internal
  */
-class FirstAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
+final class FirstAccumulator implements AccumulatorInterface, WindowInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$first';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $expression */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $expression;
@@ -35,10 +38,5 @@ class FirstAccumulator implements AccumulatorInterface, WindowInterface, Operato
     public function __construct(Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$first';
     }
 }

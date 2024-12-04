@@ -23,10 +23,13 @@ use function array_is_list;
  * Changed in MongoDB 5.0: Available in the $setWindowFields stage.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sum/
+ * @internal
  */
-class SumOperator implements ResolvesToNumber, OperatorInterface
+final class SumOperator implements ResolvesToNumber, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$sum';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var list<BSONArray|Decimal128|Int64|PackedArray|ResolvesToArray|ResolvesToNumber|array|float|int> $expression */
     public readonly array $expression;
@@ -47,10 +50,5 @@ class SumOperator implements ResolvesToNumber, OperatorInterface
         }
 
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$sum';
     }
 }

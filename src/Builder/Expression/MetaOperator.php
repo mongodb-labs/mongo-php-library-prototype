@@ -15,10 +15,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Access available per-document metadata related to the aggregation operation.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/meta/
+ * @internal
  */
-class MetaOperator implements ResolvesToAny, OperatorInterface
+final class MetaOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$meta';
+    public const PROPERTIES = ['keyword' => 'keyword'];
 
     /** @var string $keyword */
     public readonly string $keyword;
@@ -29,10 +32,5 @@ class MetaOperator implements ResolvesToAny, OperatorInterface
     public function __construct(string $keyword)
     {
         $this->keyword = $keyword;
-    }
-
-    public function getOperator(): string
-    {
-        return '$meta';
     }
 }

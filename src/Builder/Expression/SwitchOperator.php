@@ -25,10 +25,13 @@ use function is_array;
  * Evaluates a series of case expressions. When it finds an expression which evaluates to true, $switch executes a specified expression and breaks out of the control flow.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/switch/
+ * @internal
  */
-class SwitchOperator implements ResolvesToAny, OperatorInterface
+final class SwitchOperator implements ResolvesToAny, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$switch';
+    public const PROPERTIES = ['branches' => 'branches', 'default' => 'default'];
 
     /**
      * @var BSONArray|PackedArray|array $branches An array of control branch documents. Each branch is a document with the following fields:
@@ -62,10 +65,5 @@ class SwitchOperator implements ResolvesToAny, OperatorInterface
 
         $this->branches = $branches;
         $this->default = $default;
-    }
-
-    public function getOperator(): string
-    {
-        return '$switch';
     }
 }

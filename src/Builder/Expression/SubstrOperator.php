@@ -15,10 +15,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * Deprecated. Use $substrBytes or $substrCP.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/substr/
+ * @internal
  */
-class SubstrOperator implements ResolvesToString, OperatorInterface
+final class SubstrOperator implements ResolvesToString, OperatorInterface
 {
     public const ENCODE = Encode::Array;
+    public const NAME = '$substr';
+    public const PROPERTIES = ['string' => 'string', 'start' => 'start', 'length' => 'length'];
 
     /** @var ResolvesToString|string $string */
     public readonly ResolvesToString|string $string;
@@ -39,10 +42,5 @@ class SubstrOperator implements ResolvesToString, OperatorInterface
         $this->string = $string;
         $this->start = $start;
         $this->length = $length;
-    }
-
-    public function getOperator(): string
-    {
-        return '$substr';
     }
 }

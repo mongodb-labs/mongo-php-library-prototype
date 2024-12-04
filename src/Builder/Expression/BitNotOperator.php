@@ -17,10 +17,13 @@ use MongoDB\Builder\Type\OperatorInterface;
  * New in MongoDB 6.3.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/bitNot/
+ * @internal
  */
-class BitNotOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
+final class BitNotOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$bitNot';
+    public const PROPERTIES = ['expression' => 'expression'];
 
     /** @var Int64|ResolvesToInt|ResolvesToLong|int $expression */
     public readonly Int64|ResolvesToInt|ResolvesToLong|int $expression;
@@ -31,10 +34,5 @@ class BitNotOperator implements ResolvesToInt, ResolvesToLong, OperatorInterface
     public function __construct(Int64|ResolvesToInt|ResolvesToLong|int $expression)
     {
         $this->expression = $expression;
-    }
-
-    public function getOperator(): string
-    {
-        return '$bitNot';
     }
 }

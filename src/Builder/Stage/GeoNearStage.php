@@ -27,10 +27,24 @@ use function is_array;
  * Returns an ordered stream of documents based on the proximity to a geospatial point. Incorporates the functionality of $match, $sort, and $limit for geospatial data. The output documents include an additional distance field and can include a location identifier field.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/geoNear/
+ * @internal
  */
-class GeoNearStage implements StageInterface, OperatorInterface
+final class GeoNearStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$geoNear';
+
+    public const PROPERTIES = [
+        'distanceField' => 'distanceField',
+        'near' => 'near',
+        'distanceMultiplier' => 'distanceMultiplier',
+        'includeLocs' => 'includeLocs',
+        'key' => 'key',
+        'maxDistance' => 'maxDistance',
+        'minDistance' => 'minDistance',
+        'query' => 'query',
+        'spherical' => 'spherical',
+    ];
 
     /** @var string $distanceField The output field that contains the calculated distance. To specify a field within an embedded document, use dot notation. */
     public readonly string $distanceField;
@@ -114,10 +128,5 @@ class GeoNearStage implements StageInterface, OperatorInterface
 
         $this->query = $query;
         $this->spherical = $spherical;
-    }
-
-    public function getOperator(): string
-    {
-        return '$geoNear';
     }
 }

@@ -23,10 +23,13 @@ use function is_array;
  * Lists all active sessions recently in use on the currently connected mongos or mongod instance. These sessions may have not yet propagated to the system.sessions collection.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/listLocalSessions/
+ * @internal
  */
-class ListLocalSessionsStage implements StageInterface, OperatorInterface
+final class ListLocalSessionsStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Object;
+    public const NAME = '$listLocalSessions';
+    public const PROPERTIES = ['users' => 'users', 'allUsers' => 'allUsers'];
 
     /** @var Optional|BSONArray|PackedArray|array $users Returns all sessions for the specified users. If running with access control, the authenticated user must have privileges with listSessions action on the cluster to list sessions for other users. */
     public readonly Optional|PackedArray|BSONArray|array $users;
@@ -48,10 +51,5 @@ class ListLocalSessionsStage implements StageInterface, OperatorInterface
 
         $this->users = $users;
         $this->allUsers = $allUsers;
-    }
-
-    public function getOperator(): string
-    {
-        return '$listLocalSessions';
     }
 }

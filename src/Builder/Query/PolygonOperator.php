@@ -22,10 +22,13 @@ use function is_array;
  * Specifies a polygon to using legacy coordinate pairs for $geoWithin queries. The 2d index supports $center.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/query/polygon/
+ * @internal
  */
-class PolygonOperator implements GeometryInterface, OperatorInterface
+final class PolygonOperator implements GeometryInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
+    public const NAME = '$polygon';
+    public const PROPERTIES = ['points' => 'points'];
 
     /** @var BSONArray|PackedArray|array $points */
     public readonly PackedArray|BSONArray|array $points;
@@ -40,10 +43,5 @@ class PolygonOperator implements GeometryInterface, OperatorInterface
         }
 
         $this->points = $points;
-    }
-
-    public function getOperator(): string
-    {
-        return '$polygon';
     }
 }
