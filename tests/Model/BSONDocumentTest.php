@@ -23,6 +23,13 @@ class BSONDocumentTest extends TestCase
         $this->assertSame('bar', $document->foo);
     }
 
+    public function testConstructorWithStandardObject(): void
+    {
+        $object = (object) ['foo' => 'bar'];
+        $document = new BSONDocument($object);
+        $this->assertEquals($object, $document->bsonSerialize());
+    }
+
     public function testBsonSerializeCastsToObject(): void
     {
         $data = [0 => 'foo', 2 => 'bar'];
