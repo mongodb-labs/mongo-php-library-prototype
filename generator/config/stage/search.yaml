@@ -45,7 +45,7 @@ arguments:
         name: count
         optional: true
         type:
-            - string
+            - object
         description: |
             Document that specifies the count options for retrieving a count of the results.
     -
@@ -116,3 +116,150 @@ tests:
                             $replaceWith: '$$SEARCH_META'
                         -
                             $limit: 1
+    -
+        name: 'Date Search and Sort'
+        link: 'https://www.mongodb.com/docs/atlas/atlas-search/sort/#date-search-and-sort'
+        pipeline:
+            -
+                $search:
+                    range:
+                        path: 'released'
+                        gt: !bson_utcdatetime '2010-01-01T00:00:00.000Z'
+                        lt: !bson_utcdatetime '2015-01-01T00:00:00.000Z'
+                    sort:
+                        released: -1
+            -
+                $limit: 5
+            -
+                $project:
+                    _id: 0
+                    title: 1
+                    released: 1
+    -
+        name: 'Number Search and Sort'
+        link: 'https://www.mongodb.com/docs/atlas/atlas-search/sort/#number-search-and-sort'
+        pipeline:
+            -
+                $search:
+                    range:
+                        path: 'awards.wins'
+                        gt: 3
+                    sort:
+                        awards.wins: -1
+            -
+                $limit: 5
+            -
+                $project:
+                    _id: 0
+                    title: 1
+                    awards.wins: 1
+    -
+        name: 'Sort by score'
+        link: 'https://www.mongodb.com/docs/atlas/atlas-search/sort/#sort-by-score'
+        pipeline:
+            -
+                $search:
+                    text:
+                        path: 'title'
+                        query: 'story'
+                    sort:
+                        score:
+                            $meta: 'searchScore'
+                            order: 1
+            -
+                $limit: 5
+            -
+                $project:
+                    _id: 0
+                    title: 1
+                    score:
+                        $meta: 'searchScore'
+    -
+        name: 'Paginate results after a token'
+        link: 'https://www.mongodb.com/docs/atlas/atlas-search/paginate-results/#search-after-the-reference-point'
+        pipeline:
+            -
+                $search:
+                    text:
+                        path: 'title'
+                        query: 'war'
+                    sort:
+                        score:
+                            $meta: 'searchScore'
+                        released: 1
+                    searchAfter: 'CMtJGgYQuq+ngwgaCSkAjBYH7AAAAA=='
+    -
+        name: 'Paginate results before a token'
+        link: 'https://www.mongodb.com/docs/atlas/atlas-search/paginate-results/#search-before-the-reference-point'
+        pipeline:
+            -
+                $search:
+                    text:
+                        path: 'title'
+                        query: 'war'
+                    sort:
+                        score:
+                            $meta: 'searchScore'
+                        released: 1
+                    searchBefore: 'CJ6kARoGELqvp4MIGgkpACDA3U8BAAA='
+    -
+        name: 'Count results'
+        link: 'https://www.mongodb.com/docs/atlas/atlas-search/counting/#count-results'
+        pipeline:
+            -
+                $search:
+                    near:
+                        path: 'released'
+                        origin: !bson_utcdatetime '2011-09-01T00:00:00.000+00:00'
+                        pivot: 7776000000
+                    count:
+                        type: 'total'
+            -
+                $project:
+                    meta: '$$SEARCH_META'
+                    title: 1
+                    released: 1
+            -
+                $limit: 2
+    -
+        name: 'Track Search terms'
+        link: 'https://www.mongodb.com/docs/atlas/atlas-search/tracking/#examples'
+        pipeline:
+            -
+                $search:
+                    text:
+                        query: 'summer'
+                        path: 'title'
+                    tracking:
+                        searchTerms: 'summer'
+            -
+                $limit: 5
+            -
+                $project:
+                    _id: 0
+                    title: 1
+    -
+        name: 'Return Stored Source Fields'
+        link: 'https://www.mongodb.com/docs/atlas/atlas-search/return-stored-source/#examples'
+        pipeline:
+            -
+                $search:
+                    text:
+                        query: 'baseball'
+                        path: 'title'
+                    returnStoredSource: true
+            -
+                $match:
+                    $or:
+                        -
+                            imdb.rating:
+                                $gt: 8.2
+                        -
+                            imdb.votes:
+                                $gte: 4500
+            -
+                $lookup:
+                    from: 'movies'
+                    localField: '_id'
+                    foreignField: '_id'
+                    as: 'document'

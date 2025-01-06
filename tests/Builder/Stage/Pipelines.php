@@ -2613,6 +2613,324 @@ enum Pipelines: string
     JSON;
 
     /**
+     * Date Search and Sort
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-search/sort/#date-search-and-sort
+     */
+    case SearchDateSearchAndSort = <<<'JSON'
+    [
+        {
+            "$search": {
+                "range": {
+                    "path": "released",
+                    "gt": {
+                        "$date": {
+                            "$numberLong": "1262304000000"
+                        }
+                    },
+                    "lt": {
+                        "$date": {
+                            "$numberLong": "1420070400000"
+                        }
+                    }
+                },
+                "sort": {
+                    "released": {
+                        "$numberInt": "-1"
+                    }
+                }
+            }
+        },
+        {
+            "$limit": {
+                "$numberInt": "5"
+            }
+        },
+        {
+            "$project": {
+                "_id": {
+                    "$numberInt": "0"
+                },
+                "title": {
+                    "$numberInt": "1"
+                },
+                "released": {
+                    "$numberInt": "1"
+                }
+            }
+        }
+    ]
+    JSON;
+
+    /**
+     * Number Search and Sort
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-search/sort/#number-search-and-sort
+     */
+    case SearchNumberSearchAndSort = <<<'JSON'
+    [
+        {
+            "$search": {
+                "range": {
+                    "path": "awards.wins",
+                    "gt": {
+                        "$numberInt": "3"
+                    }
+                },
+                "sort": {
+                    "awards.wins": {
+                        "$numberInt": "-1"
+                    }
+                }
+            }
+        },
+        {
+            "$limit": {
+                "$numberInt": "5"
+            }
+        },
+        {
+            "$project": {
+                "_id": {
+                    "$numberInt": "0"
+                },
+                "title": {
+                    "$numberInt": "1"
+                },
+                "awards.wins": {
+                    "$numberInt": "1"
+                }
+            }
+        }
+    ]
+    JSON;
+
+    /**
+     * Sort by score
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-search/sort/#sort-by-score
+     */
+    case SearchSortByScore = <<<'JSON'
+    [
+        {
+            "$search": {
+                "text": {
+                    "path": "title",
+                    "query": "story"
+                },
+                "sort": {
+                    "score": {
+                        "$meta": "searchScore",
+                        "order": {
+                            "$numberInt": "1"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "$limit": {
+                "$numberInt": "5"
+            }
+        },
+        {
+            "$project": {
+                "_id": {
+                    "$numberInt": "0"
+                },
+                "title": {
+                    "$numberInt": "1"
+                },
+                "score": {
+                    "$meta": "searchScore"
+                }
+            }
+        }
+    ]
+    JSON;
+
+    /**
+     * Paginate results after a token
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-search/paginate-results/#search-after-the-reference-point
+     */
+    case SearchPaginateResultsAfterAToken = <<<'JSON'
+    [
+        {
+            "$search": {
+                "text": {
+                    "path": "title",
+                    "query": "war"
+                },
+                "sort": {
+                    "score": {
+                        "$meta": "searchScore"
+                    },
+                    "released": {
+                        "$numberInt": "1"
+                    }
+                },
+                "searchAfter": "CMtJGgYQuq+ngwgaCSkAjBYH7AAAAA=="
+            }
+        }
+    ]
+    JSON;
+
+    /**
+     * Paginate results before a token
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-search/paginate-results/#search-before-the-reference-point
+     */
+    case SearchPaginateResultsBeforeAToken = <<<'JSON'
+    [
+        {
+            "$search": {
+                "text": {
+                    "path": "title",
+                    "query": "war"
+                },
+                "sort": {
+                    "score": {
+                        "$meta": "searchScore"
+                    },
+                    "released": {
+                        "$numberInt": "1"
+                    }
+                },
+                "searchBefore": "CJ6kARoGELqvp4MIGgkpACDA3U8BAAA="
+            }
+        }
+    ]
+    JSON;
+
+    /**
+     * Count results
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-search/counting/#count-results
+     */
+    case SearchCountResults = <<<'JSON'
+    [
+        {
+            "$search": {
+                "near": {
+                    "path": "released",
+                    "origin": {
+                        "$date": {
+                            "$numberLong": "1314835200000"
+                        }
+                    },
+                    "pivot": {
+                        "$numberLong": "7776000000"
+                    }
+                },
+                "count": {
+                    "type": "total"
+                }
+            }
+        },
+        {
+            "$project": {
+                "meta": "$$SEARCH_META",
+                "title": {
+                    "$numberInt": "1"
+                },
+                "released": {
+                    "$numberInt": "1"
+                }
+            }
+        },
+        {
+            "$limit": {
+                "$numberInt": "2"
+            }
+        }
+    ]
+    JSON;
+
+    /**
+     * Track Search terms
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-search/tracking/#examples
+     */
+    case SearchTrackSearchTerms = <<<'JSON'
+    [
+        {
+            "$search": {
+                "text": {
+                    "query": "summer",
+                    "path": "title"
+                },
+                "tracking": {
+                    "searchTerms": "summer"
+                }
+            }
+        },
+        {
+            "$limit": {
+                "$numberInt": "5"
+            }
+        },
+        {
+            "$project": {
+                "_id": {
+                    "$numberInt": "0"
+                },
+                "title": {
+                    "$numberInt": "1"
+                }
+            }
+        }
+    ]
+    JSON;
+
+    /**
+     * Return Stored Source Fields
+     *
+     * @see https://www.mongodb.com/docs/atlas/atlas-search/return-stored-source/#examples
+     */
+    case SearchReturnStoredSourceFields = <<<'JSON'
+    [
+        {
+            "$search": {
+                "text": {
+                    "query": "baseball",
+                    "path": "title"
+                },
+                "returnStoredSource": true
+            }
+        },
+        {
+            "$match": {
+                "$or": [
+                    {
+                        "imdb.rating": {
+                            "$gt": {
+                                "$numberDouble": "8.1999999999999992895"
+                            }
+                        }
+                    },
+                    {
+                        "imdb.votes": {
+                            "$gte": {
+                                "$numberInt": "4500"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "$lookup": {
+                "from": "movies",
+                "localField": "_id",
+                "foreignField": "_id",
+                "as": "document"
+            }
+        }
+    ]
+    JSON;
+
+    /**
      * Example
      *
      * @see https://www.mongodb.com/docs/atlas/atlas-search/query-syntax/#example

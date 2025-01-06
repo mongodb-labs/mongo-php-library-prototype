@@ -65,7 +65,7 @@ jobs:
           submodules: true
 
       - id: setup-mongodb
-        uses: mongodb-labs/drivers-evergreen-tools@master
+        uses: mongodb-labs/drivers-evergreen-tools@81c6b49dd61e833229d750084f9f3c71b31acd8d
         with:
           version: ${{ matrix.mongodb-version }}
           topology: ${{ matrix.topology }}
