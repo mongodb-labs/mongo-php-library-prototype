@@ -545,7 +545,7 @@ trait FactoryTrait
      * @param Optional|bool $concurrent Parallelize search across segments on dedicated search nodes.
      * If you don't have separate search nodes on your cluster,
      * Atlas Search ignores this flag. If omitted, defaults to false.
-     * @param Optional|string $count Document that specifies the count options for retrieving a count of the results.
+     * @param Optional|Document|Serializable|array|stdClass $count Document that specifies the count options for retrieving a count of the results.
      * @param Optional|string $searchAfter Reference point for retrieving results. searchAfter returns documents starting immediately following the specified reference point.
      * @param Optional|string $searchBefore Reference point for retrieving results. searchBefore returns documents starting immediately before the specified reference point.
      * @param Optional|bool $scoreDetails Flag that specifies whether to retrieve a detailed breakdown of the score for the documents in the results. If omitted, defaults to false.
@@ -558,7 +558,7 @@ trait FactoryTrait
         Optional|string $index = Optional::Undefined,
         Optional|Document|Serializable|stdClass|array $highlight = Optional::Undefined,
         Optional|bool $concurrent = Optional::Undefined,
-        Optional|string $count = Optional::Undefined,
+        Optional|Document|Serializable|stdClass|array $count = Optional::Undefined,
         Optional|string $searchAfter = Optional::Undefined,
         Optional|string $searchBefore = Optional::Undefined,
         Optional|bool $scoreDetails = Optional::Undefined,
