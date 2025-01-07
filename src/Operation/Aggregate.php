@@ -37,7 +37,6 @@ use stdClass;
 use function is_array;
 use function is_bool;
 use function is_integer;
-use function is_object;
 use function is_string;
 use function MongoDB\is_document;
 use function MongoDB\is_last_pipeline_operator_write;
@@ -150,8 +149,8 @@ class Aggregate implements Executable, Explainable
             throw InvalidArgumentException::invalidType('"explain" option', $this->options['explain'], 'boolean');
         }
 
-        if (isset($this->options['hint']) && ! is_string($this->options['hint']) && ! is_array($this->options['hint']) && ! is_object($this->options['hint'])) {
-            throw InvalidArgumentException::invalidType('"hint" option', $this->options['hint'], 'string or array or object');
+        if (isset($this->options['hint']) && ! is_string($this->options['hint']) && ! is_document($this->options['hint'])) {
+            throw InvalidArgumentException::expectedDocumentOrStringType('"hint" option', $this->options['hint']);
         }
 
         if (isset($this->options['let']) && ! is_document($this->options['let'])) {
