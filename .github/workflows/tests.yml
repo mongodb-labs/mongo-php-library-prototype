@@ -64,8 +64,12 @@ jobs:
           fetch-depth: 2
           submodules: true
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
       - id: setup-mongodb
-        uses: mongodb-labs/drivers-evergreen-tools@81c6b49dd61e833229d750084f9f3c71b31acd8d
+        uses: mongodb-labs/drivers-evergreen-tools@master
         with:
           version: ${{ matrix.mongodb-version }}
           topology: ${{ matrix.topology }}
