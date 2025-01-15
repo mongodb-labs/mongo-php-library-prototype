@@ -35,6 +35,17 @@ class InvalidArgumentException extends DriverInvalidArgumentException implements
     }
 
     /**
+     * Thrown when an argument or option is expected to be a string or a document.
+     *
+     * @param string $name  Name of the argument or option
+     * @param mixed  $value Actual value (used to derive the type)
+     */
+    public static function expectedDocumentOrStringType(string $name, mixed $value): self
+    {
+        return new self(sprintf('Expected %s to have type "string" or "document" (array or object) but found "%s"', $name, get_debug_type($value)));
+    }
+
+    /**
      * Thrown when an argument or option is expected to be a document.
      *
      * @param string $name  Name of the argument or option
