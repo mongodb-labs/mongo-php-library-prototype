@@ -250,7 +250,7 @@ OUTPUT;
      */
     protected static function getInvalidHintValues(): array
     {
-        return [123, 3.14, true, PackedArray::fromPHP(['hint'])];
+        return [123, 3.14, true, PackedArray::fromPHP([])];
     }
 
     /**
