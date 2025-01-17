@@ -26,8 +26,6 @@ use MongoDB\Driver\WriteConcern;
 use MongoDB\Exception\InvalidArgumentException;
 use MongoDB\Exception\UnsupportedException;
 
-use function is_array;
-use function is_object;
 use function is_string;
 use function MongoDB\is_document;
 use function MongoDB\is_write_concern_acknowledged;
@@ -96,8 +94,8 @@ class Delete implements Executable, Explainable
             throw InvalidArgumentException::expectedDocumentType('"collation" option', $this->options['collation']);
         }
 
-        if (isset($this->options['hint']) && ! is_string($this->options['hint']) && ! is_array($this->options['hint']) && ! is_object($this->options['hint'])) {
-            throw InvalidArgumentException::invalidType('"hint" option', $this->options['hint'], ['string', 'array', 'object']);
+        if (isset($this->options['hint']) && ! is_string($this->options['hint']) && ! is_document($this->options['hint'])) {
+            throw InvalidArgumentException::expectedDocumentOrStringType('"hint" option', $this->options['hint']);
         }
 
         if (isset($this->options['session']) && ! $this->options['session'] instanceof Session) {
