@@ -53,7 +53,7 @@ arguments:
     -
         name: near
         type:
-            - object # GeoPoint
+            - geoPoint
             - resolvesToObject
         description: |
             The point for which to find the closest documents.

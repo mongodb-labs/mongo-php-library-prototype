@@ -12,7 +12,7 @@ arguments:
     -
         name: sortBy
         type:
-            - object # SortSpec
+            - sortBy
         description: |
             Specifies the order of results, with syntax similar to $sort.
     -

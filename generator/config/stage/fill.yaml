@@ -29,7 +29,7 @@ arguments:
     -
         name: sortBy
         type:
-            - object # SortSpec
+            - sortBy
         optional: true
         description: |
             Specifies the field or fields to sort the documents within each partition. Uses the same syntax as the $sort stage.

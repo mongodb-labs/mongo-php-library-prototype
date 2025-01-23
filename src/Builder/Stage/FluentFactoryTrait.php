@@ -106,14 +106,14 @@ trait FluentFactoryTrait
      * @param int $buckets A positive 32-bit integer that specifies the number of buckets into which input documents are grouped.
      * @param Optional|Document|Serializable|array|stdClass $output A document that specifies the fields to include in the output documents in addition to the _id field. To specify the field to include, you must use accumulator expressions.
      * The default count field is not included in the output document when output is specified. Explicitly specify the count expression as part of the output document to include it.
-     * @param Optional|Document|Serializable|array|stdClass $granularity A string that specifies the preferred number series to use to ensure that the calculated boundary edges end on preferred round numbers or their powers of 10.
+     * @param Optional|string $granularity A string that specifies the preferred number series to use to ensure that the calculated boundary edges end on preferred round numbers or their powers of 10.
      * Available only if the all groupBy values are numeric and none of them are NaN.
      */
     public function bucketAuto(
         Type|ExpressionInterface|stdClass|array|string|int|float|bool|null $groupBy,
         int $buckets,
         Optional|Document|Serializable|stdClass|array $output = Optional::Undefined,
-        Optional|Document|Serializable|stdClass|array $granularity = Optional::Undefined,
+        Optional|string $granularity = Optional::Undefined,
     ): static {
         $this->pipeline[] = Stage::bucketAuto($groupBy, $buckets, $output, $granularity);
 
