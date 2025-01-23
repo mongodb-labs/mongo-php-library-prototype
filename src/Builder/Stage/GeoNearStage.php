@@ -35,8 +35,8 @@ final class GeoNearStage implements StageInterface, OperatorInterface
     public const NAME = '$geoNear';
 
     public const PROPERTIES = [
-        'distanceField' => 'distanceField',
         'near' => 'near',
+        'distanceField' => 'distanceField',
         'distanceMultiplier' => 'distanceMultiplier',
         'includeLocs' => 'includeLocs',
         'key' => 'key',
@@ -46,11 +46,11 @@ final class GeoNearStage implements StageInterface, OperatorInterface
         'spherical' => 'spherical',
     ];
 
-    /** @var string $distanceField The output field that contains the calculated distance. To specify a field within an embedded document, use dot notation. */
-    public readonly string $distanceField;
-
     /** @var Document|ResolvesToObject|Serializable|array|stdClass $near The point for which to find the closest documents. */
     public readonly Document|Serializable|ResolvesToObject|stdClass|array $near;
+
+    /** @var Optional|string $distanceField The output field that contains the calculated distance. To specify a field within an embedded document, use dot notation. */
+    public readonly Optional|string $distanceField;
 
     /** @var Optional|Decimal128|Int64|float|int $distanceMultiplier The factor to multiply all distances returned by the query. For example, use the distanceMultiplier to convert radians, as returned by a spherical query, to kilometers by multiplying by the radius of the Earth. */
     public readonly Optional|Decimal128|Int64|float|int $distanceMultiplier;
@@ -88,8 +88,8 @@ final class GeoNearStage implements StageInterface, OperatorInterface
     public readonly Optional|bool $spherical;
 
     /**
-     * @param string $distanceField The output field that contains the calculated distance. To specify a field within an embedded document, use dot notation.
      * @param Document|ResolvesToObject|Serializable|array|stdClass $near The point for which to find the closest documents.
+     * @param Optional|string $distanceField The output field that contains the calculated distance. To specify a field within an embedded document, use dot notation.
      * @param Optional|Decimal128|Int64|float|int $distanceMultiplier The factor to multiply all distances returned by the query. For example, use the distanceMultiplier to convert radians, as returned by a spherical query, to kilometers by multiplying by the radius of the Earth.
      * @param Optional|string $includeLocs This specifies the output field that identifies the location used to calculate the distance. This option is useful when a location field contains multiple locations. To specify a field within an embedded document, use dot notation.
      * @param Optional|string $key Specify the geospatial indexed field to use when calculating the distance.
@@ -105,8 +105,8 @@ final class GeoNearStage implements StageInterface, OperatorInterface
      * Default: false.
      */
     public function __construct(
-        string $distanceField,
         Document|Serializable|ResolvesToObject|stdClass|array $near,
+        Optional|string $distanceField = Optional::Undefined,
         Optional|Decimal128|Int64|float|int $distanceMultiplier = Optional::Undefined,
         Optional|string $includeLocs = Optional::Undefined,
         Optional|string $key = Optional::Undefined,
@@ -115,8 +115,8 @@ final class GeoNearStage implements StageInterface, OperatorInterface
         Optional|QueryInterface|array $query = Optional::Undefined,
         Optional|bool $spherical = Optional::Undefined,
     ) {
-        $this->distanceField = $distanceField;
         $this->near = $near;
+        $this->distanceField = $distanceField;
         $this->distanceMultiplier = $distanceMultiplier;
         $this->includeLocs = $includeLocs;
         $this->key = $key;
