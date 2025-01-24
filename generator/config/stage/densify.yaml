@@ -25,7 +25,7 @@ arguments:
     -
         name: range
         type:
-            - object # Range
+            - range
         description: |
             Specification for range based densification.
 tests:

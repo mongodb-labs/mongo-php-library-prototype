@@ -18,9 +18,9 @@ arguments:
     -
         name: sortBy
         type:
-            - object # SortSpec
             - int
             - sortSpec
+            - sortBy
         description: |
             The document specifies a sort ordering.
 tests:

@@ -22,7 +22,7 @@ arguments:
     -
         name: method
         type:
-            - string # AccumulatorPercentile
+            - accumulatorPercentile
         description: |
             The method that mongod uses to calculate the 50th percentile value. The method must be 'approximate'.
 tests:

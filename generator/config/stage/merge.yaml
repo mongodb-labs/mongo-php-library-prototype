@@ -12,7 +12,7 @@ arguments:
         name: into
         type:
             - string
-            - object # OutCollection
+            - outCollection
         description: |
             The output collection.
     -
@@ -33,7 +33,7 @@ arguments:
     -
         name: whenMatched
         type:
-            - string # WhenMatched
+            - whenMatched
             - pipeline
         optional: true
         description: |
@@ -41,7 +41,7 @@ arguments:
     -
         name: whenNotMatched
         type:
-            - string # WhenNotMatched
+            - whenNotMatched
         optional: true
         description: |
             The behavior of $merge if a result document does not match an existing document in the out collection.

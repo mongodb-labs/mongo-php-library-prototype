@@ -30,7 +30,7 @@ arguments:
     -
         name: granularity
         type:
-            - object # Granularity
+            - granularity
         optional: true
         description: |
             A string that specifies the preferred number series to use to ensure that the calculated boundary edges end on preferred round numbers or their powers of 10.

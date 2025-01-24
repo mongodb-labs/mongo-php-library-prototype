@@ -9,7 +9,7 @@
                 "name": {
                     "$comment": "The name of the operator. Must start with a $",
                     "type": "string",
-                    "pattern": "^\\$[a-z0-9][a-zA-Z0-9]*$"
+                    "pattern": "^\\$?[a-z][a-zA-Z0-9]*$"
                 },
                 "link": {
                     "$comment": "The link to the operator's documentation on MongoDB's website.",
@@ -122,6 +122,16 @@
                             "timeUnit",
                             "sortSpec",
                             "any",
+                            "granularity",
+                            "fullDocument",
+                            "fullDocumentBeforeChange",
+                            "accumulatorPercentile",
+                            "whenMatched",
+                            "whenNotMatched",
+                            "outCollection",
+                            "range",
+                            "sortBy",
+                            "geoPoint",
                             "resolvesToNumber", "numberFieldPath", "number",
                             "resolvesToDouble", "doubleFieldPath", "double",
                             "resolvesToString", "stringFieldPath", "string",

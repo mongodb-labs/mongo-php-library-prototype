@@ -10,7 +10,7 @@ arguments:
     -   name: coll
         type:
             - string
-            - object # OutCollection
+            - outCollection
         description: |
             Target database name to write documents from $out to.
 tests:
