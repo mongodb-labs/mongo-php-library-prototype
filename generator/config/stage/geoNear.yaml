@@ -11,6 +11,7 @@ arguments:
         name: distanceField
         type:
             - string
+        optional: true
         description: |
             The output field that contains the calculated distance. To specify a field within an embedded document, use dot notation.
     -
