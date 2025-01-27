@@ -240,13 +240,13 @@ trait FluentFactoryTrait
      * Returns literal documents from input values.
      *
      * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/documents/
-     * @param BSONArray|PackedArray|ResolvesToArray|array $documents $documents accepts any valid expression that resolves to an array of objects. This includes:
+     * @param BSONArray|PackedArray|ResolvesToArray|array|string $documents $documents accepts any valid expression that resolves to an array of objects. This includes:
      * - system variables, such as $$NOW or $$SEARCH_META
      * - $let expressions
      * - variables in scope from $lookup expressions
      * Expressions that do not resolve to a current document, like $myField or $$ROOT, will result in an error.
      */
-    public function documents(PackedArray|ResolvesToArray|BSONArray|array $documents): static
+    public function documents(PackedArray|ResolvesToArray|BSONArray|array|string $documents): static
     {
         $this->pipeline[] = Stage::documents($documents);
 
@@ -295,7 +295,7 @@ trait FluentFactoryTrait
      * Returns an ordered stream of documents based on the proximity to a geospatial point. Incorporates the functionality of $match, $sort, and $limit for geospatial data. The output documents include an additional distance field and can include a location identifier field.
      *
      * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/geoNear/
-     * @param Document|ResolvesToObject|Serializable|array|stdClass $near The point for which to find the closest documents.
+     * @param Document|ResolvesToObject|Serializable|array|stdClass|string $near The point for which to find the closest documents.
      * @param Optional|string $distanceField The output field that contains the calculated distance. To specify a field within an embedded document, use dot notation.
      * @param Optional|Decimal128|Int64|float|int $distanceMultiplier The factor to multiply all distances returned by the query. For example, use the distanceMultiplier to convert radians, as returned by a spherical query, to kilometers by multiplying by the radius of the Earth.
      * @param Optional|string $includeLocs This specifies the output field that identifies the location used to calculate the distance. This option is useful when a location field contains multiple locations. To specify a field within an embedded document, use dot notation.
@@ -312,7 +312,7 @@ trait FluentFactoryTrait
      * Default: false.
      */
     public function geoNear(
-        Document|Serializable|ResolvesToObject|stdClass|array $near,
+        Document|Serializable|ResolvesToObject|stdClass|array|string $near,
         Optional|string $distanceField = Optional::Undefined,
         Optional|Decimal128|Int64|int|float $distanceMultiplier = Optional::Undefined,
         Optional|string $includeLocs = Optional::Undefined,
@@ -565,9 +565,9 @@ trait FluentFactoryTrait
      * Replaces a document with the specified embedded document. The operation replaces all existing fields in the input document, including the _id field. Specify a document embedded in the input document to promote the embedded document to the top level.
      *
      * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/replaceRoot/
-     * @param Document|ResolvesToObject|Serializable|array|stdClass $newRoot
+     * @param Document|ResolvesToObject|Serializable|array|stdClass|string $newRoot
      */
-    public function replaceRoot(Document|Serializable|ResolvesToObject|stdClass|array $newRoot): static
+    public function replaceRoot(Document|Serializable|ResolvesToObject|stdClass|array|string $newRoot): static
     {
         $this->pipeline[] = Stage::replaceRoot($newRoot);
 
@@ -579,9 +579,9 @@ trait FluentFactoryTrait
      * Alias for $replaceRoot.
      *
      * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/replaceWith/
-     * @param Document|ResolvesToObject|Serializable|array|stdClass $expression
+     * @param Document|ResolvesToObject|Serializable|array|stdClass|string $expression
      */
-    public function replaceWith(Document|Serializable|ResolvesToObject|stdClass|array $expression): static
+    public function replaceWith(Document|Serializable|ResolvesToObject|stdClass|array|string $expression): static
     {
         $this->pipeline[] = Stage::replaceWith($expression);
 

@@ -20,6 +20,8 @@ use stdClass;
 
 use function array_is_list;
 use function is_array;
+use function is_string;
+use function str_starts_with;
 
 /**
  * Searches an array for an occurrence of a specified value and returns the array index of the first occurrence. Array indexes start at zero.
@@ -34,50 +36,62 @@ final class IndexOfArrayOperator implements ResolvesToInt, OperatorInterface
     public const PROPERTIES = ['array' => 'array', 'search' => 'search', 'start' => 'start', 'end' => 'end'];
 
     /**
-     * @var BSONArray|PackedArray|ResolvesToArray|array $array Can be any valid expression as long as it resolves to an array.
+     * @var BSONArray|PackedArray|ResolvesToArray|array|string $array Can be any valid expression as long as it resolves to an array.
      * If the array expression resolves to a value of null or refers to a field that is missing, $indexOfArray returns null.
      * If the array expression does not resolve to an array or null nor refers to a missing field, $indexOfArray returns an error.
      */
-    public readonly PackedArray|ResolvesToArray|BSONArray|array $array;
+    public readonly PackedArray|ResolvesToArray|BSONArray|array|string $array;
 
     /** @var ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $search */
     public readonly Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $search;
 
     /**
-     * @var Optional|ResolvesToInt|int $start An integer, or a number that can be represented as integers (such as 2.0), that specifies the starting index position for the search. Can be any valid expression that resolves to a non-negative integral number.
+     * @var Optional|ResolvesToInt|int|string $start An integer, or a number that can be represented as integers (such as 2.0), that specifies the starting index position for the search. Can be any valid expression that resolves to a non-negative integral number.
      * If unspecified, the starting index position for the search is the beginning of the string.
      */
-    public readonly Optional|ResolvesToInt|int $start;
+    public readonly Optional|ResolvesToInt|int|string $start;
 
     /**
-     * @var Optional|ResolvesToInt|int $end An integer, or a number that can be represented as integers (such as 2.0), that specifies the ending index position for the search. Can be any valid expression that resolves to a non-negative integral number. If you specify a <end> index value, you should also specify a <start> index value; otherwise, $indexOfArray uses the <end> value as the <start> index value instead of the <end> value.
+     * @var Optional|ResolvesToInt|int|string $end An integer, or a number that can be represented as integers (such as 2.0), that specifies the ending index position for the search. Can be any valid expression that resolves to a non-negative integral number. If you specify a <end> index value, you should also specify a <start> index value; otherwise, $indexOfArray uses the <end> value as the <start> index value instead of the <end> value.
      * If unspecified, the ending index position for the search is the end of the string.
      */
-    public readonly Optional|ResolvesToInt|int $end;
+    public readonly Optional|ResolvesToInt|int|string $end;
 
     /**
-     * @param BSONArray|PackedArray|ResolvesToArray|array $array Can be any valid expression as long as it resolves to an array.
+     * @param BSONArray|PackedArray|ResolvesToArray|array|string $array Can be any valid expression as long as it resolves to an array.
      * If the array expression resolves to a value of null or refers to a field that is missing, $indexOfArray returns null.
      * If the array expression does not resolve to an array or null nor refers to a missing field, $indexOfArray returns an error.
      * @param ExpressionInterface|Type|array|bool|float|int|null|stdClass|string $search
-     * @param Optional|ResolvesToInt|int $start An integer, or a number that can be represented as integers (such as 2.0), that specifies the starting index position for the search. Can be any valid expression that resolves to a non-negative integral number.
+     * @param Optional|ResolvesToInt|int|string $start An integer, or a number that can be represented as integers (such as 2.0), that specifies the starting index position for the search. Can be any valid expression that resolves to a non-negative integral number.
      * If unspecified, the starting index position for the search is the beginning of the string.
-     * @param Optional|ResolvesToInt|int $end An integer, or a number that can be represented as integers (such as 2.0), that specifies the ending index position for the search. Can be any valid expression that resolves to a non-negative integral number. If you specify a <end> index value, you should also specify a <start> index value; otherwise, $indexOfArray uses the <end> value as the <start> index value instead of the <end> value.
+     * @param Optional|ResolvesToInt|int|string $end An integer, or a number that can be represented as integers (such as 2.0), that specifies the ending index position for the search. Can be any valid expression that resolves to a non-negative integral number. If you specify a <end> index value, you should also specify a <start> index value; otherwise, $indexOfArray uses the <end> value as the <start> index value instead of the <end> value.
      * If unspecified, the ending index position for the search is the end of the string.
      */
     public function __construct(
-        PackedArray|ResolvesToArray|BSONArray|array $array,
+        PackedArray|ResolvesToArray|BSONArray|array|string $array,
         Type|ExpressionInterface|stdClass|array|bool|float|int|null|string $search,
-        Optional|ResolvesToInt|int $start = Optional::Undefined,
-        Optional|ResolvesToInt|int $end = Optional::Undefined,
+        Optional|ResolvesToInt|int|string $start = Optional::Undefined,
+        Optional|ResolvesToInt|int|string $end = Optional::Undefined,
     ) {
+        if (is_string($array) && ! str_starts_with($array, '$')) {
+            throw new InvalidArgumentException('Argument $array can be an expression, field paths and variable names must be prefixed by "$" or "$$".');
+        }
+
         if (is_array($array) && ! array_is_list($array)) {
             throw new InvalidArgumentException('Expected $array argument to be a list, got an associative array.');
         }
 
         $this->array = $array;
         $this->search = $search;
+        if (is_string($start) && ! str_starts_with($start, '$')) {
+            throw new InvalidArgumentException('Argument $start can be an expression, field paths and variable names must be prefixed by "$" or "$$".');
+        }
+
         $this->start = $start;
+        if (is_string($end) && ! str_starts_with($end, '$')) {
+            throw new InvalidArgumentException('Argument $end can be an expression, field paths and variable names must be prefixed by "$" or "$$".');
+        }
+
         $this->end = $end;
     }
 }

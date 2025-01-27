@@ -10,6 +10,10 @@ namespace MongoDB\Builder\Expression;
 
 use MongoDB\Builder\Type\Encode;
 use MongoDB\Builder\Type\OperatorInterface;
+use MongoDB\Exception\InvalidArgumentException;
+
+use function is_string;
+use function str_starts_with;
 
 /**
  * Deprecated. Use $substrBytes or $substrCP.
@@ -26,21 +30,32 @@ final class SubstrOperator implements ResolvesToString, OperatorInterface
     /** @var ResolvesToString|string $string */
     public readonly ResolvesToString|string $string;
 
-    /** @var ResolvesToInt|int $start If start is a negative number, $substr returns an empty string "". */
-    public readonly ResolvesToInt|int $start;
+    /** @var ResolvesToInt|int|string $start If start is a negative number, $substr returns an empty string "". */
+    public readonly ResolvesToInt|int|string $start;
 
-    /** @var ResolvesToInt|int $length If length is a negative number, $substr returns a substring that starts at the specified index and includes the rest of the string. */
-    public readonly ResolvesToInt|int $length;
+    /** @var ResolvesToInt|int|string $length If length is a negative number, $substr returns a substring that starts at the specified index and includes the rest of the string. */
+    public readonly ResolvesToInt|int|string $length;
 
     /**
      * @param ResolvesToString|string $string
-     * @param ResolvesToInt|int $start If start is a negative number, $substr returns an empty string "".
-     * @param ResolvesToInt|int $length If length is a negative number, $substr returns a substring that starts at the specified index and includes the rest of the string.
+     * @param ResolvesToInt|int|string $start If start is a negative number, $substr returns an empty string "".
+     * @param ResolvesToInt|int|string $length If length is a negative number, $substr returns a substring that starts at the specified index and includes the rest of the string.
      */
-    public function __construct(ResolvesToString|string $string, ResolvesToInt|int $start, ResolvesToInt|int $length)
-    {
+    public function __construct(
+        ResolvesToString|string $string,
+        ResolvesToInt|int|string $start,
+        ResolvesToInt|int|string $length,
+    ) {
         $this->string = $string;
+        if (is_string($start) && ! str_starts_with($start, '$')) {
+            throw new InvalidArgumentException('Argument $start can be an expression, field paths and variable names must be prefixed by "$" or "$$".');
+        }
+
         $this->start = $start;
+        if (is_string($length) && ! str_starts_with($length, '$')) {
+            throw new InvalidArgumentException('Argument $length can be an expression, field paths and variable names must be prefixed by "$" or "$$".');
+        }
+
         $this->length = $length;
     }
 }

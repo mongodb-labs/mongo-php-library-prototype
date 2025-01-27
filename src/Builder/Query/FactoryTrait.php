@@ -458,10 +458,10 @@ trait FactoryTrait
      * Randomly select documents at a given rate. Although the exact number of documents selected varies on each run, the quantity chosen approximates the sample rate expressed as a percentage of the total number of documents.
      *
      * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/sampleRate/
-     * @param Int64|ResolvesToDouble|float|int $rate The selection process uses a uniform random distribution. The sample rate is a floating point number between 0 and 1, inclusive, which represents the probability that a given document will be selected as it passes through the pipeline.
+     * @param Int64|ResolvesToDouble|float|int|string $rate The selection process uses a uniform random distribution. The sample rate is a floating point number between 0 and 1, inclusive, which represents the probability that a given document will be selected as it passes through the pipeline.
      * For example, a sample rate of 0.33 selects roughly one document in three.
      */
-    public static function sampleRate(Int64|ResolvesToDouble|float|int $rate): SampleRateOperator
+    public static function sampleRate(Int64|ResolvesToDouble|float|int|string $rate): SampleRateOperator
     {
         return new SampleRateOperator($rate);
     }

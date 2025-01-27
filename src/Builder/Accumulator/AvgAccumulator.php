@@ -15,6 +15,10 @@ use MongoDB\Builder\Type\AccumulatorInterface;
 use MongoDB\Builder\Type\Encode;
 use MongoDB\Builder\Type\OperatorInterface;
 use MongoDB\Builder\Type\WindowInterface;
+use MongoDB\Exception\InvalidArgumentException;
+
+use function is_string;
+use function str_starts_with;
 
 /**
  * Returns an average of numerical values. Ignores non-numeric values.
@@ -29,14 +33,18 @@ final class AvgAccumulator implements AccumulatorInterface, WindowInterface, Ope
     public const NAME = '$avg';
     public const PROPERTIES = ['expression' => 'expression'];
 
-    /** @var Decimal128|Int64|ResolvesToNumber|float|int $expression */
-    public readonly Decimal128|Int64|ResolvesToNumber|float|int $expression;
+    /** @var Decimal128|Int64|ResolvesToNumber|float|int|string $expression */
+    public readonly Decimal128|Int64|ResolvesToNumber|float|int|string $expression;
 
     /**
-     * @param Decimal128|Int64|ResolvesToNumber|float|int $expression
+     * @param Decimal128|Int64|ResolvesToNumber|float|int|string $expression
      */
-    public function __construct(Decimal128|Int64|ResolvesToNumber|float|int $expression)
+    public function __construct(Decimal128|Int64|ResolvesToNumber|float|int|string $expression)
     {
+        if (is_string($expression) && ! str_starts_with($expression, '$')) {
+            throw new InvalidArgumentException('Argument $expression can be an expression, field paths and variable names must be prefixed by "$" or "$$".');
+        }
+
         $this->expression = $expression;
     }
 }

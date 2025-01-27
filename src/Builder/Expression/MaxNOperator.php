@@ -16,6 +16,8 @@ use MongoDB\Model\BSONArray;
 
 use function array_is_list;
 use function is_array;
+use function is_string;
+use function str_starts_with;
 
 /**
  * Returns the n largest values in an array. Distinct from the $maxN accumulator.
@@ -29,23 +31,33 @@ final class MaxNOperator implements ResolvesToArray, OperatorInterface
     public const NAME = '$maxN';
     public const PROPERTIES = ['input' => 'input', 'n' => 'n'];
 
-    /** @var BSONArray|PackedArray|ResolvesToArray|array $input An expression that resolves to the array from which to return the maximal n elements. */
-    public readonly PackedArray|ResolvesToArray|BSONArray|array $input;
+    /** @var BSONArray|PackedArray|ResolvesToArray|array|string $input An expression that resolves to the array from which to return the maximal n elements. */
+    public readonly PackedArray|ResolvesToArray|BSONArray|array|string $input;
 
-    /** @var ResolvesToInt|int $n An expression that resolves to a positive integer. The integer specifies the number of array elements that $maxN returns. */
-    public readonly ResolvesToInt|int $n;
+    /** @var ResolvesToInt|int|string $n An expression that resolves to a positive integer. The integer specifies the number of array elements that $maxN returns. */
+    public readonly ResolvesToInt|int|string $n;
 
     /**
-     * @param BSONArray|PackedArray|ResolvesToArray|array $input An expression that resolves to the array from which to return the maximal n elements.
-     * @param ResolvesToInt|int $n An expression that resolves to a positive integer. The integer specifies the number of array elements that $maxN returns.
+     * @param BSONArray|PackedArray|ResolvesToArray|array|string $input An expression that resolves to the array from which to return the maximal n elements.
+     * @param ResolvesToInt|int|string $n An expression that resolves to a positive integer. The integer specifies the number of array elements that $maxN returns.
      */
-    public function __construct(PackedArray|ResolvesToArray|BSONArray|array $input, ResolvesToInt|int $n)
-    {
+    public function __construct(
+        PackedArray|ResolvesToArray|BSONArray|array|string $input,
+        ResolvesToInt|int|string $n,
+    ) {
+        if (is_string($input) && ! str_starts_with($input, '$')) {
+            throw new InvalidArgumentException('Argument $input can be an expression, field paths and variable names must be prefixed by "$" or "$$".');
+        }
+
         if (is_array($input) && ! array_is_list($input)) {
             throw new InvalidArgumentException('Expected $input argument to be a list, got an associative array.');
         }
 
         $this->input = $input;
+        if (is_string($n) && ! str_starts_with($n, '$')) {
+            throw new InvalidArgumentException('Argument $n can be an expression, field paths and variable names must be prefixed by "$" or "$$".');
+        }
+
         $this->n = $n;
     }
 }
