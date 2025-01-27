@@ -11,7 +11,7 @@ arguments:
     -
         name: sortBy
         type:
-            - object # SortSpec
+            - sortBy
         description: |
             Specifies the field(s) to sort the documents by in the partition. Uses the same syntax as the $sort stage. Default is no sorting.
     -

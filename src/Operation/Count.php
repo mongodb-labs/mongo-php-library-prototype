@@ -88,8 +88,8 @@ final class Count implements Explainable
             throw InvalidArgumentException::expectedDocumentType('"collation" option', $this->options['collation']);
         }
 
-        if (isset($this->options['hint']) && ! is_string($this->options['hint']) && ! is_array($this->options['hint']) && ! is_object($this->options['hint'])) {
-            throw InvalidArgumentException::invalidType('"hint" option', $this->options['hint'], 'string or array or object');
+        if (isset($this->options['hint']) && ! is_string($this->options['hint']) && ! is_document($this->options['hint'])) {
+            throw InvalidArgumentException::expectedDocumentOrStringType('"hint" option', $this->options['hint']);
         }
 
         if (isset($this->options['limit']) && ! is_integer($this->options['limit'])) {

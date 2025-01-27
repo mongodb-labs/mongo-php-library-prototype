@@ -131,45 +131,36 @@ return $expressions + [
     ],
 
     // @todo add enum values
-    'Granularity' => [
+    'granularity' => [
         'acceptedTypes' => [...$bsonTypes['string']],
     ],
-    'FullDocument' => [
+    'fullDocument' => [
         'acceptedTypes' => [...$bsonTypes['string']],
     ],
-    'FullDocumentBeforeChange' => [
+    'fullDocumentBeforeChange' => [
         'acceptedTypes' => [...$bsonTypes['string']],
     ],
-    'AccumulatorPercentile' => [
+    'accumulatorPercentile' => [
         'acceptedTypes' => [...$bsonTypes['string']],
     ],
-    'WhenMatched' => [
+    'whenMatched' => [
         'acceptedTypes' => [...$bsonTypes['string']],
     ],
-    'WhenNotMatched' => [
+    'whenNotMatched' => [
         'acceptedTypes' => [...$bsonTypes['string']],
     ],
 
     // @todo create specific model classes factories
-    'OutCollection' => [
+    'outCollection' => [
         'acceptedTypes' => [...$bsonTypes['object']],
     ],
-    'CollStats' => [
+    'range' => [
         'acceptedTypes' => [...$bsonTypes['object']],
     ],
-    'Range' => [
+    'sortBy' => [
         'acceptedTypes' => [...$bsonTypes['object']],
     ],
-    'FillOut' => [
-        'acceptedTypes' => [...$bsonTypes['object']],
-    ],
-    'SortSpec' => [
-        'acceptedTypes' => [...$bsonTypes['object']],
-    ],
-    'Window' => [
-        'acceptedTypes' => [...$bsonTypes['object']],
-    ],
-    'GeoPoint' => [
+    'geoPoint' => [
         'acceptedTypes' => [...$bsonTypes['object']],
     ],
 

@@ -28,7 +28,6 @@ use MongoDB\UpdateResult;
 
 use function is_array;
 use function is_bool;
-use function is_object;
 use function is_string;
 use function MongoDB\is_document;
 use function MongoDB\is_first_key_operator;
@@ -122,8 +121,8 @@ final class Update implements Explainable
             throw InvalidArgumentException::expectedDocumentType('"collation" option', $options['collation']);
         }
 
-        if (isset($options['hint']) && ! is_string($options['hint']) && ! is_array($options['hint']) && ! is_object($options['hint'])) {
-            throw InvalidArgumentException::invalidType('"hint" option', $options['hint'], ['string', 'array', 'object']);
+        if (isset($options['hint']) && ! is_string($options['hint']) && ! is_document($options['hint'])) {
+            throw InvalidArgumentException::expectedDocumentOrStringType('"hint" option', $options['hint']);
         }
 
         if (! is_bool($options['multi'])) {

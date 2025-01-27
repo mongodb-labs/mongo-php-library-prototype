@@ -151,8 +151,8 @@ final class FindAndModify implements Explainable
             throw InvalidArgumentException::expectedDocumentType('"fields" option', $options['fields']);
         }
 
-        if (isset($options['hint']) && ! is_string($options['hint']) && ! is_array($options['hint']) && ! is_object($options['hint'])) {
-            throw InvalidArgumentException::invalidType('"hint" option', $options['hint'], ['string', 'array', 'object']);
+        if (isset($options['hint']) && ! is_string($options['hint']) && ! is_document($options['hint'])) {
+            throw InvalidArgumentException::expectedDocumentOrStringType('"hint" option', $options['hint']);
         }
 
         if (isset($options['maxTimeMS']) && ! is_integer($options['maxTimeMS'])) {

@@ -11,6 +11,7 @@ arguments:
         name: distanceField
         type:
             - string
+        optional: true
         description: |
             The output field that contains the calculated distance. To specify a field within an embedded document, use dot notation.
     -
@@ -53,7 +54,7 @@ arguments:
     -
         name: near
         type:
-            - object # GeoPoint
+            - geoPoint
             - resolvesToObject
         description: |
             The point for which to find the closest documents.

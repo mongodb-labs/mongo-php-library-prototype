@@ -106,14 +106,14 @@ trait FluentFactoryTrait
      * @param int $buckets A positive 32-bit integer that specifies the number of buckets into which input documents are grouped.
      * @param Optional|Document|Serializable|array|stdClass $output A document that specifies the fields to include in the output documents in addition to the _id field. To specify the field to include, you must use accumulator expressions.
      * The default count field is not included in the output document when output is specified. Explicitly specify the count expression as part of the output document to include it.
-     * @param Optional|Document|Serializable|array|stdClass $granularity A string that specifies the preferred number series to use to ensure that the calculated boundary edges end on preferred round numbers or their powers of 10.
+     * @param Optional|string $granularity A string that specifies the preferred number series to use to ensure that the calculated boundary edges end on preferred round numbers or their powers of 10.
      * Available only if the all groupBy values are numeric and none of them are NaN.
      */
     public function bucketAuto(
         Type|ExpressionInterface|stdClass|array|string|int|float|bool|null $groupBy,
         int $buckets,
         Optional|Document|Serializable|stdClass|array $output = Optional::Undefined,
-        Optional|Document|Serializable|stdClass|array $granularity = Optional::Undefined,
+        Optional|string $granularity = Optional::Undefined,
     ): static {
         $this->pipeline[] = Stage::bucketAuto($groupBy, $buckets, $output, $granularity);
 
@@ -295,8 +295,8 @@ trait FluentFactoryTrait
      * Returns an ordered stream of documents based on the proximity to a geospatial point. Incorporates the functionality of $match, $sort, and $limit for geospatial data. The output documents include an additional distance field and can include a location identifier field.
      *
      * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/geoNear/
-     * @param string $distanceField The output field that contains the calculated distance. To specify a field within an embedded document, use dot notation.
      * @param Document|ResolvesToObject|Serializable|array|stdClass $near The point for which to find the closest documents.
+     * @param Optional|string $distanceField The output field that contains the calculated distance. To specify a field within an embedded document, use dot notation.
      * @param Optional|Decimal128|Int64|float|int $distanceMultiplier The factor to multiply all distances returned by the query. For example, use the distanceMultiplier to convert radians, as returned by a spherical query, to kilometers by multiplying by the radius of the Earth.
      * @param Optional|string $includeLocs This specifies the output field that identifies the location used to calculate the distance. This option is useful when a location field contains multiple locations. To specify a field within an embedded document, use dot notation.
      * @param Optional|string $key Specify the geospatial indexed field to use when calculating the distance.
@@ -312,8 +312,8 @@ trait FluentFactoryTrait
      * Default: false.
      */
     public function geoNear(
-        string $distanceField,
         Document|Serializable|ResolvesToObject|stdClass|array $near,
+        Optional|string $distanceField = Optional::Undefined,
         Optional|Decimal128|Int64|int|float $distanceMultiplier = Optional::Undefined,
         Optional|string $includeLocs = Optional::Undefined,
         Optional|string $key = Optional::Undefined,
@@ -322,7 +322,7 @@ trait FluentFactoryTrait
         Optional|QueryInterface|array $query = Optional::Undefined,
         Optional|bool $spherical = Optional::Undefined,
     ): static {
-        $this->pipeline[] = Stage::geoNear($distanceField, $near, $distanceMultiplier, $includeLocs, $key, $maxDistance, $minDistance, $query, $spherical);
+        $this->pipeline[] = Stage::geoNear($near, $distanceField, $distanceMultiplier, $includeLocs, $key, $maxDistance, $minDistance, $query, $spherical);
 
         return $this;
     }

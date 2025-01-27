@@ -89,7 +89,7 @@ final class Distinct implements Explainable
         }
 
         if (isset($this->options['hint']) && ! is_string($this->options['hint']) && ! is_document($this->options['hint'])) {
-            throw InvalidArgumentException::invalidType('"hint" option', $this->options['hint'], 'string or array or object');
+            throw InvalidArgumentException::expectedDocumentOrStringType('"hint" option', $this->options['hint']);
         }
 
         if (isset($this->options['maxTimeMS']) && ! is_integer($this->options['maxTimeMS'])) {
