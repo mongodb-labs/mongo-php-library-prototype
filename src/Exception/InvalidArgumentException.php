@@ -38,6 +38,8 @@ class InvalidArgumentException extends DriverInvalidArgumentException implements
     /**
      * Thrown when an argument or option is expected to be a string or a document.
      *
+     * @internal
+     *
      * @param string $name  Name of the argument or option
      * @param mixed  $value Actual value (used to derive the type)
      */
